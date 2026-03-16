@@ -1,0 +1,12 @@
+# 忽略所有文件和文件夹
+*
+
+# 不忽略 .gitignore 本身（必须保留，否则规则失效）
+!.gitignore
+
+# 放行目标 Python 文件
+!select_val2017_2person.py
+
+# 放行 coco_multi_person 文件夹及其所有子内容
+!coco_multi_person/
+!coco_multi_person/**
