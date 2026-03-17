@@ -6,6 +6,7 @@
 
 # 放行目标 Python 文件
 !select_val2017_2person.py
+!get_OpenPose.py
 
 # 放行 coco_multi_person 文件夹及其所有子内容
 !coco_multi_person/
