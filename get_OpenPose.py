@@ -11,15 +11,23 @@ os.makedirs(pose_output_dir, exist_ok=True)
 # 加载模型
 model = YOLO("yolov8n-pose.pt")
 
-# COCO 格式的关键点连接关系
-# 索引：0:鼻子,1:左眼,2:右眼,3:左耳,4:右耳,5:左肩,6:右肩,7:左肘,8:右肘,9:左腕,10:右腕,
-#         11:左髋,12:右髋,13:左膝,14:右膝,15:左踝,16:右踝
-SKELETON = [
-    [0,1], [0,2], [1,2], [1,3], [2,4],          # 头部
-    [5,6], [5,7], [6,8], [7,9], [8,10],          # 手臂
-    [11,12], [5,11], [6,12], [11,13], [12,14],   # 躯干
-    [13,15], [14,16]                              # 腿
-]
+# 按部位分组SKELETON + 定义部位颜色 
+# 1. 按骨骼部位分组
+SKELETON_BY_PART = {
+    "head": [[0,1], [0,2], [1,2], [1,3], [2,4]],          # 头部
+    "arm": [[5,6], [5,7], [6,8], [7,9], [8,10]],          # 手臂
+    "torso": [[11,12], [5,11], [6,12]],                   # 躯干
+    "leg": [[11,13], [12,14], [13,15], [14,16]]           # 腿
+}
+
+# 2. 定义各部位颜色（RGB格式）
+PART_COLORS = {
+    "head": (255, 0, 0),       # 头部 - 红色
+    "arm": (0, 255, 0),        # 手臂 - 绿色
+    "torso": (0, 0, 255),      # 躯干 - 蓝色
+    "leg": (255, 255, 0)       # 腿部 - 黄色
+}
+
 
 for img_name in os.listdir(raw_img_dir):
     img_path = os.path.join(raw_img_dir, img_name)
@@ -35,16 +43,20 @@ for img_name in os.listdir(raw_img_dir):
     results = model(img, conf=0.3)
     
     if results[0].keypoints is not None:
-        keypoints = results[0].keypoints.xy.cpu().numpy()  # 形状 [人数, 17, 2]
+        keypoints = results[0].keypoints.xy.cpu().numpy()  # 形状 
         for person_kps in keypoints:
-            # 绘制连接线
-            for sk in SKELETON:
-                pt1 = person_kps[sk[0]]
-                pt2 = person_kps[sk[1]]
-                # 检查关键点是否有效（非零坐标）
-                if pt1[0] > 0 and pt1[1] > 0 and pt2[0] > 0 and pt2[1] > 0:
-                    cv2.line(canvas, tuple(pt1.astype(int)), tuple(pt2.astype(int)), (255,255,255), 2)
-            # 绘制关键点
+            # 按部位绘制不同颜色线条 
+            # 遍历每个部位，用对应颜色绘制
+            for part_name, sk_list in SKELETON_BY_PART.items():
+                color = PART_COLORS[part_name]  # 获取该部位的颜色
+                for sk in sk_list:
+                    pt1 = person_kps[sk[0]]
+                    pt2 = person_kps[sk[1]]
+                    # 检查关键点是否有效（非零坐标）
+                    if pt1[0] > 0 and pt1[1] > 0 and pt2[0] > 0 and pt2[1] > 0:
+                        cv2.line(canvas, tuple(pt1.astype(int)), tuple(pt2.astype(int)), color, 2)
+            
+            # 绘制关键点（白色）
             for kp in person_kps:
                 if kp[0] > 0 and kp[1] > 0:
                     cv2.circle(canvas, tuple(kp.astype(int)), 3, (255,255,255), -1)
@@ -53,4 +65,4 @@ for img_name in os.listdir(raw_img_dir):
     save_path = os.path.join(pose_output_dir, img_name)
     cv2.imwrite(save_path, canvas)
 
-print("✅ 纯净的骨骼图（黑底白线）生成完毕！")
+print("✅ 按骨骼部位分色的骨骼图生成完毕！")
