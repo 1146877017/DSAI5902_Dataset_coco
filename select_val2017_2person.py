@@ -26,10 +26,10 @@ print(f"筛选出包含 ≥2 个 person 的样本数：{len(multi_person_ids)}")
 os.makedirs(os.path.dirname(id_list_save_path), exist_ok=True)
 with open(id_list_save_path, "w", encoding="utf-8") as f:
     json.dump({
-        "筛选规则": "COCO 2017 Val集，person数量≥2，最多1000个样本",
+        "筛选规则": "COCO 2017 Val集，person数量≥2，最多500个样本",
         "image_ids": multi_person_ids,
         "样本数量": len(multi_person_ids)
-    }, f, indent=4)  # indent=4 让JSON更易读
+    }, f, indent=4)  
 print(f"✅ 筛选出的图像ID列表已保存至：{id_list_save_path}")
 
 # 4. 复制图像
