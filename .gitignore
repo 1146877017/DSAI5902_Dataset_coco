@@ -10,11 +10,11 @@
 !check_data_coco.py
 !unify_size.py
 !auto_copy_samples.py
-!controlnet_attention_masking_single_test.py
+# !controlnet_attention_masking_single_test.py
 
 
 !coco_multi_person/
 !coco_multi_person/**
 
-!controlnet_results/
-!controlnet_results/**
+!controlnet_attention_masking_single_test/
+!controlnet_attention_masking_single_test/**
