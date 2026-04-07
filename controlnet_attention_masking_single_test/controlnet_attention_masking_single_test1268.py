@@ -230,7 +230,7 @@ if __name__ == "__main__":
         masks = process_mask(mask_path)
         apply_attention_mask(pipe_b3, token_indices, masks)
         img4 = pipe_b3(prompt=PROMPT, negative_prompt=NEG_PROMPT, image=[pose, depth], controlnet_conditioning_scale=[0.7,0.5], generator=generator, num_inference_steps=30).images[0]
-        img4.save(f"{OUTPUT_DIR}/{SAMPLE_NAME}_your_method.png")
+        img4.save(f"{OUTPUT_DIR}/{SAMPLE_NAME}_method.png")
         clear_gpu_memory()
 
         print("\n🎉 全部实验完成！结果已保存至 controlnet_results 文件夹")

@@ -62,13 +62,28 @@ def get_person_token_indices(tokenizer, prompt: str):
     while person1_end > person1_start and clean_tokens[person1_end] in [",", ":", "."]:
         person1_end -= 1
     
-    # Person2 结束于遇到下一个标点符号或 Prompt 结尾
+    # Person2 结束 : 跳过人物内部逗号，在场景描述前截断
     person2_end = len(clean_tokens) - 1
-    # 从 person2_start 往后找第一个逗号或句号
+    # 1. 找到场景描述的第一个词，根据Prompt场景词调整
+    scene_start = None
     for i in range(person2_start + 2, len(clean_tokens)):
-        if clean_tokens[i] in [",", ".", "<|endoftext|>"]:
-            person2_end = i - 1
+        # 匹配场景词「rural」，若换场景可修改为对应词
+        if clean_tokens[i] == "rooftop":
+            scene_start = i
             break
+    if scene_start is not None:
+        # 2. 找到场景词前的最后一个逗号，作为Person2的结束位置
+        for i in range(scene_start - 1, person2_start, -1):
+            if clean_tokens[i] in [",", "."]:
+                person2_end = i - 1
+                break
+    else:
+        # 3. 如果没找到场景词，用原来的逻辑
+        for i in range(person2_start + 2, len(clean_tokens)):
+            if clean_tokens[i] in [",", ".", "<|endoftext|>"]:
+                person2_end = i - 1
+                break
+
     token_indices = [
         list(range(person1_start, person1_end + 1)),
         list(range(person2_start, person2_end + 1))
@@ -143,37 +158,40 @@ class AttentionMaskProcessor:
 def apply_attention_mask(pipeline, token_indices, masks):
     pipeline.unet.set_attn_processor(AttentionMaskProcessor(token_indices, masks))
 
-#  掩码处理：按面积取最大2人
 def process_mask(mask_path, img_size=(512,512)):
     if not os.path.exists(mask_path):
         raise FileNotFoundError(f"掩码不存在: {mask_path}")
     
+    # 读取实例掩码
     mask = cv2.imread(mask_path, cv2.IMREAD_GRAYSCALE)
     mask = cv2.resize(mask, img_size, interpolation=cv2.INTER_NEAREST)
     
-    # 按人物面积排序，取最大2个
+    # 提取人物ID
     person_ids = [p for p in np.unique(mask) if p > 0]
+
     areas = [np.sum(mask == p) for p in person_ids]
     sorted_persons = [p for _, p in sorted(zip(areas, person_ids), reverse=True)][:2]
 
     if len(sorted_persons) < 2:
-        raise ValueError("❌ 至少需要2个人物")
+        raise ValueError(f"❌ 掩码仅检测到 {len(sorted_persons)} 个人物")
 
     return [torch.from_numpy((mask == p).astype(np.float32)) for p in sorted_persons]
+
 
 #  主实验流程 
 if __name__ == "__main__":
     try:
         #  配置 
-        SAMPLE_NAME = "000000044279"
+        SAMPLE_NAME = "000000504074"
         BASE_DIR = "../coco_multi_person/complete_samples_512"
         OUTPUT_DIR = "controlnet_results"
         SEED = 42      
-                
-        PROMPT = "person1: (a middle-aged asian male chef with natural face, detailed facial features, white shirt packing takeout food:1.3), person2: (a middle-aged asian male chef with natural face, detailed facial features, white shirt blue cap cooking at stove:1.3), chinese restaurant kitchen, photorealistic, high detail"
+        PROMPT = "person1: young woman with glasses, tank top, using laptop, smoking, sitting in chair, person2: young woman with sunglasses, white top, holding wine glass, sitting in chair, rooftop patio, black and white photo, photorealistic"
 
-        NEG_PROMPT = "cartoon, anime, ugly, blurry, low resolution, deformed, missing person, extra people, cropped, out of frame, distorted face, bad anatomy, bad hands, text, watermark, signature, disfigured, extra limbs, deformed face, asymmetrical face, blurry face, ugly face, mutated face, cross-eyed, closed eyes, open mouth, missing teeth, bad teeth"        
-      
+
+        NEG_PROMPT = "cartoon, anime, ugly, blurry, low resolution, deformed, missing person, extra people, cropped, out of frame, distorted face, bad anatomy, bad hands, text, watermark, signature, disfigured, extra limbs, deformed face, asymmetrical face, blurry face, ugly face, mutated face, cross-eyed, closed eyes, open mouth, missing teeth, bad teeth, extra fingers, missing fingers, attribute mixing, clothes mixing, color photo, colored"
+        
+       
         # 路径拼接
         os.makedirs(OUTPUT_DIR, exist_ok=True)
         pose_path = f"{BASE_DIR}/openpose/{SAMPLE_NAME}.jpg"
@@ -212,30 +230,26 @@ if __name__ == "__main__":
 
         # ========== 4组对比实验 ==========
         print("\n1/4 Baseline1：纯文本生成")
-        img1 = base(prompt=PROMPT, negative_prompt=NEG_PROMPT, generator=generator, num_inference_steps=50, guidance_scale=8.5).images[0]
-
+        img1 = base(prompt=PROMPT, negative_prompt=NEG_PROMPT, generator=generator, num_inference_steps=50).images[0]
         img1.save(f"{OUTPUT_DIR}/{SAMPLE_NAME}_baseline1.png")
         del base, img1
         clear_gpu_memory()
 
         print("\n2/4 Baseline2：OpenPose约束")
-        img2 = pipe_b2(prompt=PROMPT, negative_prompt=NEG_PROMPT, image=pose, controlnet_conditioning_scale=0.65, generator=generator, num_inference_steps=50, guidance_scale=8.5).images[0]
-
+        img2 = pipe_b2(prompt=PROMPT, negative_prompt=NEG_PROMPT, image=pose, controlnet_conditioning_scale=0.7, generator=generator, num_inference_steps=50).images[0]
         img2.save(f"{OUTPUT_DIR}/{SAMPLE_NAME}_baseline2.png")
         del pipe_b2, img2
         clear_gpu_memory()
 
         print("\n3/4 Baseline3：OpenPose+Depth约束")
-        img3 = pipe_b3(prompt=PROMPT, negative_prompt=NEG_PROMPT, image=[pose, depth], controlnet_conditioning_scale=[0.65,0.45], generator=generator, num_inference_steps=50, guidance_scale=8.5).images[0]
-
+        img3 = pipe_b3(prompt=PROMPT, negative_prompt=NEG_PROMPT, image=[pose, depth], controlnet_conditioning_scale=[0.7,0.5], generator=generator, num_inference_steps=50).images[0]
         img3.save(f"{OUTPUT_DIR}/{SAMPLE_NAME}_baseline3.png")
         clear_gpu_memory()
 
         print("\n4/4 设计方法：注意力掩码+双ControlNet")
         masks = process_mask(mask_path)
         apply_attention_mask(pipe_b3, token_indices, masks)
-        img4 = pipe_b3(prompt=PROMPT, negative_prompt=NEG_PROMPT, image=[pose, depth], controlnet_conditioning_scale=[0.65,0.45], generator=generator, num_inference_steps=50, guidance_scale=8.5).images[0]
-                
+        img4 = pipe_b3(prompt=PROMPT, negative_prompt=NEG_PROMPT, image=[pose, depth], controlnet_conditioning_scale=[0.7,0.5], generator=generator, num_inference_steps=50).images[0]
         img4.save(f"{OUTPUT_DIR}/{SAMPLE_NAME}_method.png")
         clear_gpu_memory()
 
