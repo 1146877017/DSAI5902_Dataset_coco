@@ -16,5 +16,5 @@
 !coco_multi_person/
 !coco_multi_person/**
 
-!controlnet_attention_masking_single_test/
-!controlnet_attention_masking_single_test/**
+!controlnet_COCO_test/
+!controlnet_COCO_test/**
