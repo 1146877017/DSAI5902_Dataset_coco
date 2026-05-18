@@ -10,11 +10,32 @@
 !check_data_coco.py
 !unify_size.py
 !auto_copy_samples.py
-# !controlnet_attention_masking_single_test.py
-
 
 !coco_multi_person/
 !coco_multi_person/**
 
 !controlnet_COCO_test/
 !controlnet_COCO_test/**
+
+!controlnet_left_test/
+!controlnet_left_test/**
+
+
+controlnet_COCO_test/desert_files/
+
+# 模型权重文件
+*.pt
+*.pth
+
+# Python 缓存文件
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# 日志、临时文件、环境文件
+*.log
+*.tmp
+.env
+.venv/
+venv/
