@@ -21,7 +21,7 @@ IMAGE_SIZE = 512
 # 种子（保证复现）
 SEED = 42
 # 保存后缀
-METHOD_SUFFIX = ["_baseline1", "_baseline2", "_baseline3", "_method"]
+METHOD_SUFFIX = ["_baseline1", "_baseline2", "_baseline3", "_method", "_ablation1", "_ablation2"]
 
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -76,33 +76,56 @@ def process_mask(mask_path):
     mask2 = cv2.resize(mask2, (IMAGE_SIZE, IMAGE_SIZE))
     return [Image.fromarray(mask1), Image.fromarray(mask2)]
 
-class MaskedAttnProcessor(AttnProcessor):
-    def __init__(self, masks, token_indices):
+class AttentionMaskProcessor(AttnProcessor):
+    def __init__(self, token_indices, masks):
         super().__init__()
-        self.masks = masks
         self.token_indices = token_indices
+        self.masks = masks  # [person1_mask, person2_mask]，shape [H, W]
+        self.H, self.W = masks[0].size
+
     def __call__(self, attn, hidden_states, encoder_hidden_states=None, attention_mask=None):
         batch_size, sequence_length, _ = hidden_states.shape
+        encoder_hidden_states = encoder_hidden_states if encoder_hidden_states is not None else hidden_states
+
         query = attn.to_q(hidden_states)
-        if encoder_hidden_states is None: encoder_hidden_states = hidden_states
         key = attn.to_k(encoder_hidden_states)
         value = attn.to_v(encoder_hidden_states)
-        attention_scores = torch.bmm(query, key.transpose(1, 2)) / attn.scale
-        if len(self.token_indices) == 2 and encoder_hidden_states.shape[1] > 77:
-            for i, idx in enumerate(self.token_indices):
-                if idx < attention_scores.shape[-1]:
-                    mask = self.masks[i].to(query.device, query.dtype)
-                    mask = mask.view(1, -1, 1)
-                    attention_scores[:, :, idx:idx+1] += mask * 10
-        attention_probs = torch.softmax(attention_scores, dim=-1)
+
+        query = attn.head_to_batch_dim(query)
+        key = attn.head_to_batch_dim(key)
+        value = attn.head_to_batch_dim(value)
+
+        attention_scores = torch.bmm(query, key.transpose(-1, -2)) / attn.scale
+
+        # 给非目标区域加-10000，屏蔽无关区域
+        if self.token_indices is not None and len(self.token_indices) > 0:
+            seq_len = attention_scores.shape[-1]
+            spatial_size = int(seq_len ** 0.5) if int(seq_len ** 0.5)**2 == seq_len else int((seq_len/2)**0.5)
+            if spatial_size**2 != seq_len:
+                spatial_size = self.H // 8  # 适配ControlNet的下采样尺寸
+            
+            for i, token_idx in enumerate(self.token_indices):
+                if token_idx >= attention_scores.shape[-1]:
+                    continue
+                # 处理掩码，resize到和注意力图一样的尺寸
+                mask = self.masks[i].resize((spatial_size, spatial_size), Image.Resampling.LANCZOS)
+                mask = torch.tensor(np.array(mask)).float().to(query.device)
+                mask = (mask / 255.0).view(-1)  # 展平为[spatial_size*spatial_size]
+                # 给非目标区域加-10000，softmax后趋近于0
+                attention_scores[:, :, token_idx] += (1 - mask) * -10000
+
+        attention_probs = attention_scores.softmax(dim=-1)
         hidden_states = torch.bmm(attention_probs, value)
+        hidden_states = attn.batch_to_head_dim(hidden_states)
+
+        # 输出投影
         hidden_states = attn.to_out[0](hidden_states)
         hidden_states = attn.to_out[1](hidden_states)
         return hidden_states
 
 def apply_attention_mask(pipe, token_indices, masks):
     pipe.unet.set_attn_processor(
-        MaskedAttnProcessor(masks, token_indices)
+        AttentionMaskProcessor(token_indices, masks)
     )
 
 def clear_gpu_memory():
@@ -110,7 +133,7 @@ def clear_gpu_memory():
     gc.collect()
     torch.cuda.empty_cache()
 
-# ===================== 主生成流程 =====================
+# ===================== 主流程 =====================
 def run_synthetic():
     # 加载合成数据集配置
     with open(os.path.join(SYNTHETIC_DATA, "synthetic_configs.json"), "r", encoding="utf-8") as f:
@@ -168,6 +191,24 @@ def run_synthetic():
         img4.save(os.path.join(OUTPUT_DIR, f"{scene_name}{METHOD_SUFFIX[3]}.png"))
         del img4
         pipe_both.unet.set_attn_processor(AttnProcessor())
+        clear_gpu_memory()
+
+        # --- Ablation1：双ControlNet + 随机掩码 ---
+        random_mask1 = Image.fromarray(np.random.randint(0, 255, (IMAGE_SIZE, IMAGE_SIZE), dtype=np.uint8))
+        random_mask2 = Image.fromarray(np.random.randint(0, 255, (IMAGE_SIZE, IMAGE_SIZE), dtype=np.uint8))
+        apply_attention_mask(pipe_both, token_indices, [random_mask1, random_mask2])
+        img_ab1 = pipe_both(prompt=prompt, negative_prompt=neg_prompt, image=[pose, depth], generator=generator, num_inference_steps=25, guidance_scale=7.5).images[0]
+        img_ab1.save(os.path.join(OUTPUT_DIR, f"{scene_name}{METHOD_SUFFIX[4]}.png"))
+        del img_ab1
+        pipe_both.unet.set_attn_processor(AttnProcessor())
+        clear_gpu_memory()
+
+        # --- Ablation2：仅OpenPose + 实例掩码 ---
+        apply_attention_mask(pipe_pose, token_indices, masks)
+        img_ab2 = pipe_pose(prompt=prompt, negative_prompt=neg_prompt, image=pose, generator=generator, num_inference_steps=25, guidance_scale=7.5).images[0]
+        img_ab2.save(os.path.join(OUTPUT_DIR, f"{scene_name}{METHOD_SUFFIX[5]}.png"))
+        del img_ab2
+        pipe_pose.unet.set_attn_processor(AttnProcessor())
         clear_gpu_memory()
 
         print(f" {scene_name} 全部生成完成！")
