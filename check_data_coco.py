@@ -22,9 +22,9 @@ for f in raw_files:
     if f in openpose_files and f in depth_files and f in mask_files:
         match_count += 1
     else:
-        print(f"⚠️ 缺失控制图: {f}")
+        print(f"Err 缺失控制图: {f}")
 
-print(f"\n✅ 完整匹配的样本数: {match_count}/{len(raw_files)}")
-print(f"✅ OpenPose 样本数: {len(openpose_files)}")
-print(f"✅ Depth 样本数: {len(depth_files)}")
-print(f"✅ Mask 样本数: {len(mask_files)}")
+print(f"\n 完整匹配的样本数: {match_count}/{len(raw_files)}")
+print(f" OpenPose 样本数: {len(openpose_files)}")
+print(f" Depth 样本数: {len(depth_files)}")
+print(f" Mask 样本数: {len(mask_files)}")

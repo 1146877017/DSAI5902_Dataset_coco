@@ -38,7 +38,7 @@ mask_prefix = get_file_prefixes(MASK_DIR)
 # 取交集：同时存在 原图+OpenPose+Depth+Mask 的样本
 complete_prefixes = raw_prefix & op_prefix & depth_prefix & mask_prefix
 
-print(f"🔍 筛选完成：共找到 {len(complete_prefixes)} 个完整样本")
+print(f" 筛选完成：共找到 {len(complete_prefixes)} 个完整样本")
 
 # 2：复制文件 
 def copy_files(src_folder, dst_folder, prefixes, src_suffix):
@@ -50,12 +50,12 @@ def copy_files(src_folder, dst_folder, prefixes, src_suffix):
             shutil.copy2(src_file, dst_file)
 
 copy_files(RAW_DIR, TARGET_RAW, complete_prefixes, src_suffix=".jpg")
-copy_files(OPENPOSE_DIR, TARGET_OPENPOSE, complete_prefixes, src_suffix=".jpg")
-copy_files(DEPTH_DIR, TARGET_DEPTH, complete_prefixes, src_suffix=".jpg")
+copy_files(OPENPOSE_DIR, TARGET_OPENPOSE, complete_prefixes, src_suffix=".png")
+copy_files(DEPTH_DIR, TARGET_DEPTH, complete_prefixes, src_suffix=".png")
 copy_files(MASK_DIR, TARGET_MASK, complete_prefixes, src_suffix=".png")
 
-print(f"\n✅ 全部复制完成，完整样本保存到：{TARGET_BASE}")
-print(f"📂 文件夹结构：")
+print(f"\n 全部复制完成，完整样本保存到：{TARGET_BASE}")
+print(f" 文件夹结构：")
 print(f"   {TARGET_RAW} ")
 print(f"   {TARGET_OPENPOSE} ")
 print(f"   {TARGET_DEPTH} ")

@@ -4,11 +4,11 @@ import shutil
 from collections import defaultdict
 
 # ===================== 路径 =====================
-anno_path = r"annotations\instances_val2017.json"       # COCO标注文件
+anno_path = r"annotations/instances_val2017.json"       # COCO标注文件
 raw_img_dir = r"val2017"                                 # 原始图片
-output_dir = r"coco_multi_person\raw"                    # 输出多人物图片
+output_dir = r"coco_multi_person/raw"                    # 输出多人物图片
 max_samples = 5000                                      # 最大筛选5000个样本
-id_list_save_path = r"coco_multi_person\multi_person_ids.json"  # 保存ID列表
+id_list_save_path = r"coco_multi_person/multi_person_ids.json"  # 保存ID列表
 
 # 1. 加载标注 + 统计每个图片的人物数量
 with open(anno_path, "r", encoding="utf-8") as f:

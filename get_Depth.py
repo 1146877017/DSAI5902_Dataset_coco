@@ -34,31 +34,36 @@ print(f"开始生成深度图（保留原始尺寸），共 {len(img_files)} 个
 processed_count = 0
 failed_count = 0
 
-for img_name in tqdm(img_files, desc="生成深度图"):
+for img_name in tqdm(img_files, desc="生成纯背景深度图"):
     img_path = os.path.join(raw_img_dir, img_name)
+    mask_path = os.path.join(r"coco_multi_person/mask", os.path.splitext(img_name)[0] + ".png")
+    
     img = cv2.imread(img_path)
-    if img is None:
-        print(f"Err 无法读取图像 → {img_name}")
+    mask = cv2.imread(mask_path, cv2.IMREAD_GRAYSCALE)
+    
+    if img is None or mask is None:
+        print(f"Err 无法读取图像或掩码 → {img_name}")
         failed_count += 1
         continue
-
-    # 推理深度
+    
+    # 抹除人物区域，用背景修复填充
+    inpaint_mask = (mask > 0).astype(np.uint8) * 255
+    img_inpaint = cv2.inpaint(img, inpaint_mask, inpaintRadius=4, flags=cv2.INPAINT_TELEA)
+    
+    # 对纯背景图生成深度
     with torch.no_grad():
-        depth = model.infer_image(img)  # 返回 numpy 数组，形状 (H, W)
-
-    # 归一化到 [0, 255]
+        depth = model.infer_image(img_inpaint)
+    
+    # 归一化+保存
     depth_min, depth_max = depth.min(), depth.max()
     if depth_max > depth_min:
         depth_norm = (depth - depth_min) / (depth_max - depth_min)
     else:
         depth_norm = np.zeros_like(depth)
     depth_8bit = (depth_norm * 255).astype(np.uint8)
-
-    # 保存为 PNG（无损）
-    base_name = os.path.splitext(img_name)[0]
-    save_path = os.path.join(depth_output_dir, base_name + ".png")
+    
+    save_path = os.path.join(depth_output_dir, os.path.splitext(img_name)[0] + ".png")
     cv2.imwrite(save_path, depth_8bit)
-
     processed_count += 1
 
 print(f"\n 深度图生成完成！成功：{processed_count}，失败：{failed_count}")

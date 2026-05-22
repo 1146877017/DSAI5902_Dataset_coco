@@ -212,8 +212,8 @@ def run_single_sample(prompt_item, base, pipe_b2, pipe_b3, generator):
     print(f"\n{'='*50}\n 开始处理样本: {sample_name} (img_id: {img_id})\n{'='*50}")
     
     # 路径
-    pose_path = f"{BASE_DIR}/openpose/{sample_name}.jpg"
-    depth_path = f"{BASE_DIR}/depth/{sample_name}.jpg"
+    pose_path = f"{BASE_DIR}/openpose/{sample_name}.png"
+    depth_path = f"{BASE_DIR}/depth/{sample_name}.png"
     mask_path = f"{BASE_DIR}/mask/{sample_name}.png"
 
     # 检查文件是否存在
