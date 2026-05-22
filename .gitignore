@@ -29,6 +29,10 @@ controlnet_COCO_test/controlnet_results_tmp20test/
 controlnet_COCO_test/gfpgan/
 controlnet_COCO_test/GFPGANv1.4.pth
 
+!controlnet_COCO_test_handtype/
+!controlnet_COCO_test_handtype/**
+
+
 # 模型权重文件
 *.pt
 *.pth
