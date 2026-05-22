@@ -11,8 +11,8 @@
 !unify_size.py
 !auto_copy_samples.py
 
-!coco_multi_person/
-!coco_multi_person/**
+# !coco_multi_person/
+# !coco_multi_person/**
 
 !controlnet_COCO_test/
 !controlnet_COCO_test/**
