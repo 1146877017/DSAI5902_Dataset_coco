@@ -17,7 +17,7 @@ import diffusers
 assert diffusers.__version__ >= "0.14.0", "diffusers version wrong"
 SEED = 42
 BASE_DIR = "../coco_multi_person/complete_samples_512"
-OUTPUT_DIR = "controlnet_results"
+OUTPUT_DIR = "controlnet_results_hand_type"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # ====================== 工具函数 ======================
@@ -56,7 +56,7 @@ def get_person_token_indices(tokenizer, prompt: str):
                     person2_start = i
 
     if person1_start is None or person2_start is None:
-        raise ValueError(f"❌ 未检测到 person1/person2")
+        raise ValueError(f"Err 未检测到 person1/person2")
 
     # 截断Token区间
     person1_end = person2_start - 1
@@ -74,7 +74,7 @@ def get_person_token_indices(tokenizer, prompt: str):
         list(range(person2_start, person2_end + 1))
     ]
     
-    print(f"✅ Token 匹配成功")
+    print(f" Token 匹配成功")
     print(f"   Person1 indices: {token_indices[0]} -> {[clean_tokens[i] for i in token_indices[0]]}")
     print(f"   Person2 indices: {token_indices[1]} -> {[clean_tokens[i] for i in token_indices[1]]}")
     
@@ -148,7 +148,7 @@ def process_mask(mask_path, img_size=(512,512)):
     sorted_persons = [p for _, p in sorted(zip(areas, person_ids), reverse=True)][:2]
 
     if len(sorted_persons) < 2:
-        raise ValueError("❌ 至少需要2个人物")
+        raise ValueError("Err 至少需要2个人物")
 
     return [torch.from_numpy((mask == p).astype(np.float32)) for p in sorted_persons]
 
@@ -218,7 +218,7 @@ SAMPLE_CONFIGS = [
 
 # ====================== 统一模型加载 ======================
 def load_all_models():
-    print("🔹 统一加载所有模型...")
+    print(" 统一加载所有模型...")
     # 基础模型
     base = StableDiffusionPipeline.from_pretrained(
         "runwayml/stable-diffusion-v1-5", torch_dtype=torch.float16, safety_checker=None
@@ -308,9 +308,9 @@ if __name__ == "__main__":
         for config in SAMPLE_CONFIGS:
             run_single_sample(config, base, pipe_b2, pipe_b3, generator)
 
-        print("\n✅ 所有样本全部处理完成！结果保存在 controlnet_results 文件夹")
+        print("\n 所有样本全部处理完成！结果保存在 controlnet_results 文件夹")
 
     except Exception as e:
-        print(f"\n❌ 运行错误: {str(e)}")
+        print(f"\nErr 运行错误: {str(e)}")
         clear_gpu_memory()
         raise

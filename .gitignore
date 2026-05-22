@@ -22,6 +22,12 @@
 
 
 controlnet_COCO_test/desert_files/
+controlnet_COCO_test/controlnet_results_1to100/
+controlnet_COCO_test/controlnet_results_101to200/
+controlnet_COCO_test/controlnet_results_failed/
+controlnet_COCO_test/controlnet_results_tmp20test/
+controlnet_COCO_test/gfpgan/
+controlnet_COCO_test/GFPGANv1.4.pth
 
 # 模型权重文件
 *.pt
