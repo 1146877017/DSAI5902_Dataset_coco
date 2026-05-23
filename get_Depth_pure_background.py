@@ -66,11 +66,11 @@ for img_name in tqdm(img_files, desc=f"生成深度图({MODE})"):
             inpaint_mask = (mask > 0).astype(np.uint8) * 255
             
             # 2. 温和的形态学膨胀：用 5x5 的核，迭代 1 次（约向外扩张 5 像素），防止过度吞噬背景
-            kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (5, 5))
+            kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (7, 7))
             inpaint_mask_dilated = cv2.dilate(inpaint_mask, kernel, iterations=1)
             
             # 3. 适度的结构化修复：降低半径到 6 像素，紧贴外围边缘修复，减少大面积模糊
-            img_input = cv2.inpaint(img, inpaint_mask_dilated, inpaintRadius=6, flags=cv2.INPAINT_TELEA)
+            img_input = cv2.inpaint(img, inpaint_mask_dilated, inpaintRadius=9, flags=cv2.INPAINT_TELEA)
         else:
             # original_image 模式：直接将原图送入模型，不进行任何抹除
             img_input = img.copy()
