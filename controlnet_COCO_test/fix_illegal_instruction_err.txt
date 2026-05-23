@@ -1,9 +1,0 @@
-# 强制指定GPU架构为RTX 4060（sm_89）
-$env:TORCH_CUDA_ARCH_LIST = "8.9"
-# 启用阻塞模式，避免异步错误掩盖问题
-$env:CUDA_LAUNCH_BLOCKING = 1
-
-# 收集测试log
-python attention_mask_test_auto_prompt_1to100.py > attention_mask_test_auto_prompt_1to100.log
-
-python attention_mask_test_auto_prompt_101to200.py > attention_mask_test_auto_prompt_101to200.log
