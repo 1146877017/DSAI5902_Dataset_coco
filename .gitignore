@@ -13,6 +13,7 @@
 !unify_size*
 !auto_copy_samples*
 
+!controlnet_COCO_test_autoprompt/
 !controlnet_COCO_test_autoprompt/*.py
 !controlnet_COCO_test_autoprompt/*.json
 
