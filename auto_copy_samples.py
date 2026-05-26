@@ -5,18 +5,20 @@ from tqdm import tqdm
 #  路径
 RAW_DIR = r"coco_multi_person/raw"
 OPENPOSE_DIR = r"coco_multi_person/openpose"
-DEPTH_DIR = r"coco_multi_person/depth"
+DEPTH_original_image_DIR = r"coco_multi_person/depth_original_image"
+DEPTH_pure_background_DIR = r"coco_multi_person/depth_pure_background"
 MASK_DIR = r"coco_multi_person/mask"
 
 # 目标完整样本路径
 TARGET_BASE = r"coco_multi_person/complete_samples"
 TARGET_RAW = os.path.join(TARGET_BASE, "raw")
 TARGET_OPENPOSE = os.path.join(TARGET_BASE, "openpose")
-TARGET_DEPTH = os.path.join(TARGET_BASE, "depth")
+TARGET_DEPTH_original_image = os.path.join(TARGET_BASE, "depth_original_image")
+TARGET_DEPTH_pure_background = os.path.join(TARGET_BASE, "depth_pure_background")
 TARGET_MASK = os.path.join(TARGET_BASE, "mask")
 
 # 创建文件夹
-for dir_path in [TARGET_RAW, TARGET_OPENPOSE, TARGET_DEPTH, TARGET_MASK]:
+for dir_path in [TARGET_RAW, TARGET_OPENPOSE, TARGET_DEPTH_original_image, TARGET_DEPTH_pure_background, TARGET_MASK]:
     os.makedirs(dir_path, exist_ok=True)
 
 #  1：提取所有文件的前缀名
@@ -32,11 +34,12 @@ def get_file_prefixes(folder_path, suffixes=('.jpg', '.png')):
 # 提取四个文件夹的前缀
 raw_prefix = get_file_prefixes(RAW_DIR)
 op_prefix = get_file_prefixes(OPENPOSE_DIR)
-depth_prefix = get_file_prefixes(DEPTH_DIR)
+depth_original_image_prefix = get_file_prefixes(DEPTH_original_image_DIR)
+depth_pure_background_prefix = get_file_prefixes(DEPTH_pure_background_DIR)
 mask_prefix = get_file_prefixes(MASK_DIR)
 
 # 取交集：同时存在 原图+OpenPose+Depth+Mask 的样本
-complete_prefixes = raw_prefix & op_prefix & depth_prefix & mask_prefix
+complete_prefixes = raw_prefix & op_prefix & depth_original_image_prefix & depth_pure_background_prefix & mask_prefix
 
 print(f" 筛选完成：共找到 {len(complete_prefixes)} 个完整样本")
 
@@ -51,12 +54,14 @@ def copy_files(src_folder, dst_folder, prefixes, src_suffix):
 
 copy_files(RAW_DIR, TARGET_RAW, complete_prefixes, src_suffix=".jpg")
 copy_files(OPENPOSE_DIR, TARGET_OPENPOSE, complete_prefixes, src_suffix=".png")
-copy_files(DEPTH_DIR, TARGET_DEPTH, complete_prefixes, src_suffix=".png")
+copy_files(DEPTH_original_image_DIR, TARGET_DEPTH_original_image, complete_prefixes, src_suffix=".png")
+copy_files(DEPTH_pure_background_DIR, TARGET_DEPTH_pure_background, complete_prefixes, src_suffix=".png")
 copy_files(MASK_DIR, TARGET_MASK, complete_prefixes, src_suffix=".png")
 
 print(f"\n 全部复制完成，完整样本保存到：{TARGET_BASE}")
 print(f" 文件夹结构：")
 print(f"   {TARGET_RAW} ")
 print(f"   {TARGET_OPENPOSE} ")
-print(f"   {TARGET_DEPTH} ")
+print(f"   {TARGET_DEPTH_original_image} ")
+print(f"   {TARGET_DEPTH_pure_background} ")
 print(f"   {TARGET_MASK} ")

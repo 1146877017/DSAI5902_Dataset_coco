@@ -9,9 +9,9 @@
 !get_Depth*
 !get_Mask.py
 !get_Mask.log
-!check_data_coco.py
-!unify_size.py
-!auto_copy_samples.py
+!check_data_coco*
+!unify_size*
+!auto_copy_samples*
 
 !controlnet_COCO_test/attention_mask_test_auto_prompt.py
 !controlnet_COCO_test/attention_mask_test_auto_prompt_1to100.py

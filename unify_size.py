@@ -9,7 +9,7 @@ output_dir = r"coco_multi_person/complete_samples_512"
 target_size = (512, 512)  # 统一尺寸
 
 # 输出
-for subdir in ["raw", "openpose", "depth", "mask"]:
+for subdir in ["raw", "openpose", "depth_original_image", "depth_pure_background", "mask"]:
     os.makedirs(os.path.join(output_dir, subdir), exist_ok=True)
 
 def smart_crop_and_resize(img, target_size=512, interpolation=cv2.INTER_LINEAR):
@@ -53,15 +53,24 @@ for sample_name in tqdm(sample_names, desc="统一尺寸并智能裁剪"):
         # 此处文件名改为 sample_prefix + ".png"
         cv2.imwrite(os.path.join(output_dir, "openpose", sample_prefix + ".png"), openpose_img_512)
     
-    # 3. 处理 Depth 图，强制保存为 .png
-    depth_path = os.path.join(input_dir, "depth", sample_prefix + ".png")
-    if os.path.exists(depth_path):
-        depth_img = cv2.imread(depth_path, cv2.IMREAD_GRAYSCALE)
-        depth_img_512 = smart_crop_and_resize(depth_img, target_size, interpolation=cv2.INTER_LINEAR)
+    # 3. 处理 Depth_original_image 图，强制保存为 .png
+    depth_original_image_path = os.path.join(input_dir, "depth_original_image", sample_prefix + ".png")
+    if os.path.exists(depth_original_image_path):
+        depth_original_image_img = cv2.imread(depth_original_image_path, cv2.IMREAD_GRAYSCALE)
+        depth_original_image_img_512 = smart_crop_and_resize(depth_original_image_img, target_size, interpolation=cv2.INTER_LINEAR)
         # 此处文件名改为 sample_prefix + ".png"
-        cv2.imwrite(os.path.join(output_dir, "depth", sample_prefix + ".png"), depth_img_512)
+        cv2.imwrite(os.path.join(output_dir, "depth_original_image", sample_prefix + ".png"), depth_original_image_img_512)
+            
         
-    # 4. 处理 Mask 图，强制保存为 .png
+    # 4. 处理 Depth_pure_background 图，强制保存为 .png
+    depth_pure_background_path = os.path.join(input_dir, "depth_pure_background", sample_prefix + ".png")
+    if os.path.exists(depth_pure_background_path):
+        depth_pure_background_img = cv2.imread(depth_pure_background_path, cv2.IMREAD_GRAYSCALE)
+        depth_pure_background_img_512 = smart_crop_and_resize(depth_pure_background_img, target_size, interpolation=cv2.INTER_LINEAR)
+        # 此处文件名改为 sample_prefix + ".png"
+        cv2.imwrite(os.path.join(output_dir, "depth_pure_background", sample_prefix + ".png"), depth_pure_background_img_512)
+
+    # 5. 处理 Mask 图，强制保存为 .png
     mask_path = os.path.join(input_dir, "mask", sample_prefix + ".png")
     if os.path.exists(mask_path):
         mask_img = cv2.imread(mask_path, cv2.IMREAD_GRAYSCALE)

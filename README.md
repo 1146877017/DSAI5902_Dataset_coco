@@ -2,7 +2,8 @@
 select_val2017_2person.py
 get_Mask.py
 get_OpenPose.py
-get_Depth.py
+get_Depth_pure_background.py
+get_Depth_original_image.py
 check_data_coco.py
 auto_copy_samples.py
 unify_size.py		
@@ -10,6 +11,8 @@ unify_size.py
 python get_Mask.py > get_Mask.log 2>&1
 python get_OpenPose.py > get_OpenPose.log 2>&1
 python get_Depth_pure_background.py > get_Depth_pure_background.log 2>&1
+python get_Depth_original_image.py > get_Depth_original_image.log 2>&1
+python check_data_coco.py > check_data_coco.log 2>&1
 
 
 强制指定GPU架构为RTX 4060（sm_89）
