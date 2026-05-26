@@ -13,15 +13,9 @@
 !unify_size*
 !auto_copy_samples*
 
-!controlnet_COCO_test/attention_mask_test_auto_prompt.py
-!controlnet_COCO_test/attention_mask_test_auto_prompt_1to100.py
-!controlnet_COCO_test/attention_mask_test_auto_prompt_101to200.py
-!controlnet_COCO_test/attention_mask_test_auto_prompt_tmp20test.py
-!controlnet_COCO_test/coco_person_prompts.json
-!controlnet_COCO_test/evaluate_quantitative.py
-!controlnet_COCO_test/generate_coco_person_prompts.py
-!controlnet_COCO_test/reverse_validate.py
-!controlnet_COCO_test/visualize_comparison.py
+!controlnet_COCO_test_autoprompt/*.py
+!controlnet_COCO_test_autoprompt/*.json
+
 
 !coco_multi_person/
 !coco_multi_person/**
