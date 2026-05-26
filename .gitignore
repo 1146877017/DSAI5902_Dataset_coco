@@ -23,6 +23,8 @@
 !controlnet_COCO_test/reverse_validate.py
 !controlnet_COCO_test/visualize_comparison.py
 
+!coco_multi_person/
+!coco_multi_person/**
 
 # 模型权重文件
 *.pt
