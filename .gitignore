@@ -16,7 +16,7 @@
 !controlnet_COCO_test_autoprompt/
 !controlnet_COCO_test_autoprompt/*.py
 !controlnet_COCO_test_autoprompt/*.json
-
+!controlnet_COCO_test_autoprompt/*.log
 
 !coco_multi_person/
 !coco_multi_person/**
