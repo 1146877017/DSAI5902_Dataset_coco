@@ -16,7 +16,9 @@ python check_data_coco.py > check_data_coco.log 2>&1
 python auto_copy_samples.py > auto_copy_samples.log 2>&1
 python unify_size.py > unify_size.log 2>&1
 python generate_coco_person_prompts.py > generate_coco_person_prompts.log 2>&1
+python download_model.py > download_model.log 2>&1
 python test_1to100.py > test_1to100.log 2>&1
+python test_101to300.py > test_101to300.log 2>&1
 
 
 强制指定GPU架构为RTX 4060（sm_89）

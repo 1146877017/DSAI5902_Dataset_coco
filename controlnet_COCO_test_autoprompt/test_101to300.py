@@ -23,8 +23,8 @@ BASE_DIR = "../coco_multi_person/complete_samples_512"
 MODES = ["original_image", "pure_background"]
 
 # 区间控制
-START_IDX = 1  
-END_IDX = 100  
+START_IDX = 101  
+END_IDX = 300  
 
 PROMPT_CONFIG = "coco_person_prompts.json"
 with open(PROMPT_CONFIG, "r", encoding="utf-8") as f:
