@@ -22,9 +22,27 @@ BASE_DIR = "../coco_multi_person/complete_samples_512"
 
 MODES = ["original_image", "pure_background"]
 
+# 区间控制
+START_IDX = 1  
+END_IDX = None  
+
 PROMPT_CONFIG = "coco_person_prompts.json"
 with open(PROMPT_CONFIG, "r", encoding="utf-8") as f:
-    PROMPT_LIST = json.load(f)
+    FULL_PROMPT_LIST = json.load(f)
+
+# 动态计算并切片数据区间
+TOTAL_AVAILABLE = len(FULL_PROMPT_LIST)
+actual_start = max(1, START_IDX)
+actual_end = min(TOTAL_AVAILABLE, END_IDX) if END_IDX is not None else TOTAL_AVAILABLE
+
+print(f"  全量数据集共包含 {TOTAL_AVAILABLE} 个样本。")
+print(f"  已启用区间测试模式：正在提取第 {actual_start} 至第 {actual_end} 个样本（本轮共 {actual_end - actual_start + 1} 个）。")
+
+# 转换为 Python 的 0-based 索引切片
+PROMPT_LIST = FULL_PROMPT_LIST[actual_start - 1 : actual_end]
+
+# 定义动态的指标清单文件名，防止分批运行时覆盖历史数据
+MANIFEST_NAME = f"eval_manifest_{actual_start}_{actual_end}.json"
 
 COMMON_CONFIG = {
     "NEG_PROMPT": "cartoon, anime, ugly, blurry, low resolution, deformed, missing person, extra people, cropped, out of frame, distorted face, bad anatomy, bad hands, text, watermark, signature, disfigured, extra limbs, deformed face, asymmetrical face, blurry face, ugly face, mutated face, cross-eyed, closed eyes, open mouth, missing teeth, bad teeth, extra fingers, missing fingers, attribute mixing, clothes mixing",
@@ -109,7 +127,9 @@ class AttentionMaskProcessor:
         if is_cross:
             height = width = int(np.sqrt(seq_len))
             if height * width == seq_len:
+                total_heads_in_batch = attn_weights.shape[0]
                 num_heads = attn.heads  # 定义单头数量，用于在第一维(2*num_heads)中精准切片出正向条件通道
+                cond_start_idx = total_heads_in_batch - num_heads if total_heads_in_batch > num_heads else 0
                 
                 for idx, mask in enumerate(self.masks):
                     if idx >= len(self.token_indices):
@@ -126,8 +146,8 @@ class AttentionMaskProcessor:
                     
                     for token_idx in self.token_indices[idx]:
                         if token_idx < attn_weights.shape[-1]:
-                            # 仅对后半部分的 Conditional Heads 进行掩码干预，不污染负向提示词通道
-                            attn_weights[num_heads:, :, token_idx] += mask_neg
+                            # 运用动态索引
+                            attn_weights[cond_start_idx:, :, token_idx] += mask_neg
 
         if attention_mask is not None:
             attention_mask = attn.prepare_attention_mask(attention_mask, seq_len, batch_size)
@@ -172,7 +192,7 @@ def process_mask(mask_path, img_size=(512,512)):
 def load_all_models():
     print("  正在统一加载并初始化所有基础与控制模型...")
     base = StableDiffusionPipeline.from_pretrained(
-        "SG161222/Realistic_Vision_V5.1", # 写实微调模型
+        "Lykon/AbsoluteReality", 
         torch_dtype=torch.float16, 
         safety_checker=None
     ).to("cuda")
@@ -191,7 +211,7 @@ def load_all_models():
     return base, pipe_b2, pipe_b3
 
 # ====================== 核心控制实验单步运行 ======================
-def run_single_sample(prompt_item, base, pipe_b2, pipe_b3, generator, mode, is_first_mode):
+def run_single_sample(prompt_item, base, pipe_b2, pipe_b3, generator, mode, is_first_mode, global_idx):
     """完整跑完单个COCO样本实验"""
     file_name = prompt_item["file_name"]
     sample_name = extract_sample_name(file_name)
@@ -204,10 +224,10 @@ def run_single_sample(prompt_item, base, pipe_b2, pipe_b3, generator, mode, is_f
     pose_scale = COMMON_CONFIG["pose_scale"]
     depth_scale = COMMON_CONFIG["depth_scale"]
 
-    output_dir = f"results_{mode}"
+    output_dir = f"results_{START_IDX}to{END_IDX}_{mode}"
     os.makedirs(output_dir, exist_ok=True)
 
-    print(f"\n{'='*60}\n  [{mode.upper()}] 正在处理核心样本: {sample_name}\n{'='*60}")
+    print(f"\n{'='*60}\n  [{mode.upper()}] 正在处理核心样本 [全局第 {global_idx} 个]: {sample_name}\n{'='*60}")
     
     pose_path = f"{BASE_DIR}/openpose/{sample_name}.png"
     depth_path = f"{BASE_DIR}/depth_{mode}/{sample_name}.png"  
@@ -215,7 +235,7 @@ def run_single_sample(prompt_item, base, pipe_b2, pipe_b3, generator, mode, is_f
 
     for path in [pose_path, depth_path, mask_path]:
         if not os.path.exists(path):
-            print(f" ️ 必要控制图缺失，跳过该样本: {path}")
+            print(f"  必要控制图缺失，跳过该样本: {path}")
             return None
 
     try:
@@ -237,13 +257,12 @@ def run_single_sample(prompt_item, base, pipe_b2, pipe_b3, generator, mode, is_f
             del img1
             clear_gpu_memory()
         except Exception as e: print(f"   Baseline1 失败: {e}")
-    else:
-        src_b1 = f"results_{MODES[0]}/{sample_name}_baseline1.png"
+    else:                
+        src_b1 = f"results_{START_IDX}to{END_IDX}_{MODES[0]}/{sample_name}_baseline1.png"
         if os.path.exists(src_b1):
             shutil.copy(src_b1, b1_path)
         else:
-            # 容错
-            print(f" ️ 未找到历史 Baseline1 缓存，正在现场重新启动渲染...")
+            print(f"  未找到历史 Baseline1 缓存，正在现场重新启动渲染...")
             try:
                 generator.manual_seed(SEED)  
                 img1 = base(prompt=prompt, negative_prompt=neg_prompt, generator=generator, num_inference_steps=parent_steps, guidance_scale=cfg).images[0]
@@ -263,13 +282,12 @@ def run_single_sample(prompt_item, base, pipe_b2, pipe_b3, generator, mode, is_f
             del img2
             clear_gpu_memory()
         except Exception as e: print(f"   Baseline2 失败: {e}")
-    else:
-        src_b2 = f"results_{MODES[0]}/{sample_name}_baseline2.png"
+    else:        
+        src_b2 = f"results_{START_IDX}to{END_IDX}_{MODES[0]}/{sample_name}_baseline2.png"
         if os.path.exists(src_b2):
             shutil.copy(src_b2, b2_path)
         else:
-            # 容错
-            print(f" ️ 未找到历史 Baseline2 缓存，正在现场重新启动航向引导...")
+            print(f"  未找到历史 Baseline2 缓存，正在现场重新启动航向引导...")
             try:
                 generator.manual_seed(SEED)  
                 img2 = pipe_b2(prompt=prompt, negative_prompt=neg_prompt, image=pose, controlnet_conditioning_scale=pose_scale, generator=generator, num_inference_steps=parent_steps, guidance_scale=cfg).images[0]
@@ -289,6 +307,8 @@ def run_single_sample(prompt_item, base, pipe_b2, pipe_b3, generator, mode, is_f
     except Exception as e: print(f"   Baseline3 失败: {e}")
     
     # --- 4. Method：空间解耦跨注意力掩码 + 双 ControlNet ---
+    # 完整备份当前的加速注意力处理器字典
+    orig_processors = pipe_b3.unet.attn_processors
     try:
         print(f"  [4/4] 正在运行创新方法：跨注意力掩码 + 双 ControlNet 联合干预 ({mode})...")
         masks = process_mask(mask_path)
@@ -302,7 +322,8 @@ def run_single_sample(prompt_item, base, pipe_b2, pipe_b3, generator, mode, is_f
     except Exception as e: 
         print(f"   Method 方法运行失败: {str(e)}")
     finally:
-        pipe_b3.unet.set_attn_processor(AttnProcessor())
+        # 原样恢复原有的加速状态
+        pipe_b3.unet.set_attn_processor(orig_processors)
 
     return {
         "image_id": img_id,
@@ -319,10 +340,9 @@ if __name__ == "__main__":
         generator = torch.Generator("cuda").manual_seed(SEED)
         base, pipe_b2, pipe_b3 = load_all_models()
         
-        total_samples = len(PROMPT_LIST)
-        print(f"\n  数据集对齐就绪，全面启动批处理，预期样本数: {total_samples}")
+        round_samples = len(PROMPT_LIST)
+        print(f"\n  数据集切片就绪，全面启动批处理，本轮测试样本数: {round_samples}")
         
-        # 建立全局实验资产映射字典，用于完美承接下游量化指标测试 (如 CLIP Score 自动化计算)
         eval_manifest = []
         
         for mode_idx, mode in enumerate(MODES):
@@ -330,18 +350,21 @@ if __name__ == "__main__":
             is_first_mode = (mode_idx == 0)
             
             for idx, prompt_item in enumerate(PROMPT_LIST):
-                print(f" 当前模式 [{mode}] 进度: [ {idx+1} / {total_samples} ]")
-                record = run_single_sample(prompt_item, base, pipe_b2, pipe_b3, generator, mode, is_first_mode)
+                # 计算全局数据集中的真实序号（1-based）
+                global_idx = actual_start + idx
+                print(f" 当前模式 [{mode}] 进度: [ {idx+1} / {round_samples} ] (数据集总第 {global_idx} 个)")
+                
+                record = run_single_sample(prompt_item, base, pipe_b2, pipe_b3, generator, mode, is_first_mode, global_idx)
                 if record:
                     eval_manifest.append(record)
 
-        # 自动落盘清单文件，方便后续自动计算 CLIP Score 
-        with open("eval_manifest.json", "w", encoding="utf-8") as f:
+        # 动态将清单持久化到对应的区间文件中
+        with open(MANIFEST_NAME, "w", encoding="utf-8") as f:
             json.dump(eval_manifest, f, indent=4, ensure_ascii=False)
-        print("\n  已成功自动创建量化指标评估清单: `eval_manifest.json`")
+        print(f"\n  已成功自动更新本轮实验评估清单: `{MANIFEST_NAME}`")
         
 
     except Exception as e:
-        print(f"\n  顶层中断错误: {str(e)}")
+        print(f"\n 顶层中断错误: {str(e)}")
         clear_gpu_memory()
         raise
