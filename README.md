@@ -27,6 +27,7 @@ python test_1301to1400.py > test_1301to1400.log 2>&1
 python test_1401to1500.py > test_1401to1500.log 2>&1
 python test_1501to1647.py > test_1501to1647.log 2>&1
 
+python consolidate_results.py > consolidate_results.log 2>&1
 
 强制指定GPU架构为RTX 4060（sm_89）
 $env:TORCH_CUDA_ARCH_LIST = "8.9"
