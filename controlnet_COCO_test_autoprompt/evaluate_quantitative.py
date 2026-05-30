@@ -7,7 +7,7 @@ import clip
 from PIL import Image
 from skimage.metrics import structural_similarity as ssim
 from ultralytics import YOLO
-from depth_anything.dpt import DPT_DINOv2
+from depth_anything_v2.dpt import DepthAnythingV2
 
 # ===================== 模式与区间控制 =====================
 # 若设为 True，则自动读取汇聚后的全量数据进行评估；若为 False，则按区间读取分批结果
@@ -26,21 +26,23 @@ IMAGE_SIZE = 512
 if USE_CONSOLIDATED:
     MANIFEST_PATH = "eval_manifest_all.json"
     SAVE_PATH = "quantitative_evaluation_report_all.json"
-    print(f"🚀 全面启动定量评估流程，当前目标：[全局全量数据汇总评估]")
+    print(f" 启动定量评估流程，当前目标：[全局全量数据汇总评估]")
 else:
     MANIFEST_PATH = f"eval_manifest_{START_IDX}_{END_IDX}.json" 
     SAVE_PATH = f"quantitative_evaluation_report_{START_IDX}_{END_IDX}.json"
-    print(f"🚀 全面启动定量评估流程，当前目标区间: {START_IDX} 至 {END_IDX}")
+    print(f" 启动定量评估流程，当前目标区间: {START_IDX} 至 {END_IDX}")
 
-print(f"📂 正在检索实验清单: {MANIFEST_PATH}")
+print(f" 正在检索实验清单: {MANIFEST_PATH}")
 
 # ===================== 模型初始化 =====================
 device = "cuda" if torch.cuda.is_available() else "cpu"
-pose_model = YOLO("yolov8n-pose.pt").to(device)
+pose_model = YOLO("../yolov8n-pose.pt").to(device)
 clip_model, clip_preprocess = clip.load("ViT-B/32", device=device)
 
-depth_model = DPT_DINOv2(encoder='dinov2_vitb', features=64, out_channels=[48, 96, 192, 384])
-depth_model.load_state_dict(torch.load("depth_anything_v2_vitb.pth", map_location=device), strict=False)
+depth_model = DepthAnythingV2(encoder='vitb', features=128, out_channels=[96, 192, 384, 768])
+# depth_model.load_state_dict(torch.load("../depth_anything_v2_vitb.pth", map_location=device), strict=False)
+
+depth_model.load_state_dict(torch.load("../depth_anything_v2_vitb.pth", map_location=device), strict=True) # 先设为 True 测试是否完美匹配
 depth_model = depth_model.to(device).eval()
 
 # ===================== 核心评估函数 =====================
@@ -77,12 +79,12 @@ def compute_pckh(gt_kps, gen_kps, threshold=0.5):
     return round(np.mean(pckh_scores), 4)
 
 def get_generated_depth(gen_img):
-    img_rgb = cv2.cvtColor(gen_img, cv2.COLOR_BGR2RGB) / 255.0
-    img_rgb = cv2.resize(img_rgb, (IMAGE_SIZE, IMAGE_SIZE))
-    img_tensor = torch.from_numpy(img_rgb).permute(2,0,1).unsqueeze(0).to(device)
+    # gen_img 是由 cv2.imread 读取的原始 BGR 图像，直接传给官方接口
     with torch.no_grad():
-        depth = depth_model(img_tensor)
-        depth = torch.nn.functional.interpolate(depth.unsqueeze(0), size=(IMAGE_SIZE, IMAGE_SIZE), mode='bilinear').squeeze().cpu().numpy()
+        # infer_image 内部会自动处理 RGB 转换、ImageNet 归一化以及尺寸缩放
+        depth = depth_model.infer_image(gen_img, input_size=IMAGE_SIZE)
+    
+    # 归一化到 [0, 1] 以便和 GT 深度图对比
     return (depth - depth.min()) / (depth.max() - depth.min() + 1e-8)
 
 def compute_depth_metrics(gen_img, gt_depth_path):
@@ -168,7 +170,7 @@ def main():
             sample_name = item["sample_name"]
             mode = item["mode"]
             
-            # [关键修改]：动态定位图像夹。全局模式下对应 results_all_xxx，分批模式下对应 results_xxx_xxx
+            # 动态定位图像夹。全局模式下对应 results_all_xxx，分批模式下对应 results_xxx_xxx
             if USE_CONSOLIDATED:
                 output_dir = f"results_all_{mode}"
             else:
@@ -179,9 +181,10 @@ def main():
             gt_raw_path = os.path.join(GT_RAW, f"{sample_name}.jpg")
             gt_depth_path = os.path.join(GT_BASE, f"depth_{mode}", f"{sample_name}.png") 
             gt_mask_path = os.path.join(GT_BASE, "mask", f"{sample_name}.png")
-            
+                        
             gen_img = cv2.imread(gen_path)
             if gen_img is None: 
+                print(f"[-] 警报: 缺失图像 {gen_path}，已跳过该样本。")
                 continue
             
             # 1. Pose 评估
@@ -214,7 +217,7 @@ def main():
         
     with open(SAVE_PATH, 'w', encoding='utf-8') as f:
         json.dump(final_report, f, indent=4, ensure_ascii=False)
-    print(f"\n✨ 定量评估全面完成！最终结果报告已保存至 `{SAVE_PATH}`")
+    print(f"\n 定量评估全面完成！最终结果报告已保存至 `{SAVE_PATH}`")
 
 if __name__ == "__main__":
     main()
