@@ -3,12 +3,10 @@
 
 !.gitignore
 
-!select_val2017_2person.py
-!get_OpenPose.py
-!get_OpenPose.log
+!select_val2017_2person*
+!get_OpenPose*
 !get_Depth*
-!get_Mask.py
-!get_Mask.log
+!get_Mask*
 !check_data_coco*
 !unify_size*
 !auto_copy_samples*
@@ -20,6 +18,11 @@
 
 !coco_multi_person/
 !coco_multi_person/**
+
+!CO_test_autopro_only2per/
+!CO_test_autopro_only2per/*.py
+!CO_test_autopro_only2per/*.json
+!CO_test_autopro_only2per/*.log
 
 # 模型权重文件
 *.pt
