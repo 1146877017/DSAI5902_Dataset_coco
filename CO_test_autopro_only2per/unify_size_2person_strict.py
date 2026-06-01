@@ -4,8 +4,8 @@ import numpy as np
 from tqdm import tqdm
 
 # 配置路径
-input_dir = r"coco_multi_person/complete_samples"  
-output_dir = r"coco_multi_person/complete_samples_512"  
+input_dir = r"co_dat_only2per/complete_samples"  
+output_dir = r"co_dat_only2per/complete_samples_512"  
 target_size = (512, 512)  # 统一尺寸，仅用于显示或将来扩展
 
 # 输出

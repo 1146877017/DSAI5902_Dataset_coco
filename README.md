@@ -41,6 +41,7 @@ get_Depth_original_image_2person_strict.py
 check_data_coco_2person_strict.py
 auto_copy_samples_2person_strict.py
 unify_size_2person_strict.py	
+sync_filtered_samples.py
 
 python select_val2017_2person_strict.py > select_log.log 2>&1
 python update_ids_after_cleanup.py > update_ids_after_cleanup_log.log 2>&1
@@ -50,4 +51,6 @@ python get_Depth_pure_background_2person_strict.py > Depth_pure_background_log.l
 python get_Depth_original_image_2person_strict.py > Depth_original_image_log.log 2>&1
 python check_data_coco_2person_strict.py > log_check_data_coco.log 2>&1
 python auto_copy_samples_2person_strict.py > log_auto_copy_samples.log 2>&1
+python unify_size_2person_strict.py > log_unify_size.log 2>&1
+python sync_filtered_samples.py > log_sync.log 2>&1
 
