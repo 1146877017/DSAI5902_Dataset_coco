@@ -1,0 +1,2369 @@
+[
+  {
+    "file_name": "000000000139.jpg",
+    "image_id": 139,
+    "prompt": "A realistic photo of a woman stands in the dining area at the table, the person on the left is a man wearing a black hoodie, standing and wearing a scarf, the person on the right is a boy wearing a yellow jacket, talking and wearing a watch",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a man wearing a black hoodie",
+    "person_right_gt": "a boy wearing a yellow jacket"
+  },
+  {
+    "file_name": "000000000872.jpg",
+    "image_id": 872,
+    "prompt": "A realistic photo of a people of baseball player standing on a field, the person on the left is a man wearing a yellow vest, talking and wearing a scarf, the person on the right is a girl wearing a gray shirt, walking and wearing a watch",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a man wearing a yellow vest",
+    "person_right_gt": "a girl wearing a gray shirt"
+  },
+  {
+    "file_name": "000000008211.jpg",
+    "image_id": 8211,
+    "prompt": "A realistic photo of people are sitting on chairs talking on at a corner, the person on the left is a girl wearing a black jacket, sitting and wearing a glasses, the person on the right is a boy wearing a red coat, talking and wearing a scarf",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a girl wearing a black jacket",
+    "person_right_gt": "a boy wearing a red coat"
+  },
+  {
+    "file_name": "000000011051.jpg",
+    "image_id": 11051,
+    "prompt": "A realistic photo of a young girl wearing a formal dress and young man in a tie, the person on the left is a man wearing a purple suit, talking and wearing a hat, the person on the right is a girl wearing a blue cardigan, sitting and wearing a watch",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a man wearing a purple suit",
+    "person_right_gt": "a girl wearing a blue cardigan"
+  },
+  {
+    "file_name": "000000012748.jpg",
+    "image_id": 12748,
+    "prompt": "A realistic photo of man holding a baby and petting a horse, the person on the left is a man wearing a blue sweater, talking and wearing a hat, the person on the right is a woman wearing a pink suit, walking and wearing a scarf",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a man wearing a blue sweater",
+    "person_right_gt": "a woman wearing a pink suit"
+  },
+  {
+    "file_name": "000000013546.jpg",
+    "image_id": 13546,
+    "prompt": "A realistic photo of a boy riding his skateboard on a ledge in a park, the person on the left is a boy wearing a yellow coat, running and wearing a glasses, the person on the right is a man wearing a blue sweater, sitting and wearing a backpack",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a boy wearing a yellow coat",
+    "person_right_gt": "a man wearing a blue sweater"
+  },
+  {
+    "file_name": "000000018150.jpg",
+    "image_id": 18150,
+    "prompt": "A realistic photo of a man with a receding hairline offers a slice of pizza to a toddler, the person on the left is a woman wearing a black cardigan, talking and wearing a glasses, the person on the right is a boy wearing a blue jacket, walking and wearing a watch",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a woman wearing a black cardigan",
+    "person_right_gt": "a boy wearing a blue jacket"
+  },
+  {
+    "file_name": "000000019402.jpg",
+    "image_id": 19402,
+    "prompt": "A realistic photo of people with heavy winter coats are eating, the person on the left is a boy wearing a pink suit, walking and wearing a backpack, the person on the right is a girl wearing a yellow shirt, standing and wearing a watch",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a boy wearing a pink suit",
+    "person_right_gt": "a girl wearing a yellow shirt"
+  },
+  {
+    "file_name": "000000019786.jpg",
+    "image_id": 19786,
+    "prompt": "A realistic photo of group of people sending around photography equipment and a living room, the person on the left is a man wearing a brown hoodie, running and wearing a glasses, the person on the right is a girl wearing a white blouse, talking and wearing a backpack",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a man wearing a brown hoodie",
+    "person_right_gt": "a girl wearing a white blouse"
+  },
+  {
+    "file_name": "000000021167.jpg",
+    "image_id": 21167,
+    "prompt": "A realistic photo of some people standing in a room in formal wear, the person on the left is a woman wearing a pink sweater, talking and wearing a backpack, the person on the right is a boy wearing a gray coat, running and wearing a glasses",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a woman wearing a pink sweater",
+    "person_right_gt": "a boy wearing a gray coat"
+  },
+  {
+    "file_name": "000000022935.jpg",
+    "image_id": 22935,
+    "prompt": "A realistic photo of a soccer player in uniform runs toward the ball, the person on the left is a girl wearing a red jacket, running and wearing a watch, the person on the right is a man wearing a blue cardigan, standing and wearing a scarf",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a girl wearing a red jacket",
+    "person_right_gt": "a man wearing a blue cardigan"
+  },
+  {
+    "file_name": "000000023034.jpg",
+    "image_id": 23034,
+    "prompt": "A realistic photo of a man standing on rocks near a man riding horses on a trail in the woods, the person on the left is a girl wearing a black shirt, talking and wearing a backpack, the person on the right is a boy wearing a pink t-shirt, sitting and wearing a hat",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a girl wearing a black shirt",
+    "person_right_gt": "a boy wearing a pink t-shirt"
+  },
+  {
+    "file_name": "000000025057.jpg",
+    "image_id": 25057,
+    "prompt": "A realistic photo of a man holding a drink with a frizbee in front of him, the person on the left is a girl wearing a orange sweater, walking and wearing a backpack, the person on the right is a man wearing a red vest, standing and wearing a glasses",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a girl wearing a orange sweater",
+    "person_right_gt": "a man wearing a red vest"
+  },
+  {
+    "file_name": "000000032817.jpg",
+    "image_id": 32817,
+    "prompt": "A realistic photo of people stand over the green water spilled from a toilet, the person on the left is a boy wearing a pink shirt, running and wearing a hat, the person on the right is a man wearing a gray suit, standing and wearing a backpack",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a boy wearing a pink shirt",
+    "person_right_gt": "a man wearing a gray suit"
+  },
+  {
+    "file_name": "000000032887.jpg",
+    "image_id": 32887,
+    "prompt": "A realistic photo of a man holding a stick while looking up, the person on the left is a woman wearing a yellow t-shirt, running and wearing a scarf, the person on the right is a man wearing a brown cardigan, standing and wearing a glasses",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a woman wearing a yellow t-shirt",
+    "person_right_gt": "a man wearing a brown cardigan"
+  },
+  {
+    "file_name": "000000034139.jpg",
+    "image_id": 34139,
+    "prompt": "A realistic photo of suitcase sitting on the ground with stickers from various countries on it, the person on the left is a girl wearing a green vest, walking and wearing a backpack, the person on the right is a boy wearing a black coat, talking and wearing a watch",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a girl wearing a green vest",
+    "person_right_gt": "a boy wearing a black coat"
+  },
+  {
+    "file_name": "000000035197.jpg",
+    "image_id": 35197,
+    "prompt": "A realistic photo of person riding on edge of skateboard about to do a trick, the person on the left is a girl wearing a orange hoodie, standing and wearing a hat, the person on the right is a boy wearing a blue cardigan, sitting and wearing a glasses",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a girl wearing a orange hoodie",
+    "person_right_gt": "a boy wearing a blue cardigan"
+  },
+  {
+    "file_name": "000000036539.jpg",
+    "image_id": 36539,
+    "prompt": "A realistic photo of a man and a little girl wearing snowboards, the person on the left is a woman wearing a blue hoodie, standing and wearing a hat, the person on the right is a man wearing a red t-shirt, sitting and wearing a glasses",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a woman wearing a blue hoodie",
+    "person_right_gt": "a man wearing a red t-shirt"
+  },
+  {
+    "file_name": "000000036936.jpg",
+    "image_id": 36936,
+    "prompt": "A realistic photo of a man and woman sitting on a sofa watching tv, the person on the left is a girl wearing a pink cardigan, walking and wearing a watch, the person on the right is a man wearing a green blouse, running and wearing a glasses",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a girl wearing a pink cardigan",
+    "person_right_gt": "a man wearing a green blouse"
+  },
+  {
+    "file_name": "000000038210.jpg",
+    "image_id": 38210,
+    "prompt": "A realistic photo of a skier is prepared to go down a mountain, the person on the left is a man wearing a purple coat, running and wearing a hat, the person on the right is a boy wearing a white cardigan, standing and wearing a scarf",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a man wearing a purple coat",
+    "person_right_gt": "a boy wearing a white cardigan"
+  },
+  {
+    "file_name": "000000043435.jpg",
+    "image_id": 43435,
+    "prompt": "A realistic photo of people ride surfboards through the crashing waves, the person on the left is a boy wearing a yellow hoodie, running and wearing a watch, the person on the right is a man wearing a gray vest, walking and wearing a glasses",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a boy wearing a yellow hoodie",
+    "person_right_gt": "a man wearing a gray vest"
+  },
+  {
+    "file_name": "000000044195.jpg",
+    "image_id": 44195,
+    "prompt": "A realistic photo of people are standing in the snow with a snow board, the person on the left is a girl wearing a blue vest, standing and wearing a hat, the person on the right is a man wearing a orange t-shirt, talking and wearing a glasses",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a girl wearing a blue vest",
+    "person_right_gt": "a man wearing a orange t-shirt"
+  },
+  {
+    "file_name": "000000044279.jpg",
+    "image_id": 44279,
+    "prompt": "A realistic photo of people are cooking on grills in a commercial kitchen, the person on the left is a girl wearing a orange coat, walking and wearing a hat, the person on the right is a woman wearing a yellow shirt, running and wearing a watch",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a girl wearing a orange coat",
+    "person_right_gt": "a woman wearing a yellow shirt"
+  },
+  {
+    "file_name": "000000045090.jpg",
+    "image_id": 45090,
+    "prompt": "A realistic photo of people riding the high waves on their surfboards, the person on the left is a girl wearing a purple blouse, walking and wearing a glasses, the person on the right is a woman wearing a pink jacket, sitting and wearing a hat",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a girl wearing a purple blouse",
+    "person_right_gt": "a woman wearing a pink jacket"
+  },
+  {
+    "file_name": "000000045596.jpg",
+    "image_id": 45596,
+    "prompt": "A realistic photo of a caged stairway beside a building on a rainy day, the person on the left is a man wearing a white shirt, talking and wearing a hat, the person on the right is a boy wearing a red blouse, walking and wearing a scarf",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a man wearing a white shirt",
+    "person_right_gt": "a boy wearing a red blouse"
+  },
+  {
+    "file_name": "000000047571.jpg",
+    "image_id": 47571,
+    "prompt": "A realistic photo of a group of people that are on a horse, the person on the left is a man wearing a blue coat, talking and wearing a scarf, the person on the right is a boy wearing a yellow t-shirt, walking and wearing a hat",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a man wearing a blue coat",
+    "person_right_gt": "a boy wearing a yellow t-shirt"
+  },
+  {
+    "file_name": "000000048396.jpg",
+    "image_id": 48396,
+    "prompt": "A realistic photo of a woman in a tan sweater holding a knife by a young boy in a plaid shirt, the person on the left is a man wearing a gray cardigan, sitting and wearing a glasses, the person on the right is a woman wearing a brown vest, talking and wearing a backpack",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a man wearing a gray cardigan",
+    "person_right_gt": "a woman wearing a brown vest"
+  },
+  {
+    "file_name": "000000054592.jpg",
+    "image_id": 54592,
+    "prompt": "A realistic photo of people hiking up a mountain with their ski's, the person on the left is a boy wearing a green blouse, standing and wearing a watch, the person on the right is a woman wearing a black suit, talking and wearing a hat",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a boy wearing a green blouse",
+    "person_right_gt": "a woman wearing a black suit"
+  },
+  {
+    "file_name": "000000055022.jpg",
+    "image_id": 55022,
+    "prompt": "A realistic photo of a bunch of different bikes on a wooden floor, the person on the left is a woman wearing a black suit, walking and wearing a backpack, the person on the right is a boy wearing a green t-shirt, sitting and wearing a glasses",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a woman wearing a black suit",
+    "person_right_gt": "a boy wearing a green t-shirt"
+  },
+  {
+    "file_name": "000000055150.jpg",
+    "image_id": 55150,
+    "prompt": "A realistic photo of two children sit atop their parent's luggage in the parking lot, the person on the left is a boy wearing a gray shirt, sitting and wearing a glasses, the person on the right is a girl wearing a pink vest, standing and wearing a backpack",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a boy wearing a gray shirt",
+    "person_right_gt": "a girl wearing a pink vest"
+  },
+  {
+    "file_name": "000000058350.jpg",
+    "image_id": 58350,
+    "prompt": "A realistic photo of a young woman with a slice of pizza in her mouth, the person on the left is a man wearing a pink sweater, talking and wearing a backpack, the person on the right is a boy wearing a green cardigan, walking and wearing a glasses",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a man wearing a pink sweater",
+    "person_right_gt": "a boy wearing a green cardigan"
+  },
+  {
+    "file_name": "000000058393.jpg",
+    "image_id": 58393,
+    "prompt": "A realistic photo of the silhouette of people sitting on a bench in front of the water, the person on the left is a girl wearing a red coat, standing and wearing a backpack, the person on the right is a woman wearing a blue sweater, talking and wearing a glasses",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a girl wearing a red coat",
+    "person_right_gt": "a woman wearing a blue sweater"
+  },
+  {
+    "file_name": "000000058705.jpg",
+    "image_id": 58705,
+    "prompt": "A realistic photo of a man and woman at a party dressed in costumes, the person on the left is a woman wearing a orange coat, standing and wearing a hat, the person on the right is a boy wearing a pink vest, talking and wearing a glasses",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a woman wearing a orange coat",
+    "person_right_gt": "a boy wearing a pink vest"
+  },
+  {
+    "file_name": "000000060102.jpg",
+    "image_id": 60102,
+    "prompt": "A realistic photo of people jumping up to head a soccer ball, the person on the left is a man wearing a brown jacket, walking and wearing a backpack, the person on the right is a woman wearing a pink coat, standing and wearing a scarf",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a man wearing a brown jacket",
+    "person_right_gt": "a woman wearing a pink coat"
+  },
+  {
+    "file_name": "000000061584.jpg",
+    "image_id": 61584,
+    "prompt": "A realistic photo of a people is sitting on a statue of a horse and some plants, the person on the left is a boy wearing a gray t-shirt, talking and wearing a scarf, the person on the right is a man wearing a yellow suit, running and wearing a glasses",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a boy wearing a gray t-shirt",
+    "person_right_gt": "a man wearing a yellow suit"
+  },
+  {
+    "file_name": "000000064898.jpg",
+    "image_id": 64898,
+    "prompt": "A realistic photo of a pair of boys riding boards in the ocean, the person on the left is a woman wearing a purple jacket, running and wearing a backpack, the person on the right is a man wearing a red suit, walking and wearing a glasses",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a woman wearing a purple jacket",
+    "person_right_gt": "a man wearing a red suit"
+  },
+  {
+    "file_name": "000000066771.jpg",
+    "image_id": 66771,
+    "prompt": "A realistic photo of a woman holding a smart phone at a table, the person on the left is a girl wearing a orange hoodie, sitting and wearing a glasses, the person on the right is a man wearing a yellow blouse, talking and wearing a scarf",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a girl wearing a orange hoodie",
+    "person_right_gt": "a man wearing a yellow blouse"
+  },
+  {
+    "file_name": "000000068093.jpg",
+    "image_id": 68093,
+    "prompt": "A realistic photo of a pair of people sitting on a motorcycle in the grass, the person on the left is a woman wearing a white t-shirt, sitting and wearing a scarf, the person on the right is a girl wearing a black sweater, running and wearing a backpack",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a woman wearing a white t-shirt",
+    "person_right_gt": "a girl wearing a black sweater"
+  },
+  {
+    "file_name": "000000069224.jpg",
+    "image_id": 69224,
+    "prompt": "A realistic photo of a man and a woman eat doughnuts from a box, the person on the left is a man wearing a green sweater, standing and wearing a backpack, the person on the right is a woman wearing a brown shirt, running and wearing a scarf",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a man wearing a green sweater",
+    "person_right_gt": "a woman wearing a brown shirt"
+  },
+  {
+    "file_name": "000000072852.jpg",
+    "image_id": 72852,
+    "prompt": "A realistic photo of a bike has had the wheels stolen from it sits in a pedestrian zone, the person on the left is a man wearing a brown sweater, running and wearing a scarf, the person on the right is a woman wearing a yellow shirt, standing and wearing a glasses",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a man wearing a brown sweater",
+    "person_right_gt": "a woman wearing a yellow shirt"
+  },
+  {
+    "file_name": "000000073533.jpg",
+    "image_id": 73533,
+    "prompt": "A realistic photo of a people of kids in yellow shirts are sitting together, the person on the left is a girl wearing a gray cardigan, standing and wearing a scarf, the person on the right is a man wearing a white suit, sitting and wearing a backpack",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a girl wearing a gray cardigan",
+    "person_right_gt": "a man wearing a white suit"
+  },
+  {
+    "file_name": "000000073702.jpg",
+    "image_id": 73702,
+    "prompt": "A realistic photo of man holding a bag and a half in the shape of an umbrella, the person on the left is a boy wearing a black jacket, running and wearing a glasses, the person on the right is a woman wearing a pink hoodie, talking and wearing a backpack",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a boy wearing a black jacket",
+    "person_right_gt": "a woman wearing a pink hoodie"
+  },
+  {
+    "file_name": "000000078170.jpg",
+    "image_id": 78170,
+    "prompt": "A realistic photo of passenger train in the night hours with no smoking sign and people, the person on the left is a man wearing a black coat, running and wearing a watch, the person on the right is a woman wearing a yellow suit, talking and wearing a glasses",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a man wearing a black coat",
+    "person_right_gt": "a woman wearing a yellow suit"
+  },
+  {
+    "file_name": "000000080932.jpg",
+    "image_id": 80932,
+    "prompt": "A realistic photo of a little boy sits at a table in a restaurant eating a slice of pizza, the person on the left is a girl wearing a green sweater, talking and wearing a hat, the person on the right is a boy wearing a blue vest, sitting and wearing a glasses",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a girl wearing a green sweater",
+    "person_right_gt": "a boy wearing a blue vest"
+  },
+  {
+    "file_name": "000000086755.jpg",
+    "image_id": 86755,
+    "prompt": "A realistic photo of there are people that are on the snow slope skiing, the person on the left is a woman wearing a green shirt, running and wearing a watch, the person on the right is a man wearing a red hoodie, standing and wearing a scarf",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a woman wearing a green shirt",
+    "person_right_gt": "a man wearing a red hoodie"
+  },
+  {
+    "file_name": "000000089697.jpg",
+    "image_id": 89697,
+    "prompt": "A realistic photo of this woman is sitting on a wood bench, the person on the left is a woman wearing a purple coat, walking and wearing a hat, the person on the right is a boy wearing a orange hoodie, standing and wearing a watch",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a woman wearing a purple coat",
+    "person_right_gt": "a boy wearing a orange hoodie"
+  },
+  {
+    "file_name": "000000091500.jpg",
+    "image_id": 91500,
+    "prompt": "A realistic photo of people sitting in chairs playing nintendo wii, the person on the left is a woman wearing a pink shirt, walking and wearing a watch, the person on the right is a boy wearing a orange vest, standing and wearing a glasses",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a woman wearing a pink shirt",
+    "person_right_gt": "a boy wearing a orange vest"
+  },
+  {
+    "file_name": "000000097679.jpg",
+    "image_id": 97679,
+    "prompt": "A realistic photo of two car facing opposite side to side in overcast day, the person on the left is a boy wearing a brown coat, running and wearing a watch, the person on the right is a woman wearing a pink vest, walking and wearing a scarf",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a boy wearing a brown coat",
+    "person_right_gt": "a woman wearing a pink vest"
+  },
+  {
+    "file_name": "000000100428.jpg",
+    "image_id": 100428,
+    "prompt": "A realistic photo of a man pulling himself out of a mirror by his own tie, the person on the left is a woman wearing a black blouse, sitting and wearing a hat, the person on the right is a boy wearing a pink hoodie, running and wearing a backpack",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a woman wearing a black blouse",
+    "person_right_gt": "a boy wearing a pink hoodie"
+  },
+  {
+    "file_name": "000000107339.jpg",
+    "image_id": 107339,
+    "prompt": "A realistic photo of two girls in a room are looking at something, the person on the left is a boy wearing a white t-shirt, walking and wearing a watch, the person on the right is a woman wearing a pink jacket, talking and wearing a glasses",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a boy wearing a white t-shirt",
+    "person_right_gt": "a woman wearing a pink jacket"
+  },
+  {
+    "file_name": "000000110449.jpg",
+    "image_id": 110449,
+    "prompt": "A realistic photo of a man is standing with his hands on a table, the person on the left is a man wearing a purple vest, running and wearing a glasses, the person on the right is a woman wearing a white blouse, standing and wearing a watch",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a man wearing a purple vest",
+    "person_right_gt": "a woman wearing a white blouse"
+  },
+  {
+    "file_name": "000000111207.jpg",
+    "image_id": 111207,
+    "prompt": "A realistic photo of a man who is performing tricks on a skateboard, the person on the left is a man wearing a purple shirt, sitting and wearing a watch, the person on the right is a boy wearing a orange suit, running and wearing a glasses",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a man wearing a purple shirt",
+    "person_right_gt": "a boy wearing a orange suit"
+  },
+  {
+    "file_name": "000000119365.jpg",
+    "image_id": 119365,
+    "prompt": "A realistic photo of a people of children sitting down next to a laptop computer, the person on the left is a woman wearing a purple shirt, sitting and wearing a glasses, the person on the right is a girl wearing a orange coat, running and wearing a watch",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a woman wearing a purple shirt",
+    "person_right_gt": "a girl wearing a orange coat"
+  },
+  {
+    "file_name": "000000122217.jpg",
+    "image_id": 122217,
+    "prompt": "A realistic photo of two male skateboarders rolling down a paved slope, the person on the left is a man wearing a brown shirt, running and wearing a watch, the person on the right is a woman wearing a gray t-shirt, walking and wearing a glasses",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a man wearing a brown shirt",
+    "person_right_gt": "a woman wearing a gray t-shirt"
+  },
+  {
+    "file_name": "000000127263.jpg",
+    "image_id": 127263,
+    "prompt": "A realistic photo of a people of men playing a game of frisbee, the person on the left is a boy wearing a white blouse, sitting and wearing a backpack, the person on the right is a woman wearing a yellow suit, running and wearing a watch",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a boy wearing a white blouse",
+    "person_right_gt": "a woman wearing a yellow suit"
+  },
+  {
+    "file_name": "000000132931.jpg",
+    "image_id": 132931,
+    "prompt": "A realistic photo of two baseball people standing next to a wall on a baseball field, the person on the left is a man wearing a red shirt, walking and wearing a hat, the person on the right is a woman wearing a pink suit, standing and wearing a scarf",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a man wearing a red shirt",
+    "person_right_gt": "a woman wearing a pink suit"
+  },
+  {
+    "file_name": "000000137246.jpg",
+    "image_id": 137246,
+    "prompt": "A realistic photo of a lady eating a hot dog with one bite taken from it, the person on the left is a woman wearing a brown hoodie, running and wearing a scarf, the person on the right is a man wearing a green jacket, standing and wearing a glasses",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a woman wearing a brown hoodie",
+    "person_right_gt": "a man wearing a green jacket"
+  },
+  {
+    "file_name": "000000137294.jpg",
+    "image_id": 137294,
+    "prompt": "A realistic photo of a man is cooking in an outdoor state of the art commercial looking oven in the midst of a farm, the person on the left is a boy wearing a green cardigan, walking and wearing a hat, the person on the right is a woman wearing a brown t-shirt, sitting and wearing a scarf",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a boy wearing a green cardigan",
+    "person_right_gt": "a woman wearing a brown t-shirt"
+  },
+  {
+    "file_name": "000000140583.jpg",
+    "image_id": 140583,
+    "prompt": "A realistic photo of a flock of animals stand on the road near mountains, the person on the left is a girl wearing a yellow cardigan, standing and wearing a scarf, the person on the right is a woman wearing a blue hoodie, sitting and wearing a hat",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a girl wearing a yellow cardigan",
+    "person_right_gt": "a woman wearing a blue hoodie"
+  },
+  {
+    "file_name": "000000142585.jpg",
+    "image_id": 142585,
+    "prompt": "A realistic photo of a people of people sit on a motorcycle next to a white car, the person on the left is a man wearing a pink suit, talking and wearing a hat, the person on the right is a woman wearing a purple t-shirt, sitting and wearing a watch",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a man wearing a pink suit",
+    "person_right_gt": "a woman wearing a purple t-shirt"
+  },
+  {
+    "file_name": "000000142790.jpg",
+    "image_id": 142790,
+    "prompt": "A realistic photo of a ski is laying loose while people struggle to get up, the person on the left is a man wearing a white jacket, walking and wearing a scarf, the person on the right is a woman wearing a orange coat, sitting and wearing a watch",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a man wearing a white jacket",
+    "person_right_gt": "a woman wearing a orange coat"
+  },
+  {
+    "file_name": "000000146457.jpg",
+    "image_id": 146457,
+    "prompt": "A realistic photo of the boy and girl are making pizzas together, the person on the left is a girl wearing a brown suit, standing and wearing a watch, the person on the right is a boy wearing a black hoodie, sitting and wearing a glasses",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a girl wearing a brown suit",
+    "person_right_gt": "a boy wearing a black hoodie"
+  },
+  {
+    "file_name": "000000150417.jpg",
+    "image_id": 150417,
+    "prompt": "A realistic photo of an old lady sitting at a table while looking at her birthday cake, the person on the left is a girl wearing a red suit, running and wearing a backpack, the person on the right is a woman wearing a orange jacket, walking and wearing a scarf",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a girl wearing a red suit",
+    "person_right_gt": "a woman wearing a orange jacket"
+  },
+  {
+    "file_name": "000000151657.jpg",
+    "image_id": 151657,
+    "prompt": "A realistic photo of a people is posing together dressed in outlandish attire, the person on the left is a boy wearing a black shirt, walking and wearing a glasses, the person on the right is a girl wearing a pink vest, standing and wearing a watch",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a boy wearing a black shirt",
+    "person_right_gt": "a girl wearing a pink vest"
+  },
+  {
+    "file_name": "000000156924.jpg",
+    "image_id": 156924,
+    "prompt": "A realistic photo of a man and woman playing games on the nintendo wii, the person on the left is a woman wearing a orange blouse, standing and wearing a glasses, the person on the right is a boy wearing a gray shirt, sitting and wearing a watch",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a woman wearing a orange blouse",
+    "person_right_gt": "a boy wearing a gray shirt"
+  },
+  {
+    "file_name": "000000157928.jpg",
+    "image_id": 157928,
+    "prompt": "A realistic photo of people with backpacks on one of which is fastening skis to a sled, the person on the left is a boy wearing a brown blouse, talking and wearing a watch, the person on the right is a girl wearing a white vest, sitting and wearing a backpack",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a boy wearing a brown blouse",
+    "person_right_gt": "a girl wearing a white vest"
+  },
+  {
+    "file_name": "000000158945.jpg",
+    "image_id": 158945,
+    "prompt": "A realistic photo of seats placed on top of an elephant that is standing outside, the person on the left is a girl wearing a black hoodie, walking and wearing a hat, the person on the right is a woman wearing a gray t-shirt, sitting and wearing a glasses",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a girl wearing a black hoodie",
+    "person_right_gt": "a woman wearing a gray t-shirt"
+  },
+  {
+    "file_name": "000000161925.jpg",
+    "image_id": 161925,
+    "prompt": "A realistic photo of people preparing some kind of food outside, the person on the left is a woman wearing a orange cardigan, talking and wearing a hat, the person on the right is a boy wearing a black vest, sitting and wearing a glasses",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a woman wearing a orange cardigan",
+    "person_right_gt": "a boy wearing a black vest"
+  },
+  {
+    "file_name": "000000163118.jpg",
+    "image_id": 163118,
+    "prompt": "A realistic photo of the people are jumping to get the frisbee, the person on the left is a woman wearing a green shirt, walking and wearing a hat, the person on the right is a girl wearing a black vest, sitting and wearing a scarf",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a woman wearing a green shirt",
+    "person_right_gt": "a girl wearing a black vest"
+  },
+  {
+    "file_name": "000000163257.jpg",
+    "image_id": 163257,
+    "prompt": "A realistic photo of a man holding a pink umbrella standing on his tip toes, the person on the left is a boy wearing a green t-shirt, talking and wearing a watch, the person on the right is a girl wearing a orange shirt, sitting and wearing a scarf",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a boy wearing a green t-shirt",
+    "person_right_gt": "a girl wearing a orange shirt"
+  },
+  {
+    "file_name": "000000164602.jpg",
+    "image_id": 164602,
+    "prompt": "A realistic photo of a people taking a photo of themselves cleaning their teeth, the person on the left is a boy wearing a red blouse, standing and wearing a watch, the person on the right is a man wearing a black t-shirt, running and wearing a hat",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a boy wearing a red blouse",
+    "person_right_gt": "a man wearing a black t-shirt"
+  },
+  {
+    "file_name": "000000166165.jpg",
+    "image_id": 166165,
+    "prompt": "A realistic photo of people on a tennis court playing a game of tennis, the person on the left is a man wearing a green sweater, walking and wearing a scarf, the person on the right is a girl wearing a brown t-shirt, standing and wearing a watch",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a man wearing a green sweater",
+    "person_right_gt": "a girl wearing a brown t-shirt"
+  },
+  {
+    "file_name": "000000166768.jpg",
+    "image_id": 166768,
+    "prompt": "A realistic photo of a woman holding a man by the arm with a tie, the person on the left is a woman wearing a purple blouse, talking and wearing a backpack, the person on the right is a boy wearing a orange sweater, running and wearing a hat",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a woman wearing a purple blouse",
+    "person_right_gt": "a boy wearing a orange sweater"
+  },
+  {
+    "file_name": "000000168337.jpg",
+    "image_id": 168337,
+    "prompt": "A realistic photo of a city scene of a sidewalk with a red fire hydrant on a sidewalk next to an atm, the person on the left is a man wearing a gray sweater, walking and wearing a glasses, the person on the right is a girl wearing a yellow t-shirt, talking and wearing a hat",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a man wearing a gray sweater",
+    "person_right_gt": "a girl wearing a yellow t-shirt"
+  },
+  {
+    "file_name": "000000170613.jpg",
+    "image_id": 170613,
+    "prompt": "A realistic photo of people standing in the surf with their surfboards, the person on the left is a man wearing a orange blouse, standing and wearing a backpack, the person on the right is a woman wearing a brown sweater, walking and wearing a scarf",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a man wearing a orange blouse",
+    "person_right_gt": "a woman wearing a brown sweater"
+  },
+  {
+    "file_name": "000000172648.jpg",
+    "image_id": 172648,
+    "prompt": "A realistic photo of a man reaches in the back of a truck, the person on the left is a man wearing a yellow cardigan, running and wearing a scarf, the person on the right is a boy wearing a black hoodie, standing and wearing a glasses",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a man wearing a yellow cardigan",
+    "person_right_gt": "a boy wearing a black hoodie"
+  },
+  {
+    "file_name": "000000172935.jpg",
+    "image_id": 172935,
+    "prompt": "A realistic photo of a water skier performing a trick while flying through the air, the person on the left is a boy wearing a blue jacket, talking and wearing a watch, the person on the right is a man wearing a red sweater, sitting and wearing a hat",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a boy wearing a blue jacket",
+    "person_right_gt": "a man wearing a red sweater"
+  },
+  {
+    "file_name": "000000173302.jpg",
+    "image_id": 173302,
+    "prompt": "A realistic photo of an empty restaurant with two employees working behind the counter, the person on the left is a boy wearing a purple vest, running and wearing a hat, the person on the right is a girl wearing a black cardigan, talking and wearing a scarf",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a boy wearing a purple vest",
+    "person_right_gt": "a girl wearing a black cardigan"
+  },
+  {
+    "file_name": "000000173799.jpg",
+    "image_id": 173799,
+    "prompt": "A realistic photo of two elephant herders stand next to a large group of elephants in a field, the person on the left is a boy wearing a black t-shirt, talking and wearing a backpack, the person on the right is a girl wearing a red hoodie, standing and wearing a hat",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a boy wearing a black t-shirt",
+    "person_right_gt": "a girl wearing a red hoodie"
+  },
+  {
+    "file_name": "000000177489.jpg",
+    "image_id": 177489,
+    "prompt": "A realistic photo of a man and a woman sitting at table, the person on the left is a girl wearing a gray sweater, talking and wearing a watch, the person on the right is a boy wearing a orange jacket, running and wearing a hat",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a girl wearing a gray sweater",
+    "person_right_gt": "a boy wearing a orange jacket"
+  },
+  {
+    "file_name": "000000178982.jpg",
+    "image_id": 178982,
+    "prompt": "A realistic photo of a pair of motorcyclists drive down a highway at night, the person on the left is a boy wearing a white t-shirt, sitting and wearing a watch, the person on the right is a woman wearing a gray jacket, running and wearing a backpack",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a boy wearing a white t-shirt",
+    "person_right_gt": "a woman wearing a gray jacket"
+  },
+  {
+    "file_name": "000000180560.jpg",
+    "image_id": 180560,
+    "prompt": "A realistic photo of women one holding a cake the other holding up her index finger, the person on the left is a man wearing a blue sweater, standing and wearing a scarf, the person on the right is a woman wearing a white suit, running and wearing a hat",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a man wearing a blue sweater",
+    "person_right_gt": "a woman wearing a white suit"
+  },
+  {
+    "file_name": "000000182155.jpg",
+    "image_id": 182155,
+    "prompt": "A realistic photo of a picture of people playing a video game, the person on the left is a girl wearing a red vest, talking and wearing a watch, the person on the right is a woman wearing a yellow suit, running and wearing a hat",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a girl wearing a red vest",
+    "person_right_gt": "a woman wearing a yellow suit"
+  },
+  {
+    "file_name": "000000182611.jpg",
+    "image_id": 182611,
+    "prompt": "A realistic photo of people serving themselves food from a buffet table in a private home, the person on the left is a boy wearing a green blouse, standing and wearing a scarf, the person on the right is a girl wearing a black cardigan, talking and wearing a glasses",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a boy wearing a green blouse",
+    "person_right_gt": "a girl wearing a black cardigan"
+  },
+  {
+    "file_name": "000000183716.jpg",
+    "image_id": 183716,
+    "prompt": "A realistic photo of two children wearing sweaters shirts and ties, the person on the left is a boy wearing a red coat, walking and wearing a watch, the person on the right is a girl wearing a pink t-shirt, standing and wearing a hat",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a boy wearing a red coat",
+    "person_right_gt": "a girl wearing a pink t-shirt"
+  },
+  {
+    "file_name": "000000192699.jpg",
+    "image_id": 192699,
+    "prompt": "A realistic photo of people in bmx gear in a redwood forest, the person on the left is a girl wearing a black sweater, running and wearing a glasses, the person on the right is a boy wearing a pink coat, talking and wearing a watch",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a girl wearing a black sweater",
+    "person_right_gt": "a boy wearing a pink coat"
+  },
+  {
+    "file_name": "000000194716.jpg",
+    "image_id": 194716,
+    "prompt": "A realistic photo of a very attractive woman holding a little girl that is chewing something, the person on the left is a woman wearing a yellow vest, standing and wearing a watch, the person on the right is a girl wearing a brown jacket, sitting and wearing a backpack",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a woman wearing a yellow vest",
+    "person_right_gt": "a girl wearing a brown jacket"
+  },
+  {
+    "file_name": "000000200961.jpg",
+    "image_id": 200961,
+    "prompt": "A realistic photo of a man is charging through a field of grass, the person on the left is a boy wearing a black cardigan, walking and wearing a scarf, the person on the right is a man wearing a gray blouse, running and wearing a watch",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a boy wearing a black cardigan",
+    "person_right_gt": "a man wearing a gray blouse"
+  },
+  {
+    "file_name": "000000201426.jpg",
+    "image_id": 201426,
+    "prompt": "A realistic photo of a people of kids at a table with some food, the person on the left is a boy wearing a pink blouse, walking and wearing a scarf, the person on the right is a girl wearing a purple suit, talking and wearing a watch",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a boy wearing a pink blouse",
+    "person_right_gt": "a girl wearing a purple suit"
+  },
+  {
+    "file_name": "000000203864.jpg",
+    "image_id": 203864,
+    "prompt": "A realistic photo of two mean are playing tennis and both are wearing sunglasses, the person on the left is a girl wearing a white coat, walking and wearing a hat, the person on the right is a man wearing a orange cardigan, running and wearing a glasses",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a girl wearing a white coat",
+    "person_right_gt": "a man wearing a orange cardigan"
+  },
+  {
+    "file_name": "000000205324.jpg",
+    "image_id": 205324,
+    "prompt": "A realistic photo of a group of young men chasing a frisbee, the person on the left is a boy wearing a orange vest, standing and wearing a watch, the person on the right is a man wearing a blue blouse, walking and wearing a glasses",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a boy wearing a orange vest",
+    "person_right_gt": "a man wearing a blue blouse"
+  },
+  {
+    "file_name": "000000206487.jpg",
+    "image_id": 206487,
+    "prompt": "A realistic photo of a man riding a motorcycle with a woman on back of it, the person on the left is a girl wearing a white coat, sitting and wearing a backpack, the person on the right is a woman wearing a brown t-shirt, running and wearing a watch",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a girl wearing a white coat",
+    "person_right_gt": "a woman wearing a brown t-shirt"
+  },
+  {
+    "file_name": "000000206838.jpg",
+    "image_id": 206838,
+    "prompt": "A realistic photo of people riding horses partially submerged in a body of water, the person on the left is a man wearing a blue sweater, standing and wearing a hat, the person on the right is a boy wearing a yellow hoodie, running and wearing a scarf",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a man wearing a blue sweater",
+    "person_right_gt": "a boy wearing a yellow hoodie"
+  },
+  {
+    "file_name": "000000210789.jpg",
+    "image_id": 210789,
+    "prompt": "A realistic photo of a people of people standing with a umbrella, the person on the left is a woman wearing a black shirt, standing and wearing a backpack, the person on the right is a boy wearing a red suit, sitting and wearing a scarf",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a woman wearing a black shirt",
+    "person_right_gt": "a boy wearing a red suit"
+  },
+  {
+    "file_name": "000000212573.jpg",
+    "image_id": 212573,
+    "prompt": "A realistic photo of people standing at a street in the rain, the person on the left is a woman wearing a pink cardigan, walking and wearing a hat, the person on the right is a man wearing a purple jacket, talking and wearing a watch",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a woman wearing a pink cardigan",
+    "person_right_gt": "a man wearing a purple jacket"
+  },
+  {
+    "file_name": "000000213547.jpg",
+    "image_id": 213547,
+    "prompt": "A realistic photo of a woman holds a cake with candles while riding a mechanical horse in a store, the person on the left is a woman wearing a brown hoodie, sitting and wearing a backpack, the person on the right is a girl wearing a green blouse, running and wearing a hat",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a woman wearing a brown hoodie",
+    "person_right_gt": "a girl wearing a green blouse"
+  },
+  {
+    "file_name": "000000214192.jpg",
+    "image_id": 214192,
+    "prompt": "A realistic photo of people on dirt bikes making turns on a track, the person on the left is a boy wearing a pink t-shirt, sitting and wearing a watch, the person on the right is a girl wearing a green blouse, talking and wearing a backpack",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a boy wearing a pink t-shirt",
+    "person_right_gt": "a girl wearing a green blouse"
+  },
+  {
+    "file_name": "000000214703.jpg",
+    "image_id": 214703,
+    "prompt": "A realistic photo of people lying on belly on surfboards close to each other in large watery expanse, the person on the left is a boy wearing a purple t-shirt, running and wearing a scarf, the person on the right is a man wearing a orange hoodie, sitting and wearing a backpack",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a boy wearing a purple t-shirt",
+    "person_right_gt": "a man wearing a orange hoodie"
+  },
+  {
+    "file_name": "000000214753.jpg",
+    "image_id": 214753,
+    "prompt": "A realistic photo of people riding horses on the beach with waves coming in across the rocks on the shoreline, the person on the left is a man wearing a purple shirt, talking and wearing a backpack, the person on the right is a boy wearing a black cardigan, running and wearing a glasses",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a man wearing a purple shirt",
+    "person_right_gt": "a boy wearing a black cardigan"
+  },
+  {
+    "file_name": "000000215072.jpg",
+    "image_id": 215072,
+    "prompt": "A realistic photo of a people of women are sitting under an umbrella, the person on the left is a boy wearing a gray cardigan, walking and wearing a hat, the person on the right is a man wearing a yellow sweater, standing and wearing a backpack",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a boy wearing a gray cardigan",
+    "person_right_gt": "a man wearing a yellow sweater"
+  },
+  {
+    "file_name": "000000215259.jpg",
+    "image_id": 215259,
+    "prompt": "A realistic photo of people play a game in a living room, the person on the left is a man wearing a white t-shirt, sitting and wearing a glasses, the person on the right is a boy wearing a green sweater, running and wearing a scarf",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a man wearing a white t-shirt",
+    "person_right_gt": "a boy wearing a green sweater"
+  },
+  {
+    "file_name": "000000215723.jpg",
+    "image_id": 215723,
+    "prompt": "A realistic photo of people in neon yellow safety jackets sharing a meal next to a food car, the person on the left is a boy wearing a pink jacket, running and wearing a backpack, the person on the right is a girl wearing a black sweater, sitting and wearing a hat",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a boy wearing a pink jacket",
+    "person_right_gt": "a girl wearing a black sweater"
+  },
+  {
+    "file_name": "000000224675.jpg",
+    "image_id": 224675,
+    "prompt": "A realistic photo of a man and a lady on the street with an umbrella, the person on the left is a man wearing a yellow vest, standing and wearing a hat, the person on the right is a girl wearing a purple suit, running and wearing a backpack",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a man wearing a yellow vest",
+    "person_right_gt": "a girl wearing a purple suit"
+  },
+  {
+    "file_name": "000000226147.jpg",
+    "image_id": 226147,
+    "prompt": "A realistic photo of a women who is taking a picture of her food, the person on the left is a man wearing a white cardigan, sitting and wearing a glasses, the person on the right is a woman wearing a black coat, standing and wearing a watch",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a man wearing a white cardigan",
+    "person_right_gt": "a woman wearing a black coat"
+  },
+  {
+    "file_name": "000000227478.jpg",
+    "image_id": 227478,
+    "prompt": "A realistic photo of people sitting on a park bench one looking over her shoulder, the person on the left is a boy wearing a yellow blouse, running and wearing a glasses, the person on the right is a girl wearing a blue sweater, standing and wearing a hat",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a boy wearing a yellow blouse",
+    "person_right_gt": "a girl wearing a blue sweater"
+  },
+  {
+    "file_name": "000000229216.jpg",
+    "image_id": 229216,
+    "prompt": "A realistic photo of people sitting on ledge looking at a cellphone, the person on the left is a boy wearing a blue hoodie, walking and wearing a watch, the person on the right is a woman wearing a gray vest, running and wearing a backpack",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a boy wearing a blue hoodie",
+    "person_right_gt": "a woman wearing a gray vest"
+  },
+  {
+    "file_name": "000000230993.jpg",
+    "image_id": 230993,
+    "prompt": "A realistic photo of people walk outside both holding up umbrellas, the person on the left is a girl wearing a green t-shirt, talking and wearing a backpack, the person on the right is a boy wearing a purple blouse, running and wearing a hat",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a girl wearing a green t-shirt",
+    "person_right_gt": "a boy wearing a purple blouse"
+  },
+  {
+    "file_name": "000000231125.jpg",
+    "image_id": 231125,
+    "prompt": "A realistic photo of a person working at a store selling pasties, the person on the left is a woman wearing a orange suit, sitting and wearing a hat, the person on the right is a girl wearing a yellow t-shirt, talking and wearing a watch",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a woman wearing a orange suit",
+    "person_right_gt": "a girl wearing a yellow t-shirt"
+  },
+  {
+    "file_name": "000000232563.jpg",
+    "image_id": 232563,
+    "prompt": "A realistic photo of a man on sidewalk holding a zebra strip umbrella, the person on the left is a woman wearing a orange hoodie, standing and wearing a glasses, the person on the right is a man wearing a blue shirt, sitting and wearing a scarf",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a woman wearing a orange hoodie",
+    "person_right_gt": "a man wearing a blue shirt"
+  },
+  {
+    "file_name": "000000234607.jpg",
+    "image_id": 234607,
+    "prompt": "A realistic photo of a people fighting each other over a wii remote control, the person on the left is a woman wearing a pink cardigan, walking and wearing a glasses, the person on the right is a man wearing a yellow hoodie, sitting and wearing a hat",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a woman wearing a pink cardigan",
+    "person_right_gt": "a man wearing a yellow hoodie"
+  },
+  {
+    "file_name": "000000239347.jpg",
+    "image_id": 239347,
+    "prompt": "A realistic photo of a picture of a people that just got married lying in a bed, the person on the left is a woman wearing a pink jacket, standing and wearing a hat, the person on the right is a man wearing a black t-shirt, walking and wearing a backpack",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a woman wearing a pink jacket",
+    "person_right_gt": "a man wearing a black t-shirt"
+  },
+  {
+    "file_name": "000000240049.jpg",
+    "image_id": 240049,
+    "prompt": "A realistic photo of a woman holds a baby on her arm and both are looking forward at an enclosed area with two giraffes in it, the person on the left is a boy wearing a green shirt, running and wearing a hat, the person on the right is a man wearing a black jacket, standing and wearing a watch",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a boy wearing a green shirt",
+    "person_right_gt": "a man wearing a black jacket"
+  },
+  {
+    "file_name": "000000241668.jpg",
+    "image_id": 241668,
+    "prompt": "A realistic photo of a red head girl holding a piece of cake, the person on the left is a boy wearing a brown blouse, walking and wearing a scarf, the person on the right is a girl wearing a blue vest, standing and wearing a backpack",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a boy wearing a brown blouse",
+    "person_right_gt": "a girl wearing a blue vest"
+  },
+  {
+    "file_name": "000000242724.jpg",
+    "image_id": 242724,
+    "prompt": "A realistic photo of people ride horses in the water at the beach, the person on the left is a man wearing a orange coat, running and wearing a hat, the person on the right is a girl wearing a purple t-shirt, talking and wearing a scarf",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a man wearing a orange coat",
+    "person_right_gt": "a girl wearing a purple t-shirt"
+  },
+  {
+    "file_name": "000000243148.jpg",
+    "image_id": 243148,
+    "prompt": "A realistic photo of a skier bending down to help a toddler with his little skis, the person on the left is a woman wearing a green cardigan, sitting and wearing a scarf, the person on the right is a man wearing a black vest, running and wearing a backpack",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a woman wearing a green cardigan",
+    "person_right_gt": "a man wearing a black vest"
+  },
+  {
+    "file_name": "000000245311.jpg",
+    "image_id": 245311,
+    "prompt": "A realistic photo of a man baking and preparing donuts to sell at shop, the person on the left is a girl wearing a blue hoodie, running and wearing a watch, the person on the right is a man wearing a pink coat, walking and wearing a backpack",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a girl wearing a blue hoodie",
+    "person_right_gt": "a man wearing a pink coat"
+  },
+  {
+    "file_name": "000000246883.jpg",
+    "image_id": 246883,
+    "prompt": "A realistic photo of the two surfers art talking on the beach, the person on the left is a girl wearing a blue coat, sitting and wearing a glasses, the person on the right is a woman wearing a white suit, talking and wearing a watch",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a girl wearing a blue coat",
+    "person_right_gt": "a woman wearing a white suit"
+  },
+  {
+    "file_name": "000000248284.jpg",
+    "image_id": 248284,
+    "prompt": "A realistic photo of this person is leaving footprints in the snow, the person on the left is a man wearing a blue t-shirt, walking and wearing a scarf, the person on the right is a girl wearing a purple suit, standing and wearing a backpack",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a man wearing a blue t-shirt",
+    "person_right_gt": "a girl wearing a purple suit"
+  },
+  {
+    "file_name": "000000251140.jpg",
+    "image_id": 251140,
+    "prompt": "A realistic photo of a book about understanding and maintaining a ten speed bicycle, the person on the left is a girl wearing a gray shirt, talking and wearing a backpack, the person on the right is a woman wearing a purple sweater, sitting and wearing a hat",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a girl wearing a gray shirt",
+    "person_right_gt": "a woman wearing a purple sweater"
+  },
+  {
+    "file_name": "000000252294.jpg",
+    "image_id": 252294,
+    "prompt": "A realistic photo of a guy peeks out from behind a curtain, the person on the left is a woman wearing a gray hoodie, sitting and wearing a hat, the person on the right is a man wearing a orange t-shirt, talking and wearing a backpack",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a woman wearing a gray hoodie",
+    "person_right_gt": "a man wearing a orange t-shirt"
+  },
+  {
+    "file_name": "000000252701.jpg",
+    "image_id": 252701,
+    "prompt": "A realistic photo of a boy riding waves on his surf board in the ocean, the person on the left is a woman wearing a pink cardigan, standing and wearing a hat, the person on the right is a girl wearing a brown vest, sitting and wearing a glasses",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a woman wearing a pink cardigan",
+    "person_right_gt": "a girl wearing a brown vest"
+  },
+  {
+    "file_name": "000000253835.jpg",
+    "image_id": 253835,
+    "prompt": "A realistic photo of a woman standing on the side walk with her child, the person on the left is a boy wearing a white jacket, talking and wearing a hat, the person on the right is a woman wearing a red cardigan, running and wearing a glasses",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a boy wearing a white jacket",
+    "person_right_gt": "a woman wearing a red cardigan"
+  },
+  {
+    "file_name": "000000255536.jpg",
+    "image_id": 255536,
+    "prompt": "A realistic photo of a row of various types of chairs and umbrella with a bridge in the background, the person on the left is a man wearing a pink coat, running and wearing a glasses, the person on the right is a boy wearing a yellow cardigan, sitting and wearing a backpack",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a man wearing a pink coat",
+    "person_right_gt": "a boy wearing a yellow cardigan"
+  },
+  {
+    "file_name": "000000257370.jpg",
+    "image_id": 257370,
+    "prompt": "A realistic photo of two kids are playing baseball in wii sports, the person on the left is a boy wearing a brown shirt, walking and wearing a hat, the person on the right is a girl wearing a blue jacket, standing and wearing a backpack",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a boy wearing a brown shirt",
+    "person_right_gt": "a girl wearing a blue jacket"
+  },
+  {
+    "file_name": "000000263425.jpg",
+    "image_id": 263425,
+    "prompt": "A realistic photo of a man brushing oil onto a pig in an outdoor oven, the person on the left is a girl wearing a brown coat, walking and wearing a backpack, the person on the right is a woman wearing a orange sweater, standing and wearing a watch",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a girl wearing a brown coat",
+    "person_right_gt": "a woman wearing a orange sweater"
+  },
+  {
+    "file_name": "000000263969.jpg",
+    "image_id": 263969,
+    "prompt": "A realistic photo of man and woman holding a knife up to a small cake, the person on the left is a boy wearing a gray blouse, sitting and wearing a glasses, the person on the right is a girl wearing a brown vest, standing and wearing a watch",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a boy wearing a gray blouse",
+    "person_right_gt": "a girl wearing a brown vest"
+  },
+  {
+    "file_name": "000000267191.jpg",
+    "image_id": 267191,
+    "prompt": "A realistic photo of people riding on the backs of some elephants, the person on the left is a man wearing a yellow hoodie, sitting and wearing a backpack, the person on the right is a girl wearing a black jacket, talking and wearing a hat",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a man wearing a yellow hoodie",
+    "person_right_gt": "a girl wearing a black jacket"
+  },
+  {
+    "file_name": "000000271402.jpg",
+    "image_id": 271402,
+    "prompt": "A realistic photo of two little girls in tennis uniforms standing next to a scooter, the person on the left is a girl wearing a purple jacket, talking and wearing a scarf, the person on the right is a boy wearing a green coat, walking and wearing a backpack",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a girl wearing a purple jacket",
+    "person_right_gt": "a boy wearing a green coat"
+  },
+  {
+    "file_name": "000000271471.jpg",
+    "image_id": 271471,
+    "prompt": "A realistic photo of a bunch of bananas on a plate on a counter, the person on the left is a girl wearing a red shirt, standing and wearing a scarf, the person on the right is a boy wearing a purple blouse, sitting and wearing a watch",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a girl wearing a red shirt",
+    "person_right_gt": "a boy wearing a purple blouse"
+  },
+  {
+    "file_name": "000000272566.jpg",
+    "image_id": 272566,
+    "prompt": "A realistic photo of a people of people sitting next to piles of fruit, the person on the left is a girl wearing a gray sweater, running and wearing a backpack, the person on the right is a boy wearing a purple t-shirt, standing and wearing a glasses",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a girl wearing a gray sweater",
+    "person_right_gt": "a boy wearing a purple t-shirt"
+  },
+  {
+    "file_name": "000000273493.jpg",
+    "image_id": 273493,
+    "prompt": "A realistic photo of there are people playing tennis on the tennis court, the person on the left is a girl wearing a white coat, walking and wearing a scarf, the person on the right is a boy wearing a blue t-shirt, running and wearing a watch",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a girl wearing a white coat",
+    "person_right_gt": "a boy wearing a blue t-shirt"
+  },
+  {
+    "file_name": "000000276024.jpg",
+    "image_id": 276024,
+    "prompt": "A realistic photo of a few people that are riding some horses, the person on the left is a man wearing a black hoodie, walking and wearing a scarf, the person on the right is a woman wearing a white suit, standing and wearing a hat",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a man wearing a black hoodie",
+    "person_right_gt": "a woman wearing a white suit"
+  },
+  {
+    "file_name": "000000278705.jpg",
+    "image_id": 278705,
+    "prompt": "A realistic photo of two young men riding skateboards on a street next to a graffiti covered wall, the person on the left is a woman wearing a white hoodie, walking and wearing a glasses, the person on the right is a girl wearing a green t-shirt, sitting and wearing a scarf",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a woman wearing a white hoodie",
+    "person_right_gt": "a girl wearing a green t-shirt"
+  },
+  {
+    "file_name": "000000280918.jpg",
+    "image_id": 280918,
+    "prompt": "A realistic photo of two woman poses while taking a turkey out of the oven, the person on the left is a woman wearing a blue blouse, talking and wearing a scarf, the person on the right is a boy wearing a green cardigan, running and wearing a backpack",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a woman wearing a blue blouse",
+    "person_right_gt": "a boy wearing a green cardigan"
+  },
+  {
+    "file_name": "000000281754.jpg",
+    "image_id": 281754,
+    "prompt": "A realistic photo of a child holding an umbrella with a person near him, the person on the left is a woman wearing a blue blouse, sitting and wearing a backpack, the person on the right is a girl wearing a orange sweater, standing and wearing a hat",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a woman wearing a blue blouse",
+    "person_right_gt": "a girl wearing a orange sweater"
+  },
+  {
+    "file_name": "000000283520.jpg",
+    "image_id": 283520,
+    "prompt": "A realistic photo of people standing in front of some trees, the person on the left is a girl wearing a red suit, standing and wearing a scarf, the person on the right is a woman wearing a gray sweater, talking and wearing a watch",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a girl wearing a red suit",
+    "person_right_gt": "a woman wearing a gray sweater"
+  },
+  {
+    "file_name": "000000286553.jpg",
+    "image_id": 286553,
+    "prompt": "A realistic photo of a man and woman posing for a photo with pizza on the table they are sitting at, the person on the left is a man wearing a brown suit, talking and wearing a hat, the person on the right is a woman wearing a yellow blouse, walking and wearing a watch",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a man wearing a brown suit",
+    "person_right_gt": "a woman wearing a yellow blouse"
+  },
+  {
+    "file_name": "000000287347.jpg",
+    "image_id": 287347,
+    "prompt": "A realistic photo of a woman prepares a pizza while a man watches, the person on the left is a boy wearing a blue jacket, walking and wearing a watch, the person on the right is a girl wearing a pink shirt, running and wearing a glasses",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a boy wearing a blue jacket",
+    "person_right_gt": "a girl wearing a pink shirt"
+  },
+  {
+    "file_name": "000000287527.jpg",
+    "image_id": 287527,
+    "prompt": "A realistic photo of a guy and a girl posing for a picture, the person on the left is a boy wearing a purple suit, sitting and wearing a backpack, the person on the right is a woman wearing a gray shirt, standing and wearing a hat",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a boy wearing a purple suit",
+    "person_right_gt": "a woman wearing a gray shirt"
+  },
+  {
+    "file_name": "000000289059.jpg",
+    "image_id": 289059,
+    "prompt": "A realistic photo of a man leaning over waiting for a tennis ball to hit, the person on the left is a girl wearing a black jacket, standing and wearing a backpack, the person on the right is a woman wearing a brown suit, walking and wearing a scarf",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a girl wearing a black jacket",
+    "person_right_gt": "a woman wearing a brown suit"
+  },
+  {
+    "file_name": "000000291619.jpg",
+    "image_id": 291619,
+    "prompt": "A realistic photo of a frisbee player is about to catch a thrown frisbee, the person on the left is a woman wearing a blue vest, sitting and wearing a scarf, the person on the right is a boy wearing a black coat, walking and wearing a hat",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a woman wearing a blue vest",
+    "person_right_gt": "a boy wearing a black coat"
+  },
+  {
+    "file_name": "000000292082.jpg",
+    "image_id": 292082,
+    "prompt": "A realistic photo of a little girl sitting on a man's lap in an old photograph, the person on the left is a boy wearing a white jacket, sitting and wearing a glasses, the person on the right is a man wearing a black hoodie, running and wearing a scarf",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a boy wearing a white jacket",
+    "person_right_gt": "a man wearing a black hoodie"
+  },
+  {
+    "file_name": "000000292225.jpg",
+    "image_id": 292225,
+    "prompt": "A realistic photo of people on a tennis court are playing tennis, the person on the left is a woman wearing a black vest, talking and wearing a backpack, the person on the right is a man wearing a blue cardigan, standing and wearing a glasses",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a woman wearing a black vest",
+    "person_right_gt": "a man wearing a blue cardigan"
+  },
+  {
+    "file_name": "000000293625.jpg",
+    "image_id": 293625,
+    "prompt": "A realistic photo of young women holding remote game controls while playing, the person on the left is a girl wearing a green cardigan, running and wearing a watch, the person on the right is a man wearing a gray jacket, standing and wearing a backpack",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a girl wearing a green cardigan",
+    "person_right_gt": "a man wearing a gray jacket"
+  },
+  {
+    "file_name": "000000299887.jpg",
+    "image_id": 299887,
+    "prompt": "A realistic photo of a man and woman beside a red motorcycle, the person on the left is a girl wearing a black hoodie, walking and wearing a watch, the person on the right is a boy wearing a orange vest, sitting and wearing a glasses",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a girl wearing a black hoodie",
+    "person_right_gt": "a boy wearing a orange vest"
+  },
+  {
+    "file_name": "000000301718.jpg",
+    "image_id": 301718,
+    "prompt": "A realistic photo of people seated at a dining table with a plate of food before them, the person on the left is a girl wearing a black vest, running and wearing a glasses, the person on the right is a woman wearing a purple cardigan, walking and wearing a scarf",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a girl wearing a black vest",
+    "person_right_gt": "a woman wearing a purple cardigan"
+  },
+  {
+    "file_name": "000000302990.jpg",
+    "image_id": 302990,
+    "prompt": "A realistic photo of a man is on a surfboard riding a wave, the person on the left is a man wearing a orange vest, talking and wearing a backpack, the person on the right is a boy wearing a white t-shirt, standing and wearing a hat",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a man wearing a orange vest",
+    "person_right_gt": "a boy wearing a white t-shirt"
+  },
+  {
+    "file_name": "000000303893.jpg",
+    "image_id": 303893,
+    "prompt": "A realistic photo of a boy and a girl sitting on a sidewalk eating, the person on the left is a boy wearing a pink coat, walking and wearing a backpack, the person on the right is a woman wearing a green t-shirt, running and wearing a hat",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a boy wearing a pink coat",
+    "person_right_gt": "a woman wearing a green t-shirt"
+  },
+  {
+    "file_name": "000000309467.jpg",
+    "image_id": 309467,
+    "prompt": "A realistic photo of skiers stand at hillcrest against a clear blue sky, the person on the left is a man wearing a pink hoodie, standing and wearing a glasses, the person on the right is a woman wearing a white coat, sitting and wearing a hat",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a man wearing a pink hoodie",
+    "person_right_gt": "a woman wearing a white coat"
+  },
+  {
+    "file_name": "000000309964.jpg",
+    "image_id": 309964,
+    "prompt": "A realistic photo of people smile as they sit on coolers under a huge umbrella, the person on the left is a man wearing a gray jacket, standing and wearing a watch, the person on the right is a boy wearing a white cardigan, sitting and wearing a glasses",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a man wearing a gray jacket",
+    "person_right_gt": "a boy wearing a white cardigan"
+  },
+  {
+    "file_name": "000000312489.jpg",
+    "image_id": 312489,
+    "prompt": "A realistic photo of the expert surfer is trying to also parasail, the person on the left is a girl wearing a red shirt, walking and wearing a scarf, the person on the right is a boy wearing a blue sweater, talking and wearing a watch",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a girl wearing a red shirt",
+    "person_right_gt": "a boy wearing a blue sweater"
+  },
+  {
+    "file_name": "000000316404.jpg",
+    "image_id": 316404,
+    "prompt": "A realistic photo of a pair of men with small mustaches dress as tennis people, the person on the left is a boy wearing a black shirt, running and wearing a hat, the person on the right is a man wearing a blue hoodie, talking and wearing a scarf",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a boy wearing a black shirt",
+    "person_right_gt": "a man wearing a blue hoodie"
+  },
+  {
+    "file_name": "000000317999.jpg",
+    "image_id": 317999,
+    "prompt": "A realistic photo of a father with a braided beard is looking at his child, the person on the left is a man wearing a pink hoodie, sitting and wearing a hat, the person on the right is a boy wearing a brown jacket, running and wearing a backpack",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a man wearing a pink hoodie",
+    "person_right_gt": "a boy wearing a brown jacket"
+  },
+  {
+    "file_name": "000000319100.jpg",
+    "image_id": 319100,
+    "prompt": "A realistic photo of ai man and a woman playing with a wii, the person on the left is a girl wearing a gray vest, standing and wearing a watch, the person on the right is a man wearing a blue suit, talking and wearing a scarf",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a girl wearing a gray vest",
+    "person_right_gt": "a man wearing a blue suit"
+  },
+  {
+    "file_name": "000000321333.jpg",
+    "image_id": 321333,
+    "prompt": "A realistic photo of a people of young kids are sitting together, the person on the left is a girl wearing a black suit, sitting and wearing a hat, the person on the right is a woman wearing a red t-shirt, walking and wearing a backpack",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a girl wearing a black suit",
+    "person_right_gt": "a woman wearing a red t-shirt"
+  },
+  {
+    "file_name": "000000322724.jpg",
+    "image_id": 322724,
+    "prompt": "A realistic photo of a woman leaning on ski spikes on a snowy mountain, the person on the left is a man wearing a pink jacket, running and wearing a glasses, the person on the right is a woman wearing a white blouse, walking and wearing a hat",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a man wearing a pink jacket",
+    "person_right_gt": "a woman wearing a white blouse"
+  },
+  {
+    "file_name": "000000324258.jpg",
+    "image_id": 324258,
+    "prompt": "A realistic photo of people playing a video game in a living room, the person on the left is a man wearing a yellow hoodie, sitting and wearing a scarf, the person on the right is a woman wearing a red shirt, talking and wearing a watch",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a man wearing a yellow hoodie",
+    "person_right_gt": "a woman wearing a red shirt"
+  },
+  {
+    "file_name": "000000325347.jpg",
+    "image_id": 325347,
+    "prompt": "A realistic photo of a tennis player makes a quick shuffle to return the ball, the person on the left is a girl wearing a red sweater, standing and wearing a backpack, the person on the right is a woman wearing a yellow suit, sitting and wearing a hat",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a girl wearing a red sweater",
+    "person_right_gt": "a woman wearing a yellow suit"
+  },
+  {
+    "file_name": "000000325483.jpg",
+    "image_id": 325483,
+    "prompt": "A realistic photo of the people stand next to each other playing the video game, the person on the left is a girl wearing a orange suit, running and wearing a backpack, the person on the right is a woman wearing a purple jacket, talking and wearing a scarf",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a girl wearing a orange suit",
+    "person_right_gt": "a woman wearing a purple jacket"
+  },
+  {
+    "file_name": "000000335328.jpg",
+    "image_id": 335328,
+    "prompt": "A realistic photo of a people of people riding waves on top of boards, the person on the left is a girl wearing a purple jacket, sitting and wearing a hat, the person on the right is a man wearing a brown vest, talking and wearing a scarf",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a girl wearing a purple jacket",
+    "person_right_gt": "a man wearing a brown vest"
+  },
+  {
+    "file_name": "000000338532.jpg",
+    "image_id": 338532,
+    "prompt": "A realistic photo of a giraffe standing in sand near trees, the person on the left is a boy wearing a orange coat, running and wearing a watch, the person on the right is a woman wearing a brown jacket, sitting and wearing a hat",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a boy wearing a orange coat",
+    "person_right_gt": "a woman wearing a brown jacket"
+  },
+  {
+    "file_name": "000000341469.jpg",
+    "image_id": 341469,
+    "prompt": "A realistic photo of a person standing next to a pile of luggage bags, the person on the left is a girl wearing a gray t-shirt, sitting and wearing a hat, the person on the right is a woman wearing a red coat, walking and wearing a glasses",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a girl wearing a gray t-shirt",
+    "person_right_gt": "a woman wearing a red coat"
+  },
+  {
+    "file_name": "000000341973.jpg",
+    "image_id": 341973,
+    "prompt": "A realistic photo of two females are holding jelly donuts with a bite taken out, the person on the left is a girl wearing a green hoodie, sitting and wearing a scarf, the person on the right is a man wearing a blue suit, running and wearing a hat",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a girl wearing a green hoodie",
+    "person_right_gt": "a man wearing a blue suit"
+  },
+  {
+    "file_name": "000000343218.jpg",
+    "image_id": 343218,
+    "prompt": "A realistic photo of a man standing on a tennis court holding a racquet, the person on the left is a woman wearing a orange suit, standing and wearing a scarf, the person on the right is a boy wearing a white blouse, walking and wearing a backpack",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a woman wearing a orange suit",
+    "person_right_gt": "a boy wearing a white blouse"
+  },
+  {
+    "file_name": "000000345356.jpg",
+    "image_id": 345356,
+    "prompt": "A realistic photo of a pair of men sitting at a table in a diner, the person on the left is a boy wearing a black t-shirt, walking and wearing a scarf, the person on the right is a girl wearing a yellow shirt, running and wearing a watch",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a boy wearing a black t-shirt",
+    "person_right_gt": "a girl wearing a yellow shirt"
+  },
+  {
+    "file_name": "000000345385.jpg",
+    "image_id": 345385,
+    "prompt": "A realistic photo of a people of men snuggling on a bed with one under the cover, the person on the left is a man wearing a black hoodie, running and wearing a hat, the person on the right is a woman wearing a orange sweater, walking and wearing a glasses",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a man wearing a black hoodie",
+    "person_right_gt": "a woman wearing a orange sweater"
+  },
+  {
+    "file_name": "000000350003.jpg",
+    "image_id": 350003,
+    "prompt": "A realistic photo of a firetruck is near a brown building off a side street that veers from a main road, the person on the left is a girl wearing a orange suit, standing and wearing a backpack, the person on the right is a man wearing a blue cardigan, sitting and wearing a glasses",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a girl wearing a orange suit",
+    "person_right_gt": "a man wearing a blue cardigan"
+  },
+  {
+    "file_name": "000000352582.jpg",
+    "image_id": 352582,
+    "prompt": "A realistic photo of a young man participates in a frisbee game, the person on the left is a boy wearing a yellow hoodie, walking and wearing a hat, the person on the right is a girl wearing a blue jacket, running and wearing a backpack",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a boy wearing a yellow hoodie",
+    "person_right_gt": "a girl wearing a blue jacket"
+  },
+  {
+    "file_name": "000000356094.jpg",
+    "image_id": 356094,
+    "prompt": "A realistic photo of a man in a baseball uniform ready to swing at a pitch, the person on the left is a boy wearing a pink cardigan, standing and wearing a watch, the person on the right is a woman wearing a green t-shirt, sitting and wearing a scarf",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a boy wearing a pink cardigan",
+    "person_right_gt": "a woman wearing a green t-shirt"
+  },
+  {
+    "file_name": "000000364557.jpg",
+    "image_id": 364557,
+    "prompt": "A realistic photo of a people of people carrying surf boar walk on a beach, the person on the left is a girl wearing a brown jacket, standing and wearing a watch, the person on the right is a woman wearing a blue suit, running and wearing a backpack",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a girl wearing a brown jacket",
+    "person_right_gt": "a woman wearing a blue suit"
+  },
+  {
+    "file_name": "000000371749.jpg",
+    "image_id": 371749,
+    "prompt": "A realistic photo of there are people holding objects in their hands, the person on the left is a woman wearing a purple shirt, talking and wearing a backpack, the person on the right is a man wearing a pink t-shirt, walking and wearing a glasses",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a woman wearing a purple shirt",
+    "person_right_gt": "a man wearing a pink t-shirt"
+  },
+  {
+    "file_name": "000000372349.jpg",
+    "image_id": 372349,
+    "prompt": "A realistic photo of a man and a woman in a river, the person on the left is a boy wearing a yellow vest, standing and wearing a glasses, the person on the right is a girl wearing a white sweater, sitting and wearing a backpack",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a boy wearing a yellow vest",
+    "person_right_gt": "a girl wearing a white sweater"
+  },
+  {
+    "file_name": "000000372577.jpg",
+    "image_id": 372577,
+    "prompt": "A realistic photo of people playing a match of tennis on a court, the person on the left is a boy wearing a pink vest, talking and wearing a glasses, the person on the right is a girl wearing a blue jacket, walking and wearing a backpack",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a boy wearing a pink vest",
+    "person_right_gt": "a girl wearing a blue jacket"
+  },
+  {
+    "file_name": "000000374083.jpg",
+    "image_id": 374083,
+    "prompt": "A realistic photo of a man and a child in the kitchen with two cakes, the person on the left is a man wearing a blue cardigan, walking and wearing a scarf, the person on the right is a girl wearing a red sweater, running and wearing a hat",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a man wearing a blue cardigan",
+    "person_right_gt": "a girl wearing a red sweater"
+  },
+  {
+    "file_name": "000000374982.jpg",
+    "image_id": 374982,
+    "prompt": "A realistic photo of a child is amazed by a very large pizza, the person on the left is a boy wearing a black hoodie, sitting and wearing a hat, the person on the right is a girl wearing a orange coat, running and wearing a scarf",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a boy wearing a black hoodie",
+    "person_right_gt": "a girl wearing a orange coat"
+  },
+  {
+    "file_name": "000000375469.jpg",
+    "image_id": 375469,
+    "prompt": "A realistic photo of two surfers riding a wave back to shore, the person on the left is a girl wearing a orange hoodie, talking and wearing a backpack, the person on the right is a woman wearing a gray suit, walking and wearing a scarf",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a girl wearing a orange hoodie",
+    "person_right_gt": "a woman wearing a gray suit"
+  },
+  {
+    "file_name": "000000382111.jpg",
+    "image_id": 382111,
+    "prompt": "A realistic photo of people are riding on horses at a gas station, the person on the left is a girl wearing a white vest, sitting and wearing a watch, the person on the right is a man wearing a pink t-shirt, walking and wearing a hat",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a girl wearing a white vest",
+    "person_right_gt": "a man wearing a pink t-shirt"
+  },
+  {
+    "file_name": "000000383838.jpg",
+    "image_id": 383838,
+    "prompt": "A realistic photo of a woman holding a nintendo wii game controller near a man, the person on the left is a girl wearing a green shirt, running and wearing a glasses, the person on the right is a man wearing a blue sweater, talking and wearing a scarf",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a girl wearing a green shirt",
+    "person_right_gt": "a man wearing a blue sweater"
+  },
+  {
+    "file_name": "000000384670.jpg",
+    "image_id": 384670,
+    "prompt": "A realistic photo of a young man in a yellow shirt preparing to serve in an tennis match, the person on the left is a boy wearing a green vest, running and wearing a watch, the person on the right is a man wearing a orange blouse, sitting and wearing a hat",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a boy wearing a green vest",
+    "person_right_gt": "a man wearing a orange blouse"
+  },
+  {
+    "file_name": "000000390902.jpg",
+    "image_id": 390902,
+    "prompt": "A realistic photo of a man standing on a tennis court holding a racquet, the person on the left is a girl wearing a orange hoodie, standing and wearing a backpack, the person on the right is a boy wearing a yellow suit, talking and wearing a watch",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a girl wearing a orange hoodie",
+    "person_right_gt": "a boy wearing a yellow suit"
+  },
+  {
+    "file_name": "000000393469.jpg",
+    "image_id": 393469,
+    "prompt": "A realistic photo of a man sitting on his knees in the snow, the person on the left is a girl wearing a pink t-shirt, walking and wearing a backpack, the person on the right is a woman wearing a red coat, sitting and wearing a watch",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a girl wearing a pink t-shirt",
+    "person_right_gt": "a woman wearing a red coat"
+  },
+  {
+    "file_name": "000000396200.jpg",
+    "image_id": 396200,
+    "prompt": "A realistic photo of two skate boarders are performing on a city sidewalk, the person on the left is a man wearing a red vest, sitting and wearing a hat, the person on the right is a woman wearing a brown hoodie, talking and wearing a watch",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a man wearing a red vest",
+    "person_right_gt": "a woman wearing a brown hoodie"
+  },
+  {
+    "file_name": "000000404839.jpg",
+    "image_id": 404839,
+    "prompt": "A realistic photo of people holding wii remotes and nun chucks in an indoor area, the person on the left is a girl wearing a black cardigan, walking and wearing a watch, the person on the right is a boy wearing a brown t-shirt, standing and wearing a backpack",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a girl wearing a black cardigan",
+    "person_right_gt": "a boy wearing a brown t-shirt"
+  },
+  {
+    "file_name": "000000409475.jpg",
+    "image_id": 409475,
+    "prompt": "A realistic photo of a smiling pair of skiers with a huge snow covered mountain behind them, the person on the left is a boy wearing a yellow vest, talking and wearing a hat, the person on the right is a man wearing a brown coat, standing and wearing a scarf",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a boy wearing a yellow vest",
+    "person_right_gt": "a man wearing a brown coat"
+  },
+  {
+    "file_name": "000000413552.jpg",
+    "image_id": 413552,
+    "prompt": "A realistic photo of a woman holds her small child in her lap, the person on the left is a boy wearing a pink jacket, walking and wearing a scarf, the person on the right is a woman wearing a orange vest, sitting and wearing a backpack",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a boy wearing a pink jacket",
+    "person_right_gt": "a woman wearing a orange vest"
+  },
+  {
+    "file_name": "000000416451.jpg",
+    "image_id": 416451,
+    "prompt": "A realistic photo of people in a living room playing a wii video game, the person on the left is a girl wearing a black suit, talking and wearing a scarf, the person on the right is a boy wearing a brown vest, running and wearing a backpack",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a girl wearing a black suit",
+    "person_right_gt": "a boy wearing a brown vest"
+  },
+  {
+    "file_name": "000000419408.jpg",
+    "image_id": 419408,
+    "prompt": "A realistic photo of a boy is skateboarding on a pole at a park, the person on the left is a man wearing a white coat, standing and wearing a backpack, the person on the right is a woman wearing a blue sweater, running and wearing a glasses",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a man wearing a white coat",
+    "person_right_gt": "a woman wearing a blue sweater"
+  },
+  {
+    "file_name": "000000419974.jpg",
+    "image_id": 419974,
+    "prompt": "A realistic photo of a man standing next to a kitchen counter preparing food, the person on the left is a girl wearing a pink coat, walking and wearing a scarf, the person on the right is a man wearing a brown jacket, standing and wearing a hat",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a girl wearing a pink coat",
+    "person_right_gt": "a man wearing a brown jacket"
+  },
+  {
+    "file_name": "000000423506.jpg",
+    "image_id": 423506,
+    "prompt": "A realistic photo of people standing next to one another and both are smiling and wearing neckties, the person on the left is a man wearing a white jacket, walking and wearing a scarf, the person on the right is a woman wearing a purple coat, running and wearing a watch",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a man wearing a white jacket",
+    "person_right_gt": "a woman wearing a purple coat"
+  },
+  {
+    "file_name": "000000424135.jpg",
+    "image_id": 424135,
+    "prompt": "A realistic photo of very complex design clock on the side of a building, the person on the left is a woman wearing a yellow suit, talking and wearing a backpack, the person on the right is a boy wearing a pink blouse, running and wearing a glasses",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a woman wearing a yellow suit",
+    "person_right_gt": "a boy wearing a pink blouse"
+  },
+  {
+    "file_name": "000000424349.jpg",
+    "image_id": 424349,
+    "prompt": "A realistic photo of people in kitchen taking a pizza out of an oven, the person on the left is a boy wearing a white cardigan, walking and wearing a backpack, the person on the right is a girl wearing a black blouse, talking and wearing a scarf",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a boy wearing a white cardigan",
+    "person_right_gt": "a girl wearing a black blouse"
+  },
+  {
+    "file_name": "000000424551.jpg",
+    "image_id": 424551,
+    "prompt": "A realistic photo of people climbing up a mountain getting ready to ski, the person on the left is a boy wearing a yellow suit, sitting and wearing a backpack, the person on the right is a woman wearing a orange blouse, talking and wearing a hat",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a boy wearing a yellow suit",
+    "person_right_gt": "a woman wearing a orange blouse"
+  },
+  {
+    "file_name": "000000425227.jpg",
+    "image_id": 425227,
+    "prompt": "A realistic photo of a people of people standing on a beach flying a kite, the person on the left is a girl wearing a white sweater, sitting and wearing a backpack, the person on the right is a woman wearing a green shirt, standing and wearing a watch",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a girl wearing a white sweater",
+    "person_right_gt": "a woman wearing a green shirt"
+  },
+  {
+    "file_name": "000000427338.jpg",
+    "image_id": 427338,
+    "prompt": "A realistic photo of person on motorcycle in a very scenic rock area, the person on the left is a girl wearing a yellow sweater, sitting and wearing a hat, the person on the right is a man wearing a pink vest, walking and wearing a glasses",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a girl wearing a yellow sweater",
+    "person_right_gt": "a man wearing a pink vest"
+  },
+  {
+    "file_name": "000000429761.jpg",
+    "image_id": 429761,
+    "prompt": "A realistic photo of two tennis people shaking hands over the net, the person on the left is a man wearing a pink hoodie, standing and wearing a backpack, the person on the right is a boy wearing a yellow shirt, running and wearing a watch",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a man wearing a pink hoodie",
+    "person_right_gt": "a boy wearing a yellow shirt"
+  },
+  {
+    "file_name": "000000430377.jpg",
+    "image_id": 430377,
+    "prompt": "A realistic photo of a lady that is on some skies on some snow, the person on the left is a woman wearing a pink coat, running and wearing a backpack, the person on the right is a man wearing a green blouse, walking and wearing a scarf",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a woman wearing a pink coat",
+    "person_right_gt": "a man wearing a green blouse"
+  },
+  {
+    "file_name": "000000431545.jpg",
+    "image_id": 431545,
+    "prompt": "A realistic photo of a close up of a baseball player running on the base paths, the person on the left is a man wearing a gray hoodie, standing and wearing a watch, the person on the right is a girl wearing a brown vest, walking and wearing a glasses",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a man wearing a gray hoodie",
+    "person_right_gt": "a girl wearing a brown vest"
+  },
+  {
+    "file_name": "000000431848.jpg",
+    "image_id": 431848,
+    "prompt": "A realistic photo of a man is doing a trick on a sidewalk curb, the person on the left is a girl wearing a green shirt, sitting and wearing a backpack, the person on the right is a woman wearing a black cardigan, standing and wearing a scarf",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a girl wearing a green shirt",
+    "person_right_gt": "a woman wearing a black cardigan"
+  },
+  {
+    "file_name": "000000436738.jpg",
+    "image_id": 436738,
+    "prompt": "A realistic photo of an old photo of a bus and some cars sitting at an intersection, the person on the left is a girl wearing a pink sweater, standing and wearing a glasses, the person on the right is a man wearing a orange hoodie, sitting and wearing a watch",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a girl wearing a pink sweater",
+    "person_right_gt": "a man wearing a orange hoodie"
+  },
+  {
+    "file_name": "000000438304.jpg",
+    "image_id": 438304,
+    "prompt": "A realistic photo of retro advertisement for adidas featuring two tennis people, the person on the left is a woman wearing a white cardigan, walking and wearing a watch, the person on the right is a man wearing a black hoodie, running and wearing a backpack",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a woman wearing a white cardigan",
+    "person_right_gt": "a man wearing a black hoodie"
+  },
+  {
+    "file_name": "000000438907.jpg",
+    "image_id": 438907,
+    "prompt": "A realistic photo of a man is doing a trick on a skateboard, the person on the left is a girl wearing a blue jacket, sitting and wearing a hat, the person on the right is a boy wearing a green blouse, walking and wearing a backpack",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a girl wearing a blue jacket",
+    "person_right_gt": "a boy wearing a green blouse"
+  },
+  {
+    "file_name": "000000440171.jpg",
+    "image_id": 440171,
+    "prompt": "A realistic photo of man riding an elephant up a hill near a field, the person on the left is a woman wearing a black sweater, sitting and wearing a glasses, the person on the right is a girl wearing a white shirt, talking and wearing a hat",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a woman wearing a black sweater",
+    "person_right_gt": "a girl wearing a white shirt"
+  },
+  {
+    "file_name": "000000441247.jpg",
+    "image_id": 441247,
+    "prompt": "A realistic photo of a woman standing in a kitchen next to a table, the person on the left is a girl wearing a green vest, standing and wearing a backpack, the person on the right is a woman wearing a purple sweater, sitting and wearing a glasses",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a girl wearing a green vest",
+    "person_right_gt": "a woman wearing a purple sweater"
+  },
+  {
+    "file_name": "000000442480.jpg",
+    "image_id": 442480,
+    "prompt": "A realistic photo of a twin propeller plane sits parked on a run way, the person on the left is a woman wearing a green cardigan, running and wearing a scarf, the person on the right is a girl wearing a orange suit, talking and wearing a glasses",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a woman wearing a green cardigan",
+    "person_right_gt": "a girl wearing a orange suit"
+  },
+  {
+    "file_name": "000000445722.jpg",
+    "image_id": 445722,
+    "prompt": "A realistic photo of a big boat with some luggage inside of it, the person on the left is a man wearing a orange suit, talking and wearing a hat, the person on the right is a boy wearing a pink t-shirt, standing and wearing a glasses",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a man wearing a orange suit",
+    "person_right_gt": "a boy wearing a pink t-shirt"
+  },
+  {
+    "file_name": "000000447465.jpg",
+    "image_id": 447465,
+    "prompt": "A realistic photo of skiers coming out of a building in ski attire, the person on the left is a woman wearing a white blouse, walking and wearing a hat, the person on the right is a man wearing a pink t-shirt, running and wearing a watch",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a woman wearing a white blouse",
+    "person_right_gt": "a man wearing a pink t-shirt"
+  },
+  {
+    "file_name": "000000451144.jpg",
+    "image_id": 451144,
+    "prompt": "A realistic photo of a people of people on skis sit on top of a snowy hill, the person on the left is a girl wearing a pink blouse, talking and wearing a backpack, the person on the right is a man wearing a purple shirt, running and wearing a hat",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a girl wearing a pink blouse",
+    "person_right_gt": "a man wearing a purple shirt"
+  },
+  {
+    "file_name": "000000453001.jpg",
+    "image_id": 453001,
+    "prompt": "A realistic photo of a girl is having a hard time pulling a suit case, the person on the left is a boy wearing a yellow t-shirt, running and wearing a hat, the person on the right is a man wearing a brown shirt, sitting and wearing a scarf",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a boy wearing a yellow t-shirt",
+    "person_right_gt": "a man wearing a brown shirt"
+  },
+  {
+    "file_name": "000000455219.jpg",
+    "image_id": 455219,
+    "prompt": "A realistic photo of some people in a field working with some big animals, the person on the left is a girl wearing a black jacket, running and wearing a watch, the person on the right is a man wearing a purple cardigan, sitting and wearing a scarf",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a girl wearing a black jacket",
+    "person_right_gt": "a man wearing a purple cardigan"
+  },
+  {
+    "file_name": "000000455301.jpg",
+    "image_id": 455301,
+    "prompt": "A realistic photo of a baby looking at a book and sitting on a bed next to a woman, the person on the left is a girl wearing a gray jacket, standing and wearing a scarf, the person on the right is a man wearing a pink suit, walking and wearing a watch",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a girl wearing a gray jacket",
+    "person_right_gt": "a man wearing a pink suit"
+  },
+  {
+    "file_name": "000000455555.jpg",
+    "image_id": 455555,
+    "prompt": "A realistic photo of a boy riding a skateboard on a sidewalk as another laughs in the background, the person on the left is a woman wearing a yellow shirt, running and wearing a scarf, the person on the right is a boy wearing a red sweater, talking and wearing a watch",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a woman wearing a yellow shirt",
+    "person_right_gt": "a boy wearing a red sweater"
+  },
+  {
+    "file_name": "000000459662.jpg",
+    "image_id": 459662,
+    "prompt": "A realistic photo of two young girls peeking through the holes in their donuts, the person on the left is a woman wearing a white sweater, standing and wearing a watch, the person on the right is a girl wearing a green hoodie, talking and wearing a hat",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a woman wearing a white sweater",
+    "person_right_gt": "a girl wearing a green hoodie"
+  },
+  {
+    "file_name": "000000460683.jpg",
+    "image_id": 460683,
+    "prompt": "A realistic photo of a man is showing off his religious tie, the person on the left is a woman wearing a blue shirt, talking and wearing a glasses, the person on the right is a man wearing a brown blouse, standing and wearing a hat",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a woman wearing a blue shirt",
+    "person_right_gt": "a man wearing a brown blouse"
+  },
+  {
+    "file_name": "000000463618.jpg",
+    "image_id": 463618,
+    "prompt": "A realistic photo of woman holding child who is looking at white bird in cage, the person on the left is a girl wearing a pink shirt, talking and wearing a glasses, the person on the right is a man wearing a yellow jacket, sitting and wearing a backpack",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a girl wearing a pink shirt",
+    "person_right_gt": "a man wearing a yellow jacket"
+  },
+  {
+    "file_name": "000000465549.jpg",
+    "image_id": 465549,
+    "prompt": "A realistic photo of two young people playing a game on a video game console, the person on the left is a boy wearing a black vest, running and wearing a backpack, the person on the right is a man wearing a green hoodie, sitting and wearing a hat",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a boy wearing a black vest",
+    "person_right_gt": "a man wearing a green hoodie"
+  },
+  {
+    "file_name": "000000467511.jpg",
+    "image_id": 467511,
+    "prompt": "A realistic photo of people stand in front of a motorcycle, the person on the left is a woman wearing a gray vest, standing and wearing a watch, the person on the right is a boy wearing a purple blouse, sitting and wearing a backpack",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a woman wearing a gray vest",
+    "person_right_gt": "a boy wearing a purple blouse"
+  },
+  {
+    "file_name": "000000468954.jpg",
+    "image_id": 468954,
+    "prompt": "A realistic photo of a man and girl playing with an interactive video game system, the person on the left is a girl wearing a black jacket, running and wearing a glasses, the person on the right is a man wearing a purple vest, walking and wearing a backpack",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a girl wearing a black jacket",
+    "person_right_gt": "a man wearing a purple vest"
+  },
+  {
+    "file_name": "000000472298.jpg",
+    "image_id": 472298,
+    "prompt": "A realistic photo of a man and woman in a boat on a river, the person on the left is a girl wearing a pink coat, talking and wearing a watch, the person on the right is a man wearing a purple vest, walking and wearing a glasses",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a girl wearing a pink coat",
+    "person_right_gt": "a man wearing a purple vest"
+  },
+  {
+    "file_name": "000000474344.jpg",
+    "image_id": 474344,
+    "prompt": "A realistic photo of a man holding a baseball bat at a home plate, the person on the left is a woman wearing a gray blouse, standing and wearing a hat, the person on the right is a girl wearing a blue suit, walking and wearing a backpack",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a woman wearing a gray blouse",
+    "person_right_gt": "a girl wearing a blue suit"
+  },
+  {
+    "file_name": "000000475572.jpg",
+    "image_id": 475572,
+    "prompt": "A realistic photo of a teddy bear a potted plant and a portrait, the person on the left is a man wearing a yellow vest, running and wearing a backpack, the person on the right is a girl wearing a brown hoodie, walking and wearing a scarf",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a man wearing a yellow vest",
+    "person_right_gt": "a girl wearing a brown hoodie"
+  },
+  {
+    "file_name": "000000476514.jpg",
+    "image_id": 476514,
+    "prompt": "A realistic photo of people in a field wearing a dress and a suit and tie, the person on the left is a woman wearing a blue hoodie, running and wearing a scarf, the person on the right is a man wearing a orange cardigan, walking and wearing a backpack",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a woman wearing a blue hoodie",
+    "person_right_gt": "a man wearing a orange cardigan"
+  },
+  {
+    "file_name": "000000478420.jpg",
+    "image_id": 478420,
+    "prompt": "A realistic photo of two ladies one making a phone call while the other carrying a baby, the person on the left is a girl wearing a pink sweater, sitting and wearing a watch, the person on the right is a woman wearing a white cardigan, running and wearing a hat",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a girl wearing a pink sweater",
+    "person_right_gt": "a woman wearing a white cardigan"
+  },
+  {
+    "file_name": "000000479126.jpg",
+    "image_id": 479126,
+    "prompt": "A realistic photo of two girls sitting outisde smoking and one girl on a laptop, the person on the left is a boy wearing a white coat, talking and wearing a glasses, the person on the right is a man wearing a gray shirt, walking and wearing a hat",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a boy wearing a white coat",
+    "person_right_gt": "a man wearing a gray shirt"
+  },
+  {
+    "file_name": "000000481480.jpg",
+    "image_id": 481480,
+    "prompt": "A realistic photo of horses racing on a dirt track with flowers around the scoreboard, the person on the left is a girl wearing a green suit, running and wearing a watch, the person on the right is a woman wearing a yellow hoodie, walking and wearing a backpack",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a girl wearing a green suit",
+    "person_right_gt": "a woman wearing a yellow hoodie"
+  },
+  {
+    "file_name": "000000482436.jpg",
+    "image_id": 482436,
+    "prompt": "A realistic photo of a man at a food truck viewing the menu, the person on the left is a girl wearing a gray blouse, sitting and wearing a glasses, the person on the right is a boy wearing a orange jacket, walking and wearing a watch",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a girl wearing a gray blouse",
+    "person_right_gt": "a boy wearing a orange jacket"
+  },
+  {
+    "file_name": "000000484893.jpg",
+    "image_id": 484893,
+    "prompt": "A realistic photo of little kids in a barn petting a sheep in a stall, the person on the left is a man wearing a red shirt, running and wearing a glasses, the person on the right is a boy wearing a blue cardigan, walking and wearing a hat",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a man wearing a red shirt",
+    "person_right_gt": "a boy wearing a blue cardigan"
+  },
+  {
+    "file_name": "000000488673.jpg",
+    "image_id": 488673,
+    "prompt": "A realistic photo of a man and woman are in a kitchen, the person on the left is a man wearing a pink suit, talking and wearing a watch, the person on the right is a girl wearing a orange shirt, running and wearing a hat",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a man wearing a pink suit",
+    "person_right_gt": "a girl wearing a orange shirt"
+  },
+  {
+    "file_name": "000000491008.jpg",
+    "image_id": 491008,
+    "prompt": "A realistic photo of a man and a woman holding up a pizza in a seating area, the person on the left is a girl wearing a red sweater, sitting and wearing a scarf, the person on the right is a man wearing a pink vest, standing and wearing a watch",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a girl wearing a red sweater",
+    "person_right_gt": "a man wearing a pink vest"
+  },
+  {
+    "file_name": "000000491366.jpg",
+    "image_id": 491366,
+    "prompt": "A realistic photo of people playing a video game in the house, the person on the left is a man wearing a pink hoodie, talking and wearing a backpack, the person on the right is a girl wearing a green cardigan, sitting and wearing a scarf",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a man wearing a pink hoodie",
+    "person_right_gt": "a girl wearing a green cardigan"
+  },
+  {
+    "file_name": "000000494759.jpg",
+    "image_id": 494759,
+    "prompt": "A realistic photo of people are on a beach flying a kite, the person on the left is a man wearing a purple cardigan, walking and wearing a hat, the person on the right is a woman wearing a orange hoodie, sitting and wearing a scarf",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a man wearing a purple cardigan",
+    "person_right_gt": "a woman wearing a orange hoodie"
+  },
+  {
+    "file_name": "000000494869.jpg",
+    "image_id": 494869,
+    "prompt": "A realistic photo of a woman standing at a kitchen counter with a child and a dog is behind her, the person on the left is a girl wearing a purple blouse, standing and wearing a hat, the person on the right is a woman wearing a pink shirt, walking and wearing a watch",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a girl wearing a purple blouse",
+    "person_right_gt": "a woman wearing a pink shirt"
+  },
+  {
+    "file_name": "000000500565.jpg",
+    "image_id": 500565,
+    "prompt": "A realistic photo of a baby with a toothbrush in his mouth while being held by a woman, the person on the left is a boy wearing a blue shirt, walking and wearing a backpack, the person on the right is a girl wearing a pink hoodie, running and wearing a hat",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a boy wearing a blue shirt",
+    "person_right_gt": "a girl wearing a pink hoodie"
+  },
+  {
+    "file_name": "000000504074.jpg",
+    "image_id": 504074,
+    "prompt": "A realistic photo of women that are sitting outside on a patio area and smoking cigarettes, the person on the left is a boy wearing a brown jacket, standing and wearing a scarf, the person on the right is a girl wearing a red suit, walking and wearing a glasses",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a boy wearing a brown jacket",
+    "person_right_gt": "a girl wearing a red suit"
+  },
+  {
+    "file_name": "000000504589.jpg",
+    "image_id": 504589,
+    "prompt": "A realistic photo of a woman in a yellow shirt is about to catch a white frisbee, the person on the left is a man wearing a green hoodie, talking and wearing a watch, the person on the right is a woman wearing a brown coat, sitting and wearing a glasses",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a man wearing a green hoodie",
+    "person_right_gt": "a woman wearing a brown coat"
+  },
+  {
+    "file_name": "000000505942.jpg",
+    "image_id": 505942,
+    "prompt": "A realistic photo of people have a conversation at an intersection, the person on the left is a boy wearing a blue hoodie, sitting and wearing a backpack, the person on the right is a man wearing a purple t-shirt, running and wearing a hat",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a boy wearing a blue hoodie",
+    "person_right_gt": "a man wearing a purple t-shirt"
+  },
+  {
+    "file_name": "000000508370.jpg",
+    "image_id": 508370,
+    "prompt": "A realistic photo of people standing next to a bike parked on a street corner, the person on the left is a girl wearing a yellow vest, running and wearing a scarf, the person on the right is a woman wearing a white coat, walking and wearing a watch",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a girl wearing a yellow vest",
+    "person_right_gt": "a woman wearing a white coat"
+  },
+  {
+    "file_name": "000000508730.jpg",
+    "image_id": 508730,
+    "prompt": "A realistic photo of two naked babies on training toilets in a bathroom, the person on the left is a boy wearing a blue sweater, running and wearing a watch, the person on the right is a man wearing a gray jacket, walking and wearing a backpack",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a boy wearing a blue sweater",
+    "person_right_gt": "a man wearing a gray jacket"
+  },
+  {
+    "file_name": "000000510329.jpg",
+    "image_id": 510329,
+    "prompt": "A realistic photo of a man and woman that are standing next to rocks, the person on the left is a man wearing a red blouse, sitting and wearing a glasses, the person on the right is a girl wearing a black suit, standing and wearing a hat",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a man wearing a red blouse",
+    "person_right_gt": "a girl wearing a black suit"
+  },
+  {
+    "file_name": "000000512776.jpg",
+    "image_id": 512776,
+    "prompt": "A realistic photo of a catcher with a catcher's mitt on squatting behind a baseball player, the person on the left is a girl wearing a pink vest, standing and wearing a hat, the person on the right is a woman wearing a gray coat, talking and wearing a backpack",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a girl wearing a pink vest",
+    "person_right_gt": "a woman wearing a gray coat"
+  },
+  {
+    "file_name": "000000512836.jpg",
+    "image_id": 512836,
+    "prompt": "A realistic photo of a woman is walking two dogs in the snow, the person on the left is a man wearing a brown coat, sitting and wearing a watch, the person on the right is a boy wearing a white shirt, running and wearing a hat",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a man wearing a brown coat",
+    "person_right_gt": "a boy wearing a white shirt"
+  },
+  {
+    "file_name": "000000512929.jpg",
+    "image_id": 512929,
+    "prompt": "A realistic photo of two preteens standing at the stove cooking green beans, the person on the left is a woman wearing a pink coat, walking and wearing a backpack, the person on the right is a boy wearing a green jacket, sitting and wearing a scarf",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a woman wearing a pink coat",
+    "person_right_gt": "a boy wearing a green jacket"
+  },
+  {
+    "file_name": "000000515577.jpg",
+    "image_id": 515577,
+    "prompt": "A realistic photo of people on skis going down a small hill, the person on the left is a woman wearing a green sweater, sitting and wearing a hat, the person on the right is a man wearing a purple coat, running and wearing a backpack",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a woman wearing a green sweater",
+    "person_right_gt": "a man wearing a purple coat"
+  },
+  {
+    "file_name": "000000515828.jpg",
+    "image_id": 515828,
+    "prompt": "A realistic photo of a woman holding a tennis racket in her hand, the person on the left is a woman wearing a gray cardigan, running and wearing a glasses, the person on the right is a boy wearing a orange hoodie, standing and wearing a backpack",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a woman wearing a gray cardigan",
+    "person_right_gt": "a boy wearing a orange hoodie"
+  },
+  {
+    "file_name": "000000517056.jpg",
+    "image_id": 517056,
+    "prompt": "A realistic photo of people handing out cake on plates on a dining table, the person on the left is a girl wearing a brown suit, sitting and wearing a scarf, the person on the right is a woman wearing a purple blouse, running and wearing a glasses",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a girl wearing a brown suit",
+    "person_right_gt": "a woman wearing a purple blouse"
+  },
+  {
+    "file_name": "000000520264.jpg",
+    "image_id": 520264,
+    "prompt": "A realistic photo of a man his arm across the woman next to him stands in a blandly colored kitchen area in front of a black rimmed window next to a counter with a microwave plates with and without food and wine bottles, the person on the left is a boy wearing a yellow suit, running and wearing a backpack, the person on the right is a girl wearing a orange jacket, sitting and wearing a watch",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a boy wearing a yellow suit",
+    "person_right_gt": "a girl wearing a orange jacket"
+  },
+  {
+    "file_name": "000000522393.jpg",
+    "image_id": 522393,
+    "prompt": "A realistic photo of some people who are riding on a sail boat, the person on the left is a woman wearing a purple coat, standing and wearing a scarf, the person on the right is a girl wearing a black suit, walking and wearing a glasses",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a woman wearing a purple coat",
+    "person_right_gt": "a girl wearing a black suit"
+  },
+  {
+    "file_name": "000000526728.jpg",
+    "image_id": 526728,
+    "prompt": "A realistic photo of a man and a woman are standing behind some suitcases, the person on the left is a man wearing a orange blouse, standing and wearing a watch, the person on the right is a boy wearing a yellow sweater, running and wearing a glasses",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a man wearing a orange blouse",
+    "person_right_gt": "a boy wearing a yellow sweater"
+  },
+  {
+    "file_name": "000000532481.jpg",
+    "image_id": 532481,
+    "prompt": "A realistic photo of a man is flying up in the air and having fun, the person on the left is a woman wearing a gray coat, standing and wearing a scarf, the person on the right is a girl wearing a green cardigan, running and wearing a watch",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a woman wearing a gray coat",
+    "person_right_gt": "a girl wearing a green cardigan"
+  },
+  {
+    "file_name": "000000534270.jpg",
+    "image_id": 534270,
+    "prompt": "A realistic photo of a people of people wearing umbrella hats next to the ocean, the person on the left is a girl wearing a pink vest, sitting and wearing a hat, the person on the right is a boy wearing a purple shirt, standing and wearing a glasses",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a girl wearing a pink vest",
+    "person_right_gt": "a boy wearing a purple shirt"
+  },
+  {
+    "file_name": "000000537153.jpg",
+    "image_id": 537153,
+    "prompt": "A realistic photo of people sitting on a bench next to the ocean, the person on the left is a woman wearing a brown cardigan, sitting and wearing a hat, the person on the right is a boy wearing a red coat, running and wearing a scarf",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a woman wearing a brown cardigan",
+    "person_right_gt": "a boy wearing a red coat"
+  },
+  {
+    "file_name": "000000537827.jpg",
+    "image_id": 537827,
+    "prompt": "A realistic photo of two baseball people stand near the baseball field, the person on the left is a boy wearing a pink vest, running and wearing a watch, the person on the right is a man wearing a gray hoodie, sitting and wearing a scarf",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a boy wearing a pink vest",
+    "person_right_gt": "a man wearing a gray hoodie"
+  },
+  {
+    "file_name": "000000538458.jpg",
+    "image_id": 538458,
+    "prompt": "A realistic photo of two skateboarders trying to film a skateboard trick, the person on the left is a woman wearing a red t-shirt, running and wearing a hat, the person on the right is a girl wearing a orange sweater, standing and wearing a glasses",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a woman wearing a red t-shirt",
+    "person_right_gt": "a girl wearing a orange sweater"
+  },
+  {
+    "file_name": "000000546475.jpg",
+    "image_id": 546475,
+    "prompt": "A realistic photo of a man that is holding a small baby, the person on the left is a boy wearing a orange vest, sitting and wearing a hat, the person on the right is a woman wearing a yellow blouse, running and wearing a watch",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a boy wearing a orange vest",
+    "person_right_gt": "a woman wearing a yellow blouse"
+  },
+  {
+    "file_name": "000000554266.jpg",
+    "image_id": 554266,
+    "prompt": "A realistic photo of adults seen lying in bed in mosaic photograph montage, the person on the left is a boy wearing a black t-shirt, sitting and wearing a glasses, the person on the right is a man wearing a red shirt, standing and wearing a scarf",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a boy wearing a black t-shirt",
+    "person_right_gt": "a man wearing a red shirt"
+  },
+  {
+    "file_name": "000000556193.jpg",
+    "image_id": 556193,
+    "prompt": "A realistic photo of people both working on the same computer screen, the person on the left is a woman wearing a green vest, running and wearing a watch, the person on the right is a boy wearing a white coat, walking and wearing a glasses",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a woman wearing a green vest",
+    "person_right_gt": "a boy wearing a white coat"
+  },
+  {
+    "file_name": "000000558213.jpg",
+    "image_id": 558213,
+    "prompt": "A realistic photo of a man in black shirt doing a trick on a skateboard, the person on the left is a girl wearing a red hoodie, talking and wearing a watch, the person on the right is a woman wearing a brown blouse, running and wearing a hat",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a girl wearing a red hoodie",
+    "person_right_gt": "a woman wearing a brown blouse"
+  },
+  {
+    "file_name": "000000563267.jpg",
+    "image_id": 563267,
+    "prompt": "A realistic photo of two guys in an office walking towards the chalk board, the person on the left is a woman wearing a blue t-shirt, walking and wearing a backpack, the person on the right is a girl wearing a brown vest, sitting and wearing a glasses",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a woman wearing a blue t-shirt",
+    "person_right_gt": "a girl wearing a brown vest"
+  },
+  {
+    "file_name": "000000567740.jpg",
+    "image_id": 567740,
+    "prompt": "A realistic photo of people with skis on at the top of a mountain, the person on the left is a man wearing a gray vest, talking and wearing a scarf, the person on the right is a woman wearing a orange suit, running and wearing a watch",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a man wearing a gray vest",
+    "person_right_gt": "a woman wearing a orange suit"
+  },
+  {
+    "file_name": "000000568213.jpg",
+    "image_id": 568213,
+    "prompt": "A realistic photo of a man is throwing a frisbee in a field, the person on the left is a man wearing a white cardigan, sitting and wearing a glasses, the person on the right is a woman wearing a orange jacket, standing and wearing a backpack",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a man wearing a white cardigan",
+    "person_right_gt": "a woman wearing a orange jacket"
+  },
+  {
+    "file_name": "000000571718.jpg",
+    "image_id": 571718,
+    "prompt": "A realistic photo of a man standing in front of a fruit stand containing several bunches of bananas, the person on the left is a woman wearing a blue suit, talking and wearing a watch, the person on the right is a girl wearing a green jacket, running and wearing a glasses",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a woman wearing a blue suit",
+    "person_right_gt": "a girl wearing a green jacket"
+  },
+  {
+    "file_name": "000000571857.jpg",
+    "image_id": 571857,
+    "prompt": "A realistic photo of people are camping out in the desert, the person on the left is a girl wearing a green vest, talking and wearing a watch, the person on the right is a woman wearing a orange jacket, walking and wearing a backpack",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a girl wearing a green vest",
+    "person_right_gt": "a woman wearing a orange jacket"
+  },
+  {
+    "file_name": "000000576955.jpg",
+    "image_id": 576955,
+    "prompt": "A realistic photo of a man is guiding a horse through a body of water, the person on the left is a woman wearing a orange shirt, standing and wearing a glasses, the person on the right is a girl wearing a brown suit, running and wearing a scarf",
+    "left_mask_id": 2,
+    "right_mask_id": 1,
+    "person_left_gt": "a woman wearing a orange shirt",
+    "person_right_gt": "a girl wearing a brown suit"
+  },
+  {
+    "file_name": "000000579307.jpg",
+    "image_id": 579307,
+    "prompt": "A realistic photo of a young boy who is holding a kite in his hands, the person on the left is a girl wearing a gray coat, running and wearing a hat, the person on the right is a woman wearing a orange blouse, walking and wearing a scarf",
+    "left_mask_id": 1,
+    "right_mask_id": 2,
+    "person_left_gt": "a girl wearing a gray coat",
+    "person_right_gt": "a woman wearing a orange blouse"
+  }
+]

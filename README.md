@@ -53,4 +53,5 @@ python check_data_coco_2person_strict.py > log_check_data_coco.log 2>&1
 python auto_copy_samples_2person_strict.py > log_auto_copy_samples.log 2>&1
 python unify_size_2person_strict.py > log_unify_size.log 2>&1
 python sync_filtered_samples.py > log_sync.log 2>&1
+python generate_co_pers_prom.py > log_generate_co_pers_prom.log 2>&1
 
