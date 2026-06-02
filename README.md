@@ -67,5 +67,5 @@ python test_251to263.py > log_test_251to263.log 2>&1
 
 合并各个eval_manifest json文件
 python merge_manifests.py > log_merge_manifests.log 2>&1
-
+python evaluate_quantitative.py > log_evaluate_quantitative.log 2>&1
 
