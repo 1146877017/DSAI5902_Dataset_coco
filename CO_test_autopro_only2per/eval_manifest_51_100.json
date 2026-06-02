@@ -1,0 +1,802 @@
+[
+    {
+        "image_id": 110449,
+        "sample_name": "000000110449",
+        "mode": "original_image",
+        "method_img_path": "results_51to100_original_image/000000110449_method.png",
+        "person1_gt": "a girl wearing a green t-shirt",
+        "person2_gt": "a woman wearing a yellow coat"
+    },
+    {
+        "image_id": 111207,
+        "sample_name": "000000111207",
+        "mode": "original_image",
+        "method_img_path": "results_51to100_original_image/000000111207_method.png",
+        "person1_gt": "a girl wearing a purple cardigan",
+        "person2_gt": "a woman wearing a gray shirt"
+    },
+    {
+        "image_id": 119365,
+        "sample_name": "000000119365",
+        "mode": "original_image",
+        "method_img_path": "results_51to100_original_image/000000119365_method.png",
+        "person1_gt": "a girl wearing a pink cardigan",
+        "person2_gt": "a man wearing a gray hoodie"
+    },
+    {
+        "image_id": 122217,
+        "sample_name": "000000122217",
+        "mode": "original_image",
+        "method_img_path": "results_51to100_original_image/000000122217_method.png",
+        "person1_gt": "a woman wearing a white jacket",
+        "person2_gt": "a boy wearing a purple blouse"
+    },
+    {
+        "image_id": 127263,
+        "sample_name": "000000127263",
+        "mode": "original_image",
+        "method_img_path": "results_51to100_original_image/000000127263_method.png",
+        "person1_gt": "a woman wearing a gray jacket",
+        "person2_gt": "a man wearing a purple blouse"
+    },
+    {
+        "image_id": 132931,
+        "sample_name": "000000132931",
+        "mode": "original_image",
+        "method_img_path": "results_51to100_original_image/000000132931_method.png",
+        "person1_gt": "a girl wearing a white coat",
+        "person2_gt": "a woman wearing a gray sweater"
+    },
+    {
+        "image_id": 137246,
+        "sample_name": "000000137246",
+        "mode": "original_image",
+        "method_img_path": "results_51to100_original_image/000000137246_method.png",
+        "person1_gt": "a woman wearing a yellow shirt",
+        "person2_gt": "a man wearing a blue cardigan"
+    },
+    {
+        "image_id": 137294,
+        "sample_name": "000000137294",
+        "mode": "original_image",
+        "method_img_path": "results_51to100_original_image/000000137294_method.png",
+        "person1_gt": "a girl wearing a gray cardigan",
+        "person2_gt": "a boy wearing a blue hoodie"
+    },
+    {
+        "image_id": 140583,
+        "sample_name": "000000140583",
+        "mode": "original_image",
+        "method_img_path": "results_51to100_original_image/000000140583_method.png",
+        "person1_gt": "a boy wearing a black cardigan",
+        "person2_gt": "a girl wearing a blue shirt"
+    },
+    {
+        "image_id": 142585,
+        "sample_name": "000000142585",
+        "mode": "original_image",
+        "method_img_path": "results_51to100_original_image/000000142585_method.png",
+        "person1_gt": "a man wearing a gray t-shirt",
+        "person2_gt": "a boy wearing a yellow sweater"
+    },
+    {
+        "image_id": 142790,
+        "sample_name": "000000142790",
+        "mode": "original_image",
+        "method_img_path": "results_51to100_original_image/000000142790_method.png",
+        "person1_gt": "a girl wearing a blue suit",
+        "person2_gt": "a woman wearing a pink shirt"
+    },
+    {
+        "image_id": 146457,
+        "sample_name": "000000146457",
+        "mode": "original_image",
+        "method_img_path": "results_51to100_original_image/000000146457_method.png",
+        "person1_gt": "a girl wearing a purple vest",
+        "person2_gt": "a woman wearing a green sweater"
+    },
+    {
+        "image_id": 150417,
+        "sample_name": "000000150417",
+        "mode": "original_image",
+        "method_img_path": "results_51to100_original_image/000000150417_method.png",
+        "person1_gt": "a girl wearing a black hoodie",
+        "person2_gt": "a woman wearing a orange blouse"
+    },
+    {
+        "image_id": 151657,
+        "sample_name": "000000151657",
+        "mode": "original_image",
+        "method_img_path": "results_51to100_original_image/000000151657_method.png",
+        "person1_gt": "a boy wearing a yellow sweater",
+        "person2_gt": "a girl wearing a white suit"
+    },
+    {
+        "image_id": 156924,
+        "sample_name": "000000156924",
+        "mode": "original_image",
+        "method_img_path": "results_51to100_original_image/000000156924_method.png",
+        "person1_gt": "a woman wearing a yellow blouse",
+        "person2_gt": "a boy wearing a purple vest"
+    },
+    {
+        "image_id": 157928,
+        "sample_name": "000000157928",
+        "mode": "original_image",
+        "method_img_path": "results_51to100_original_image/000000157928_method.png",
+        "person1_gt": "a boy wearing a black coat",
+        "person2_gt": "a girl wearing a yellow hoodie"
+    },
+    {
+        "image_id": 158945,
+        "sample_name": "000000158945",
+        "mode": "original_image",
+        "method_img_path": "results_51to100_original_image/000000158945_method.png",
+        "person1_gt": "a boy wearing a pink suit",
+        "person2_gt": "a woman wearing a white blouse"
+    },
+    {
+        "image_id": 161925,
+        "sample_name": "000000161925",
+        "mode": "original_image",
+        "method_img_path": "results_51to100_original_image/000000161925_method.png",
+        "person1_gt": "a woman wearing a blue jacket",
+        "person2_gt": "a boy wearing a pink hoodie"
+    },
+    {
+        "image_id": 163118,
+        "sample_name": "000000163118",
+        "mode": "original_image",
+        "method_img_path": "results_51to100_original_image/000000163118_method.png",
+        "person1_gt": "a woman wearing a yellow hoodie",
+        "person2_gt": "a girl wearing a black suit"
+    },
+    {
+        "image_id": 163257,
+        "sample_name": "000000163257",
+        "mode": "original_image",
+        "method_img_path": "results_51to100_original_image/000000163257_method.png",
+        "person1_gt": "a man wearing a pink jacket",
+        "person2_gt": "a girl wearing a black blouse"
+    },
+    {
+        "image_id": 164602,
+        "sample_name": "000000164602",
+        "mode": "original_image",
+        "method_img_path": "results_51to100_original_image/000000164602_method.png",
+        "person1_gt": "a girl wearing a white shirt",
+        "person2_gt": "a man wearing a green sweater"
+    },
+    {
+        "image_id": 166165,
+        "sample_name": "000000166165",
+        "mode": "original_image",
+        "method_img_path": "results_51to100_original_image/000000166165_method.png",
+        "person1_gt": "a boy wearing a gray jacket",
+        "person2_gt": "a man wearing a red cardigan"
+    },
+    {
+        "image_id": 166768,
+        "sample_name": "000000166768",
+        "mode": "original_image",
+        "method_img_path": "results_51to100_original_image/000000166768_method.png",
+        "person1_gt": "a girl wearing a brown hoodie",
+        "person2_gt": "a woman wearing a gray vest"
+    },
+    {
+        "image_id": 168337,
+        "sample_name": "000000168337",
+        "mode": "original_image",
+        "method_img_path": "results_51to100_original_image/000000168337_method.png",
+        "person1_gt": "a woman wearing a brown shirt",
+        "person2_gt": "a boy wearing a gray t-shirt"
+    },
+    {
+        "image_id": 170613,
+        "sample_name": "000000170613",
+        "mode": "original_image",
+        "method_img_path": "results_51to100_original_image/000000170613_method.png",
+        "person1_gt": "a man wearing a green t-shirt",
+        "person2_gt": "a woman wearing a pink jacket"
+    },
+    {
+        "image_id": 172648,
+        "sample_name": "000000172648",
+        "mode": "original_image",
+        "method_img_path": "results_51to100_original_image/000000172648_method.png",
+        "person1_gt": "a woman wearing a black blouse",
+        "person2_gt": "a girl wearing a gray t-shirt"
+    },
+    {
+        "image_id": 172935,
+        "sample_name": "000000172935",
+        "mode": "original_image",
+        "method_img_path": "results_51to100_original_image/000000172935_method.png",
+        "person1_gt": "a man wearing a yellow sweater",
+        "person2_gt": "a girl wearing a green jacket"
+    },
+    {
+        "image_id": 173302,
+        "sample_name": "000000173302",
+        "mode": "original_image",
+        "method_img_path": "results_51to100_original_image/000000173302_method.png",
+        "person1_gt": "a boy wearing a blue sweater",
+        "person2_gt": "a girl wearing a orange coat"
+    },
+    {
+        "image_id": 173799,
+        "sample_name": "000000173799",
+        "mode": "original_image",
+        "method_img_path": "results_51to100_original_image/000000173799_method.png",
+        "person1_gt": "a man wearing a red suit",
+        "person2_gt": "a girl wearing a purple sweater"
+    },
+    {
+        "image_id": 177489,
+        "sample_name": "000000177489",
+        "mode": "original_image",
+        "method_img_path": "results_51to100_original_image/000000177489_method.png",
+        "person1_gt": "a woman wearing a orange blouse",
+        "person2_gt": "a boy wearing a pink sweater"
+    },
+    {
+        "image_id": 178982,
+        "sample_name": "000000178982",
+        "mode": "original_image",
+        "method_img_path": "results_51to100_original_image/000000178982_method.png",
+        "person1_gt": "a woman wearing a purple suit",
+        "person2_gt": "a girl wearing a white t-shirt"
+    },
+    {
+        "image_id": 180560,
+        "sample_name": "000000180560",
+        "mode": "original_image",
+        "method_img_path": "results_51to100_original_image/000000180560_method.png",
+        "person1_gt": "a boy wearing a red t-shirt",
+        "person2_gt": "a woman wearing a orange suit"
+    },
+    {
+        "image_id": 182155,
+        "sample_name": "000000182155",
+        "mode": "original_image",
+        "method_img_path": "results_51to100_original_image/000000182155_method.png",
+        "person1_gt": "a boy wearing a orange shirt",
+        "person2_gt": "a girl wearing a purple hoodie"
+    },
+    {
+        "image_id": 182611,
+        "sample_name": "000000182611",
+        "mode": "original_image",
+        "method_img_path": "results_51to100_original_image/000000182611_method.png",
+        "person1_gt": "a girl wearing a pink sweater",
+        "person2_gt": "a man wearing a green blouse"
+    },
+    {
+        "image_id": 183716,
+        "sample_name": "000000183716",
+        "mode": "original_image",
+        "method_img_path": "results_51to100_original_image/000000183716_method.png",
+        "person1_gt": "a woman wearing a red coat",
+        "person2_gt": "a man wearing a pink t-shirt"
+    },
+    {
+        "image_id": 192699,
+        "sample_name": "000000192699",
+        "mode": "original_image",
+        "method_img_path": "results_51to100_original_image/000000192699_method.png",
+        "person1_gt": "a girl wearing a pink coat",
+        "person2_gt": "a man wearing a black blouse"
+    },
+    {
+        "image_id": 194716,
+        "sample_name": "000000194716",
+        "mode": "original_image",
+        "method_img_path": "results_51to100_original_image/000000194716_method.png",
+        "person1_gt": "a girl wearing a pink t-shirt",
+        "person2_gt": "a woman wearing a green sweater"
+    },
+    {
+        "image_id": 200961,
+        "sample_name": "000000200961",
+        "mode": "original_image",
+        "method_img_path": "results_51to100_original_image/000000200961_method.png",
+        "person1_gt": "a girl wearing a brown blouse",
+        "person2_gt": "a boy wearing a gray jacket"
+    },
+    {
+        "image_id": 201426,
+        "sample_name": "000000201426",
+        "mode": "original_image",
+        "method_img_path": "results_51to100_original_image/000000201426_method.png",
+        "person1_gt": "a woman wearing a white hoodie",
+        "person2_gt": "a girl wearing a yellow coat"
+    },
+    {
+        "image_id": 203864,
+        "sample_name": "000000203864",
+        "mode": "original_image",
+        "method_img_path": "results_51to100_original_image/000000203864_method.png",
+        "person1_gt": "a woman wearing a gray blouse",
+        "person2_gt": "a boy wearing a green shirt"
+    },
+    {
+        "image_id": 205324,
+        "sample_name": "000000205324",
+        "mode": "original_image",
+        "method_img_path": "results_51to100_original_image/000000205324_method.png",
+        "person1_gt": "a girl wearing a pink shirt",
+        "person2_gt": "a boy wearing a orange jacket"
+    },
+    {
+        "image_id": 206487,
+        "sample_name": "000000206487",
+        "mode": "original_image",
+        "method_img_path": "results_51to100_original_image/000000206487_method.png",
+        "person1_gt": "a girl wearing a brown t-shirt",
+        "person2_gt": "a woman wearing a purple suit"
+    },
+    {
+        "image_id": 206838,
+        "sample_name": "000000206838",
+        "mode": "original_image",
+        "method_img_path": "results_51to100_original_image/000000206838_method.png",
+        "person1_gt": "a girl wearing a gray hoodie",
+        "person2_gt": "a man wearing a black t-shirt"
+    },
+    {
+        "image_id": 210789,
+        "sample_name": "000000210789",
+        "mode": "original_image",
+        "method_img_path": "results_51to100_original_image/000000210789_method.png",
+        "person1_gt": "a boy wearing a red shirt",
+        "person2_gt": "a woman wearing a white sweater"
+    },
+    {
+        "image_id": 212573,
+        "sample_name": "000000212573",
+        "mode": "original_image",
+        "method_img_path": "results_51to100_original_image/000000212573_method.png",
+        "person1_gt": "a man wearing a gray jacket",
+        "person2_gt": "a boy wearing a green cardigan"
+    },
+    {
+        "image_id": 213547,
+        "sample_name": "000000213547",
+        "mode": "original_image",
+        "method_img_path": "results_51to100_original_image/000000213547_method.png",
+        "person1_gt": "a man wearing a orange blouse",
+        "person2_gt": "a woman wearing a black sweater"
+    },
+    {
+        "image_id": 214192,
+        "sample_name": "000000214192",
+        "mode": "original_image",
+        "method_img_path": "results_51to100_original_image/000000214192_method.png",
+        "person1_gt": "a girl wearing a brown coat",
+        "person2_gt": "a woman wearing a black sweater"
+    },
+    {
+        "image_id": 214703,
+        "sample_name": "000000214703",
+        "mode": "original_image",
+        "method_img_path": "results_51to100_original_image/000000214703_method.png",
+        "person1_gt": "a boy wearing a purple suit",
+        "person2_gt": "a man wearing a brown sweater"
+    },
+    {
+        "image_id": 214753,
+        "sample_name": "000000214753",
+        "mode": "original_image",
+        "method_img_path": "results_51to100_original_image/000000214753_method.png",
+        "person1_gt": "a woman wearing a orange hoodie",
+        "person2_gt": "a boy wearing a black suit"
+    },
+    {
+        "image_id": 215072,
+        "sample_name": "000000215072",
+        "mode": "original_image",
+        "method_img_path": "results_51to100_original_image/000000215072_method.png",
+        "person1_gt": "a woman wearing a black shirt",
+        "person2_gt": "a man wearing a orange suit"
+    },
+    {
+        "image_id": 110449,
+        "sample_name": "000000110449",
+        "mode": "pure_background",
+        "method_img_path": "results_51to100_pure_background/000000110449_method.png",
+        "person1_gt": "a girl wearing a green t-shirt",
+        "person2_gt": "a woman wearing a yellow coat"
+    },
+    {
+        "image_id": 111207,
+        "sample_name": "000000111207",
+        "mode": "pure_background",
+        "method_img_path": "results_51to100_pure_background/000000111207_method.png",
+        "person1_gt": "a girl wearing a purple cardigan",
+        "person2_gt": "a woman wearing a gray shirt"
+    },
+    {
+        "image_id": 119365,
+        "sample_name": "000000119365",
+        "mode": "pure_background",
+        "method_img_path": "results_51to100_pure_background/000000119365_method.png",
+        "person1_gt": "a girl wearing a pink cardigan",
+        "person2_gt": "a man wearing a gray hoodie"
+    },
+    {
+        "image_id": 122217,
+        "sample_name": "000000122217",
+        "mode": "pure_background",
+        "method_img_path": "results_51to100_pure_background/000000122217_method.png",
+        "person1_gt": "a woman wearing a white jacket",
+        "person2_gt": "a boy wearing a purple blouse"
+    },
+    {
+        "image_id": 127263,
+        "sample_name": "000000127263",
+        "mode": "pure_background",
+        "method_img_path": "results_51to100_pure_background/000000127263_method.png",
+        "person1_gt": "a woman wearing a gray jacket",
+        "person2_gt": "a man wearing a purple blouse"
+    },
+    {
+        "image_id": 132931,
+        "sample_name": "000000132931",
+        "mode": "pure_background",
+        "method_img_path": "results_51to100_pure_background/000000132931_method.png",
+        "person1_gt": "a girl wearing a white coat",
+        "person2_gt": "a woman wearing a gray sweater"
+    },
+    {
+        "image_id": 137246,
+        "sample_name": "000000137246",
+        "mode": "pure_background",
+        "method_img_path": "results_51to100_pure_background/000000137246_method.png",
+        "person1_gt": "a woman wearing a yellow shirt",
+        "person2_gt": "a man wearing a blue cardigan"
+    },
+    {
+        "image_id": 137294,
+        "sample_name": "000000137294",
+        "mode": "pure_background",
+        "method_img_path": "results_51to100_pure_background/000000137294_method.png",
+        "person1_gt": "a girl wearing a gray cardigan",
+        "person2_gt": "a boy wearing a blue hoodie"
+    },
+    {
+        "image_id": 140583,
+        "sample_name": "000000140583",
+        "mode": "pure_background",
+        "method_img_path": "results_51to100_pure_background/000000140583_method.png",
+        "person1_gt": "a boy wearing a black cardigan",
+        "person2_gt": "a girl wearing a blue shirt"
+    },
+    {
+        "image_id": 142585,
+        "sample_name": "000000142585",
+        "mode": "pure_background",
+        "method_img_path": "results_51to100_pure_background/000000142585_method.png",
+        "person1_gt": "a man wearing a gray t-shirt",
+        "person2_gt": "a boy wearing a yellow sweater"
+    },
+    {
+        "image_id": 142790,
+        "sample_name": "000000142790",
+        "mode": "pure_background",
+        "method_img_path": "results_51to100_pure_background/000000142790_method.png",
+        "person1_gt": "a girl wearing a blue suit",
+        "person2_gt": "a woman wearing a pink shirt"
+    },
+    {
+        "image_id": 146457,
+        "sample_name": "000000146457",
+        "mode": "pure_background",
+        "method_img_path": "results_51to100_pure_background/000000146457_method.png",
+        "person1_gt": "a girl wearing a purple vest",
+        "person2_gt": "a woman wearing a green sweater"
+    },
+    {
+        "image_id": 150417,
+        "sample_name": "000000150417",
+        "mode": "pure_background",
+        "method_img_path": "results_51to100_pure_background/000000150417_method.png",
+        "person1_gt": "a girl wearing a black hoodie",
+        "person2_gt": "a woman wearing a orange blouse"
+    },
+    {
+        "image_id": 151657,
+        "sample_name": "000000151657",
+        "mode": "pure_background",
+        "method_img_path": "results_51to100_pure_background/000000151657_method.png",
+        "person1_gt": "a boy wearing a yellow sweater",
+        "person2_gt": "a girl wearing a white suit"
+    },
+    {
+        "image_id": 156924,
+        "sample_name": "000000156924",
+        "mode": "pure_background",
+        "method_img_path": "results_51to100_pure_background/000000156924_method.png",
+        "person1_gt": "a woman wearing a yellow blouse",
+        "person2_gt": "a boy wearing a purple vest"
+    },
+    {
+        "image_id": 157928,
+        "sample_name": "000000157928",
+        "mode": "pure_background",
+        "method_img_path": "results_51to100_pure_background/000000157928_method.png",
+        "person1_gt": "a boy wearing a black coat",
+        "person2_gt": "a girl wearing a yellow hoodie"
+    },
+    {
+        "image_id": 158945,
+        "sample_name": "000000158945",
+        "mode": "pure_background",
+        "method_img_path": "results_51to100_pure_background/000000158945_method.png",
+        "person1_gt": "a boy wearing a pink suit",
+        "person2_gt": "a woman wearing a white blouse"
+    },
+    {
+        "image_id": 161925,
+        "sample_name": "000000161925",
+        "mode": "pure_background",
+        "method_img_path": "results_51to100_pure_background/000000161925_method.png",
+        "person1_gt": "a woman wearing a blue jacket",
+        "person2_gt": "a boy wearing a pink hoodie"
+    },
+    {
+        "image_id": 163118,
+        "sample_name": "000000163118",
+        "mode": "pure_background",
+        "method_img_path": "results_51to100_pure_background/000000163118_method.png",
+        "person1_gt": "a woman wearing a yellow hoodie",
+        "person2_gt": "a girl wearing a black suit"
+    },
+    {
+        "image_id": 163257,
+        "sample_name": "000000163257",
+        "mode": "pure_background",
+        "method_img_path": "results_51to100_pure_background/000000163257_method.png",
+        "person1_gt": "a man wearing a pink jacket",
+        "person2_gt": "a girl wearing a black blouse"
+    },
+    {
+        "image_id": 164602,
+        "sample_name": "000000164602",
+        "mode": "pure_background",
+        "method_img_path": "results_51to100_pure_background/000000164602_method.png",
+        "person1_gt": "a girl wearing a white shirt",
+        "person2_gt": "a man wearing a green sweater"
+    },
+    {
+        "image_id": 166165,
+        "sample_name": "000000166165",
+        "mode": "pure_background",
+        "method_img_path": "results_51to100_pure_background/000000166165_method.png",
+        "person1_gt": "a boy wearing a gray jacket",
+        "person2_gt": "a man wearing a red cardigan"
+    },
+    {
+        "image_id": 166768,
+        "sample_name": "000000166768",
+        "mode": "pure_background",
+        "method_img_path": "results_51to100_pure_background/000000166768_method.png",
+        "person1_gt": "a girl wearing a brown hoodie",
+        "person2_gt": "a woman wearing a gray vest"
+    },
+    {
+        "image_id": 168337,
+        "sample_name": "000000168337",
+        "mode": "pure_background",
+        "method_img_path": "results_51to100_pure_background/000000168337_method.png",
+        "person1_gt": "a woman wearing a brown shirt",
+        "person2_gt": "a boy wearing a gray t-shirt"
+    },
+    {
+        "image_id": 170613,
+        "sample_name": "000000170613",
+        "mode": "pure_background",
+        "method_img_path": "results_51to100_pure_background/000000170613_method.png",
+        "person1_gt": "a man wearing a green t-shirt",
+        "person2_gt": "a woman wearing a pink jacket"
+    },
+    {
+        "image_id": 172648,
+        "sample_name": "000000172648",
+        "mode": "pure_background",
+        "method_img_path": "results_51to100_pure_background/000000172648_method.png",
+        "person1_gt": "a woman wearing a black blouse",
+        "person2_gt": "a girl wearing a gray t-shirt"
+    },
+    {
+        "image_id": 172935,
+        "sample_name": "000000172935",
+        "mode": "pure_background",
+        "method_img_path": "results_51to100_pure_background/000000172935_method.png",
+        "person1_gt": "a man wearing a yellow sweater",
+        "person2_gt": "a girl wearing a green jacket"
+    },
+    {
+        "image_id": 173302,
+        "sample_name": "000000173302",
+        "mode": "pure_background",
+        "method_img_path": "results_51to100_pure_background/000000173302_method.png",
+        "person1_gt": "a boy wearing a blue sweater",
+        "person2_gt": "a girl wearing a orange coat"
+    },
+    {
+        "image_id": 173799,
+        "sample_name": "000000173799",
+        "mode": "pure_background",
+        "method_img_path": "results_51to100_pure_background/000000173799_method.png",
+        "person1_gt": "a man wearing a red suit",
+        "person2_gt": "a girl wearing a purple sweater"
+    },
+    {
+        "image_id": 177489,
+        "sample_name": "000000177489",
+        "mode": "pure_background",
+        "method_img_path": "results_51to100_pure_background/000000177489_method.png",
+        "person1_gt": "a woman wearing a orange blouse",
+        "person2_gt": "a boy wearing a pink sweater"
+    },
+    {
+        "image_id": 178982,
+        "sample_name": "000000178982",
+        "mode": "pure_background",
+        "method_img_path": "results_51to100_pure_background/000000178982_method.png",
+        "person1_gt": "a woman wearing a purple suit",
+        "person2_gt": "a girl wearing a white t-shirt"
+    },
+    {
+        "image_id": 180560,
+        "sample_name": "000000180560",
+        "mode": "pure_background",
+        "method_img_path": "results_51to100_pure_background/000000180560_method.png",
+        "person1_gt": "a boy wearing a red t-shirt",
+        "person2_gt": "a woman wearing a orange suit"
+    },
+    {
+        "image_id": 182155,
+        "sample_name": "000000182155",
+        "mode": "pure_background",
+        "method_img_path": "results_51to100_pure_background/000000182155_method.png",
+        "person1_gt": "a boy wearing a orange shirt",
+        "person2_gt": "a girl wearing a purple hoodie"
+    },
+    {
+        "image_id": 182611,
+        "sample_name": "000000182611",
+        "mode": "pure_background",
+        "method_img_path": "results_51to100_pure_background/000000182611_method.png",
+        "person1_gt": "a girl wearing a pink sweater",
+        "person2_gt": "a man wearing a green blouse"
+    },
+    {
+        "image_id": 183716,
+        "sample_name": "000000183716",
+        "mode": "pure_background",
+        "method_img_path": "results_51to100_pure_background/000000183716_method.png",
+        "person1_gt": "a woman wearing a red coat",
+        "person2_gt": "a man wearing a pink t-shirt"
+    },
+    {
+        "image_id": 192699,
+        "sample_name": "000000192699",
+        "mode": "pure_background",
+        "method_img_path": "results_51to100_pure_background/000000192699_method.png",
+        "person1_gt": "a girl wearing a pink coat",
+        "person2_gt": "a man wearing a black blouse"
+    },
+    {
+        "image_id": 194716,
+        "sample_name": "000000194716",
+        "mode": "pure_background",
+        "method_img_path": "results_51to100_pure_background/000000194716_method.png",
+        "person1_gt": "a girl wearing a pink t-shirt",
+        "person2_gt": "a woman wearing a green sweater"
+    },
+    {
+        "image_id": 200961,
+        "sample_name": "000000200961",
+        "mode": "pure_background",
+        "method_img_path": "results_51to100_pure_background/000000200961_method.png",
+        "person1_gt": "a girl wearing a brown blouse",
+        "person2_gt": "a boy wearing a gray jacket"
+    },
+    {
+        "image_id": 201426,
+        "sample_name": "000000201426",
+        "mode": "pure_background",
+        "method_img_path": "results_51to100_pure_background/000000201426_method.png",
+        "person1_gt": "a woman wearing a white hoodie",
+        "person2_gt": "a girl wearing a yellow coat"
+    },
+    {
+        "image_id": 203864,
+        "sample_name": "000000203864",
+        "mode": "pure_background",
+        "method_img_path": "results_51to100_pure_background/000000203864_method.png",
+        "person1_gt": "a woman wearing a gray blouse",
+        "person2_gt": "a boy wearing a green shirt"
+    },
+    {
+        "image_id": 205324,
+        "sample_name": "000000205324",
+        "mode": "pure_background",
+        "method_img_path": "results_51to100_pure_background/000000205324_method.png",
+        "person1_gt": "a girl wearing a pink shirt",
+        "person2_gt": "a boy wearing a orange jacket"
+    },
+    {
+        "image_id": 206487,
+        "sample_name": "000000206487",
+        "mode": "pure_background",
+        "method_img_path": "results_51to100_pure_background/000000206487_method.png",
+        "person1_gt": "a girl wearing a brown t-shirt",
+        "person2_gt": "a woman wearing a purple suit"
+    },
+    {
+        "image_id": 206838,
+        "sample_name": "000000206838",
+        "mode": "pure_background",
+        "method_img_path": "results_51to100_pure_background/000000206838_method.png",
+        "person1_gt": "a girl wearing a gray hoodie",
+        "person2_gt": "a man wearing a black t-shirt"
+    },
+    {
+        "image_id": 210789,
+        "sample_name": "000000210789",
+        "mode": "pure_background",
+        "method_img_path": "results_51to100_pure_background/000000210789_method.png",
+        "person1_gt": "a boy wearing a red shirt",
+        "person2_gt": "a woman wearing a white sweater"
+    },
+    {
+        "image_id": 212573,
+        "sample_name": "000000212573",
+        "mode": "pure_background",
+        "method_img_path": "results_51to100_pure_background/000000212573_method.png",
+        "person1_gt": "a man wearing a gray jacket",
+        "person2_gt": "a boy wearing a green cardigan"
+    },
+    {
+        "image_id": 213547,
+        "sample_name": "000000213547",
+        "mode": "pure_background",
+        "method_img_path": "results_51to100_pure_background/000000213547_method.png",
+        "person1_gt": "a man wearing a orange blouse",
+        "person2_gt": "a woman wearing a black sweater"
+    },
+    {
+        "image_id": 214192,
+        "sample_name": "000000214192",
+        "mode": "pure_background",
+        "method_img_path": "results_51to100_pure_background/000000214192_method.png",
+        "person1_gt": "a girl wearing a brown coat",
+        "person2_gt": "a woman wearing a black sweater"
+    },
+    {
+        "image_id": 214703,
+        "sample_name": "000000214703",
+        "mode": "pure_background",
+        "method_img_path": "results_51to100_pure_background/000000214703_method.png",
+        "person1_gt": "a boy wearing a purple suit",
+        "person2_gt": "a man wearing a brown sweater"
+    },
+    {
+        "image_id": 214753,
+        "sample_name": "000000214753",
+        "mode": "pure_background",
+        "method_img_path": "results_51to100_pure_background/000000214753_method.png",
+        "person1_gt": "a woman wearing a orange hoodie",
+        "person2_gt": "a boy wearing a black suit"
+    },
+    {
+        "image_id": 215072,
+        "sample_name": "000000215072",
+        "mode": "pure_background",
+        "method_img_path": "results_51to100_pure_background/000000215072_method.png",
+        "person1_gt": "a woman wearing a black shirt",
+        "person2_gt": "a man wearing a orange suit"
+    }
+]

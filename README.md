@@ -31,6 +31,8 @@ python consolidate_results.py > consolidate_results.log 2>&1
 
 python evaluate_quantitative.py > evaluate_quantitative.log 2>&1
 
+严格确保画面中仅保留2个人：
+
 前置数据处理执行顺序：
 select_val2017_2person_strict.py
 update_ids_after_cleanup.py
@@ -54,6 +56,11 @@ python auto_copy_samples_2person_strict.py > log_auto_copy_samples.log 2>&1
 python unify_size_2person_strict.py > log_unify_size.log 2>&1
 python sync_filtered_samples.py > log_sync.log 2>&1
 python generate_co_pers_prom.py > log_generate_co_pers_prom.log 2>&1
-python test.py > log_test.log 2>&1
+python test_1to50.py > log_test_1to50.log 2>&1
+python test_51to100.py > log_test_51to100.log 2>&1
+python test_101to150.py > log_test_101to150.log 2>&1
+python test_151to200.py > log_test_151to200.log 2>&1
+python test_201to250.py > log_test_201to250.log 2>&1
+python test_251to263.py > log_test_251to263.log 2>&1
 
 
