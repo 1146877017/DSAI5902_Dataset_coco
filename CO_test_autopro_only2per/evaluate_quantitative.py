@@ -162,62 +162,87 @@ def main():
     }
     
     final_report = {}
+    gt_kps_cache = {}  # 性能优化：用于缓存 GT 骨骼点，避免千次重复计算
     
     for method in METHODS:
-        metrics = {"pose_pckh": [], "depth_rmse": [], "depth_ssim": [], "clip_text_sim": [], "layout_correct": 0}
+        # 将指标按模式（original_image / pure_background）解耦初始化
+        metrics = {
+            "original_image": {
+                "pose_pckh": [], "depth_rmse": [], "depth_ssim": [], "clip_text_sim": [], "layout_correct": 0
+            },
+            "pure_background": {
+                "pose_pckh": [], "depth_rmse": [], "depth_ssim": [], "clip_text_sim": [], "layout_correct": 0
+            }
+        }
+        
+        print(f"\n[+] 开始评测方法: {method} ...")
         
         for item in manifest_data:
             sample_name = item["sample_name"]
-            mode = item["mode"]
+            mode = item["mode"]  # "original_image" 或 "pure_background"
             
-            # 动态定位图像夹
+            # 动态定位图像文件夹
             if USE_CONSOLIDATED:
                 output_dir = f"results_all_{mode}"
             else:
                 output_dir = f"results_{START_IDX}to{END_IDX}_{mode}" 
                 
             gen_path = os.path.join(output_dir, f"{sample_name}{suffix_map[method]}")
-            
             gt_raw_path = os.path.join(GT_RAW, f"{sample_name}.jpg")
             gt_depth_path = os.path.join(GT_BASE, f"depth_{mode}", f"{sample_name}.png") 
             gt_mask_path = os.path.join(GT_BASE, "mask", f"{sample_name}.png")
-                        
+                                
             gen_img = cv2.imread(gen_path)
             if gen_img is None: 
                 print(f"[-] 警报: 缺失图像 {gen_path}，已跳过该样本。")
                 continue
             
-            # 1. Pose 评估
-            gt_kps = extract_pose_keypoints(gt_raw_path) 
+            # 1. Pose 评估（带缓存优化）
+            if sample_name not in gt_kps_cache:
+                gt_kps_cache[sample_name] = extract_pose_keypoints(gt_raw_path)
+            gt_kps = gt_kps_cache[sample_name]
+            
             gen_kps = extract_pose_keypoints(gen_path)
-            metrics["pose_pckh"].append(compute_pckh(gt_kps, gen_kps))
+            pckh_val = compute_pckh(gt_kps, gen_kps)
+            metrics[mode]["pose_pckh"].append(pckh_val)
             
             # 2. Depth 评估
             rmse, ssim_val = compute_depth_metrics(gen_img, gt_depth_path)
-            metrics["depth_rmse"].append(rmse)
-            metrics["depth_ssim"].append(ssim_val)
+            metrics[mode]["depth_rmse"].append(rmse)
+            metrics[mode]["depth_ssim"].append(ssim_val)
             
             # 3. CLIP 文本相似度评估
             clip_sim = compute_split_person_clip(gen_img, gt_mask_path, item["person1_gt"], item["person2_gt"])
-            metrics["clip_text_sim"].append(clip_sim)
+            metrics[mode]["clip_text_sim"].append(clip_sim)
             
-            # 4. 布局准确率判定
-            if metrics["pose_pckh"][-1] > 0.5 and metrics["depth_ssim"][-1] > 0.6:
-                metrics["layout_correct"] += 1
-                
-        total = len(metrics["pose_pckh"]) if len(metrics["pose_pckh"]) > 0 else 1
-        final_report[method] = {
-            "Pose PCKh@0.5": round(np.mean(metrics["pose_pckh"]), 4),
-            "Depth RMSE": round(np.mean(metrics["depth_rmse"]), 4),
-            "Depth SSIM": round(np.mean(metrics["depth_ssim"]), 4),
-            "Masked Text-Image CLIP Similarity": round(np.mean(metrics["clip_text_sim"]), 4),
-            "Layout Accuracy": round(metrics["layout_correct"] / total, 4)
-        }
-        print(f">> {method} 评测完毕。布局准确率: {final_report[method]['Layout Accuracy']:.2%}")
+            # 4. 布局准确率自适应判定
+            if mode == "original_image":
+                # 原图模式：检测出合理的两组骨骼点，且深度保留完好
+                if pckh_val > 0.5 and ssim_val > 0.6:
+                    metrics[mode]["layout_correct"] += 1
+            elif mode == "pure_background":
+                # 纯背景模式：成功消去了所有人（检测不到2人），且背景深度场一致
+                if gen_kps is None and ssim_val > 0.6:
+                    metrics[mode]["layout_correct"] += 1
+                    
+        # 组装最终的分模式报告结构
+        final_report[method] = {}
+        for m in ["original_image", "pure_background"]:
+            m_data = metrics[m]
+            total = len(m_data["pose_pckh"]) if len(m_data["pose_pckh"]) > 0 else 1
+            
+            final_report[method][m] = {
+                "Pose PCKh@0.5": round(np.mean(m_data["pose_pckh"]), 4),
+                "Depth RMSE": round(np.mean(m_data["depth_rmse"]), 4),
+                "Depth SSIM": round(np.mean(m_data["depth_ssim"]), 4),
+                "Masked Text-Image CLIP Similarity": round(np.mean(m_data["clip_text_sim"]), 4),
+                "Layout Accuracy": round(m_data["layout_correct"] / total, 4)
+            }
+            print(f"  -> 模式 [{m}] 评测完毕。布局准确率: {final_report[method][m]['Layout Accuracy']:.2%}")
         
     with open(SAVE_PATH, 'w', encoding='utf-8') as f:
         json.dump(final_report, f, indent=4, ensure_ascii=False)
-    print(f"\n 定量评估全面完成！最终结果报告已保存至 `{SAVE_PATH}`")
+    print(f"\n[+] 定量评估全面完成！最终解耦结果报告已保存至 `{SAVE_PATH}`")
 
 if __name__ == "__main__":
     main()
