@@ -63,4 +63,9 @@ python test_151to200.py > log_test_151to200.log 2>&1
 python test_201to250.py > log_test_201to250.log 2>&1
 python test_251to263.py > log_test_251to263.log 2>&1
 
+手动将results_251to263_pure_background、results_251to263_original_image、results_201to250_pure_background、results_201to250_original_image........results_1to50_pure_background、results_1to50_original_image中的结果分别复制到results_all_pure_background和results_all_original_image中。
+
+合并各个eval_manifest json文件
+python merge_manifests.py > log_merge_manifests.log 2>&1
+
 
