@@ -69,3 +69,12 @@ python test_251to263.py > log_test_251to263.log 2>&1
 python merge_manifests.py > log_merge_manifests.log 2>&1
 python evaluate_quantitative.py > log_evaluate_quantitative.log 2>&1
 
+文件执行顺序：
+generate_synthetic_dataset.py
+run_synthetic_experiment.py
+evaluate_proposal_masked_clip.py
+evaluate_narrative_consistency.py
+ablation_study.py
+
+
+

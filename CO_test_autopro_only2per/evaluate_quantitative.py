@@ -54,14 +54,19 @@ def extract_pose_keypoints(img_path):
     
     if results[0].keypoints is None or len(results[0].keypoints.xy) == 0:
         return None
+    
+    # 有几个人就返回几个人的骨骼，不在这里硬编码卡 2 个人
     kps = results[0].keypoints.xy.cpu().numpy()
-    if len(kps) >= 2:
-        return kps[:2]
-    return None
+    return kps
 
 def compute_pckh(gt_kps, gen_kps, threshold=0.5):
+    # 如果生成图里检测到的人数少于 2 人，说明原图模式生成失败，直接给 0 分
     if gt_kps is None or gen_kps is None or len(gt_kps) < 2 or len(gen_kps) < 2:
         return 0.0
+    
+    # 鲁棒性切片：如果意外检测到 2 人以上，只取前 2 人
+    gt_kps = gt_kps[:2]
+    gen_kps = gen_kps[:2]
     
     gt_center = np.mean(gt_kps, axis=1)
     gen_center = np.mean(gen_kps, axis=1)

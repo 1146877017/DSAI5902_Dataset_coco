@@ -24,6 +24,11 @@
 !CO_test_autopro_only2per/*.json
 !CO_test_autopro_only2per/*.log
 
+!Left_test_only2per/
+!Left_test_only2per/*.py
+!Left_test_only2per/*.json
+!Left_test_only2per/*.log
+
 # 模型权重文件
 *.pt
 *.pth

@@ -12,7 +12,7 @@
             "Depth RMSE": 0.2932,
             "Depth SSIM": 0.5517,
             "Masked Text-Image CLIP Similarity": 0.2253,
-            "Layout Accuracy": 0.038
+            "Layout Accuracy": 0.0038
         }
     },
     "baseline2": {
@@ -28,7 +28,7 @@
             "Depth RMSE": 0.2702,
             "Depth SSIM": 0.5702,
             "Masked Text-Image CLIP Similarity": 0.2391,
-            "Layout Accuracy": 0.076
+            "Layout Accuracy": 0.0076
         }
     },
     "baseline3": {
@@ -44,7 +44,7 @@
             "Depth RMSE": 0.1755,
             "Depth SSIM": 0.7308,
             "Masked Text-Image CLIP Similarity": 0.2377,
-            "Layout Accuracy": 0.2357
+            "Layout Accuracy": 0.0608
         }
     },
     "method": {
@@ -60,7 +60,7 @@
             "Depth RMSE": 0.1785,
             "Depth SSIM": 0.7224,
             "Masked Text-Image CLIP Similarity": 0.2448,
-            "Layout Accuracy": 0.2433
+            "Layout Accuracy": 0.0684
         }
     }
 }

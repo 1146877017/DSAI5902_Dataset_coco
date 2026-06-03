@@ -1,3 +1,6 @@
+# 手动将results_251to263_pure_background、results_251to263_original_image、results_201to250_pure_background、results_201to250_original_image........results_1to50_pure_background、results_1to50_original_image中的结果分别复制到results_all_pure_background和results_all_original_image中
+# 这里合并manifest
+
 import json
 import glob
 import os
