@@ -72,9 +72,47 @@ python evaluate_quantitative.py > log_evaluate_quantitative.log 2>&1
 文件执行顺序：
 generate_synthetic_dataset.py
 run_synthetic_experiment.py
-evaluate_proposal_masked_clip.py
-evaluate_narrative_consistency.py
+eval_prop_masked_clip.py
+eval_narra_consis.py
 ablation_study.py
 
+Left_test_only2per/lora_weights中存放LoRA模型：
+asuna_(stacia)-v1.5.safetensors : https://civitai.com/models/15743/lora-stacia-goddess-of-creation-or-asuna-or-underworld-or-sao : 
+Trigger Words
+stacia
+staciansfw
+white dress
+armor
+white thighhighs
+
+gantzyamasakianzu.safetensors : https://civitai.com/models/28049/lora-gantz-yamasakianzu : 
+Trigger Words
+yamasaki_anzu
+bodysuit
+
+super-vanilla-newlora-ver1-p.safetensors : https://civitai.com/models/20559/lora-nekopara-vanilla : 
+Trigger Words
+vanilla
+xiangcao
+shouban
+nsfw
+girls
+
+TogaHimiko-01.safetensors : https://civitai.com/models/71645/lora-toga-himiko :
+Trigger Words
+Toga
+Himiko
+Himiko Toga
+
+OchacoUraraka-01.safetensors : https://civitai.com/models/68460/lora-ochaco-uraraka :
+Trigger Words
+Ochaco
+Bodysuit
+Hero suit
+white shirt, red necktie, green skirt,
+U.A School Uniform
+
+python generate_synthetic_dataset.py > log_gene_syn_dat.log 2>&1
+python run_synthetic_experiment.py > log_run_syn_exp.log 2>&1
 
 
