@@ -216,7 +216,7 @@ def main():
         os.makedirs(os.path.join(OUTPUT_ROOT, folder), exist_ok=True)
 
     all_configs = []
-    character_pairs = list(itertools.permutations(CHARACTERS, 2))
+    character_pairs = list(itertools.combinations(CHARACTERS, 2))
 
     # 使用 itertools.product 替代 zip，实现 3 种互动动作与 3 种背景环境的完全交叉覆盖 (共 9 种环境模态组合)
     for scene, bg in itertools.product(SCENES, BACKGROUNDS):
@@ -248,7 +248,7 @@ def main():
         json.dump(all_configs, f, indent=4, ensure_ascii=False)
         
     print(f"\n 精确合成测试集已构建成功！")
-    print(f"总计样本规模: {len(all_configs)} 组 (3 种互动场景 × 3 种物理背景 × 12 类跨角色空间排列组合 = 108组)")
+    print(f"总计样本规模: {len(all_configs)} 组 (3 种互动场景 × 3 种物理背景 × 12 类跨角色空间排列组合 = 54组)")
 
 if __name__ == "__main__":
     main()

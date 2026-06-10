@@ -213,7 +213,15 @@ def run_synthetic():
         clear_gpu_memory()
 
         # 2. Baseline 2: 单 OpenPose 骨骼图控制
-        img2 = pipe_pose(prompt=prompt, negative_prompt=neg_prompt, image=pose, generator=generator, num_inference_steps=25, guidance_scale=7.5).images[0]
+        img2 = pipe_pose(
+            prompt=prompt, 
+            negative_prompt=neg_prompt, 
+            image=pose,
+            controlnet_conditioning_scale=0.6,            
+            generator=generator, 
+            num_inference_steps=25, 
+            guidance_scale=7.5
+        ).images[0]
         img2.save(os.path.join(OUTPUT_DIR, f"{sample_id}{METHOD_SUFFIX[1]}.png"))
         clear_gpu_memory()
 
