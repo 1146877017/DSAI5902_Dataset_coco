@@ -85,19 +85,6 @@ white dress
 armor
 white thighhighs
 
-gantzyamasakianzu.safetensors : https://civitai.com/models/28049/lora-gantz-yamasakianzu : 
-Trigger Words
-yamasaki_anzu
-bodysuit
-
-super-vanilla-newlora-ver1-p.safetensors : https://civitai.com/models/20559/lora-nekopara-vanilla : 
-Trigger Words
-vanilla
-xiangcao
-shouban
-nsfw
-girls
-
 TogaHimiko-01.safetensors : https://civitai.com/models/71645/lora-toga-himiko :
 Trigger Words
 Toga
@@ -111,6 +98,11 @@ Bodysuit
 Hero suit
 white shirt, red necktie, green skirt,
 U.A School Uniform
+
+dicuki.safetensors : https://civitai.com/models/19046/lora-cute-richstyle-15 :
+Trigger Words
+<lora:richviplora_sd1.5:1>
+cbzbb
 
 python generate_synthetic_dataset.py > log_gene_syn_dat.log 2>&1
 python run_synthetic_experiment.py > log_run_syn_exp.log 2>&1
