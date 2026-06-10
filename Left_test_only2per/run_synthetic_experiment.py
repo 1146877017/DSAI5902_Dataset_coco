@@ -112,24 +112,28 @@ class AttentionMaskProcessor(AttnProcessor):
 
         attn_scores = torch.bmm(query, key.transpose(-1, -2)) / attn.scale
 
+        # 仅在交叉注意力且非自注意力的特定中层分辨率施加平滑掩码干预
         if not is_self_attn and self.token_indices:
             spatial_seq_len = attn_scores.shape[-2]
             spatial_size = int(np.sqrt(spatial_seq_len))
             
-            for i, token_ids in enumerate(self.token_indices):
-                mask_img = self.masks[i].resize((spatial_size, spatial_size), Image.Resampling.NEAREST)
-                m_arr = np.array(mask_img) / 255.0
-                mask_tensor = torch.tensor(m_arr, device=query.device, dtype=query.dtype)
-                
-                # 计算边界外特征的负数惩罚项
-                mask_neg = (1.0 - mask_tensor).view(-1) * -10000.0
-                
-                for token_idx in token_ids:
-                    if token_idx >= attn_scores.shape[-1]:
-                        continue
-                    # 仅针对条件生成分支（Batch 维度的后半段，即正向提示词引导流）施加截断惩罚 [cite: 39, 40]
+            # 过滤：只有在 32x32 或 16x16 分辨率层（负责物体结构和属性绑定）进行干预，避开 64x64 和 8x8
+            if spatial_size in [16, 32]:
+                for i, token_ids in enumerate(self.token_indices):
+                    # 动态缩放掩码
+                    mask_img = self.masks[i].resize((spatial_size, spatial_size), Image.Resampling.NEAREST)
+                    m_arr = np.array(mask_img) / 255.0
+                    mask_tensor = torch.tensor(m_arr, device=query.device, dtype=query.dtype)
+                    
+                    # 惩罚力度
+                    mask_neg = (1.0 - mask_tensor).view(-1) * -15.0
+                    
                     half_idx = attn_scores.shape[0] // 2
-                    attn_scores[half_idx:, :, token_idx] += mask_neg.unsqueeze(0)
+                    for token_idx in token_ids:
+                        if token_idx >= attn_scores.shape[-1]:
+                            continue
+                        # 仅对条件生成分支施加柔和惩罚
+                        attn_scores[half_idx:, :, token_idx] += mask_neg.unsqueeze(0)
 
         if attention_mask is not None:
             attention_mask = attn.prepare_attention_mask(attention_mask, seq_len, batch_size)
