@@ -124,7 +124,7 @@ class AttentionMaskProcessor(object):
         key = attn.head_to_batch_dim(key)
         value = attn.head_to_batch_dim(value)
 
-        # 【修复闭环】由 / 改为 * 恢复正常的缩放逻辑
+        # 由 / 改为 * 恢复正常的缩放逻辑
         attn_scores = torch.bmm(query, key.transpose(-1, -2)) * attn.scale
 
         # 仅在交叉注意力的特定中层分辨率施加平滑掩码干预
