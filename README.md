@@ -99,10 +99,13 @@ Hero suit
 white shirt, red necktie, green skirt,
 U.A School Uniform
 
-dicuki.safetensors : https://civitai.com/models/19046/lora-cute-richstyle-15 :
+LoRA_Neferpitou.safetensors : https://civitai.com/models/269267/lora-neferpitoui-hunter-x-hunter :
 Trigger Words
-<lora:richviplora_sd1.5:1>
-cbzbb
+NeferpitouDef
+orange eyes, white hair, short hair, wavy hair, bangs, curly hair, animal ears, hair between eyes, breasts, medium breasts, cat girl, cat tail, tail, cat ears
+joints, doll joints, shirt, long sleeves, pantyhose, shorts, collared shirt, blue shirt, spoken question mark, brown shorts, orange shorts, shoes, socks, other focus, hunter x hunter, neferpitou
+More doll joints*
+(joints:1.4) or (doll joints:1.4)
 
 python generate_synthetic_dataset.py > log_gene_syn_dat.log 2>&1
 python run_synthetic_experiment.py > log_run_syn_exp.log 2>&1

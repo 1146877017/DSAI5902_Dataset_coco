@@ -49,21 +49,21 @@ def load_loras_for_pair(pipe, char1_name, char2_name):
     lora_path1 = os.path.join(LORA_WEIGHTS_DIR, f"{char1_name}.safetensors")
     lora_path2 = os.path.join(LORA_WEIGHTS_DIR, f"{char2_name}.safetensors")
     if not os.path.exists(lora_path1) or not os.path.exists(lora_path2):
-        raise FileNotFoundError(f"LoRA 文件夹权重缺失: {char1_name} 或 {char2_name}")
+        raise FileNotFoundError(f"LoRA 文件夹权重缺失: '{lora_path1}' 或 '{lora_path2}'")
     
     pipe.load_lora_weights(lora_path1, adapter_name="char1")
     pipe.load_lora_weights(lora_path2, adapter_name="char2")
     pipe.set_adapters(["char1", "char2"], adapter_weights=[0.8, 0.8])
 
-# ===================== Token 定位 =====================
+# ===================== Token 定位（已修复接口签名与自动截断 Bug） =====================
 def get_person_token_indices(tokenizer, prompt):
-    """利用原生 Token 绝对边界检索"""
+    """通过解析 'person1' 和 'person2' 的区间边界，精准隔离角色特征描述文本"""
     inputs = tokenizer(prompt, padding="max_length", max_length=77, truncation=True, return_tensors="pt")
     tokens = tokenizer.convert_ids_to_tokens(inputs.input_ids[0])
     clean_tokens = [t.replace("</w>", "").lower() if t else "" for t in tokens]
     
-    p1_idx = [i for i, t in enumerate(clean_tokens) if "person1" in t or t == "person" and i+1 < len(clean_tokens) and "1" in clean_tokens[i+1]]
-    p2_idx = [i for i, t in enumerate(clean_tokens) if "person2" in t or t == "person" and i+1 < len(clean_tokens) and "2" in clean_tokens[i+1]]
+    p1_idx = [i for i, t in enumerate(clean_tokens) if "person1" in t or (t == "person" and i+1 < len(clean_tokens) and "1" in clean_tokens[i+1])]
+    p2_idx = [i for i, t in enumerate(clean_tokens) if "person2" in t or (t == "person" and i+1 < len(clean_tokens) and "2" in clean_tokens[i+1])]
     
     if not p1_idx or not p2_idx:
         raise ValueError(f"Prompt 无法检出两段式结构标签：{prompt}")
@@ -71,12 +71,13 @@ def get_person_token_indices(tokenizer, prompt):
     start_p1 = p1_idx[0]
     start_p2 = p2_idx[0]
     
-    # 提取绝对物理跨度区间
+    # person1 跨度终止于 person2 出现之前
     person1_token_ids = list(range(start_p1, start_p2))
     
+    # 自动在包含 'scene' 的公共标记处截止，确保后方公共场景背景词汇不被掩码强制拦截
     end_p2 = len(clean_tokens) - 1
     for i in range(start_p2, len(clean_tokens)):
-        if clean_tokens[i] in ["<|endoftext|>", ""]:
+        if "scene" in clean_tokens[i] or clean_tokens[i] in ["<|endoftext|>", "", ".", ","]:
             end_p2 = i - 1
             break
     person2_token_ids = list(range(start_p2, end_p2 + 1))
@@ -111,26 +112,22 @@ class AttentionMaskProcessor(AttnProcessor):
 
         attn_scores = torch.bmm(query, key.transpose(-1, -2)) / attn.scale
 
-        # 仅在交叉注意力中介入且感知 CFG Batch 划分，避免污染无条件背景提示词
         if not is_self_attn and self.token_indices:
             spatial_seq_len = attn_scores.shape[-2]
             spatial_size = int(np.sqrt(spatial_seq_len))
-            
-            # 判断 CFG 分流：标准的 batch_size 是单图输入的两倍 (Uncond + Cond)
-            num_heads = attn_scores.shape[0] // batch_size
             
             for i, token_ids in enumerate(self.token_indices):
                 mask_img = self.masks[i].resize((spatial_size, spatial_size), Image.Resampling.NEAREST)
                 m_arr = np.array(mask_img) / 255.0
                 mask_tensor = torch.tensor(m_arr, device=query.device, dtype=query.dtype)
                 
-                # 产生惩罚项矩阵
+                # 计算边界外特征的负数惩罚项
                 mask_neg = (1.0 - mask_tensor).view(-1) * -10000.0
                 
                 for token_idx in token_ids:
                     if token_idx >= attn_scores.shape[-1]:
                         continue
-                    # 仅针对条件生成分支（Batch 的后半段）施加惩罚项
+                    # 仅针对条件生成分支（Batch 维度的后半段，即正向提示词引导流）施加截断惩罚 [cite: 39, 40]
                     half_idx = attn_scores.shape[0] // 2
                     attn_scores[half_idx:, :, token_idx] += mask_neg.unsqueeze(0)
 
@@ -162,18 +159,17 @@ def run_synthetic():
     with open(config_path, "r", encoding="utf-8") as f:
         configs = json.load(f)
 
-    print(f"\n开始运行全量合成测试集实验，共 {len(configs)} 组角色排列样本...")
+    print(f"\n开始运行全量合成测试集实验，共 {len(configs)} 组角色排列组合样本...")
 
     char_to_filename = {
         "Asuna": "asuna_(stacia)-v1.5",
-        "CuteRichStyle": "dicuki",
+        "Neferpitou": "LoRA_Neferpitou",
         "TogaHimiko": "TogaHimiko-01",
         "OchacoUraraka": "OchacoUraraka-01",
     }
 
     for idx, cfg in enumerate(configs):
         sample_id = cfg["sample_id"]
-        scene = cfg["scene"]
         prompt = cfg["prompt"]
         neg_prompt = cfg["negative_prompt"]
 
@@ -183,40 +179,40 @@ def run_synthetic():
         prompt = re.sub(r"<lora:[^>]+>", "", prompt)
         print(f"\n[{idx+1}/{len(configs)}] 正在处理自动化流水线样本: {sample_id}")
 
-        # 动态切换并绑定当前组合的双角色 LoRA 对
         for pipe in [pipe_base, pipe_pose, pipe_both]:
             load_loras_for_pair(pipe, char1_name, char2_name)
 
-        # 读取多模态控制图
         pose = Image.open(os.path.join(SYNTHETIC_DATA, "poses", f"{sample_id}.png")).convert("RGB")
         depth = Image.open(os.path.join(SYNTHETIC_DATA, "depths", f"{sample_id}.png")).convert("RGB")
         mask_path = os.path.join(SYNTHETIC_DATA, "masks", f"{sample_id}.png")
+        
+        # 修复了旧版缺失传参导致的崩溃错误，当前只需要传入 2 个核心参数
         token_indices = get_person_token_indices(pipe_both.tokenizer, prompt)
 
-        # 1. Baseline1: 纯文本控制 
+        # 1. Baseline 1: 纯文本控制 [cite: 92]
         img1 = pipe_base(prompt=prompt, negative_prompt=neg_prompt, generator=generator, num_inference_steps=25, guidance_scale=7.5).images[0]
         img1.save(os.path.join(OUTPUT_DIR, f"{sample_id}{METHOD_SUFFIX[0]}.png"))
         clear_gpu_memory()
 
-        # 2. Baseline2: 单 OpenPose 骨骼图控制
+        # 2. Baseline 2: 单 OpenPose 骨骼图控制 [cite: 95]
         img2 = pipe_pose(prompt=prompt, negative_prompt=neg_prompt, image=pose, generator=generator, num_inference_steps=25, guidance_scale=7.5).images[0]
         img2.save(os.path.join(OUTPUT_DIR, f"{sample_id}{METHOD_SUFFIX[1]}.png"))
         clear_gpu_memory()
 
-        # 3. Baseline3: 双 ControlNet (Pose + Depth )
+        # 3. Baseline 3: 双 ControlNet (Pose + Depth) [cite: 96]
         img3 = pipe_both(prompt=prompt, negative_prompt=neg_prompt, image=[pose, depth], generator=generator, num_inference_steps=25, guidance_scale=7.5).images[0]
         img3.save(os.path.join(OUTPUT_DIR, f"{sample_id}{METHOD_SUFFIX[2]}.png"))
         clear_gpu_memory()
 
-        # 4. Method: 核心方案（双 ControlNet + 实例注意力隔离掩码）
+        # 4. Method: 核心方案（双 ControlNet + 实例交叉注意力隔离掩码） [cite: 60]
         masks = process_mask(mask_path)
         apply_attention_mask(pipe_both, token_indices, masks)
         img4 = pipe_both(prompt=prompt, negative_prompt=neg_prompt, image=[pose, depth], generator=generator, num_inference_steps=25, guidance_scale=7.5).images[0]
         img4.save(os.path.join(OUTPUT_DIR, f"{sample_id}{METHOD_SUFFIX[3]}.png"))
-        pipe_both.unet.set_attn_processor(AttnProcessor()) # 还原默认处理器，防止泄露
+        pipe_both.unet.set_attn_processor(AttnProcessor()) # 还原默认处理器，防止权重污染
         clear_gpu_memory()
 
-        # 5. Ablation1: 消融组1（双 ControlNet + 噪声随机掩码破坏）
+        # 5. Ablation 1: 消融组 1（双 ControlNet + 噪声随机掩码破坏）
         rand1 = Image.fromarray(np.random.randint(0, 255, (IMAGE_SIZE, IMAGE_SIZE), dtype=np.uint8))
         rand2 = Image.fromarray(np.random.randint(0, 255, (IMAGE_SIZE, IMAGE_SIZE), dtype=np.uint8))
         apply_attention_mask(pipe_both, token_indices, [rand1, rand2])
@@ -225,7 +221,7 @@ def run_synthetic():
         pipe_both.unet.set_attn_processor(AttnProcessor())
         clear_gpu_memory()
 
-        # 6. Ablation2: 消融组2（单 OpenPose 骨骼 + 实例注意力隔离掩码）
+        # 6. Ablation 2: 消融组 2（单 OpenPose 骨骼 + 实例注意力隔离掩码）
         apply_attention_mask(pipe_pose, token_indices, masks)
         img_ab2 = pipe_pose(prompt=prompt, negative_prompt=neg_prompt, image=pose, generator=generator, num_inference_steps=25, guidance_scale=7.5).images[0]
         img_ab2.save(os.path.join(OUTPUT_DIR, f"{sample_id}{METHOD_SUFFIX[5]}.png"))
@@ -234,7 +230,7 @@ def run_synthetic():
 
         print(f" [+] 样本 {sample_id} 的 6 个对比/消融实验数据全部离线落地完成。")
 
-    print(f"\n测试实验跑完，结果保存在: {os.path.abspath(OUTPUT_DIR)}")
+    print(f"\n自动化实验已全部顺利运行完成，结果保存在: {os.path.abspath(OUTPUT_DIR)}")
 
 if __name__ == "__main__":
     try:
