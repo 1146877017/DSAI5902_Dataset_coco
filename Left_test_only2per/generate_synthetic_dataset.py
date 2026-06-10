@@ -68,10 +68,44 @@ def generate_pose_side_by_side():
     return draw_pose_keypoints([kps_p1, kps_p2], CONNECTIONS, IMAGE_SIZE)
 
 def generate_pose_handshake():
-    # 人物中心横坐标精确对应 0.35 与 0.65
-    kps_p1 = np.array([[0.35, 0.50], [0.32, 0.55], [0.38, 0.55], [0.30, 0.65], [0.40, 0.65], [0.28, 0.75], [0.42, 0.75], [0.35, 0.60], [0.35, 0.70], [0.33, 0.80], [0.37, 0.80]])
-    kps_p2 = np.array([[0.65, 0.50], [0.62, 0.55], [0.68, 0.55], [0.60, 0.65], [0.70, 0.65], [0.58, 0.75], [0.72, 0.75], [0.65, 0.60], [0.65, 0.70], [0.63, 0.80], [0.67, 0.80]])
+    """
+    让内侧手臂向中央抬起并延伸，双手的关节点在中心(0.50)交汇，实现真正的握手姿态
+    """
+    # === Person 1 (左侧角色，中心 0.35) ===
+    # 0:鼻, 1:左肩(外), 2:右肩(内), 3:左肘(外), 4:右肘(内), 5:左手(外), 6:右手(内)
+    kps_p1 = np.array([
+        [0.35, 0.48],  # 0: 头部稍稍抬起/前倾
+        [0.30, 0.55],  # 1: 左肩（向外挂）
+        [0.40, 0.55],  # 2: 右肩（向内伸）
+        [0.27, 0.65],  # 3: 左肘（自然下垂）
+        [0.45, 0.60],  # 4: 右肘（抬起并向中心折叠伸出）
+        [0.25, 0.75],  # 5: 左手（垂在身体外侧）
+        [0.49, 0.62],  # 6: 右手（探到接近 0.50 处的握手交汇点）
+        [0.35, 0.60],  # 7: 颈/上躯干
+        [0.35, 0.72],  # 8: 盆骨
+        [0.32, 0.85],  # 9: 左膝
+        [0.38, 0.85]   # 10: 右膝
+    ])
+
+    # === Person 2 (右侧角色，中心 0.65) ===
+    # 0:鼻, 1:左肩(内), 2:右肩(外), 3:左肘(内), 4:右肘(外), 5:左手(内), 6:右手(外)
+    kps_p2 = np.array([
+        [0.65, 0.48],  # 0: 头部
+        [0.60, 0.55],  # 1: 左肩（向内伸）
+        [0.70, 0.55],  # 2: 右肩（向外挂）
+        [0.55, 0.60],  # 3: 左肘（抬起并向中心折叠伸出）
+        [0.73, 0.65],  # 4: 右肘（自然下垂）
+        [0.51, 0.62],  # 5: 左手（探到 0.51 处，与 P1 的右手交叠）
+        [0.75, 0.75],  # 6: 右手（垂在身体外侧）
+        [0.65, 0.60],  # 7: 颈/上躯干
+        [0.65, 0.72],  # 8: 盆骨
+        [0.62, 0.85],  # 9: 左膝
+        [0.67, 0.85]   # 10: 右膝
+    ])
+    
     return draw_pose_keypoints([kps_p1, kps_p2], CONNECTIONS, IMAGE_SIZE)
+
+
 
 def generate_pose_front_back():
     # 后景纵向质心约 0.61，前景纵向质心约 0.71
@@ -80,7 +114,7 @@ def generate_pose_front_back():
     return draw_pose_keypoints([kps_front, kps_back], CONNECTIONS, IMAGE_SIZE)
 
 def generate_depth(scene, bg):
-    """生成具备明确空间遮挡的渐变深度图，包含背景结构以完整覆盖至少 3 种背景要求 """
+    """生成具备明确空间遮挡且更符合人体剪影的渐变深度图"""
     depth = np.zeros((IMAGE_SIZE, IMAGE_SIZE), dtype=np.uint8)
     # 基础远景渐变
     for i in range(IMAGE_SIZE):
@@ -98,46 +132,65 @@ def generate_depth(scene, bg):
         cv2.rectangle(depth, (0, 0), (80, 400), 65, -1)
         cv2.rectangle(depth, (IMAGE_SIZE-80, 0), (IMAGE_SIZE, 400), 65, -1)
     
-    # 绘制与骨骼图及掩码图“绝对像素级对齐”的人物实体深度
-    if scene == "side_by_side":
-        c1, c2 = int(0.30 * IMAGE_SIZE), int(0.70 * IMAGE_SIZE)
-        v_center = int(0.65 * IMAGE_SIZE)
-        cv2.ellipse(depth, (c1, v_center), ELLIPSE_SIZES["side_by_side"], 0, 0, 360, 180, -1)
-        cv2.ellipse(depth, (c2, v_center), ELLIPSE_SIZES["side_by_side"], 0, 0, 360, 180, -1)
-    elif scene == "handshake":
-        c1, c2 = int(0.35 * IMAGE_SIZE), int(0.65 * IMAGE_SIZE)
-        v_center = int(0.65 * IMAGE_SIZE)
-        cv2.ellipse(depth, (c1, v_center), ELLIPSE_SIZES["handshake"], 0, 0, 360, 180, -1)
-        cv2.ellipse(depth, (c2, v_center), ELLIPSE_SIZES["handshake"], 0, 0, 360, 180, -1)
+    # 区分头部和身体，避免生成大圆球
+    if scene in ["side_by_side", "handshake"]:
+        centers = [int(0.30 * IMAGE_SIZE), int(0.70 * IMAGE_SIZE)] if scene == "side_by_side" else [int(0.35 * IMAGE_SIZE), int(0.65 * IMAGE_SIZE)]
+        e_size = ELLIPSE_SIZES[scene]
+        
+        for c in centers:
+            # 1. 身体躯干 (往下移一点，宽度缩窄一些让身材更匀称)
+            cv2.ellipse(depth, (c, int(0.70 * IMAGE_SIZE)), (int(e_size[0] * 0.8), int(e_size[1] * 0.7)), 0, 0, 360, 180, -1)
+            # 2. 独立头部 (在上方画一个小圆)
+            cv2.circle(depth, (c, int(0.48 * IMAGE_SIZE)), int(e_size[0] * 0.5), 180, -1)
+            
     elif scene == "front_back":
         v_back = int(0.61 * IMAGE_SIZE)
         v_front = int(0.71 * IMAGE_SIZE)
-        # 后景人物：灰度130（较远）
-        cv2.ellipse(depth, (IMAGE_SIZE//2, v_back), ELLIPSE_SIZES["front_back_back"], 0, 0, 360, 130, -1)
-        # 前景人物：灰度210（较近，完美确立空间深度层级）
-        cv2.ellipse(depth, (IMAGE_SIZE//2, v_front), ELLIPSE_SIZES["front_back_front"], 0, 0, 360, 210, -1)
-                
+        b_size = ELLIPSE_SIZES["front_back_back"]
+        f_size = ELLIPSE_SIZES["front_back_front"]
+        
+        # 后景人物 (Head + Torso, 较远灰度130)
+        cv2.ellipse(depth, (IMAGE_SIZE//2, int(v_back + 30)), (int(b_size[0]*0.8), int(b_size[1]*0.7)), 0, 0, 360, 130, -1)
+        cv2.circle(depth, (IMAGE_SIZE//2, int(v_back - 30)), int(b_size[0]*0.5), 130, -1)
+        
+        # 前景人物 (Head + Torso, 较近灰度210，完美遮挡)
+        cv2.ellipse(depth, (IMAGE_SIZE//2, int(v_front + 30)), (int(f_size[0]*0.8), int(f_size[1]*0.7)), 0, 0, 360, 210, -1)
+        cv2.circle(depth, (IMAGE_SIZE//2, int(v_front - 40)), int(f_size[0]*0.5), 210, -1)
+    
+    # 高斯模糊：让深度过渡更自然，防止生成锐利的机械边缘
+    depth = cv2.GaussianBlur(depth, (15, 15), 0)
     return cv2.cvtColor(depth, cv2.COLOR_GRAY2BGR)
 
+
 def generate_mask(scene):
-    """生成精确对应的实例掩码图（与姿态、深度图空间坐标绝对对齐）"""
+    """生成精确对应的实例掩码图（同步改为头身解耦结构）"""
     mask = np.zeros((IMAGE_SIZE, IMAGE_SIZE), dtype=np.uint8)
-    if scene == "side_by_side":
-        c1, c2 = int(0.30 * IMAGE_SIZE), int(0.70 * IMAGE_SIZE)
-        v_center = int(0.65 * IMAGE_SIZE)
-        cv2.ellipse(mask, (c1, v_center), ELLIPSE_SIZES["side_by_side"], 0, 0, 360, 128, -1) # person1 -> 128
-        cv2.ellipse(mask, (c2, v_center), ELLIPSE_SIZES["side_by_side"], 0, 0, 360, 255, -1) # person2 -> 255
-    elif scene == "handshake":
-        c1, c2 = int(0.35 * IMAGE_SIZE), int(0.65 * IMAGE_SIZE)
-        v_center = int(0.65 * IMAGE_SIZE)
-        cv2.ellipse(mask, (c1, v_center), ELLIPSE_SIZES["handshake"], 0, 0, 360, 128, -1)
-        cv2.ellipse(mask, (c2, v_center), ELLIPSE_SIZES["handshake"], 0, 0, 360, 255, -1)
+    if scene in ["side_by_side", "handshake"]:
+        centers = [int(0.30 * IMAGE_SIZE), int(0.70 * IMAGE_SIZE)] if scene == "side_by_side" else [int(0.35 * IMAGE_SIZE), int(0.65 * IMAGE_SIZE)]
+        e_size = ELLIPSE_SIZES[scene]
+        
+        # person1 -> 128
+        cv2.ellipse(mask, (centers[0], int(0.70 * IMAGE_SIZE)), (int(e_size[0] * 0.8), int(e_size[1] * 0.7)), 0, 0, 360, 128, -1)
+        cv2.circle(mask, (centers[0], int(0.48 * IMAGE_SIZE)), int(e_size[0] * 0.5), 128, -1)
+        
+        # person2 -> 255
+        cv2.ellipse(mask, (centers[1], int(0.70 * IMAGE_SIZE)), (int(e_size[0] * 0.8), int(e_size[1] * 0.7)), 0, 0, 360, 255, -1)
+        cv2.circle(mask, (centers[1], int(0.48 * IMAGE_SIZE)), int(e_size[0] * 0.5), 255, -1)
+        
     elif scene == "front_back":
         v_back = int(0.61 * IMAGE_SIZE)
         v_front = int(0.71 * IMAGE_SIZE)
-        # 先画远景标签（person2 -> 255），再用前景标签覆盖它（person1 -> 128）
-        cv2.ellipse(mask, (IMAGE_SIZE//2, v_back), ELLIPSE_SIZES["front_back_back"], 0, 0, 360, 255, -1) 
-        cv2.ellipse(mask, (IMAGE_SIZE//2, v_front), ELLIPSE_SIZES["front_back_front"], 0, 0, 360, 128, -1) 
+        b_size = ELLIPSE_SIZES["front_back_back"]
+        f_size = ELLIPSE_SIZES["front_back_front"]
+        
+        # 先画远景标签（person2 -> 255）
+        cv2.ellipse(mask, (IMAGE_SIZE//2, int(v_back + 30)), (int(b_size[0]*0.8), int(b_size[1]*0.7)), 0, 0, 360, 255, -1)
+        cv2.circle(mask, (IMAGE_SIZE//2, int(v_back - 30)), int(b_size[0]*0.5), 255, -1)
+        
+        # 再用前景标签覆盖它（person1 -> 128）
+        cv2.ellipse(mask, (IMAGE_SIZE//2, int(v_front + 30)), (int(f_size[0]*0.8), int(f_size[1]*0.7)), 0, 0, 360, 128, -1)
+        cv2.circle(mask, (IMAGE_SIZE//2, int(v_front - 40)), int(f_size[0]*0.5), 128, -1)
+        
     return mask
 
 def generate_prompt_config(scene, bg, char1, char2):
