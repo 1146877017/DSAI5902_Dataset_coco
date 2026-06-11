@@ -51,9 +51,36 @@ def get_scene_keypoints(scene):
         # 将 p1 的右手腕(index 6)与 p2 的左手腕(index 5)精准重合在 [0.50, 0.62]
         kps_p1 = np.array([[0.35, 0.48], [0.30, 0.55], [0.40, 0.55], [0.27, 0.65], [0.45, 0.60], [0.25, 0.75], [0.50, 0.62], [0.35, 0.60], [0.35, 0.72], [0.32, 0.85], [0.38, 0.85]])
         kps_p2 = np.array([[0.65, 0.48], [0.60, 0.55], [0.70, 0.55], [0.55, 0.60], [0.73, 0.65], [0.50, 0.62], [0.75, 0.75], [0.65, 0.60], [0.65, 0.72], [0.62, 0.85], [0.67, 0.85]])
-    else:  # front_back (Person1 为近景，Person2 为远景)
-        kps_p1 = np.array([[0.50, 0.55], [0.46, 0.62], [0.54, 0.62], [0.42, 0.72], [0.58, 0.72], [0.40, 0.82], [0.60, 0.82], [0.50, 0.67], [0.50, 0.77], [0.48, 0.87], [0.52, 0.87]])
-        kps_p2 = np.array([[0.50, 0.45], [0.46, 0.52], [0.54, 0.52], [0.42, 0.62], [0.58, 0.62], [0.40, 0.72], [0.60, 0.72], [0.50, 0.57], [0.50, 0.67], [0.48, 0.77], [0.52, 0.77]])
+    else:  # front_back (Person1 为近景偏左，Person2 为远景偏右，形成完美透视差)
+        # Person 1 (近景主体：整体放大，中心微调至 X=0.44，头部在上，脖子在肩下方合理处)
+        kps_p1 = np.array([
+            [0.44, 0.42],  # 0: Nose (最上方)
+            [0.38, 0.52],  # 1: LShoulder
+            [0.50, 0.52],  # 2: RShoulder
+            [0.34, 0.65],  # 3: LElbow
+            [0.54, 0.65],  # 4: RElbow
+            [0.32, 0.78],  # 5: LWrist
+            [0.56, 0.78],  # 6: RWrist
+            [0.44, 0.49],  # 7: Neck (位于鼻子下方，双肩连线中心微上)
+            [0.44, 0.72],  # 8: Pelvis (骨盆质心)
+            [0.40, 0.88],  # 9: LKnee
+            [0.48, 0.88]   # 10: RKnee
+        ])
+        
+        # Person 2 (远景背景：整体缩小，中心微调至 X=0.58，形成前后错开，避免深度图完全覆盖)
+        kps_p2 = np.array([
+            [0.58, 0.35],  # 0: Nose
+            [0.54, 0.42],  # 1: LShoulder
+            [0.62, 0.42],  # 2: RShoulder
+            [0.51, 0.52],  # 3: LElbow
+            [0.65, 0.52],  # 4: RElbow
+            [0.49, 0.62],  # 5: LWrist
+            [0.67, 0.62],  # 6: RWrist
+            [0.58, 0.40],  # 7: Neck
+            [0.58, 0.58],  # 8: Pelvis
+            [0.55, 0.72],  # 9: LKnee
+            [0.61, 0.72]   # 10: RKnee
+        ])
     return [kps_p1, kps_p2]
 
 # ===================== 核心修复 1: 标准多色 OpenPose 骨骼图生成 =====================
@@ -187,14 +214,37 @@ def generate_depth(scene, bg):
             cv2.ellipse(depth, (c, int(0.70 * IMAGE_SIZE)), (int(e_size[0] * 0.8), int(e_size[1] * 0.7)), 0, 0, 360, 180, -1)
             cv2.circle(depth, (c, int(0.48 * IMAGE_SIZE)), int(e_size[0] * 0.5), 180, -1)
     elif scene == "front_back":
-        v_back = int(0.61 * IMAGE_SIZE)
-        v_front = int(0.71 * IMAGE_SIZE)
+        # 获取当前场景的精准关键点坐标映射
+        keypoints_list = get_scene_keypoints(scene)
+        # 骨骼拓扑连线
+        USER_CONNECTIONS = [(0, 7), (7, 1), (7, 2), (1, 3), (2, 4), (3, 5), (4, 6), (7, 8), (8, 9), (8, 10)]
+        
         b_size = ELLIPSE_SIZES["front_back_back"]
         f_size = ELLIPSE_SIZES["front_back_front"]
-        cv2.ellipse(depth, (IMAGE_SIZE//2, int(v_back + 30)), (int(b_size[0]*0.8), int(b_size[1]*0.7)), 0, 0, 360, 130, -1)
-        cv2.circle(depth, (IMAGE_SIZE//2, int(v_back - 30)), int(b_size[0]*0.5), 130, -1)
-        cv2.ellipse(depth, (IMAGE_SIZE//2, int(v_front + 30)), (int(f_size[0]*0.8), int(f_size[1]*0.7)), 0, 0, 360, 210, -1)
-        cv2.circle(depth, (IMAGE_SIZE//2, int(v_front - 40)), int(f_size[0]*0.5), 210, -1)
+        
+        # 1. 渲染远景角色 (Person2 -> 深度浅/值较小: 130)，位置保持 X = 0.58
+        c2_x = int(0.58 * IMAGE_SIZE)
+        v_back = int(0.61 * IMAGE_SIZE)
+        # 形状与 side_by_side 完全一致：椭圆身体 + 圆形头部
+        cv2.ellipse(depth, (c2_x, int(v_back + 30)), (int(b_size[0] * 0.8), int(b_size[1] * 0.7)), 0, 0, 360, 130, -1)
+        cv2.circle(depth, (c2_x, int(v_back - 30)), int(b_size[0] * 0.5), 130, -1)
+        # 融入扩张的四肢骨骼，使深度图边缘过渡平滑，避免四肢断裂
+        for (start, end) in USER_CONNECTIONS:
+            x1, y1 = int(keypoints_list[1][start][0] * IMAGE_SIZE), int(keypoints_list[1][start][1] * IMAGE_SIZE)
+            x2, y2 = int(keypoints_list[1][end][0] * IMAGE_SIZE), int(keypoints_list[1][end][1] * IMAGE_SIZE)
+            cv2.line(depth, (x1, y1), (x2, y2), 130, thickness=25)
+        
+        # 2. 渲染近景角色 (Person1 -> 深度深/值较大: 210)，位置保持 X = 0.44
+        c1_x = int(0.44 * IMAGE_SIZE)
+        v_front = int(0.71 * IMAGE_SIZE)
+        # 形状与 side_by_side 完全一致：椭圆身体 + 圆形头部
+        cv2.ellipse(depth, (c1_x, int(v_front + 30)), (int(f_size[0] * 0.8), int(f_size[1] * 0.7)), 0, 0, 360, 210, -1)
+        cv2.circle(depth, (c1_x, int(v_front - 40)), int(f_size[0] * 0.5), 210, -1)
+        # 融入扩张的四肢骨骼
+        for (start, end) in USER_CONNECTIONS:
+            x1, y1 = int(keypoints_list[0][start][0] * IMAGE_SIZE), int(keypoints_list[0][start][1] * IMAGE_SIZE)
+            x2, y2 = int(keypoints_list[0][end][0] * IMAGE_SIZE), int(keypoints_list[0][end][1] * IMAGE_SIZE)
+            cv2.line(depth, (x1, y1), (x2, y2), 210, thickness=35)
         
     depth = cv2.GaussianBlur(depth, (15, 15), 0)
     return cv2.cvtColor(depth, cv2.COLOR_GRAY2BGR)
