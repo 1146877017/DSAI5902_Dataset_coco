@@ -108,6 +108,18 @@ More doll joints*
 (joints:1.4) or (doll joints:1.4)
 
 python generate_synthetic_dataset.py > log_gene_syn_dat.log 2>&1
-python run_synthetic_experiment.py > log_run_syn_exp.log 2>&1
+python run_syn_exprmt_grp1.py > log_run_syn_exp_grp1.log 2>&1
+python run_syn_exprmt_grp2.py > log_run_syn_exp_grp2.log 2>&1
+python run_syn_exprmt_grp3.py > log_run_syn_exp_grp3.log 2>&1
+python run_syn_exprmt_grp4.py > log_run_syn_exp_grp4.log 2>&1
+python run_syn_exprmt_grp5.py > log_run_syn_exp_grp5.log 2>&1
+python run_syn_exprmt_grp6.py > log_run_syn_exp_grp6.log 2>&1
+python run_syn_exprmt_grp7.py > log_run_syn_exp_grp7.log 2>&1
+python run_syn_exprmt_grp8.py > log_run_syn_exp_grp8.log 2>&1
+python run_syn_exprmt_grp9.py > log_run_syn_exp_grp9.log 2>&1
+python run_syn_exprmt_grp10.py > log_run_syn_exp_grp10.log 2>&1
+
+
+
 
 
