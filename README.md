@@ -118,7 +118,7 @@ python run_syn_exprmt_grp7.py > log_run_syn_exp_grp7.log 2>&1
 python run_syn_exprmt_grp8.py > log_run_syn_exp_grp8.log 2>&1
 python run_syn_exprmt_grp9.py > log_run_syn_exp_grp9.log 2>&1
 python run_syn_exprmt_grp10.py > log_run_syn_exp_grp10.log 2>&1
-
+python eval_prop_masked_clip.py > log_eval_prop_msk_clip.log 2>&1
 
 
 

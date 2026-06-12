@@ -29,10 +29,16 @@
 !Left_test_only2per/*.json
 !Left_test_only2per/*.log
 
-!log/
-!log/*.py
-!log/*.json
-!log/*.log
+!Left_test_only2per/log/
+!Left_test_only2per/log/*.py
+!Left_test_only2per/log/*.json
+!Left_test_only2per/log/*.log
+
+!Left_test_only2per/synthetic_test_dataset/
+!Left_test_only2per/synthetic_test_dataset/*
+
+!Left_test_only2per/synthetic_results/
+!Left_test_only2per/synthetic_results/*
 
 # 模型权重文件
 *.pt

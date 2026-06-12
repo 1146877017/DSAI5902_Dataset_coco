@@ -21,43 +21,53 @@ device = "cuda" if torch.cuda.is_available() else "cpu"
 print(" 加载 CLIP 模型...")
 model, preprocess = clip.load("ViT-B/32", device=device)
 
-# ===================== prompt 拆分 =====================
+
 def get_person_descriptions_from_prompt(prompt, scene):
     """
-    使用正则表达式提取 person1 和 person2 的描述，忽略大小写和额外空格。
-    返回 (desc1, desc2)
+    从 prompt 中提取 person1 和 person2 的描述文本。
+    实际格式: person1: a photo of {tags}. person2: a photo of {tags}. {scene} scene in a {bg}, ...
+    返回 (desc1, desc2)，已去除 "a photo of" 前缀。
     """
-    # 转义场景关键字
+    # 转义场景关键字（如 side_by_side -> side by side，但需要匹配点号后的场景词）
     scene_keyword = scene.replace('_', ' ')
-    # 构建正则：person1: ... , person2: ... , scene_keyword
-    # 描述中可能包含逗号，因此匹配到 ", person2:" 或 ", {scene_keyword}" 为止
-    pattern = r"person1:\s*(.*?),\s*person2:\s*(.*?),\s*" + re.escape(scene_keyword)
-    match = re.search(pattern, prompt, re.IGNORECASE | re.DOTALL)
-    if match:
-        desc1 = match.group(1).strip().rstrip(',')
-        desc2 = match.group(2).strip().rstrip(',')
-        return desc1, desc2
-    else:
-        # 回退：简单分割
-        prompt_lower = prompt.lower()
-        parts_p1 = prompt_lower.split("person1:")
-        if len(parts_p1) < 2:
-            return "character", "character"
-        parts_p2 = parts_p1[1].split("person2:")
-        if len(parts_p2) < 2:
-            return "character", "character"
-        desc1 = parts_p2[0].strip().rstrip(',')
-        desc2 = parts_p2[1].split(scene_keyword)[0].strip().rstrip(',')
+    # 按 ". person2:" 分割得到 person1 部分和剩余部分
+    parts = prompt.split(". person2:", 1)
+    if len(parts) == 2:
+        # person1 部分: "person1: a photo of ..."
+        person1_part = parts[0].replace("person1:", "", 1).strip()
+        # 剩余部分: " a photo of {tags}. {scene} scene ..."
+        remaining = parts[1]
+        # 按 f". {scene_keyword}" 分割得到 person2 描述
+        scene_pattern = f". {scene_keyword}"
+        if scene_pattern in remaining:
+            person2_part = remaining.split(scene_pattern, 1)[0].strip()
+        else:
+            # 回退：直接取到句号前
+            person2_part = remaining.split(".", 1)[0].strip()
+        # 去除 "a photo of " 前缀
+        desc1 = person1_part.replace("a photo of ", "", 1).strip()
+        desc2 = person2_part.replace("a photo of ", "", 1).strip()
         return desc1, desc2
 
-# ===================== 核心评估函数 =====================
+    # 二次回退：简单分割（兼容旧格式）
+    prompt_lower = prompt.lower()
+    if "person1:" in prompt_lower and "person2:" in prompt_lower:
+        p1 = prompt_lower.split("person1:")[1].split("person2:")[0]
+        p2 = prompt_lower.split("person2:")[1].split(scene_keyword)[0]
+        desc1 = p1.replace("a photo of", "").strip().rstrip(',')
+        desc2 = p2.replace("a photo of", "").strip().rstrip(',')
+        return desc1, desc2
+    return "character", "character"
+
+
 def evaluate_sample(img_path, mask_path, prompt, scene):
     """
-    返回字典，包含：
-        - masked_clip_self: 对角相似度平均值
-        - cross_similarity: 交叉相似度平均值 (Sim(Mask1, Text2) + Sim(Mask2, Text1))/2
-        - net_isolation: (Sim1- Sim_cross1 + Sim2 - Sim_cross2)/2
+    返回字典：
+        - masked_clip_self: 对角相似度平均值 (Sim1+Sim2)/2
+        - cross_similarity: 交叉相似度平均值 (Sim12+Sim21)/2
+        - net_isolation: (Sim1-Sim12 + Sim2-Sim21)/2
         - global_scene_sim: 完整图像与完整 prompt 的 CLIP 相似度
+        - sim_1_1, sim_1_2, sim_2_1, sim_2_2
     """
     img = cv2.imread(img_path)
     mask = cv2.imread(mask_path, cv2.IMREAD_GRAYSCALE)
@@ -74,13 +84,17 @@ def evaluate_sample(img_path, mask_path, prompt, scene):
         text_embeds = model.encode_text(text_tokens)
         text_embeds = text_embeds / text_embeds.norm(dim=-1, keepdim=True)
 
-    # 准备存储四个相似度：对角和交叉
-    sim_1_1, sim_1_2, sim_2_1, sim_2_2 = 0.0, 0.0, 0.0, 0.0
+    # 初始化相似度变量
+    sim_1_1 = sim_1_2 = sim_2_1 = sim_2_2 = 0.0
+    id_to_pixel = {1: 128, 2: 255}
 
-    for person_id in [1, 2]:
-        person_mask = (mask == person_id).astype(np.uint8) * 255
+    for p_idx, pixel_val in id_to_pixel.items():
+        person_mask = (mask == pixel_val).astype(np.uint8) * 255
         if np.sum(person_mask) == 0:
+            print(f"警告：{os.path.basename(img_path)} Person{p_idx} 掩码为空")
             continue
+
+        # 应用掩码
         masked_img = cv2.bitwise_and(img, img, mask=person_mask)
         masked_pil = Image.fromarray(cv2.cvtColor(masked_img, cv2.COLOR_BGR2RGB))
         img_tensor = preprocess(masked_pil).unsqueeze(0).to(device)
@@ -89,22 +103,19 @@ def evaluate_sample(img_path, mask_path, prompt, scene):
             img_embed = model.encode_image(img_tensor)
             img_embed = img_embed / img_embed.norm(dim=-1, keepdim=True)
 
-        # 计算与两个文本的相似度
         sim1 = torch.cosine_similarity(img_embed, text_embeds[0:1]).item()
         sim2 = torch.cosine_similarity(img_embed, text_embeds[1:2]).item()
-        if person_id == 1:
+
+        if p_idx == 1:
             sim_1_1, sim_1_2 = sim1, sim2
         else:
             sim_2_1, sim_2_2 = sim1, sim2
 
-    # 对角平均
     diag_mean = (sim_1_1 + sim_2_2) / 2
-    # 交叉平均
     cross_mean = (sim_1_2 + sim_2_1) / 2
-    # 净隔离得分：(对角-交叉) 的平均
     net_isolation = ((sim_1_1 - sim_1_2) + (sim_2_2 - sim_2_1)) / 2
 
-    # 全局场景一致性：完整图与完整 prompt
+    # 全局场景一致性
     full_img_pil = Image.fromarray(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
     global_img_tensor = preprocess(full_img_pil).unsqueeze(0).to(device)
     full_text_token = clip.tokenize([prompt]).to(device)
@@ -126,9 +137,9 @@ def evaluate_sample(img_path, mask_path, prompt, scene):
         "sim_2_2": round(sim_2_2, 4)
     }
 
-# ===================== 评估流程 =====================
+
 def main():
-    print("\n【增强版 Masked CLIP + 场景一致性评估】")
+    print("\n【 Masked CLIP + 场景一致性评估】")
     config_path = os.path.join(SYNTHETIC_DATASET, "synthetic_configs.json")
     if not os.path.exists(config_path):
         print(f"错误：找不到 {config_path}")
@@ -140,7 +151,6 @@ def main():
     report = {}
     for method, suffix in zip(METHODS, SUFFIXES):
         print(f" 评估方法：{method.upper()}")
-        # 按场景存储详细指标
         scene_metrics = {scene: [] for scene in SCENES}
         all_samples = []
 
@@ -158,7 +168,6 @@ def main():
                 scene_metrics[scene].append(metrics)
                 all_samples.append(metrics)
 
-        # 计算每个场景的平均值
         per_scene_avg = {}
         for scene, samples in scene_metrics.items():
             if samples:
@@ -174,7 +183,6 @@ def main():
                 per_scene_avg[scene] = {"masked_clip_self": 0.0, "cross_similarity": 0.0,
                                         "net_isolation": 0.0, "global_scene_sim": 0.0, "count": 0}
 
-        # 全局平均
         global_avg = {
             "masked_clip_self": round(np.mean([s["masked_clip_self"] for s in all_samples]), 4) if all_samples else 0.0,
             "cross_similarity": round(np.mean([s["cross_similarity"] for s in all_samples]), 4) if all_samples else 0.0,
@@ -194,6 +202,7 @@ def main():
         json.dump(report, f, indent=4, ensure_ascii=False)
 
     print(f"增强评估完成，结果保存至 {SAVE_REPORT}")
+
 
 if __name__ == "__main__":
     main()
