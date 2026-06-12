@@ -168,10 +168,13 @@ def run_synthetic():
         configs = json.load(f)
 
     if len(configs) == 0:
-        print("[-] 配置文件中没有检测到样本。")
         return
 
-    print(f"\n[开始] 顺序执行全量合成测试集流水线，总样本规模: {len(configs)} 组。")
+    # 精准锁定第41个样本做验证
+    cfg = configs[40]
+    sample_id = cfg["sample_id"]
+    prompt = cfg["prompt"]
+    neg_prompt = cfg["negative_prompt"]
 
     char_to_filename = {
         "Asuna": "asuna_(stacia)-v1.5",
@@ -180,70 +183,55 @@ def run_synthetic():
         "OchacoUraraka": "OchacoUraraka-01",
     }
 
-    # ===================== 使用 for 循环遍历所有样本 =====================
-    for idx, cfg in enumerate(configs):
-        sample_id = cfg["sample_id"]
-        prompt = cfg["prompt"]
-        neg_prompt = cfg["negative_prompt"]
+    char1_name = char_to_filename[cfg["characters"][0]]
+    char2_name = char_to_filename[cfg["characters"][1]]
 
-        char1_name = char_to_filename[cfg["characters"][0]]
-        char2_name = char_to_filename[cfg["characters"][1]]
+    prompt = re.sub(r"<lora:[^>]+>", "", prompt)
+    print(f"\n正在执行学术控制拦截流水线，目标验证样本: {sample_id}")
 
-        prompt = re.sub(r"<lora:[^>]+>", "", prompt)
-        
-        print(f"\n" + "="*50)
-        print(f" 正在处理样本 [{idx + 1}/{len(configs)}]: {sample_id}")
-        print(f"" + "="*50)
+    for pipe in [pipe_base, pipe_pose, pipe_both]:
+        load_loras_for_pair(pipe, char1_name, char2_name)
 
-        # 动态为当前样本的角色组合加载 LoRA（内部会自动卸载上一轮的 LoRA）
-        for pipe in [pipe_base, pipe_pose, pipe_both]:
-            load_loras_for_pair(pipe, char1_name, char2_name)
+    pose = Image.open(os.path.join(SYNTHETIC_DATA, "poses", f"{sample_id}.png")).convert("RGB")
+    depth = Image.open(os.path.join(SYNTHETIC_DATA, "depths", f"{sample_id}.png")).convert("RGB")
+    mask_path = os.path.join(SYNTHETIC_DATA, "masks", f"{sample_id}.png")
+    
+    token_indices = get_person_token_indices(pipe_both.tokenizer, prompt)
 
-        # 动态读取当前样本对应的控制节点图像
-        pose = Image.open(os.path.join(SYNTHETIC_DATA, "poses", f"{sample_id}.png")).convert("RGB")
-        depth = Image.open(os.path.join(SYNTHETIC_DATA, "depths", f"{sample_id}.png")).convert("RGB")
-        mask_path = os.path.join(SYNTHETIC_DATA, "masks", f"{sample_id}.png")
-        
-        token_indices = get_person_token_indices(pipe_both.tokenizer, prompt)
+    # 1. Baseline 1
+    print(" >>> 正在生成 Baseline 1 (Base Pipeline)...")
+    img1 = pipe_base(prompt=prompt, negative_prompt=neg_prompt, generator=generator, num_inference_steps=25, guidance_scale=7.5).images[0]
+    img1.save(os.path.join(OUTPUT_DIR, f"{sample_id}{METHOD_SUFFIX[0]}.png"))
+    clear_gpu_memory()
 
-        # 1. Baseline 1
-        print(f" >>> [{sample_id}] 正在生成 Baseline 1 (Base Pipeline)...")
-        img1 = pipe_base(prompt=prompt, negative_prompt=neg_prompt, generator=generator, num_inference_steps=25, guidance_scale=7.5).images[0]
-        img1.save(os.path.join(OUTPUT_DIR, f"{sample_id}{METHOD_SUFFIX[0]}.png"))
-        clear_gpu_memory()
+    # 2. Baseline 2
+    print(" >>> 正在生成 Baseline 2 (Single ControlNet Pose)...")
+    img2 = pipe_pose(prompt=prompt, negative_prompt=neg_prompt, image=pose,
+                     controlnet_conditioning_scale=0.7, generator=generator,
+                     num_inference_steps=25, guidance_scale=7.5).images[0]
+    img2.save(os.path.join(OUTPUT_DIR, f"{sample_id}{METHOD_SUFFIX[1]}.png"))
+    clear_gpu_memory()
 
-        # 2. Baseline 2
-        print(f" >>> [{sample_id}] 正在生成 Baseline 2 (Single ControlNet Pose)...")
-        img2 = pipe_pose(prompt=prompt, negative_prompt=neg_prompt, image=pose,
-                         controlnet_conditioning_scale=0.7, generator=generator,
-                         num_inference_steps=25, guidance_scale=7.5).images[0]
-        img2.save(os.path.join(OUTPUT_DIR, f"{sample_id}{METHOD_SUFFIX[1]}.png"))
-        clear_gpu_memory()
+    # 3. Baseline 3
+    print(" >>> 正在生成 Baseline 3 (Multi-ControlNet Pose + Depth)...")
+    img3 = pipe_both(prompt=prompt, negative_prompt=neg_prompt, image=[pose, depth],
+                     controlnet_conditioning_scale=[0.7, 0.5], generator=generator,
+                     num_inference_steps=25, guidance_scale=7.5).images[0]
+    img3.save(os.path.join(OUTPUT_DIR, f"{sample_id}{METHOD_SUFFIX[2]}.png"))
+    clear_gpu_memory()
 
-        # 3. Baseline 3
-        print(f" >>> [{sample_id}] 正在生成 Baseline 3 (Multi-ControlNet Pose + Depth)...")
-        img3 = pipe_both(prompt=prompt, negative_prompt=neg_prompt, image=[pose, depth],
-                         controlnet_conditioning_scale=[0.7, 0.5], generator=generator,
-                         num_inference_steps=25, guidance_scale=7.5).images[0]
-        img3.save(os.path.join(OUTPUT_DIR, f"{sample_id}{METHOD_SUFFIX[2]}.png"))
-        clear_gpu_memory()
+    # 4. Proposed Method 
+    print(" >>> 正在生成 Proposed Method (隔离方案)...")
+    masks = process_mask(mask_path)
+    apply_attention_mask(pipe_both, token_indices, masks, penalty_weight=20.0)
+    img4 = pipe_both(prompt=prompt, negative_prompt=neg_prompt, image=[pose, depth],
+                     controlnet_conditioning_scale=[0.7, 0.5], generator=generator,
+                     num_inference_steps=25, guidance_scale=7.5).images[0]
+    img4.save(os.path.join(OUTPUT_DIR, f"{sample_id}{METHOD_SUFFIX[3]}.png"))
+    pipe_both.unet.set_attn_processor(AttnProcessor())
+    clear_gpu_memory()
 
-        # 4. Proposed Method 
-        print(f" >>> [{sample_id}] 正在生成 Proposed Method ...")
-        masks = process_mask(mask_path)
-        apply_attention_mask(pipe_both, token_indices, masks, penalty_weight=20.0)
-        img4 = pipe_both(prompt=prompt, negative_prompt=neg_prompt, image=[pose, depth],
-                         controlnet_conditioning_scale=[0.7, 0.5], generator=generator,
-                         num_inference_steps=25, guidance_scale=7.5).images[0]
-        img4.save(os.path.join(OUTPUT_DIR, f"{sample_id}{METHOD_SUFFIX[3]}.png"))
-        
-        # 严格复位注意力拦截器，防止污染循环中的下一个样本
-        pipe_both.unet.set_attn_processor(AttnProcessor())
-        clear_gpu_memory()
-
-        print(f" [+] 样本 {sample_id} 的 4 组对照图像已成功输出。")
-
-    print(f"\n[成功] 全量合成实验测试集已全部运行完毕！")
+    print(f"\n [+] 样本 {sample_id} 的 4 组对照组图像已全部正常生成。")
 
 if __name__ == "__main__":
     try:

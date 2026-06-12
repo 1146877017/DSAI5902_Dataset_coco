@@ -29,6 +29,11 @@
 !Left_test_only2per/*.json
 !Left_test_only2per/*.log
 
+!log/
+!log/*.py
+!log/*.json
+!log/*.log
+
 # 模型权重文件
 *.pt
 *.pth
