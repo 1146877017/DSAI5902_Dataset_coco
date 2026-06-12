@@ -1,0 +1,130 @@
+{
+    "baseline1": {
+        "per_scene_averages": {
+            "side_by_side": {
+                "masked_clip_self": 0.2289,
+                "cross_similarity": 0.2312,
+                "net_isolation": -0.0023,
+                "global_scene_sim": 0.3362,
+                "count": 18
+            },
+            "handshake": {
+                "masked_clip_self": 0.2332,
+                "cross_similarity": 0.2324,
+                "net_isolation": 0.0008,
+                "global_scene_sim": 0.3195,
+                "count": 18
+            },
+            "front_back": {
+                "masked_clip_self": 0.2295,
+                "cross_similarity": 0.2385,
+                "net_isolation": -0.009,
+                "global_scene_sim": 0.3275,
+                "count": 18
+            }
+        },
+        "global_averages": {
+            "masked_clip_self": 0.2305,
+            "cross_similarity": 0.234,
+            "net_isolation": -0.0035,
+            "global_scene_sim": 0.3277,
+            "total_samples": 54
+        }
+    },
+    "baseline2": {
+        "per_scene_averages": {
+            "side_by_side": {
+                "masked_clip_self": 0.2372,
+                "cross_similarity": 0.2403,
+                "net_isolation": -0.003,
+                "global_scene_sim": 0.3208,
+                "count": 18
+            },
+            "handshake": {
+                "masked_clip_self": 0.2727,
+                "cross_similarity": 0.2599,
+                "net_isolation": 0.0128,
+                "global_scene_sim": 0.306,
+                "count": 18
+            },
+            "front_back": {
+                "masked_clip_self": 0.2437,
+                "cross_similarity": 0.2482,
+                "net_isolation": -0.0045,
+                "global_scene_sim": 0.3156,
+                "count": 18
+            }
+        },
+        "global_averages": {
+            "masked_clip_self": 0.2512,
+            "cross_similarity": 0.2495,
+            "net_isolation": 0.0017,
+            "global_scene_sim": 0.3141,
+            "total_samples": 54
+        }
+    },
+    "baseline3": {
+        "per_scene_averages": {
+            "side_by_side": {
+                "masked_clip_self": 0.2664,
+                "cross_similarity": 0.2668,
+                "net_isolation": -0.0005,
+                "global_scene_sim": 0.3168,
+                "count": 18
+            },
+            "handshake": {
+                "masked_clip_self": 0.2759,
+                "cross_similarity": 0.2734,
+                "net_isolation": 0.0025,
+                "global_scene_sim": 0.3036,
+                "count": 18
+            },
+            "front_back": {
+                "masked_clip_self": 0.2453,
+                "cross_similarity": 0.2466,
+                "net_isolation": -0.0013,
+                "global_scene_sim": 0.2889,
+                "count": 18
+            }
+        },
+        "global_averages": {
+            "masked_clip_self": 0.2625,
+            "cross_similarity": 0.2623,
+            "net_isolation": 0.0002,
+            "global_scene_sim": 0.3031,
+            "total_samples": 54
+        }
+    },
+    "method": {
+        "per_scene_averages": {
+            "side_by_side": {
+                "masked_clip_self": 0.2677,
+                "cross_similarity": 0.264,
+                "net_isolation": 0.0036,
+                "global_scene_sim": 0.3001,
+                "count": 18
+            },
+            "handshake": {
+                "masked_clip_self": 0.278,
+                "cross_similarity": 0.2762,
+                "net_isolation": 0.0018,
+                "global_scene_sim": 0.3018,
+                "count": 18
+            },
+            "front_back": {
+                "masked_clip_self": 0.2333,
+                "cross_similarity": 0.2241,
+                "net_isolation": 0.0093,
+                "global_scene_sim": 0.3001,
+                "count": 18
+            }
+        },
+        "global_averages": {
+            "masked_clip_self": 0.2597,
+            "cross_similarity": 0.2548,
+            "net_isolation": 0.0049,
+            "global_scene_sim": 0.3007,
+            "total_samples": 54
+        }
+    }
+}
