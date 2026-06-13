@@ -1,0 +1,30 @@
+{
+    "baseline1": {
+        "background_consistency": 0.5164,
+        "depth_fidelity": 0.4691,
+        "pose_fidelity_oks": 0.0389,
+        "overall_narrative_consistency": 0.3415,
+        "total_evaluated_images": 54
+    },
+    "baseline2": {
+        "background_consistency": 0.4622,
+        "depth_fidelity": 0.5054,
+        "pose_fidelity_oks": 0.3017,
+        "overall_narrative_consistency": 0.4231,
+        "total_evaluated_images": 54
+    },
+    "baseline3": {
+        "background_consistency": 0.622,
+        "depth_fidelity": 0.5627,
+        "pose_fidelity_oks": 0.8142,
+        "overall_narrative_consistency": 0.6663,
+        "total_evaluated_images": 54
+    },
+    "method": {
+        "background_consistency": 0.5478,
+        "depth_fidelity": 0.5726,
+        "pose_fidelity_oks": 0.8406,
+        "overall_narrative_consistency": 0.6537,
+        "total_evaluated_images": 54
+    }
+}

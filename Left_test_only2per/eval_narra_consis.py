@@ -1,3 +1,6 @@
+import sys
+sys.path.insert(0, r"./Depth-Anything-V2")
+
 import os
 import json
 import cv2
@@ -22,10 +25,10 @@ DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 SAVE_REPORT = "narrative_consistency_report.json"
 
 # ===================== 加载模型 =====================
-print(" 加载姿态估计模型 (YOLOv8-Pose) ...")
+print(" Loading pose estimation model (YOLOv8-Pose) ...")
 pose_model = YOLO("../yolov8n-pose.pt")
 
-print(" 加载深度模型 Depth Anything V2 (vitb) ...")
+print(" Loading depth model Depth Anything V2 (vitb) ...")
 depth_model = DepthAnythingV2(encoder='vitb', features=128, out_channels=[96, 192, 384, 768])
 depth_model.load_state_dict(torch.load("../depth_anything_v2_vitb.pth", map_location=DEVICE), strict=True)
 depth_model = depth_model.to(DEVICE).eval()
@@ -45,7 +48,7 @@ CUSTOM_TO_COCO = {
 }
 
 def get_gt_keypoints(scene, person_idx):
-    """返回场景标准关键点（与 generate_synthetic_dataset_tmp.py 中的 get_scene_keypoints 一致）"""
+    """返回场景标准关键点（与 generate_synthetic_dataset.py 中的 get_scene_keypoints 一致）"""
     if scene == "side_by_side":
         p1 = np.array([[0.30,0.50],[0.28,0.58],[0.32,0.58],[0.26,0.68],[0.34,0.68],
                        [0.24,0.78],[0.36,0.78],[0.30,0.60],[0.30,0.70],[0.28,0.80],[0.32,0.80]])
@@ -158,7 +161,7 @@ def compute_depth_fidelity(img, gt_depth_path):
         return 0.0
     gt_depth = cv2.resize(gt_depth, (IMAGE_SIZE, IMAGE_SIZE)).astype(np.float32)
     
-    # 优化点 5：解决通道不一致问题，将 BGR 转换为深度网络期待的 RGB
+    # 优化点 5：解决通道不一致问题，将 BGR 转换为深度 network 期待的 RGB
     img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     
     with torch.no_grad():
@@ -171,12 +174,12 @@ def compute_depth_fidelity(img, gt_depth_path):
 
 # ===================== 主函数 =====================
 def main():
-    print("\n【叙事一致性定量评估系统 - 论文标准升级版】")
-    print("激活指标：跨场景纯背景一致性(区域SSIM)、空间布局控制力(深度图SSIM)、多角色姿态保真度(惩罚型OKS)")
+    print("\n[ Narrative Consistency Quantitative Evaluation System ]")
+    print("Active Metrics: Cross-scene Pure Background Consistency (Region SSIM), Spatial Layout Control (Depth Map SSIM), Multi-role Pose Fidelity (Penalized OKS)")
 
     config_path = os.path.join(SYNTHETIC_DATA, "synthetic_configs.json")
     if not os.path.exists(config_path):
-        print(f"错误：找不到配置文件 {config_path}")
+        print(f"Error: Cannot find config file {config_path}")
         return
 
     with open(config_path, "r", encoding="utf-8") as f:
@@ -224,19 +227,19 @@ def main():
                     ))
 
         if not depth_scores:
-            print(f">> 评估方法 {method.upper()}: 未找到任何有效图像，跳过。")
+            print(f">> Evaluation Method {method.upper()}: No valid images found, skipping.")
             continue
 
-        print(f"\n>> 正在处理评估方法: {method.upper()}")
+        print(f"\n>> Processing evaluation method: {method.upper()}")
         final_bg = round(np.mean(bg_scores), 4) if bg_scores else 0.0
         final_depth = round(np.mean(depth_scores), 4) if depth_scores else 0.0
         final_pose = round(np.mean(pose_scores), 4) if pose_scores else 0.0
         final_total = round((final_bg + final_depth + final_pose) / 3, 4)
 
-        print(f"    背景一致性 (跨场景稳定度): {final_bg:.4f}")
-        print(f"    深度图保真度 (Layout控制力): {final_depth:.4f}")
-        print(f"    姿态保真度 (惩罚型OKS): {final_pose:.4f}")
-        print(f"    核心叙事一致性总分: {final_total:.4f}")
+        print(f"    Background Consistency (Cross-scene Stability): {final_bg:.4f}")
+        print(f"    Depth Map Fidelity (Layout Control): {final_depth:.4f}")
+        print(f"    Pose Fidelity (Penalized OKS): {final_pose:.4f}")
+        print(f"    Core Narrative Consistency Overall Score: {final_total:.4f}")
 
         report[method] = {
             "background_consistency": final_bg,
@@ -248,7 +251,7 @@ def main():
 
     with open(SAVE_REPORT, "w", encoding="utf-8") as f:
         json.dump(report, f, indent=4, ensure_ascii=False)
-    print(f"\n评估完成！结果保存至 {SAVE_REPORT}")
+    print(f"\nEvaluation completed! Results saved to {SAVE_REPORT}")
 
 if __name__ == "__main__":
     main()
