@@ -120,6 +120,7 @@ python run_syn_exprmt_grp9.py > log_run_syn_exp_grp9.log 2>&1
 python run_syn_exprmt_grp10.py > log_run_syn_exp_grp10.log 2>&1
 python eval_prop_masked_clip.py > log_eval_prop_msk_clip.log 2>&1
 python eval_narra_consis.py > log_eval_narra_consis.log 2>&1
+python ablation_study.py > log_ablation_study.log 2>&1
 
 
 
