@@ -40,6 +40,22 @@
 !Left_test_only2per/synthetic_results/
 !Left_test_only2per/synthetic_results/*
 
+!Left_test_only2per_v2/
+!Left_test_only2per_v2/*.py
+!Left_test_only2per_v2/*.json
+!Left_test_only2per_v2/*.log
+
+!Left_test_only2per_v2/log/
+!Left_test_only2per_v2/log/*.py
+!Left_test_only2per_v2/log/*.json
+!Left_test_only2per_v2/log/*.log
+
+!Left_test_only2per_v2/synthetic_test_dataset/
+!Left_test_only2per_v2/synthetic_test_dataset/*
+
+!Left_test_only2per_v2/synthetic_results/
+!Left_test_only2per_v2/synthetic_results/*
+
 # 模型权重文件
 *.pt
 *.pth

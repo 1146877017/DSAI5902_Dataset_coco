@@ -1,0 +1,1244 @@
+[
+    {
+        "prompt": "person1: a photo of stacia, white dress, armor, white thighhighs. person2: a photo of NeferpitouDef, white hair, wavy hair, cat ears, cat tail, blue shirt, joints, doll joints. side by side scene in a outdoor park, high quality, 8k, realistic",
+        "negative_prompt": "blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side",
+        "background": "outdoor_park",
+        "characters": [
+            "Asuna",
+            "Neferpitou"
+        ],
+        "lora_details": [
+            {
+                "character_id": "Asuna",
+                "lora_name": "asuna_(stacia)-v1.5",
+                "weight": 0.8
+            },
+            {
+                "character_id": "Neferpitou",
+                "lora_name": "LoRA_Neferpitou",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_outdoor_park_Asuna_vs_Neferpitou"
+    },
+    {
+        "prompt": "person1: a photo of stacia, white dress, armor, white thighhighs. person2: a photo of Toga, Himiko, Himiko Toga. side by side scene in a outdoor park, high quality, 8k, realistic",
+        "negative_prompt": "blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side",
+        "background": "outdoor_park",
+        "characters": [
+            "Asuna",
+            "TogaHimiko"
+        ],
+        "lora_details": [
+            {
+                "character_id": "Asuna",
+                "lora_name": "asuna_(stacia)-v1.5",
+                "weight": 0.8
+            },
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_outdoor_park_Asuna_vs_TogaHimiko"
+    },
+    {
+        "prompt": "person1: a photo of stacia, white dress, armor, white thighhighs. person2: a photo of Ochaco, Bodysuit, Hero suit, white shirt, red necktie, green skirt. side by side scene in a outdoor park, high quality, 8k, realistic",
+        "negative_prompt": "blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side",
+        "background": "outdoor_park",
+        "characters": [
+            "Asuna",
+            "OchacoUraraka"
+        ],
+        "lora_details": [
+            {
+                "character_id": "Asuna",
+                "lora_name": "asuna_(stacia)-v1.5",
+                "weight": 0.8
+            },
+            {
+                "character_id": "OchacoUraraka",
+                "lora_name": "OchacoUraraka-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_outdoor_park_Asuna_vs_OchacoUraraka"
+    },
+    {
+        "prompt": "person1: a photo of NeferpitouDef, white hair, wavy hair, cat ears, cat tail, blue shirt, joints, doll joints. person2: a photo of Toga, Himiko, Himiko Toga. side by side scene in a outdoor park, high quality, 8k, realistic",
+        "negative_prompt": "blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side",
+        "background": "outdoor_park",
+        "characters": [
+            "Neferpitou",
+            "TogaHimiko"
+        ],
+        "lora_details": [
+            {
+                "character_id": "Neferpitou",
+                "lora_name": "LoRA_Neferpitou",
+                "weight": 0.8
+            },
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_outdoor_park_Neferpitou_vs_TogaHimiko"
+    },
+    {
+        "prompt": "person1: a photo of NeferpitouDef, white hair, wavy hair, cat ears, cat tail, blue shirt, joints, doll joints. person2: a photo of Ochaco, Bodysuit, Hero suit, white shirt, red necktie, green skirt. side by side scene in a outdoor park, high quality, 8k, realistic",
+        "negative_prompt": "blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side",
+        "background": "outdoor_park",
+        "characters": [
+            "Neferpitou",
+            "OchacoUraraka"
+        ],
+        "lora_details": [
+            {
+                "character_id": "Neferpitou",
+                "lora_name": "LoRA_Neferpitou",
+                "weight": 0.8
+            },
+            {
+                "character_id": "OchacoUraraka",
+                "lora_name": "OchacoUraraka-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_outdoor_park_Neferpitou_vs_OchacoUraraka"
+    },
+    {
+        "prompt": "person1: a photo of Toga, Himiko, Himiko Toga. person2: a photo of Ochaco, Bodysuit, Hero suit, white shirt, red necktie, green skirt. side by side scene in a outdoor park, high quality, 8k, realistic",
+        "negative_prompt": "blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side",
+        "background": "outdoor_park",
+        "characters": [
+            "TogaHimiko",
+            "OchacoUraraka"
+        ],
+        "lora_details": [
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            },
+            {
+                "character_id": "OchacoUraraka",
+                "lora_name": "OchacoUraraka-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_outdoor_park_TogaHimiko_vs_OchacoUraraka"
+    },
+    {
+        "prompt": "person1: a photo of stacia, white dress, armor, white thighhighs. person2: a photo of NeferpitouDef, white hair, wavy hair, cat ears, cat tail, blue shirt, joints, doll joints. side by side scene in a indoor room, high quality, 8k, realistic",
+        "negative_prompt": "blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side",
+        "background": "indoor_room",
+        "characters": [
+            "Asuna",
+            "Neferpitou"
+        ],
+        "lora_details": [
+            {
+                "character_id": "Asuna",
+                "lora_name": "asuna_(stacia)-v1.5",
+                "weight": 0.8
+            },
+            {
+                "character_id": "Neferpitou",
+                "lora_name": "LoRA_Neferpitou",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_indoor_room_Asuna_vs_Neferpitou"
+    },
+    {
+        "prompt": "person1: a photo of stacia, white dress, armor, white thighhighs. person2: a photo of Toga, Himiko, Himiko Toga. side by side scene in a indoor room, high quality, 8k, realistic",
+        "negative_prompt": "blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side",
+        "background": "indoor_room",
+        "characters": [
+            "Asuna",
+            "TogaHimiko"
+        ],
+        "lora_details": [
+            {
+                "character_id": "Asuna",
+                "lora_name": "asuna_(stacia)-v1.5",
+                "weight": 0.8
+            },
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_indoor_room_Asuna_vs_TogaHimiko"
+    },
+    {
+        "prompt": "person1: a photo of stacia, white dress, armor, white thighhighs. person2: a photo of Ochaco, Bodysuit, Hero suit, white shirt, red necktie, green skirt. side by side scene in a indoor room, high quality, 8k, realistic",
+        "negative_prompt": "blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side",
+        "background": "indoor_room",
+        "characters": [
+            "Asuna",
+            "OchacoUraraka"
+        ],
+        "lora_details": [
+            {
+                "character_id": "Asuna",
+                "lora_name": "asuna_(stacia)-v1.5",
+                "weight": 0.8
+            },
+            {
+                "character_id": "OchacoUraraka",
+                "lora_name": "OchacoUraraka-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_indoor_room_Asuna_vs_OchacoUraraka"
+    },
+    {
+        "prompt": "person1: a photo of NeferpitouDef, white hair, wavy hair, cat ears, cat tail, blue shirt, joints, doll joints. person2: a photo of Toga, Himiko, Himiko Toga. side by side scene in a indoor room, high quality, 8k, realistic",
+        "negative_prompt": "blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side",
+        "background": "indoor_room",
+        "characters": [
+            "Neferpitou",
+            "TogaHimiko"
+        ],
+        "lora_details": [
+            {
+                "character_id": "Neferpitou",
+                "lora_name": "LoRA_Neferpitou",
+                "weight": 0.8
+            },
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_indoor_room_Neferpitou_vs_TogaHimiko"
+    },
+    {
+        "prompt": "person1: a photo of NeferpitouDef, white hair, wavy hair, cat ears, cat tail, blue shirt, joints, doll joints. person2: a photo of Ochaco, Bodysuit, Hero suit, white shirt, red necktie, green skirt. side by side scene in a indoor room, high quality, 8k, realistic",
+        "negative_prompt": "blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side",
+        "background": "indoor_room",
+        "characters": [
+            "Neferpitou",
+            "OchacoUraraka"
+        ],
+        "lora_details": [
+            {
+                "character_id": "Neferpitou",
+                "lora_name": "LoRA_Neferpitou",
+                "weight": 0.8
+            },
+            {
+                "character_id": "OchacoUraraka",
+                "lora_name": "OchacoUraraka-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_indoor_room_Neferpitou_vs_OchacoUraraka"
+    },
+    {
+        "prompt": "person1: a photo of Toga, Himiko, Himiko Toga. person2: a photo of Ochaco, Bodysuit, Hero suit, white shirt, red necktie, green skirt. side by side scene in a indoor room, high quality, 8k, realistic",
+        "negative_prompt": "blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side",
+        "background": "indoor_room",
+        "characters": [
+            "TogaHimiko",
+            "OchacoUraraka"
+        ],
+        "lora_details": [
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            },
+            {
+                "character_id": "OchacoUraraka",
+                "lora_name": "OchacoUraraka-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_indoor_room_TogaHimiko_vs_OchacoUraraka"
+    },
+    {
+        "prompt": "person1: a photo of stacia, white dress, armor, white thighhighs. person2: a photo of NeferpitouDef, white hair, wavy hair, cat ears, cat tail, blue shirt, joints, doll joints. side by side scene in a futuristic street, high quality, 8k, realistic",
+        "negative_prompt": "blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side",
+        "background": "futuristic_street",
+        "characters": [
+            "Asuna",
+            "Neferpitou"
+        ],
+        "lora_details": [
+            {
+                "character_id": "Asuna",
+                "lora_name": "asuna_(stacia)-v1.5",
+                "weight": 0.8
+            },
+            {
+                "character_id": "Neferpitou",
+                "lora_name": "LoRA_Neferpitou",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_futuristic_street_Asuna_vs_Neferpitou"
+    },
+    {
+        "prompt": "person1: a photo of stacia, white dress, armor, white thighhighs. person2: a photo of Toga, Himiko, Himiko Toga. side by side scene in a futuristic street, high quality, 8k, realistic",
+        "negative_prompt": "blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side",
+        "background": "futuristic_street",
+        "characters": [
+            "Asuna",
+            "TogaHimiko"
+        ],
+        "lora_details": [
+            {
+                "character_id": "Asuna",
+                "lora_name": "asuna_(stacia)-v1.5",
+                "weight": 0.8
+            },
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_futuristic_street_Asuna_vs_TogaHimiko"
+    },
+    {
+        "prompt": "person1: a photo of stacia, white dress, armor, white thighhighs. person2: a photo of Ochaco, Bodysuit, Hero suit, white shirt, red necktie, green skirt. side by side scene in a futuristic street, high quality, 8k, realistic",
+        "negative_prompt": "blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side",
+        "background": "futuristic_street",
+        "characters": [
+            "Asuna",
+            "OchacoUraraka"
+        ],
+        "lora_details": [
+            {
+                "character_id": "Asuna",
+                "lora_name": "asuna_(stacia)-v1.5",
+                "weight": 0.8
+            },
+            {
+                "character_id": "OchacoUraraka",
+                "lora_name": "OchacoUraraka-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_futuristic_street_Asuna_vs_OchacoUraraka"
+    },
+    {
+        "prompt": "person1: a photo of NeferpitouDef, white hair, wavy hair, cat ears, cat tail, blue shirt, joints, doll joints. person2: a photo of Toga, Himiko, Himiko Toga. side by side scene in a futuristic street, high quality, 8k, realistic",
+        "negative_prompt": "blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side",
+        "background": "futuristic_street",
+        "characters": [
+            "Neferpitou",
+            "TogaHimiko"
+        ],
+        "lora_details": [
+            {
+                "character_id": "Neferpitou",
+                "lora_name": "LoRA_Neferpitou",
+                "weight": 0.8
+            },
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_futuristic_street_Neferpitou_vs_TogaHimiko"
+    },
+    {
+        "prompt": "person1: a photo of NeferpitouDef, white hair, wavy hair, cat ears, cat tail, blue shirt, joints, doll joints. person2: a photo of Ochaco, Bodysuit, Hero suit, white shirt, red necktie, green skirt. side by side scene in a futuristic street, high quality, 8k, realistic",
+        "negative_prompt": "blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side",
+        "background": "futuristic_street",
+        "characters": [
+            "Neferpitou",
+            "OchacoUraraka"
+        ],
+        "lora_details": [
+            {
+                "character_id": "Neferpitou",
+                "lora_name": "LoRA_Neferpitou",
+                "weight": 0.8
+            },
+            {
+                "character_id": "OchacoUraraka",
+                "lora_name": "OchacoUraraka-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_futuristic_street_Neferpitou_vs_OchacoUraraka"
+    },
+    {
+        "prompt": "person1: a photo of Toga, Himiko, Himiko Toga. person2: a photo of Ochaco, Bodysuit, Hero suit, white shirt, red necktie, green skirt. side by side scene in a futuristic street, high quality, 8k, realistic",
+        "negative_prompt": "blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side",
+        "background": "futuristic_street",
+        "characters": [
+            "TogaHimiko",
+            "OchacoUraraka"
+        ],
+        "lora_details": [
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            },
+            {
+                "character_id": "OchacoUraraka",
+                "lora_name": "OchacoUraraka-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_futuristic_street_TogaHimiko_vs_OchacoUraraka"
+    },
+    {
+        "prompt": "person1: a photo of stacia, white dress, armor, white thighhighs. person2: a photo of NeferpitouDef, white hair, wavy hair, cat ears, cat tail, blue shirt, joints, doll joints. handshake scene in a outdoor park, high quality, 8k, realistic",
+        "negative_prompt": "blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "handshake",
+        "background": "outdoor_park",
+        "characters": [
+            "Asuna",
+            "Neferpitou"
+        ],
+        "lora_details": [
+            {
+                "character_id": "Asuna",
+                "lora_name": "asuna_(stacia)-v1.5",
+                "weight": 0.8
+            },
+            {
+                "character_id": "Neferpitou",
+                "lora_name": "LoRA_Neferpitou",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "handshake_outdoor_park_Asuna_vs_Neferpitou"
+    },
+    {
+        "prompt": "person1: a photo of stacia, white dress, armor, white thighhighs. person2: a photo of Toga, Himiko, Himiko Toga. handshake scene in a outdoor park, high quality, 8k, realistic",
+        "negative_prompt": "blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "handshake",
+        "background": "outdoor_park",
+        "characters": [
+            "Asuna",
+            "TogaHimiko"
+        ],
+        "lora_details": [
+            {
+                "character_id": "Asuna",
+                "lora_name": "asuna_(stacia)-v1.5",
+                "weight": 0.8
+            },
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "handshake_outdoor_park_Asuna_vs_TogaHimiko"
+    },
+    {
+        "prompt": "person1: a photo of stacia, white dress, armor, white thighhighs. person2: a photo of Ochaco, Bodysuit, Hero suit, white shirt, red necktie, green skirt. handshake scene in a outdoor park, high quality, 8k, realistic",
+        "negative_prompt": "blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "handshake",
+        "background": "outdoor_park",
+        "characters": [
+            "Asuna",
+            "OchacoUraraka"
+        ],
+        "lora_details": [
+            {
+                "character_id": "Asuna",
+                "lora_name": "asuna_(stacia)-v1.5",
+                "weight": 0.8
+            },
+            {
+                "character_id": "OchacoUraraka",
+                "lora_name": "OchacoUraraka-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "handshake_outdoor_park_Asuna_vs_OchacoUraraka"
+    },
+    {
+        "prompt": "person1: a photo of NeferpitouDef, white hair, wavy hair, cat ears, cat tail, blue shirt, joints, doll joints. person2: a photo of Toga, Himiko, Himiko Toga. handshake scene in a outdoor park, high quality, 8k, realistic",
+        "negative_prompt": "blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "handshake",
+        "background": "outdoor_park",
+        "characters": [
+            "Neferpitou",
+            "TogaHimiko"
+        ],
+        "lora_details": [
+            {
+                "character_id": "Neferpitou",
+                "lora_name": "LoRA_Neferpitou",
+                "weight": 0.8
+            },
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "handshake_outdoor_park_Neferpitou_vs_TogaHimiko"
+    },
+    {
+        "prompt": "person1: a photo of NeferpitouDef, white hair, wavy hair, cat ears, cat tail, blue shirt, joints, doll joints. person2: a photo of Ochaco, Bodysuit, Hero suit, white shirt, red necktie, green skirt. handshake scene in a outdoor park, high quality, 8k, realistic",
+        "negative_prompt": "blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "handshake",
+        "background": "outdoor_park",
+        "characters": [
+            "Neferpitou",
+            "OchacoUraraka"
+        ],
+        "lora_details": [
+            {
+                "character_id": "Neferpitou",
+                "lora_name": "LoRA_Neferpitou",
+                "weight": 0.8
+            },
+            {
+                "character_id": "OchacoUraraka",
+                "lora_name": "OchacoUraraka-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "handshake_outdoor_park_Neferpitou_vs_OchacoUraraka"
+    },
+    {
+        "prompt": "person1: a photo of Toga, Himiko, Himiko Toga. person2: a photo of Ochaco, Bodysuit, Hero suit, white shirt, red necktie, green skirt. handshake scene in a outdoor park, high quality, 8k, realistic",
+        "negative_prompt": "blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "handshake",
+        "background": "outdoor_park",
+        "characters": [
+            "TogaHimiko",
+            "OchacoUraraka"
+        ],
+        "lora_details": [
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            },
+            {
+                "character_id": "OchacoUraraka",
+                "lora_name": "OchacoUraraka-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "handshake_outdoor_park_TogaHimiko_vs_OchacoUraraka"
+    },
+    {
+        "prompt": "person1: a photo of stacia, white dress, armor, white thighhighs. person2: a photo of NeferpitouDef, white hair, wavy hair, cat ears, cat tail, blue shirt, joints, doll joints. handshake scene in a indoor room, high quality, 8k, realistic",
+        "negative_prompt": "blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "handshake",
+        "background": "indoor_room",
+        "characters": [
+            "Asuna",
+            "Neferpitou"
+        ],
+        "lora_details": [
+            {
+                "character_id": "Asuna",
+                "lora_name": "asuna_(stacia)-v1.5",
+                "weight": 0.8
+            },
+            {
+                "character_id": "Neferpitou",
+                "lora_name": "LoRA_Neferpitou",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "handshake_indoor_room_Asuna_vs_Neferpitou"
+    },
+    {
+        "prompt": "person1: a photo of stacia, white dress, armor, white thighhighs. person2: a photo of Toga, Himiko, Himiko Toga. handshake scene in a indoor room, high quality, 8k, realistic",
+        "negative_prompt": "blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "handshake",
+        "background": "indoor_room",
+        "characters": [
+            "Asuna",
+            "TogaHimiko"
+        ],
+        "lora_details": [
+            {
+                "character_id": "Asuna",
+                "lora_name": "asuna_(stacia)-v1.5",
+                "weight": 0.8
+            },
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "handshake_indoor_room_Asuna_vs_TogaHimiko"
+    },
+    {
+        "prompt": "person1: a photo of stacia, white dress, armor, white thighhighs. person2: a photo of Ochaco, Bodysuit, Hero suit, white shirt, red necktie, green skirt. handshake scene in a indoor room, high quality, 8k, realistic",
+        "negative_prompt": "blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "handshake",
+        "background": "indoor_room",
+        "characters": [
+            "Asuna",
+            "OchacoUraraka"
+        ],
+        "lora_details": [
+            {
+                "character_id": "Asuna",
+                "lora_name": "asuna_(stacia)-v1.5",
+                "weight": 0.8
+            },
+            {
+                "character_id": "OchacoUraraka",
+                "lora_name": "OchacoUraraka-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "handshake_indoor_room_Asuna_vs_OchacoUraraka"
+    },
+    {
+        "prompt": "person1: a photo of NeferpitouDef, white hair, wavy hair, cat ears, cat tail, blue shirt, joints, doll joints. person2: a photo of Toga, Himiko, Himiko Toga. handshake scene in a indoor room, high quality, 8k, realistic",
+        "negative_prompt": "blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "handshake",
+        "background": "indoor_room",
+        "characters": [
+            "Neferpitou",
+            "TogaHimiko"
+        ],
+        "lora_details": [
+            {
+                "character_id": "Neferpitou",
+                "lora_name": "LoRA_Neferpitou",
+                "weight": 0.8
+            },
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "handshake_indoor_room_Neferpitou_vs_TogaHimiko"
+    },
+    {
+        "prompt": "person1: a photo of NeferpitouDef, white hair, wavy hair, cat ears, cat tail, blue shirt, joints, doll joints. person2: a photo of Ochaco, Bodysuit, Hero suit, white shirt, red necktie, green skirt. handshake scene in a indoor room, high quality, 8k, realistic",
+        "negative_prompt": "blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "handshake",
+        "background": "indoor_room",
+        "characters": [
+            "Neferpitou",
+            "OchacoUraraka"
+        ],
+        "lora_details": [
+            {
+                "character_id": "Neferpitou",
+                "lora_name": "LoRA_Neferpitou",
+                "weight": 0.8
+            },
+            {
+                "character_id": "OchacoUraraka",
+                "lora_name": "OchacoUraraka-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "handshake_indoor_room_Neferpitou_vs_OchacoUraraka"
+    },
+    {
+        "prompt": "person1: a photo of Toga, Himiko, Himiko Toga. person2: a photo of Ochaco, Bodysuit, Hero suit, white shirt, red necktie, green skirt. handshake scene in a indoor room, high quality, 8k, realistic",
+        "negative_prompt": "blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "handshake",
+        "background": "indoor_room",
+        "characters": [
+            "TogaHimiko",
+            "OchacoUraraka"
+        ],
+        "lora_details": [
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            },
+            {
+                "character_id": "OchacoUraraka",
+                "lora_name": "OchacoUraraka-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "handshake_indoor_room_TogaHimiko_vs_OchacoUraraka"
+    },
+    {
+        "prompt": "person1: a photo of stacia, white dress, armor, white thighhighs. person2: a photo of NeferpitouDef, white hair, wavy hair, cat ears, cat tail, blue shirt, joints, doll joints. handshake scene in a futuristic street, high quality, 8k, realistic",
+        "negative_prompt": "blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "handshake",
+        "background": "futuristic_street",
+        "characters": [
+            "Asuna",
+            "Neferpitou"
+        ],
+        "lora_details": [
+            {
+                "character_id": "Asuna",
+                "lora_name": "asuna_(stacia)-v1.5",
+                "weight": 0.8
+            },
+            {
+                "character_id": "Neferpitou",
+                "lora_name": "LoRA_Neferpitou",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "handshake_futuristic_street_Asuna_vs_Neferpitou"
+    },
+    {
+        "prompt": "person1: a photo of stacia, white dress, armor, white thighhighs. person2: a photo of Toga, Himiko, Himiko Toga. handshake scene in a futuristic street, high quality, 8k, realistic",
+        "negative_prompt": "blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "handshake",
+        "background": "futuristic_street",
+        "characters": [
+            "Asuna",
+            "TogaHimiko"
+        ],
+        "lora_details": [
+            {
+                "character_id": "Asuna",
+                "lora_name": "asuna_(stacia)-v1.5",
+                "weight": 0.8
+            },
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "handshake_futuristic_street_Asuna_vs_TogaHimiko"
+    },
+    {
+        "prompt": "person1: a photo of stacia, white dress, armor, white thighhighs. person2: a photo of Ochaco, Bodysuit, Hero suit, white shirt, red necktie, green skirt. handshake scene in a futuristic street, high quality, 8k, realistic",
+        "negative_prompt": "blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "handshake",
+        "background": "futuristic_street",
+        "characters": [
+            "Asuna",
+            "OchacoUraraka"
+        ],
+        "lora_details": [
+            {
+                "character_id": "Asuna",
+                "lora_name": "asuna_(stacia)-v1.5",
+                "weight": 0.8
+            },
+            {
+                "character_id": "OchacoUraraka",
+                "lora_name": "OchacoUraraka-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "handshake_futuristic_street_Asuna_vs_OchacoUraraka"
+    },
+    {
+        "prompt": "person1: a photo of NeferpitouDef, white hair, wavy hair, cat ears, cat tail, blue shirt, joints, doll joints. person2: a photo of Toga, Himiko, Himiko Toga. handshake scene in a futuristic street, high quality, 8k, realistic",
+        "negative_prompt": "blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "handshake",
+        "background": "futuristic_street",
+        "characters": [
+            "Neferpitou",
+            "TogaHimiko"
+        ],
+        "lora_details": [
+            {
+                "character_id": "Neferpitou",
+                "lora_name": "LoRA_Neferpitou",
+                "weight": 0.8
+            },
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "handshake_futuristic_street_Neferpitou_vs_TogaHimiko"
+    },
+    {
+        "prompt": "person1: a photo of NeferpitouDef, white hair, wavy hair, cat ears, cat tail, blue shirt, joints, doll joints. person2: a photo of Ochaco, Bodysuit, Hero suit, white shirt, red necktie, green skirt. handshake scene in a futuristic street, high quality, 8k, realistic",
+        "negative_prompt": "blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "handshake",
+        "background": "futuristic_street",
+        "characters": [
+            "Neferpitou",
+            "OchacoUraraka"
+        ],
+        "lora_details": [
+            {
+                "character_id": "Neferpitou",
+                "lora_name": "LoRA_Neferpitou",
+                "weight": 0.8
+            },
+            {
+                "character_id": "OchacoUraraka",
+                "lora_name": "OchacoUraraka-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "handshake_futuristic_street_Neferpitou_vs_OchacoUraraka"
+    },
+    {
+        "prompt": "person1: a photo of Toga, Himiko, Himiko Toga. person2: a photo of Ochaco, Bodysuit, Hero suit, white shirt, red necktie, green skirt. handshake scene in a futuristic street, high quality, 8k, realistic",
+        "negative_prompt": "blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "handshake",
+        "background": "futuristic_street",
+        "characters": [
+            "TogaHimiko",
+            "OchacoUraraka"
+        ],
+        "lora_details": [
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            },
+            {
+                "character_id": "OchacoUraraka",
+                "lora_name": "OchacoUraraka-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "handshake_futuristic_street_TogaHimiko_vs_OchacoUraraka"
+    },
+    {
+        "prompt": "person1: a photo of stacia, white dress, armor, white thighhighs. person2: a photo of NeferpitouDef, white hair, wavy hair, cat ears, cat tail, blue shirt, joints, doll joints. front back scene in a outdoor park, high quality, 8k, realistic",
+        "negative_prompt": "blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "front_back",
+        "background": "outdoor_park",
+        "characters": [
+            "Asuna",
+            "Neferpitou"
+        ],
+        "lora_details": [
+            {
+                "character_id": "Asuna",
+                "lora_name": "asuna_(stacia)-v1.5",
+                "weight": 0.8
+            },
+            {
+                "character_id": "Neferpitou",
+                "lora_name": "LoRA_Neferpitou",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "front_back_outdoor_park_Asuna_vs_Neferpitou"
+    },
+    {
+        "prompt": "person1: a photo of stacia, white dress, armor, white thighhighs. person2: a photo of Toga, Himiko, Himiko Toga. front back scene in a outdoor park, high quality, 8k, realistic",
+        "negative_prompt": "blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "front_back",
+        "background": "outdoor_park",
+        "characters": [
+            "Asuna",
+            "TogaHimiko"
+        ],
+        "lora_details": [
+            {
+                "character_id": "Asuna",
+                "lora_name": "asuna_(stacia)-v1.5",
+                "weight": 0.8
+            },
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "front_back_outdoor_park_Asuna_vs_TogaHimiko"
+    },
+    {
+        "prompt": "person1: a photo of stacia, white dress, armor, white thighhighs. person2: a photo of Ochaco, Bodysuit, Hero suit, white shirt, red necktie, green skirt. front back scene in a outdoor park, high quality, 8k, realistic",
+        "negative_prompt": "blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "front_back",
+        "background": "outdoor_park",
+        "characters": [
+            "Asuna",
+            "OchacoUraraka"
+        ],
+        "lora_details": [
+            {
+                "character_id": "Asuna",
+                "lora_name": "asuna_(stacia)-v1.5",
+                "weight": 0.8
+            },
+            {
+                "character_id": "OchacoUraraka",
+                "lora_name": "OchacoUraraka-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "front_back_outdoor_park_Asuna_vs_OchacoUraraka"
+    },
+    {
+        "prompt": "person1: a photo of NeferpitouDef, white hair, wavy hair, cat ears, cat tail, blue shirt, joints, doll joints. person2: a photo of Toga, Himiko, Himiko Toga. front back scene in a outdoor park, high quality, 8k, realistic",
+        "negative_prompt": "blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "front_back",
+        "background": "outdoor_park",
+        "characters": [
+            "Neferpitou",
+            "TogaHimiko"
+        ],
+        "lora_details": [
+            {
+                "character_id": "Neferpitou",
+                "lora_name": "LoRA_Neferpitou",
+                "weight": 0.8
+            },
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "front_back_outdoor_park_Neferpitou_vs_TogaHimiko"
+    },
+    {
+        "prompt": "person1: a photo of NeferpitouDef, white hair, wavy hair, cat ears, cat tail, blue shirt, joints, doll joints. person2: a photo of Ochaco, Bodysuit, Hero suit, white shirt, red necktie, green skirt. front back scene in a outdoor park, high quality, 8k, realistic",
+        "negative_prompt": "blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "front_back",
+        "background": "outdoor_park",
+        "characters": [
+            "Neferpitou",
+            "OchacoUraraka"
+        ],
+        "lora_details": [
+            {
+                "character_id": "Neferpitou",
+                "lora_name": "LoRA_Neferpitou",
+                "weight": 0.8
+            },
+            {
+                "character_id": "OchacoUraraka",
+                "lora_name": "OchacoUraraka-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "front_back_outdoor_park_Neferpitou_vs_OchacoUraraka"
+    },
+    {
+        "prompt": "person1: a photo of Toga, Himiko, Himiko Toga. person2: a photo of Ochaco, Bodysuit, Hero suit, white shirt, red necktie, green skirt. front back scene in a outdoor park, high quality, 8k, realistic",
+        "negative_prompt": "blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "front_back",
+        "background": "outdoor_park",
+        "characters": [
+            "TogaHimiko",
+            "OchacoUraraka"
+        ],
+        "lora_details": [
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            },
+            {
+                "character_id": "OchacoUraraka",
+                "lora_name": "OchacoUraraka-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "front_back_outdoor_park_TogaHimiko_vs_OchacoUraraka"
+    },
+    {
+        "prompt": "person1: a photo of stacia, white dress, armor, white thighhighs. person2: a photo of NeferpitouDef, white hair, wavy hair, cat ears, cat tail, blue shirt, joints, doll joints. front back scene in a indoor room, high quality, 8k, realistic",
+        "negative_prompt": "blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "front_back",
+        "background": "indoor_room",
+        "characters": [
+            "Asuna",
+            "Neferpitou"
+        ],
+        "lora_details": [
+            {
+                "character_id": "Asuna",
+                "lora_name": "asuna_(stacia)-v1.5",
+                "weight": 0.8
+            },
+            {
+                "character_id": "Neferpitou",
+                "lora_name": "LoRA_Neferpitou",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "front_back_indoor_room_Asuna_vs_Neferpitou"
+    },
+    {
+        "prompt": "person1: a photo of stacia, white dress, armor, white thighhighs. person2: a photo of Toga, Himiko, Himiko Toga. front back scene in a indoor room, high quality, 8k, realistic",
+        "negative_prompt": "blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "front_back",
+        "background": "indoor_room",
+        "characters": [
+            "Asuna",
+            "TogaHimiko"
+        ],
+        "lora_details": [
+            {
+                "character_id": "Asuna",
+                "lora_name": "asuna_(stacia)-v1.5",
+                "weight": 0.8
+            },
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "front_back_indoor_room_Asuna_vs_TogaHimiko"
+    },
+    {
+        "prompt": "person1: a photo of stacia, white dress, armor, white thighhighs. person2: a photo of Ochaco, Bodysuit, Hero suit, white shirt, red necktie, green skirt. front back scene in a indoor room, high quality, 8k, realistic",
+        "negative_prompt": "blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "front_back",
+        "background": "indoor_room",
+        "characters": [
+            "Asuna",
+            "OchacoUraraka"
+        ],
+        "lora_details": [
+            {
+                "character_id": "Asuna",
+                "lora_name": "asuna_(stacia)-v1.5",
+                "weight": 0.8
+            },
+            {
+                "character_id": "OchacoUraraka",
+                "lora_name": "OchacoUraraka-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "front_back_indoor_room_Asuna_vs_OchacoUraraka"
+    },
+    {
+        "prompt": "person1: a photo of NeferpitouDef, white hair, wavy hair, cat ears, cat tail, blue shirt, joints, doll joints. person2: a photo of Toga, Himiko, Himiko Toga. front back scene in a indoor room, high quality, 8k, realistic",
+        "negative_prompt": "blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "front_back",
+        "background": "indoor_room",
+        "characters": [
+            "Neferpitou",
+            "TogaHimiko"
+        ],
+        "lora_details": [
+            {
+                "character_id": "Neferpitou",
+                "lora_name": "LoRA_Neferpitou",
+                "weight": 0.8
+            },
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "front_back_indoor_room_Neferpitou_vs_TogaHimiko"
+    },
+    {
+        "prompt": "person1: a photo of NeferpitouDef, white hair, wavy hair, cat ears, cat tail, blue shirt, joints, doll joints. person2: a photo of Ochaco, Bodysuit, Hero suit, white shirt, red necktie, green skirt. front back scene in a indoor room, high quality, 8k, realistic",
+        "negative_prompt": "blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "front_back",
+        "background": "indoor_room",
+        "characters": [
+            "Neferpitou",
+            "OchacoUraraka"
+        ],
+        "lora_details": [
+            {
+                "character_id": "Neferpitou",
+                "lora_name": "LoRA_Neferpitou",
+                "weight": 0.8
+            },
+            {
+                "character_id": "OchacoUraraka",
+                "lora_name": "OchacoUraraka-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "front_back_indoor_room_Neferpitou_vs_OchacoUraraka"
+    },
+    {
+        "prompt": "person1: a photo of Toga, Himiko, Himiko Toga. person2: a photo of Ochaco, Bodysuit, Hero suit, white shirt, red necktie, green skirt. front back scene in a indoor room, high quality, 8k, realistic",
+        "negative_prompt": "blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "front_back",
+        "background": "indoor_room",
+        "characters": [
+            "TogaHimiko",
+            "OchacoUraraka"
+        ],
+        "lora_details": [
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            },
+            {
+                "character_id": "OchacoUraraka",
+                "lora_name": "OchacoUraraka-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "front_back_indoor_room_TogaHimiko_vs_OchacoUraraka"
+    },
+    {
+        "prompt": "person1: a photo of stacia, white dress, armor, white thighhighs. person2: a photo of NeferpitouDef, white hair, wavy hair, cat ears, cat tail, blue shirt, joints, doll joints. front back scene in a futuristic street, high quality, 8k, realistic",
+        "negative_prompt": "blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "front_back",
+        "background": "futuristic_street",
+        "characters": [
+            "Asuna",
+            "Neferpitou"
+        ],
+        "lora_details": [
+            {
+                "character_id": "Asuna",
+                "lora_name": "asuna_(stacia)-v1.5",
+                "weight": 0.8
+            },
+            {
+                "character_id": "Neferpitou",
+                "lora_name": "LoRA_Neferpitou",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "front_back_futuristic_street_Asuna_vs_Neferpitou"
+    },
+    {
+        "prompt": "person1: a photo of stacia, white dress, armor, white thighhighs. person2: a photo of Toga, Himiko, Himiko Toga. front back scene in a futuristic street, high quality, 8k, realistic",
+        "negative_prompt": "blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "front_back",
+        "background": "futuristic_street",
+        "characters": [
+            "Asuna",
+            "TogaHimiko"
+        ],
+        "lora_details": [
+            {
+                "character_id": "Asuna",
+                "lora_name": "asuna_(stacia)-v1.5",
+                "weight": 0.8
+            },
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "front_back_futuristic_street_Asuna_vs_TogaHimiko"
+    },
+    {
+        "prompt": "person1: a photo of stacia, white dress, armor, white thighhighs. person2: a photo of Ochaco, Bodysuit, Hero suit, white shirt, red necktie, green skirt. front back scene in a futuristic street, high quality, 8k, realistic",
+        "negative_prompt": "blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "front_back",
+        "background": "futuristic_street",
+        "characters": [
+            "Asuna",
+            "OchacoUraraka"
+        ],
+        "lora_details": [
+            {
+                "character_id": "Asuna",
+                "lora_name": "asuna_(stacia)-v1.5",
+                "weight": 0.8
+            },
+            {
+                "character_id": "OchacoUraraka",
+                "lora_name": "OchacoUraraka-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "front_back_futuristic_street_Asuna_vs_OchacoUraraka"
+    },
+    {
+        "prompt": "person1: a photo of NeferpitouDef, white hair, wavy hair, cat ears, cat tail, blue shirt, joints, doll joints. person2: a photo of Toga, Himiko, Himiko Toga. front back scene in a futuristic street, high quality, 8k, realistic",
+        "negative_prompt": "blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "front_back",
+        "background": "futuristic_street",
+        "characters": [
+            "Neferpitou",
+            "TogaHimiko"
+        ],
+        "lora_details": [
+            {
+                "character_id": "Neferpitou",
+                "lora_name": "LoRA_Neferpitou",
+                "weight": 0.8
+            },
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "front_back_futuristic_street_Neferpitou_vs_TogaHimiko"
+    },
+    {
+        "prompt": "person1: a photo of NeferpitouDef, white hair, wavy hair, cat ears, cat tail, blue shirt, joints, doll joints. person2: a photo of Ochaco, Bodysuit, Hero suit, white shirt, red necktie, green skirt. front back scene in a futuristic street, high quality, 8k, realistic",
+        "negative_prompt": "blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "front_back",
+        "background": "futuristic_street",
+        "characters": [
+            "Neferpitou",
+            "OchacoUraraka"
+        ],
+        "lora_details": [
+            {
+                "character_id": "Neferpitou",
+                "lora_name": "LoRA_Neferpitou",
+                "weight": 0.8
+            },
+            {
+                "character_id": "OchacoUraraka",
+                "lora_name": "OchacoUraraka-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "front_back_futuristic_street_Neferpitou_vs_OchacoUraraka"
+    },
+    {
+        "prompt": "person1: a photo of Toga, Himiko, Himiko Toga. person2: a photo of Ochaco, Bodysuit, Hero suit, white shirt, red necktie, green skirt. front back scene in a futuristic street, high quality, 8k, realistic",
+        "negative_prompt": "blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "front_back",
+        "background": "futuristic_street",
+        "characters": [
+            "TogaHimiko",
+            "OchacoUraraka"
+        ],
+        "lora_details": [
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            },
+            {
+                "character_id": "OchacoUraraka",
+                "lora_name": "OchacoUraraka-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "front_back_futuristic_street_TogaHimiko_vs_OchacoUraraka"
+    }
+]

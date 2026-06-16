@@ -122,5 +122,8 @@ python eval_prop_masked_clip.py > log_eval_prop_msk_clip.log 2>&1
 python eval_narra_consis.py > log_eval_narra_consis.log 2>&1
 python ablation_study.py > log_ablation_study.log 2>&1
 
+在Left_test_only2per_v2中重做合成测试 – 验证角色身份保持与叙事一致性测试部分，必须确保2个人物的是不同的lora
+
+
 
 
