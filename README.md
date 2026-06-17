@@ -124,6 +124,7 @@ python ablation_study.py > log_ablation_study.log 2>&1
 
 在Left_test_only2per_v2中重做合成测试 – 验证角色身份保持与叙事一致性测试部分，必须确保2个人物的是不同的lora
 
+python run_syn_exprmt_grp1.py > log_run_syn_exp_grp1.log 2>&1
 
 
 
