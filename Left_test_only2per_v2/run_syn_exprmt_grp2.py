@@ -22,7 +22,7 @@ SEED = 42
 METHOD_SUFFIX = ["_baseline1", "_baseline2", "_baseline3", "_method"]
 
 # ===================== 测试范围控制 =====================
-TEST_RANGE = [0, 1] 
+TEST_RANGE = [1, 2] 
 
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 device = "cuda" if torch.cuda.is_available() else "cpu"
