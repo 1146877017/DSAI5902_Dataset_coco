@@ -10,9 +10,12 @@ SCENES = ["side_by_side", "handshake", "front_back"]
 BACKGROUNDS = ["outdoor_park", "indoor_room", "futuristic_street"] 
 IMAGE_SIZE = 512
 
+# 将所有场景的角色尺寸全部解耦对齐，采用 front_back 风格的显式命名体系
 ELLIPSE_SIZES = {
-    "side_by_side": (75, 180),
-    "handshake": (75, 180),
+    "side_by_side_p1": (75, 180),
+    "side_by_side_p2": (75, 180),
+    "handshake_p1": (75, 180),
+    "handshake_p2": (75, 180),
     "front_back_back": (85, 130),
     "front_back_front": (110, 170)
 }
@@ -43,103 +46,30 @@ CHARACTERS = [
 
 # ===================== 统一的场景坐标映射器 =====================
 def get_scene_keypoints(scene):
-    """统一管理场景关键点，确保真正完美的正面视角（人体结构左侧在图像右，右侧在图像左）"""
+    """统一管理场景关键点，确保 Pose 控制与 Mask 肢体扩张完全同步"""
     if scene == "side_by_side":
-        # Person 1 (左侧角色，中心 X=0.30)
-        kps_p1 = np.array([
-            [0.30, 0.50],  # 0: Nose
-            [0.34, 0.58],  # 1: LShoulder (正面视角下，左肩偏右侧 X=0.34)
-            [0.26, 0.58],  # 2: RShoulder (右肩偏左侧 X=0.26)
-            [0.36, 0.68],  # 3: LElbow
-            [0.24, 0.68],  # 4: RElbow
-            [0.38, 0.78],  # 5: LWrist
-            [0.22, 0.78],  # 6: RWrist
-            [0.30, 0.54],  # 7: Neck
-            [0.30, 0.72],  # 8: Pelvis
-            [0.33, 0.84],  # 9: LKnee
-            [0.27, 0.84]   # 10: RKnee
-        ])
-        # Person 2 (右侧角色，中心 X=0.70)
-        kps_p2 = np.array([
-            [0.70, 0.50],  # 0: Nose
-            [0.74, 0.58],  # 1: LShoulder
-            [0.66, 0.58],  # 2: RShoulder
-            [0.76, 0.68],  # 3: LElbow
-            [0.64, 0.68],  # 4: RElbow
-            [0.78, 0.78],  # 5: LWrist
-            [0.62, 0.78],  # 6: RWrist
-            [0.70, 0.54],  # 7: Neck
-            [0.70, 0.72],  # 8: Pelvis
-            [0.73, 0.84],  # 9: LKnee
-            [0.67, 0.84]   # 10: RKnee
-        ])
+        kps_p1 = np.array([[0.30, 0.50], [0.28, 0.58], [0.32, 0.58], [0.26, 0.68], [0.34, 0.68], [0.24, 0.78], [0.36, 0.78], [0.30, 0.60], [0.30, 0.70], [0.28, 0.80], [0.32, 0.80]])
+        kps_p2 = np.array([[0.70, 0.50], [0.68, 0.58], [0.72, 0.58], [0.66, 0.68], [0.74, 0.68], [0.64, 0.78], [0.76, 0.78], [0.70, 0.60], [0.70, 0.70], [0.68, 0.80], [0.72, 0.80]])
     elif scene == "handshake":
-        # 两人相向站立并伸手交叉握手（完美正面透视）
-        # 精准重合点依然维持在图像正中 [0.50, 0.62]
+        kps_p1 = np.array([[0.35, 0.48], [0.30, 0.55], [0.40, 0.55], [0.27, 0.65], [0.45, 0.60], [0.25, 0.75], [0.50, 0.62], [0.35, 0.60], [0.35, 0.72], [0.32, 0.85], [0.38, 0.85]])
+        kps_p2 = np.array([[0.65, 0.48], [0.60, 0.55], [0.70, 0.55], [0.55, 0.60], [0.73, 0.65], [0.50, 0.62], [0.75, 0.75], [0.65, 0.60], [0.65, 0.72], [0.62, 0.85], [0.67, 0.85]])
+    else:  # front_back
         kps_p1 = np.array([
-            [0.35, 0.48],  # 0: Nose
-            [0.40, 0.55],  # 1: LShoulder
-            [0.30, 0.55],  # 2: RShoulder
-            [0.43, 0.65],  # 3: LElbow
-            [0.38, 0.60],  # 4: RElbow
-            [0.45, 0.75],  # 5: LWrist
-            [0.50, 0.62],  # 6: RWrist (P1的右手臂向前伸到中间握手)
-            [0.35, 0.51],  # 7: Neck
-            [0.35, 0.72],  # 8: Pelvis
-            [0.38, 0.85],  # 9: LKnee
-            [0.32, 0.85]   # 10: RKnee
+            [0.44, 0.42], [0.38, 0.52], [0.50, 0.52], [0.34, 0.65], [0.54, 0.65], 
+            [0.32, 0.78], [0.56, 0.78], [0.44, 0.49], [0.44, 0.72], [0.40, 0.88], [0.48, 0.88]
         ])
         kps_p2 = np.array([
-            [0.65, 0.48],  # 0: Nose
-            [0.70, 0.55],  # 1: LShoulder
-            [0.60, 0.55],  # 2: RShoulder
-            [0.58, 0.60],  # 3: LElbow (P2的左手臂向前伸到中间握手)
-            [0.57, 0.65],  # 4: RElbow
-            [0.50, 0.62],  # 5: LWrist
-            [0.55, 0.75],  # 6: RWrist
-            [0.65, 0.51],  # 7: Neck
-            [0.65, 0.72],  # 8: Pelvis
-            [0.68, 0.85],  # 9: LKnee
-            [0.62, 0.85]   # 10: RKnee
-        ])
-    else:  # front_back (前后景深错开完美透视)
-        # Person 1 (近景主体：整体放大，面向镜头正面)
-        kps_p1 = np.array([
-            [0.44, 0.42],  # 0: Nose
-            [0.50, 0.52],  # 1: LShoulder
-            [0.38, 0.52],  # 2: RShoulder
-            [0.54, 0.65],  # 3: LElbow
-            [0.34, 0.65],  # 4: RElbow
-            [0.56, 0.78],  # 5: LWrist
-            [0.32, 0.78],  # 6: RWrist
-            [0.44, 0.48],  # 7: Neck
-            [0.44, 0.72],  # 8: Pelvis
-            [0.48, 0.88],  # 9: LKnee
-            [0.40, 0.88]   # 10: RKnee
-        ])
-        # Person 2 (远景背景：整体缩小，面向镜头正面)
-        kps_p2 = np.array([
-            [0.58, 0.35],  # 0: Nose
-            [0.62, 0.42],  # 1: LShoulder
-            [0.54, 0.42],  # 2: RShoulder
-            [0.65, 0.52],  # 3: LElbow
-            [0.51, 0.52],  # 4: RElbow
-            [0.67, 0.62],  # 5: LWrist
-            [0.49, 0.62],  # 6: RWrist
-            [0.58, 0.39],  # 7: Neck
-            [0.58, 0.58],  # 8: Pelvis
-            [0.61, 0.72],  # 9: LKnee
-            [0.55, 0.72]   # 10: RKnee
+            [0.58, 0.35], [0.54, 0.42], [0.62, 0.42], [0.51, 0.52], [0.65, 0.52], 
+            [0.49, 0.62], [0.67, 0.62], [0.58, 0.40], [0.58, 0.58], [0.55, 0.72], [0.61, 0.72]
         ])
     return [kps_p1, kps_p2]
 
-# =====================兼容正面级官方标准 OpenPose 渲染器 =====================
+# ===================== 标准多色 OpenPose 骨骼图生成 =====================
 def draw_pose_keypoints(keypoints_list, img_size=512):
-    """动态补充双眼、双耳的标准面部连线，从底层逻辑封死背影漏洞，强力引导模型生成正面"""
+    """绘制完美兼容 lllyasviel/control_v11p_sd15_openpose 标准的 COCO 色调彩色骨骼图"""
     img = np.zeros((img_size, img_size, 3), dtype=np.uint8)
     h, w = img_size, img_size
     
-    # 官方标准 COCO 肢体与面部完整有效连线
     COCO_PAIRS = [
         (1, 2), (1, 5), (2, 3), (3, 4), (5, 6), (6, 7),
         (1, 8), (8, 9), (9, 10), (1, 11), (11, 12), (12, 13),
@@ -166,34 +96,19 @@ def draw_pose_keypoints(keypoints_list, img_size=512):
         coco_kps[5] = user_kps[1]   # LShoulder
         coco_kps[6] = user_kps[3]   # LElbow
         coco_kps[7] = user_kps[5]   # LWrist
-        
-        # 调整下半身正面拓扑映射，使胯部/双脚骨骼不会发生交叉错位扭曲
-        coco_kps[8]  = user_kps[8] + np.array([-0.03, 0.02])  # RHip (偏左)
-        coco_kps[9]  = user_kps[10]                               # RKnee (偏左)
-        coco_kps[10] = user_kps[10] + np.array([-0.01, 0.12]) # RAnkle (偏左)
-        coco_kps[11] = user_kps[8] + np.array([0.03, 0.02])    # LHip (偏右)
-        coco_kps[12] = user_kps[9]                             # LKnee (偏右)
-        coco_kps[13] = user_kps[9] + np.array([0.01, 0.12])   # LAnkle (偏右)
+        coco_kps[8]  = user_kps[8] + np.array([-0.03, 0.02])  # RHip
+        coco_kps[9]  = user_kps[10]                           # RKnee
+        coco_kps[10] = user_kps[10] + np.array([0.01, 0.12])  # RAnkle
+        coco_kps[11] = user_kps[8] + np.array([0.03, 0.02])   # LHip
+        coco_kps[12] = user_kps[9]                            # LKnee
+        coco_kps[13] = user_kps[9] + np.array([-0.01, 0.12])  # LAnkle
 
-        # 根据头颈比例，自动计算并填充正面标准的五官点 (眼睛和耳朵)
-        # 正面视角：右侧器官在画面的左边 (-dx)，左侧器官在画面的右边 (+dx)
-        head_scale = np.linalg.norm(coco_kps[0] - coco_kps[1]) if np.linalg.norm(coco_kps[0] - coco_kps[1]) > 0 else 0.05
-        dx_eye, dy_eye = head_scale * 0.35, head_scale * 0.15
-        dx_ear, dy_ear = head_scale * 0.70, head_scale * 0.10
-        
-        coco_kps[14] = coco_kps[0] + np.array([-dx_eye, -dy_eye]) # 14: REye (画质偏左)
-        coco_kps[15] = coco_kps[0] + np.array([dx_eye, -dy_eye])  # 15: LEye (画质偏右)
-        coco_kps[16] = coco_kps[0] + np.array([-dx_ear, dy_ear])  # 16: REar
-        coco_kps[17] = coco_kps[0] + np.array([dx_ear, dy_ear])   # 17: LEar
-
-        # 渲染肢体连接线
         for idx, (start, end) in enumerate(COCO_PAIRS):
             if np.any(coco_kps[start] > 0) and np.any(coco_kps[end] > 0):
                 x1, y1 = int(coco_kps[start][0] * w), int(coco_kps[start][1] * h)
                 x2, y2 = int(coco_kps[end][0] * w), int(coco_kps[end][1] * h)
                 cv2.line(img, (x1, y1), (x2, y2), LINE_COLORS[idx], 4)
 
-        # 渲染关节点圆圈
         for idx in range(18):
             if np.any(coco_kps[idx] > 0):
                 x, y = int(coco_kps[idx][0] * w), int(coco_kps[idx][1] * h)
@@ -201,58 +116,85 @@ def draw_pose_keypoints(keypoints_list, img_size=512):
                 
     return img
 
-# ===================== 四肢骨骼大半径扩张型实例掩码生成 =====================
+# ===================== 核心调整：显式分层实例掩码生成 =====================
 def generate_mask(scene):
-    """结合头身几何与多骨骼动态扩张，确保正面肢体掩码与骨骼完美对齐，消除大头畸变"""
+    """结合头身几何与多骨骼大半径加粗扩张，全部统一为 front_back 的显式、解耦图层渲染风格"""
     mask = np.zeros((IMAGE_SIZE, IMAGE_SIZE), dtype=np.uint8)
     keypoints_list = get_scene_keypoints(scene)
     USER_CONNECTIONS = [(0, 7), (7, 1), (7, 2), (1, 3), (2, 4), (3, 5), (4, 6), (7, 8), (8, 9), (8, 10)]
     
-    # 为了保证前后景景深遮挡正确，front_back 场景先画远景(Person 2)，再画近景(Person 1)
-    loop_order = [1, 0] if scene == "front_back" else [0, 1]
-    
-    for i in loop_order:
-        kps = keypoints_list[i]
-        lbl = 128 if i == 0 else 255
+    if scene == "side_by_side":
+        c1_x, c2_x = int(0.30 * IMAGE_SIZE), int(0.70 * IMAGE_SIZE)
+        size_p1 = ELLIPSE_SIZES["side_by_side_p1"]
+        size_p2 = ELLIPSE_SIZES["side_by_side_p2"]
         
-        # 提取骨骼点并转换到像素坐标
-        nose = kps[0] * IMAGE_SIZE
-        neck = kps[7] * IMAGE_SIZE
-        pelvis = kps[8] * IMAGE_SIZE
-        l_shoulder = kps[1] * IMAGE_SIZE
-        r_shoulder = kps[2] * IMAGE_SIZE
-        
-        # 1. 动态计算科学的头部大小与中心（依据鼻子到脖子的距离）
-        head_height = np.linalg.norm(nose - neck)
-        head_center = nose + (nose - neck) * 0.1  # 中心略微上移涵盖颅顶
-        head_radius = int(head_height * 0.85)     # 动漫/写实人体黄金比例半径
-        
-        # 2. 动态计算身体椭圆大小与中心（依据肩宽与躯干高度）
-        shoulder_width = np.linalg.norm(l_shoulder - r_shoulder)
-        torso_height = np.linalg.norm(neck - pelvis)
-        body_center = (neck + pelvis) / 2
-        body_axes = (int(shoulder_width * 0.65), int(torso_height * 0.55))
-        
-        # 3. 渲染身体躯干与头部
-        cv2.ellipse(mask, (int(body_center[0]), int(body_center[1])), body_axes, 0, 0, 360, lbl, -1)
-        cv2.circle(mask, (int(head_center[0]), int(head_center[1])), head_radius, lbl, -1)
-        
-        # 4. 肢体骨骼线粗化扩张
-        thickness = 35 if (scene != "front_back" or i == 0) else 25
+        # 1. 显式渲染 Person 2 (映射至 255) 并注入厚骨骼路径
+        cv2.ellipse(mask, (c2_x, int(0.70 * IMAGE_SIZE)), (int(size_p2[0] * 0.8), int(size_p2[1] * 0.7)), 0, 0, 360, 255, -1)
+        cv2.circle(mask, (c2_x, int(0.48 * IMAGE_SIZE)), int(size_p2[0] * 0.5), 255, -1)
         for (start, end) in USER_CONNECTIONS:
-            x1, y1 = int(kps[start][0] * IMAGE_SIZE), int(kps[start][1] * IMAGE_SIZE)
-            x2, y2 = int(kps[end][0] * IMAGE_SIZE), int(kps[end][1] * IMAGE_SIZE)
-            cv2.line(mask, (x1, y1), (x2, y2), lbl, thickness=thickness)
+            x1, y1 = int(keypoints_list[1][start][0] * IMAGE_SIZE), int(keypoints_list[1][start][1] * IMAGE_SIZE)
+            x2, y2 = int(keypoints_list[1][end][0] * IMAGE_SIZE), int(keypoints_list[1][end][1] * IMAGE_SIZE)
+            cv2.line(mask, (x1, y1), (x2, y2), 255, thickness=35)
+            
+        # 2. 强制覆盖叠加 Person 1 (映射至 128)
+        cv2.ellipse(mask, (c1_x, int(0.70 * IMAGE_SIZE)), (int(size_p1[0] * 0.8), int(size_p1[1] * 0.7)), 0, 0, 360, 128, -1)
+        cv2.circle(mask, (c1_x, int(0.48 * IMAGE_SIZE)), int(size_p1[0] * 0.5), 128, -1)
+        for (start, end) in USER_CONNECTIONS:
+            x1, y1 = int(keypoints_list[0][start][0] * IMAGE_SIZE), int(keypoints_list[0][start][1] * IMAGE_SIZE)
+            x2, y2 = int(keypoints_list[0][end][0] * IMAGE_SIZE), int(keypoints_list[0][end][1] * IMAGE_SIZE)
+            cv2.line(mask, (x1, y1), (x2, y2), 128, thickness=35)
+
+    elif scene == "handshake":
+        c1_x, c2_x = int(0.35 * IMAGE_SIZE), int(0.65 * IMAGE_SIZE)
+        size_p1 = ELLIPSE_SIZES["handshake_p1"]
+        size_p2 = ELLIPSE_SIZES["handshake_p2"]
+        
+        # 1. 显式渲染 Person 2 (映射至 255) 并注入交互手部的安全 Mask 厚度
+        cv2.ellipse(mask, (c2_x, int(0.70 * IMAGE_SIZE)), (int(size_p2[0] * 0.8), int(size_p2[1] * 0.7)), 0, 0, 360, 255, -1)
+        cv2.circle(mask, (c2_x, int(0.48 * IMAGE_SIZE)), int(size_p2[0] * 0.5), 255, -1)
+        for (start, end) in USER_CONNECTIONS:
+            x1, y1 = int(keypoints_list[1][start][0] * IMAGE_SIZE), int(keypoints_list[1][start][1] * IMAGE_SIZE)
+            x2, y2 = int(keypoints_list[1][end][0] * IMAGE_SIZE), int(keypoints_list[1][end][1] * IMAGE_SIZE)
+            cv2.line(mask, (x1, y1), (x2, y2), 255, thickness=35)
+            
+        # 2. 覆盖叠加 Person 1 (映射至 128)
+        cv2.ellipse(mask, (c1_x, int(0.70 * IMAGE_SIZE)), (int(size_p1[0] * 0.8), int(size_p1[1] * 0.7)), 0, 0, 360, 128, -1)
+        cv2.circle(mask, (c1_x, int(0.48 * IMAGE_SIZE)), int(size_p1[0] * 0.5), 128, -1)
+        for (start, end) in USER_CONNECTIONS:
+            x1, y1 = int(keypoints_list[0][start][0] * IMAGE_SIZE), int(keypoints_list[0][start][1] * IMAGE_SIZE)
+            x2, y2 = int(keypoints_list[0][end][0] * IMAGE_SIZE), int(keypoints_list[0][end][1] * IMAGE_SIZE)
+            cv2.line(mask, (x1, y1), (x2, y2), 128, thickness=35)
+            
+    elif scene == "front_back":
+        c1_x, c2_x = int(0.44 * IMAGE_SIZE), int(0.58 * IMAGE_SIZE)
+        v_back = int(0.61 * IMAGE_SIZE)
+        v_front = int(0.71 * IMAGE_SIZE)
+        b_size = ELLIPSE_SIZES["front_back_back"]
+        f_size = ELLIPSE_SIZES["front_back_front"]
+        
+        # 核心修复：原代码写死了 IMAGE_SIZE//2 造成错位。现根据 keypoints 提取精准的 c2_x 和 c1_x
+        # 1. 渲染远景背景角色 (Person2 -> 255)
+        cv2.ellipse(mask, (c2_x, int(v_back + 30)), (int(b_size[0]*0.8), int(b_size[1]*0.7)), 0, 0, 360, 255, -1)
+        cv2.circle(mask, (c2_x, int(v_back - 30)), int(b_size[0]*0.5), 255, -1)
+        for (start, end) in USER_CONNECTIONS:
+            x1, y1 = int(keypoints_list[1][start][0] * IMAGE_SIZE), int(keypoints_list[1][start][1] * IMAGE_SIZE)
+            x2, y2 = int(keypoints_list[1][end][0] * IMAGE_SIZE), int(keypoints_list[1][end][1] * IMAGE_SIZE)
+            cv2.line(mask, (x1, y1), (x2, y2), 255, thickness=25)
+            
+        # 2. 强力覆盖近景前景主体角色 (Person1 -> 128)
+        cv2.ellipse(mask, (c1_x, int(v_front + 30)), (int(f_size[0]*0.8), int(f_size[1]*0.7)), 0, 0, 360, 128, -1)
+        cv2.circle(mask, (c1_x, int(v_front - 40)), int(f_size[0]*0.5), 128, -1)
+        for (start, end) in USER_CONNECTIONS:
+            x1, y1 = int(keypoints_list[0][start][0] * IMAGE_SIZE), int(keypoints_list[0][start][1] * IMAGE_SIZE)
+            x2, y2 = int(keypoints_list[0][end][0] * IMAGE_SIZE), int(keypoints_list[0][end][1] * IMAGE_SIZE)
+            cv2.line(mask, (x1, y1), (x2, y2), 128, thickness=35)
             
     return mask
 
-
-# ===================== 正面深度图基础生成逻辑 =====================
+# ===================== 核心调整：全肢体注入型深度图生成 =====================
 def generate_depth(scene, bg):
-    """基于 OpenPose 关键点动态构建三维深度躯干"""
+    """全部对齐为 front_back 的显式多骨骼大半径注入逻辑，解决四肢在深度图中丢失的顽疾"""
     depth = np.zeros((IMAGE_SIZE, IMAGE_SIZE), dtype=np.uint8)
-    
-    # 1. 渲染背景线条与渐变
     for i in range(IMAGE_SIZE):
         depth[i, :] = int(50 + (i / IMAGE_SIZE) * 50)
         
@@ -267,56 +209,84 @@ def generate_depth(scene, bg):
         cv2.rectangle(depth, (0, 0), (80, 400), 65, -1)
         cv2.rectangle(depth, (IMAGE_SIZE-80, 0), (IMAGE_SIZE, 400), 65, -1)
         
-    # 2. 动态计算人物深度几何体
     keypoints_list = get_scene_keypoints(scene)
     USER_CONNECTIONS = [(0, 7), (7, 1), (7, 2), (1, 3), (2, 4), (3, 5), (4, 6), (7, 8), (8, 9), (8, 10)]
-    
-    # 严格遵循先远后近的渲染顺序
-    loop_order = [1, 0] if scene == "front_back" else [0, 1]
-    
-    for i in loop_order:
-        kps = keypoints_list[i]
-        val = 180 if scene in ["side_by_side", "handshake"] else (210 if i == 0 else 130)
-            
-        # 提取骨骼点像素坐标
-        nose = kps[0] * IMAGE_SIZE
-        neck = kps[7] * IMAGE_SIZE
-        pelvis = kps[8] * IMAGE_SIZE
-        l_shoulder = kps[1] * IMAGE_SIZE
-        r_shoulder = kps[2] * IMAGE_SIZE
+
+    if scene == "side_by_side":
+        c1_x, c2_x = int(0.30 * IMAGE_SIZE), int(0.70 * IMAGE_SIZE)
+        size_p1 = ELLIPSE_SIZES["side_by_side_p1"]
+        size_p2 = ELLIPSE_SIZES["side_by_side_p2"]
         
-        # 动态计算头部（使头半径缩减到约 18-20 像素）
-        head_height = np.linalg.norm(nose - neck)
-        head_center = nose + (nose - neck) * 0.1
-        head_radius = int(head_height * 0.85)
-        
-        # 动态计算躯干椭圆
-        shoulder_width = np.linalg.norm(l_shoulder - r_shoulder)
-        torso_height = np.linalg.norm(neck - pelvis)
-        body_center = (neck + pelvis) / 2
-        body_axes = (int(shoulder_width * 0.65), int(torso_height * 0.55))
-        
-        # 渲染深度轮廓
-        cv2.ellipse(depth, (int(body_center[0]), int(body_center[1])), body_axes, 0, 0, 360, val, -1)
-        cv2.circle(depth, (int(head_center[0]), int(head_center[1])), head_radius, val, -1)
-        
-        # 渲染四肢渐变/衔接骨骼深度线
-        thickness = 30 if (scene != "front_back" or i == 0) else 20
+        # 1. 渲染 Person 2 并彻底融入扩张的四肢骨骼 (并排场景深度值统一定为 180)
+        cv2.ellipse(depth, (c2_x, int(0.70 * IMAGE_SIZE)), (int(size_p2[0] * 0.8), int(size_p2[1] * 0.7)), 0, 0, 360, 180, -1)
+        cv2.circle(depth, (c2_x, int(0.48 * IMAGE_SIZE)), int(size_p2[0] * 0.5), 180, -1)
         for (start, end) in USER_CONNECTIONS:
-            x1, y1 = int(kps[start][0] * IMAGE_SIZE), int(kps[start][1] * IMAGE_SIZE)
-            x2, y2 = int(kps[end][0] * IMAGE_SIZE), int(kps[end][1] * IMAGE_SIZE)
-            cv2.line(depth, (x1, y1), (x2, y2), val, thickness=thickness)
+            x1, y1 = int(keypoints_list[1][start][0] * IMAGE_SIZE), int(keypoints_list[1][start][1] * IMAGE_SIZE)
+            x2, y2 = int(keypoints_list[1][end][0] * IMAGE_SIZE), int(keypoints_list[1][end][1] * IMAGE_SIZE)
+            cv2.line(depth, (x1, y1), (x2, y2), 180, thickness=35)
+            
+        # 2. 渲染 Person 1 并彻底融入扩张的四肢骨骼
+        cv2.ellipse(depth, (c1_x, int(0.70 * IMAGE_SIZE)), (int(size_p1[0] * 0.8), int(size_p1[1] * 0.7)), 0, 0, 360, 180, -1)
+        cv2.circle(depth, (c1_x, int(0.48 * IMAGE_SIZE)), int(size_p1[0] * 0.5), 180, -1)
+        for (start, end) in USER_CONNECTIONS:
+            x1, y1 = int(keypoints_list[0][start][0] * IMAGE_SIZE), int(keypoints_list[0][start][1] * IMAGE_SIZE)
+            x2, y2 = int(keypoints_list[0][end][0] * IMAGE_SIZE), int(keypoints_list[0][end][1] * IMAGE_SIZE)
+            cv2.line(depth, (x1, y1), (x2, y2), 180, thickness=35)
+
+    elif scene == "handshake":
+        c1_x, c2_x = int(0.35 * IMAGE_SIZE), int(0.65 * IMAGE_SIZE)
+        size_p1 = ELLIPSE_SIZES["handshake_p1"]
+        size_p2 = ELLIPSE_SIZES["handshake_p2"]
+        
+        # 1. 渲染 Person 2 并强制注入交互骨骼连线，消除深度死角
+        cv2.ellipse(depth, (c2_x, int(0.70 * IMAGE_SIZE)), (int(size_p2[0] * 0.8), int(size_p2[1] * 0.7)), 0, 0, 360, 180, -1)
+        cv2.circle(depth, (c2_x, int(0.48 * IMAGE_SIZE)), int(size_p2[0] * 0.5), 180, -1)
+        for (start, end) in USER_CONNECTIONS:
+            x1, y1 = int(keypoints_list[1][start][0] * IMAGE_SIZE), int(keypoints_list[1][start][1] * IMAGE_SIZE)
+            x2, y2 = int(keypoints_list[1][end][0] * IMAGE_SIZE), int(keypoints_list[1][end][1] * IMAGE_SIZE)
+            cv2.line(depth, (x1, y1), (x2, y2), 180, thickness=35)
+            
+        # 2. 渲染 Person 1 同样融合连线
+        cv2.ellipse(depth, (c1_x, int(0.70 * IMAGE_SIZE)), (int(size_p1[0] * 0.8), int(size_p1[1] * 0.7)), 0, 0, 360, 180, -1)
+        cv2.circle(depth, (c1_x, int(0.48 * IMAGE_SIZE)), int(size_p1[0] * 0.5), 180, -1)
+        for (start, end) in USER_CONNECTIONS:
+            x1, y1 = int(keypoints_list[0][start][0] * IMAGE_SIZE), int(keypoints_list[0][start][1] * IMAGE_SIZE)
+            x2, y2 = int(keypoints_list[0][end][0] * IMAGE_SIZE), int(keypoints_list[0][end][1] * IMAGE_SIZE)
+            cv2.line(depth, (x1, y1), (x2, y2), 180, thickness=35)
+
+    elif scene == "front_back":
+        b_size = ELLIPSE_SIZES["front_back_back"]
+        f_size = ELLIPSE_SIZES["front_back_front"]
+        
+        # 1. 渲染远景角色 (Person2 -> 深度浅/值较小: 130)，位置保持 X = 0.58
+        c2_x = int(0.58 * IMAGE_SIZE)
+        v_back = int(0.61 * IMAGE_SIZE)
+        cv2.ellipse(depth, (c2_x, int(v_back + 30)), (int(b_size[0] * 0.8), int(b_size[1] * 0.7)), 0, 0, 360, 130, -1)
+        cv2.circle(depth, (c2_x, int(v_back - 30)), int(b_size[0] * 0.5), 130, -1)
+        for (start, end) in USER_CONNECTIONS:
+            x1, y1 = int(keypoints_list[1][start][0] * IMAGE_SIZE), int(keypoints_list[1][start][1] * IMAGE_SIZE)
+            x2, y2 = int(keypoints_list[1][end][0] * IMAGE_SIZE), int(keypoints_list[1][end][1] * IMAGE_SIZE)
+            cv2.line(depth, (x1, y1), (x2, y2), 130, thickness=25)
+        
+        # 2. 渲染近景角色 (Person1 -> 深度深/值较大: 210)，位置保持 X = 0.44
+        c1_x = int(0.44 * IMAGE_SIZE)
+        v_front = int(0.71 * IMAGE_SIZE)
+        cv2.ellipse(depth, (c1_x, int(v_front + 30)), (int(f_size[0] * 0.8), int(f_size[1] * 0.7)), 0, 0, 360, 210, -1)
+        cv2.circle(depth, (c1_x, int(v_front - 40)), int(f_size[0] * 0.5), 210, -1)
+        for (start, end) in USER_CONNECTIONS:
+            x1, y1 = int(keypoints_list[0][start][0] * IMAGE_SIZE), int(keypoints_list[0][start][1] * IMAGE_SIZE)
+            x2, y2 = int(keypoints_list[0][end][0] * IMAGE_SIZE), int(keypoints_list[0][end][1] * IMAGE_SIZE)
+            cv2.line(depth, (x1, y1), (x2, y2), 210, thickness=35)
             
     depth = cv2.GaussianBlur(depth, (15, 15), 0)
     return cv2.cvtColor(depth, cv2.COLOR_GRAY2BGR)
 
-
-
+# ===================== 生成 Prompt 配置 =====================
 def generate_prompt_config(scene, bg, char1, char2):
     p1_tags = char1["triggers"]
     p2_tags = char2["triggers"]
-    prompt = f"person1: a close-up front photo of {p1_tags}. person2: a close-up front photo of {p2_tags}. {scene.replace('_', ' ')} scene facing camera in a {bg.replace('_', ' ')}, high quality, 8k, realistic"
-    neg_prompt = "blurry, low quality, distorted, missing people, extra limbs, monochrome, side view, back view, from behind"
+    prompt = f"person1: a photo of {p1_tags}. person2: a photo of {p2_tags}. {scene.replace('_', ' ')} scene in a {bg.replace('_', ' ')}, high quality, 8k, realistic"
+    neg_prompt = "blurry, low quality, distorted, missing people, extra limbs, monochrome"
     return {
         "prompt": prompt,
         "negative_prompt": neg_prompt,
@@ -329,8 +299,9 @@ def generate_prompt_config(scene, bg, char1, char2):
         ]
     }
 
+# ===================== 主入口 =====================
 def main():
-    print(" Starting to generate a standard structured test dataset with features of [high adaptability, anti-confusion, absolute frontal orientation]...")
+    print(" 开始生成具备高适配、防混淆特征的标准结构化测试集...")
     for folder in ["poses", "depths", "masks"]:
         os.makedirs(os.path.join(OUTPUT_ROOT, folder), exist_ok=True)
 
@@ -352,13 +323,13 @@ def main():
             cv2.imwrite(os.path.join(OUTPUT_ROOT, "depths", f"{sample_id}.png"), depth)
             cv2.imwrite(os.path.join(OUTPUT_ROOT, "masks", f"{sample_id}.png"), mask)
             all_configs.append(config)
-            print(f"  [+] Fully-aligned frontal control nodes outputted: {sample_id}")
+            print(f"  [+] 已输出标准对齐控制节点: {sample_id}")
 
     config_output_path = os.path.join(OUTPUT_ROOT, "synthetic_configs.json")
     with open(config_output_path, "w", encoding="utf-8") as f:
         json.dump(all_configs, f, indent=4, ensure_ascii=False)
         
-    print(f"\n Standardized synthetic frontal test dataset built successfully! Total sample size: {len(all_configs)} groups.")
+    print(f"\n 标准化合成测试集已构建成功！样本总规模: {len(all_configs)} 组。")
 
 if __name__ == "__main__":
     main()
