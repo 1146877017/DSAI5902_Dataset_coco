@@ -133,9 +133,9 @@ def draw_pose_keypoints(keypoints_list, img_size=512):
 
     return img
 
-# ===================== 核心统一：side_by_side / handshake 渲染顺序、粗细、坐标完全对齐front_back =====================
+# ===================== 核心修改：side_by_side / handshake 交换绘制顺序，先p1(128)后p2(255) =====================
 def generate_mask(scene):
-    """全部场景统一front_back规范：先person2(255)底层，后person1(128)上层覆盖；骨骼粗细、头部偏移统一"""
+    """side_by_side/handshake：先person1(128底层)，后person2(255上层)，重叠区保留右侧人物掩码"""
     mask = np.zeros((IMAGE_SIZE, IMAGE_SIZE), dtype=np.uint8)
     keypoints_list = get_scene_keypoints(scene)
     USER_CONNECTIONS = [(0, 7), (7, 1), (7, 2), (1, 3), (2, 4), (3, 5), (4, 6), (7, 8), (8, 9), (8, 10)]
@@ -147,21 +147,21 @@ def generate_mask(scene):
         v_body = int(0.61 * IMAGE_SIZE)
         v_head = int(0.42 * IMAGE_SIZE)
 
-        # 1. 底层：Person2 (255)，骨骼粗细25，同front_back远景参数
-        cv2.ellipse(mask, (c2_x, int(v_body + 30)), (int(size_p2[0] * 0.8), int(size_p2[1] * 0.7)), 0, 0, 360, 255, -1)
-        cv2.circle(mask, (c2_x, int(v_head - 4)), int(size_p2[0] * 0.5), 255, -1)
-        for (start, end) in USER_CONNECTIONS:
-            x1, y1 = int(keypoints_list[1][start][0] * IMAGE_SIZE), int(keypoints_list[1][start][1] * IMAGE_SIZE)
-            x2, y2 = int(keypoints_list[1][end][0] * IMAGE_SIZE), int(keypoints_list[1][end][1] * IMAGE_SIZE)
-            cv2.line(mask, (x1, y1), (x2, y2), 255, thickness=25)
-
-        # 2. 上层覆盖：Person1 (128)，骨骼粗细35，同front_back近景参数
+        # 【修改1】先画底层 Person1 (128 左侧)
         cv2.ellipse(mask, (c1_x, int(v_body + 30)), (int(size_p1[0] * 0.8), int(size_p1[1] * 0.7)), 0, 0, 360, 128, -1)
         cv2.circle(mask, (c1_x, int(v_head - 4)), int(size_p1[0] * 0.5), 128, -1)
         for (start, end) in USER_CONNECTIONS:
             x1, y1 = int(keypoints_list[0][start][0] * IMAGE_SIZE), int(keypoints_list[0][start][1] * IMAGE_SIZE)
             x2, y2 = int(keypoints_list[0][end][0] * IMAGE_SIZE), int(keypoints_list[0][end][1] * IMAGE_SIZE)
             cv2.line(mask, (x1, y1), (x2, y2), 128, thickness=35)
+
+        # 【修改1】后画上层 Person2 (255 右侧)，重叠区域保留255，不会被覆盖丢失
+        cv2.ellipse(mask, (c2_x, int(v_body + 30)), (int(size_p2[0] * 0.8), int(size_p2[1] * 0.7)), 0, 0, 360, 255, -1)
+        cv2.circle(mask, (c2_x, int(v_head - 4)), int(size_p2[0] * 0.5), 255, -1)
+        for (start, end) in USER_CONNECTIONS:
+            x1, y1 = int(keypoints_list[1][start][0] * IMAGE_SIZE), int(keypoints_list[1][start][1] * IMAGE_SIZE)
+            x2, y2 = int(keypoints_list[1][end][0] * IMAGE_SIZE), int(keypoints_list[1][end][1] * IMAGE_SIZE)
+            cv2.line(mask, (x1, y1), (x2, y2), 255, thickness=25)
 
     elif scene == "handshake":
         c1_x, c2_x = int(0.35 * IMAGE_SIZE), int(0.65 * IMAGE_SIZE)
@@ -170,15 +170,7 @@ def generate_mask(scene):
         v_body = int(0.61 * IMAGE_SIZE)
         v_head = int(0.42 * IMAGE_SIZE)
 
-        # 1. 底层 Person2 (255) thickness=25 统一front_back
-        cv2.ellipse(mask, (c2_x, int(v_body + 30)), (int(size_p2[0] * 0.8), int(size_p2[1] * 0.7)), 0, 0, 360, 255, -1)
-        cv2.circle(mask, (c2_x, int(v_head - 4)), int(size_p2[0] * 0.5), 255, -1)
-        for (start, end) in USER_CONNECTIONS:
-            x1, y1 = int(keypoints_list[1][start][0] * IMAGE_SIZE), int(keypoints_list[1][start][1] * IMAGE_SIZE)
-            x2, y2 = int(keypoints_list[1][end][0] * IMAGE_SIZE), int(keypoints_list[1][end][1] * IMAGE_SIZE)
-            cv2.line(mask, (x1, y1), (x2, y2), 255, thickness=25)
-
-        # 2. 上层覆盖 Person1 (128) thickness=35
+        # 【修改2】先底层 Person1 (128)
         cv2.ellipse(mask, (c1_x, int(v_body + 30)), (int(size_p1[0] * 0.8), int(size_p1[1] * 0.7)), 0, 0, 360, 128, -1)
         cv2.circle(mask, (c1_x, int(v_head - 4)), int(size_p1[0] * 0.5), 128, -1)
         for (start, end) in USER_CONNECTIONS:
@@ -186,7 +178,16 @@ def generate_mask(scene):
             x2, y2 = int(keypoints_list[0][end][0] * IMAGE_SIZE), int(keypoints_list[0][end][1] * IMAGE_SIZE)
             cv2.line(mask, (x1, y1), (x2, y2), 128, thickness=35)
 
+        # 【修改2】后上层 Person2 (255)
+        cv2.ellipse(mask, (c2_x, int(v_body + 30)), (int(size_p2[0] * 0.8), int(size_p2[1] * 0.7)), 0, 0, 360, 255, -1)
+        cv2.circle(mask, (c2_x, int(v_head - 4)), int(size_p2[0] * 0.5), 255, -1)
+        for (start, end) in USER_CONNECTIONS:
+            x1, y1 = int(keypoints_list[1][start][0] * IMAGE_SIZE), int(keypoints_list[1][start][1] * IMAGE_SIZE)
+            x2, y2 = int(keypoints_list[1][end][0] * IMAGE_SIZE), int(keypoints_list[1][end][1] * IMAGE_SIZE)
+            cv2.line(mask, (x1, y1), (x2, y2), 255, thickness=25)
+
     elif scene == "front_back":
+        # front_back 远近分层逻辑不变，不需要调换顺序
         c1_x, c2_x = int(0.44 * IMAGE_SIZE), int(0.58 * IMAGE_SIZE)
         v_back = int(0.61 * IMAGE_SIZE)
         v_front = int(0.71 * IMAGE_SIZE)
@@ -238,21 +239,20 @@ def generate_depth(scene, bg):
         size_p2 = ELLIPSE_SIZES["side_by_side_p2"]
         v_body = int(0.61 * IMAGE_SIZE)
 
-        # Person2 底层深度值130，线条25，和front_back远景统一
-        cv2.ellipse(depth, (c2_x, int(v_body + 30)), (int(size_p2[0] * 0.8), int(size_p2[1] * 0.7)), 0, 0, 360, 130, -1)
-        cv2.circle(depth, (c2_x, int(0.42 * IMAGE_SIZE)), int(size_p2[0] * 0.5), 130, -1)
-        for (start, end) in USER_CONNECTIONS:
-            x1, y1 = int(keypoints_list[1][start][0] * IMAGE_SIZE), int(keypoints_list[1][start][1] * IMAGE_SIZE)
-            x2, y2 = int(keypoints_list[1][end][0] * IMAGE_SIZE), int(keypoints_list[1][end][1] * IMAGE_SIZE)
-            cv2.line(depth, (x1, y1), (x2, y2), 130, thickness=25)
-
-        # Person1 上层深度值210，线条35，和front_back近景统一
+        # 深度同步调换绘制顺序：先p1(210)底层，后p2(130)上层
         cv2.ellipse(depth, (c1_x, int(v_body + 30)), (int(size_p1[0] * 0.8), int(size_p1[1] * 0.7)), 0, 0, 360, 210, -1)
         cv2.circle(depth, (c1_x, int(0.42 * IMAGE_SIZE)), int(size_p1[0] * 0.5), 210, -1)
         for (start, end) in USER_CONNECTIONS:
             x1, y1 = int(keypoints_list[0][start][0] * IMAGE_SIZE), int(keypoints_list[0][start][1] * IMAGE_SIZE)
             x2, y2 = int(keypoints_list[0][end][0] * IMAGE_SIZE), int(keypoints_list[0][end][1] * IMAGE_SIZE)
             cv2.line(depth, (x1, y1), (x2, y2), 210, thickness=35)
+
+        cv2.ellipse(depth, (c2_x, int(v_body + 30)), (int(size_p2[0] * 0.8), int(size_p2[1] * 0.7)), 0, 0, 360, 130, -1)
+        cv2.circle(depth, (c2_x, int(0.42 * IMAGE_SIZE)), int(size_p2[0] * 0.5), 130, -1)
+        for (start, end) in USER_CONNECTIONS:
+            x1, y1 = int(keypoints_list[1][start][0] * IMAGE_SIZE), int(keypoints_list[1][start][1] * IMAGE_SIZE)
+            x2, y2 = int(keypoints_list[1][end][0] * IMAGE_SIZE), int(keypoints_list[1][end][1] * IMAGE_SIZE)
+            cv2.line(depth, (x1, y1), (x2, y2), 130, thickness=25)
 
     elif scene == "handshake":
         c1_x, c2_x = int(0.35 * IMAGE_SIZE), int(0.65 * IMAGE_SIZE)
@@ -260,21 +260,20 @@ def generate_depth(scene, bg):
         size_p2 = ELLIPSE_SIZES["handshake_p2"]
         v_body = int(0.61 * IMAGE_SIZE)
 
-        # Person2 底层130，线条25
-        cv2.ellipse(depth, (c2_x, int(v_body + 30)), (int(size_p2[0] * 0.8), int(size_p2[1] * 0.7)), 0, 0, 360, 130, -1)
-        cv2.circle(depth, (c2_x, int(0.42 * IMAGE_SIZE)), int(size_p2[0] * 0.5), 130, -1)
-        for (start, end) in USER_CONNECTIONS:
-            x1, y1 = int(keypoints_list[1][start][0] * IMAGE_SIZE), int(keypoints_list[1][start][1] * IMAGE_SIZE)
-            x2, y2 = int(keypoints_list[1][end][0] * IMAGE_SIZE), int(keypoints_list[1][end][1] * IMAGE_SIZE)
-            cv2.line(depth, (x1, y1), (x2, y2), 130, thickness=25)
-
-        # Person1 上层210，线条35
+        # 深度同步调换绘制顺序：先p1(210)底层，后p2(130)上层
         cv2.ellipse(depth, (c1_x, int(v_body + 30)), (int(size_p1[0] * 0.8), int(size_p1[1] * 0.7)), 0, 0, 360, 210, -1)
         cv2.circle(depth, (c1_x, int(0.42 * IMAGE_SIZE)), int(size_p1[0] * 0.5), 210, -1)
         for (start, end) in USER_CONNECTIONS:
             x1, y1 = int(keypoints_list[0][start][0] * IMAGE_SIZE), int(keypoints_list[0][start][1] * IMAGE_SIZE)
             x2, y2 = int(keypoints_list[0][end][0] * IMAGE_SIZE), int(keypoints_list[0][end][1] * IMAGE_SIZE)
             cv2.line(depth, (x1, y1), (x2, y2), 210, thickness=35)
+
+        cv2.ellipse(depth, (c2_x, int(v_body + 30)), (int(size_p2[0] * 0.8), int(size_p2[1] * 0.7)), 0, 0, 360, 130, -1)
+        cv2.circle(depth, (c2_x, int(0.42 * IMAGE_SIZE)), int(size_p2[0] * 0.5), 130, -1)
+        for (start, end) in USER_CONNECTIONS:
+            x1, y1 = int(keypoints_list[1][start][0] * IMAGE_SIZE), int(keypoints_list[1][start][1] * IMAGE_SIZE)
+            x2, y2 = int(keypoints_list[1][end][0] * IMAGE_SIZE), int(keypoints_list[1][end][1] * IMAGE_SIZE)
+            cv2.line(depth, (x1, y1), (x2, y2), 130, thickness=25)
 
     elif scene == "front_back":
         b_size = ELLIPSE_SIZES["front_back_back"]

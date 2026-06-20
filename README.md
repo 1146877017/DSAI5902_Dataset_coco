@@ -78,7 +78,7 @@ ablation_study.py
 
 Left_test_only2per/lora_weights中存放LoRA模型：
 asuna_(stacia)-v1.5.safetensors : https://civitai.com/models/15743/lora-stacia-goddess-of-creation-or-asuna-or-underworld-or-sao : 
-Trigger Words
+Trigger Words :
 stacia
 staciansfw
 white dress
@@ -86,26 +86,24 @@ armor
 white thighhighs
 
 TogaHimiko-01.safetensors : https://civitai.com/models/71645/lora-toga-himiko :
-Trigger Words
+Trigger Words :
 Toga
 Himiko
 Himiko Toga
 
-OchacoUraraka-01.safetensors : https://civitai.com/models/68460/lora-ochaco-uraraka :
-Trigger Words
-Ochaco
-Bodysuit
-Hero suit
-white shirt, red necktie, green skirt,
-U.A School Uniform
+Mouri.safetensors ：
+https://civitai.com/models/385424/lora-or-sdxl-or-15-or-mouri-ran-detective-conan-meitantei-conan?modelVersionId=453948 ：
+Trigger Words :
+mouriranai
+brown hair, blue eyes, long hair, open mouth, breasts, large breasts, lens flare, medium breasts
+skirt, shirt, long sleeves, school uniform, jacket, white shirt, pleated skirt, necktie, collared shirt, miniskirt, blue skirt, blazer, blue jacket, green necktie
+mouri ran
+meitantei conan
 
-LoRA_Neferpitou.safetensors : https://civitai.com/models/269267/lora-neferpitoui-hunter-x-hunter :
-Trigger Words
-NeferpitouDef
-orange eyes, white hair, short hair, wavy hair, bangs, curly hair, animal ears, hair between eyes, breasts, medium breasts, cat girl, cat tail, tail, cat ears
-joints, doll joints, shirt, long sleeves, pantyhose, shorts, collared shirt, blue shirt, spoken question mark, brown shorts, orange shorts, shoes, socks, other focus, hunter x hunter, neferpitou
-More doll joints*
-(joints:1.4) or (doll joints:1.4)
+Byakuya.safetensors ：
+https://civitai.com/models/135802/lora-oror-rinne-byakuya-euphoria-oror ：
+Trigger Words :
+Byakuyadef
 
 python generate_synthetic_dataset.py > log_gene_syn_dat.log 2>&1
 python run_syn_exprmt_grp1.py > log_run_syn_exp_grp1.log 2>&1
