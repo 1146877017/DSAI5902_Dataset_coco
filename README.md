@@ -77,13 +77,10 @@ eval_narra_consis.py
 ablation_study.py
 
 Left_test_only2per/lora_weights中存放LoRA模型：
-asuna_(stacia)-v1.5.safetensors : https://civitai.com/models/15743/lora-stacia-goddess-of-creation-or-asuna-or-underworld-or-sao : 
+LoRA_Sera.safetensors ：
+https://civitai.com/models/235164/lora-sera-yu-gi-oh ：
 Trigger Words :
-stacia
-staciansfw
-white dress
-armor
-white thighhighs
+SeraDef, brown eyes, brown hair, bangs, long sleeves, long hair, dress, bare shoulders, jewelry, collarbone, hairband, choker, red dress, dark skin, wide sleeves, necklace, off shoulder, bracelet, dark-skinned female, hair tubes, bangle, egyptian, ankh;
 
 TogaHimiko-01.safetensors : https://civitai.com/models/71645/lora-toga-himiko :
 Trigger Words :
@@ -125,5 +122,9 @@ python ablation_study.py > log_ablation_study.log 2>&1
 python generate_synthetic_dataset.py > log_gene_syn_dat.log 2>&1
 python run_syn_exprmt_grp1.py > log_run_syn_exp_grp1.log 2>&1
 
+在Left_test_only2per_v3中重做合成测试 – 验证角色身份保持与叙事一致性测试部分，必须确保2个人物的是不同的lora
 
+python 1_generate_test_conditions.py > log_1_gene_test_condi.log 2>&1
+python generate_synthetic_dataset.py > log_gene_syn_dat.log 2>&1
+python run_syn_exprmt_grp1.py > log_run_syn_exp_grp1.log 2>&1
 
