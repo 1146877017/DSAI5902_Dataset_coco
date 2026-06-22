@@ -488,16 +488,17 @@ def run_synthetic():
         # =============== 基线 1-3 ===============
         print("\n--- Switching to GLOBAL LoRA mode (baselines 1-3) ---")
         for p in [pipe_base, pipe_pose, pipe_both]:
+            # 【   】在 Pipeline 级别 (p) 设置 adapters 和 weights，而不是 p.unet
+            p.set_adapters([c1, c2], adapter_weights=[0.8, 0.8])
             # 【   1】先彻底切断 Text Encoder 的 LoRA，防止文本特征预先混合
             if hasattr(p, "text_encoder") and p.text_encoder is not None:
                 try:
                     p.text_encoder.set_adapter([]) 
                     print(f"[DEBUG LoRA] Text Encoder LoRA DEACTIVATED for {p.__class__.__name__}")
+                    print(f"[DEBUG LoRA] Text Encoder active adapters: {p.text_encoder.active_adapters}")
                 except Exception as e:
                     print(f"[WARNING] Could not disable text encoder LoRA: {e}")
-            
-            # 【   】在 Pipeline 级别 (p) 设置 adapters 和 weights，而不是 p.unet
-            p.set_adapters([c1, c2], adapter_weights=[0.8, 0.8])
+                        
             p.unet.set_attn_processor(AttnProcessor())
 
         print(f"[DEBUG Main] Baseline LoRA status - active adapters: {pipe_both.get_active_adapters()}")
