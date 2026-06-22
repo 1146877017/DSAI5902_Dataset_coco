@@ -2,6 +2,7 @@
 *
 
 !.gitignore
+！README.md
 
 !select_val2017_2person*
 !get_OpenPose*
@@ -11,51 +12,30 @@
 !unify_size*
 !auto_copy_samples*
 
+!controlnet_COCO_test_autoprompt/
 !controlnet_COCO_test_autoprompt/*.py
 !controlnet_COCO_test_autoprompt/*.json
 !controlnet_COCO_test_autoprompt/*.log
 
+!CO_test_autopro_only2per/
 !CO_test_autopro_only2per/*.py
 !CO_test_autopro_only2per/*.json
 !CO_test_autopro_only2per/*.log
 
+!Left_test_only2per/
 !Left_test_only2per/*.py
 !Left_test_only2per/*.json
 !Left_test_only2per/*.log
 
-!Left_test_only2per/log/*.py
-!Left_test_only2per/log/*.json
-!Left_test_only2per/log/*.log
-
-!Left_test_only2per/synthetic_results/
-!Left_test_only2per/synthetic_results/*
-
+!Left_test_only2per_v2/
 !Left_test_only2per_v2/*.py
 !Left_test_only2per_v2/*.json
 !Left_test_only2per_v2/*.log
 
-!Left_test_only2per_v2/log/
-!Left_test_only2per_v2/log/*.py
-!Left_test_only2per_v2/log/*.json
-!Left_test_only2per_v2/log/*.log
-
-!Left_test_only2per_v2/synthetic_test_dataset/
-!Left_test_only2per_v2/synthetic_test_dataset/*
-
-!Left_test_only2per_v2/synthetic_results/
-!Left_test_only2per_v2/synthetic_results/*
-
+!Left_test_only2per_v3/
 !Left_test_only2per_v3/*.py
 !Left_test_only2per_v3/*.json
 !Left_test_only2per_v3/*.log
-
-!Left_test_only2per_v3/log/
-!Left_test_only2per_v3/log/*.py
-!Left_test_only2per_v3/log/*.json
-!Left_test_only2per_v3/log/*.log
-
-!Left_test_only2per_v3/synthetic_test_dataset/
-!Left_test_only2per_v3/synthetic_test_dataset/*
 
 !Left_test_only2per_v3/synthetic_results/
 !Left_test_only2per_v3/synthetic_results/*
