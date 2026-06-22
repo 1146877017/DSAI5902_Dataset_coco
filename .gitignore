@@ -2,7 +2,7 @@
 *
 
 !.gitignore
-！README.md
+!README.md
 
 !select_val2017_2person*
 !get_OpenPose*
