@@ -37,7 +37,7 @@ CHARACTERS = [
     {
         "id": "Sera",
         "lora_name": "LoRA_Sera",
-        "triggers": "SeraDef, dark-skinned female, red dress"
+        "triggers": "SeraDef, dark-skinned female, red dress, brown hair, long hair, bare shoulders, ankh"
     },
     {
         "id": "TogaHimiko",
@@ -47,12 +47,12 @@ CHARACTERS = [
     {
         "id": "MouriRan",
         "lora_name": "Mouri",
-        "triggers": "mouriranai, blue jacket, pleated skirt"
+        "triggers": "mouriranai, blue jacket, long sleeves, blue skirt, meitantei conan"        
     },
     {
         "id": "Byakuya",
         "lora_name": "Byakuya",
-        "triggers": "Byakuyadef, dark hair, uniform" 
+        "triggers": "Byakuyadef, dark hair, dark skirt" 
     }
 ]
 print(f"[INIT] CHARACTERS loaded: {[c['id'] for c in CHARACTERS]} (total {len(CHARACTERS)})")
