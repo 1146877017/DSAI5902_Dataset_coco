@@ -335,13 +335,13 @@ def run_synthetic():
         print(f"[MAIN] characters: {c1} vs {c2}")
         print(f"[MAIN] original prompt length: {len(prompt)} chars")
         
-        # [修正1] 精简视角指令，避免占用过多token导致角色特征被截断
+        # [修正1] front view 改为前置追加，彻底避免尾部截断；与数据集精简方案配套
         print("[MAIN] Checking and adding view directives...")
         if "front view" not in prompt.lower():
-            prompt = prompt + ", front view"
-            print("[MAIN] added 'front view' to prompt")
+            prompt = f"front view, {prompt}"
+            print("[MAIN] added 'front view' to prompt (prepended)")
         if "back view" not in neg_prompt.lower():
-            neg_prompt = neg_prompt + ", back view"
+            neg_prompt = f"{neg_prompt}, back view"
             print("[MAIN] added 'back view' to negative prompt")
             
         print(f"\n[DEBUG Main] Modified Prompt: {prompt}")
@@ -392,7 +392,14 @@ def run_synthetic():
 
         # Baseline 1
         print(f"\n[-] Generating {sid}{METHOD_SUFFIX[0]} (baseline1: base SD, no ControlNet)")
-        result = pipe_base(prompt=prompt, negative_prompt=neg_prompt, generator=get_fixed_generator(), num_inference_steps=25, guidance_scale=7.5)
+        result = pipe_base(
+            prompt=prompt, 
+            negative_prompt=neg_prompt, 
+            generator=get_fixed_generator(), 
+            num_inference_steps=25, 
+            guidance_scale=7.5,
+            progress_bar=False
+        )
         save_path = os.path.join(OUTPUT_DIR, f"{sid}{METHOD_SUFFIX[0]}.png")
         result.images[0].save(save_path)
         print(f"[-] Saved to: {save_path}")
@@ -400,7 +407,16 @@ def run_synthetic():
 
         # Baseline 2
         print(f"\n[-] Generating {sid}{METHOD_SUFFIX[1]} (baseline2: pose ControlNet only)")
-        result = pipe_pose(prompt=prompt, negative_prompt=neg_prompt, image=pose_img, controlnet_conditioning_scale=0.7, generator=get_fixed_generator(), num_inference_steps=25, guidance_scale=7.5)
+        result = pipe_pose(
+            prompt=prompt, 
+            negative_prompt=neg_prompt, 
+            image=pose_img, 
+            controlnet_conditioning_scale=0.7, 
+            generator=get_fixed_generator(), 
+            num_inference_steps=25, 
+            guidance_scale=7.5,
+            progress_bar=False
+        )
         save_path = os.path.join(OUTPUT_DIR, f"{sid}{METHOD_SUFFIX[1]}.png")
         result.images[0].save(save_path)
         print(f"[-] Saved to: {save_path}")
@@ -408,7 +424,16 @@ def run_synthetic():
 
         # Baseline 3
         print(f"\n[-] Generating {sid}{METHOD_SUFFIX[2]} (baseline3: pose+depth ControlNet)")
-        result = pipe_both(prompt=prompt, negative_prompt=neg_prompt, image=[pose_img, depth_img], controlnet_conditioning_scale=[0.8, 0.4], generator=get_fixed_generator(), num_inference_steps=25, guidance_scale=7.5)
+        result = pipe_both(
+            prompt=prompt, 
+            negative_prompt=neg_prompt, 
+            image=[pose_img, depth_img], 
+            controlnet_conditioning_scale=[0.8, 0.4], 
+            generator=get_fixed_generator(), 
+            num_inference_steps=25, 
+            guidance_scale=7.5,
+            progress_bar=False
+        )
         save_path = os.path.join(OUTPUT_DIR, f"{sid}{METHOD_SUFFIX[2]}.png")
         result.images[0].save(save_path)
         print(f"[-] Saved to: {save_path}")
@@ -438,7 +463,16 @@ def run_synthetic():
         ))
         print("[*] IntegratedMultiRoleProcessor installed (regional_lora=True, cross_mask=False)")
         
-        result = pipe_both(prompt=prompt, negative_prompt=neg_prompt, image=[pose_img, depth_img], controlnet_conditioning_scale=[0.8, 0.4], generator=get_fixed_generator(), num_inference_steps=25, guidance_scale=7.5)
+        result = pipe_both(
+            prompt=prompt, 
+            negative_prompt=neg_prompt, 
+            image=[pose_img, depth_img], 
+            controlnet_conditioning_scale=[0.8, 0.4], 
+            generator=get_fixed_generator(), 
+            num_inference_steps=25, 
+            guidance_scale=7.5,
+            progress_bar=False
+        )
         save_path = os.path.join(OUTPUT_DIR, f"{sid}{METHOD_SUFFIX[3]}.png")
         result.images[0].save(save_path)
         print(f"[*] Saved to: {save_path}")
@@ -456,7 +490,16 @@ def run_synthetic():
         
         # [修正3] 统一 ControlNet 权重与基线3一致，保证单一变量，实验对比公平
         print("[+] ControlNet scales: pose=0.8, depth=0.4 (same as baseline3)")
-        result = pipe_both(prompt=prompt, negative_prompt=neg_prompt, image=[pose_img, depth_img], controlnet_conditioning_scale=[0.8, 0.4], generator=get_fixed_generator(), num_inference_steps=25, guidance_scale=7.5)
+        result = pipe_both(
+            prompt=prompt, 
+            negative_prompt=neg_prompt, 
+            image=[pose_img, depth_img], 
+            controlnet_conditioning_scale=[0.8, 0.4], 
+            generator=get_fixed_generator(), 
+            num_inference_steps=25, 
+            guidance_scale=7.5,
+            progress_bar=False
+        )
         save_path = os.path.join(OUTPUT_DIR, f"{sid}{METHOD_SUFFIX[4]}.png")
         result.images[0].save(save_path)
         print(f"[+] Saved to: {save_path}")
@@ -478,14 +521,3 @@ if __name__ == "__main__":
         import traceback; traceback.print_exc()
         clear_gpu()
         raise
-    
-    
-# 三处核心修改说明---相对于tmp_test的19
-# LoRA 禁用顺序修正（实验公平性核心）
-# 原代码先关闭文本编码器 LoRA、再全局设置适配器，set_adapters 会重新激活text_encoder的 LoRA，导致「基线组仅 unet 生效 LoRA」的目标完全失效。修正后先全局设置、再单独关闭文本编码器，确保基线组和隔离组一致：LoRA 仅作用于 unet，文本编码器无 LoRA 干扰，实验变量唯一，对比结果可信。
-# 提示词精简（避免角色特征截断）
-# 将原本 3 组语义高度重复的视角词精简为各 1 个（正面front view、负面back view），减少 token 占用，优先保证两个角色的触发词与特征描述完整，避免因超出 77token 上限导致尾部角色特征被截断，降低角色辨识度。
-# ControlNet 权重统一（单一变量原则）
-
-
-# 其余逻辑（区域 LoRA 计算、交叉注意力偏置、种子控制、掩码处理）均正确，可直接运行。

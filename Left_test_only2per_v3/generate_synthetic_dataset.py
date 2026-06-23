@@ -32,26 +32,27 @@ ELLIPSE_SIZES = {
 print(f"[INIT] ELLIPSE_SIZES loaded: {list(ELLIPSE_SIZES.keys())}")
 
 # ===================== 4 个 LoRA 角色模型信息 =====================
+# 已精简：仅保留核心触发词 + 1~2 个高辨识度特征，去除重复触发项，压缩 token 数量
 CHARACTERS = [
     {
         "id": "Sera",
         "lora_name": "LoRA_Sera",
-        "triggers": "SeraDef, brown hair, red dress, egyptian, hair tubes, bare shoulders, ankh, jewelry, collarbone"
+        "triggers": "SeraDef, dark-skinned female, red dress"
     },
     {
         "id": "TogaHimiko",
         "lora_name": "TogaHimiko-01",
-        "triggers": "Himiko Toga, blonde hair, school uniform, beige cardigan, Toga, Himiko, black stockings"
+        "triggers": "Himiko Toga, blonde hair, school uniform"
     },
     {
         "id": "MouriRan",
         "lora_name": "Mouri",
-        "triggers": "mouriranai, mouri ran, long sleeves, blue eyes, school uniform, blue jacket, green necktie, pleated skirt, meitantei conan"
+        "triggers": "mouriranai, blue jacket, pleated skirt"
     },
     {
         "id": "Byakuya",
         "lora_name": "Byakuya",
-        "triggers": "Byakuyadef, 1girl, dark hair, long hair, uniform, green bow tie" 
+        "triggers": "Byakuyadef, dark hair, uniform" 
     }
 ]
 print(f"[INIT] CHARACTERS loaded: {[c['id'] for c in CHARACTERS]} (total {len(CHARACTERS)})")
@@ -376,10 +377,10 @@ def generate_prompt_config(scene, bg, char1, char2):
     p1_tags = char1["triggers"]
     p2_tags = char2["triggers"]
     
-    # 对 side_by_side 序列统一场景描述，仅动作差异由 ControlNet 控制
+    # 已优化：移除 a photo of 前缀；front view 前置避免尾部截断；无冗余画质词
     scene_display = scene.replace('_', ' ')
-    prompt = f"person1: a photo of {p1_tags}. person2: a photo of {p2_tags}. {scene_display} scene in a {bg.replace('_', ' ')}, high quality, 8k, realistic"
-    neg_prompt = "blurry, low quality, distorted, missing people, extra limbs, monochrome"
+    prompt = f"person1: {p1_tags}. person2: {p2_tags}. front view, {scene_display} scene in a {bg.replace('_', ' ')}"
+    neg_prompt = "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome"
     
     config = {
         "prompt": prompt,
