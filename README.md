@@ -127,5 +127,5 @@ python run_syn_exprmt_grp1.py > log_run_syn_exp_grp1.log 2>&1
 python 1_generate_test_conditions.py > log_1_gene_test_condi.log 2>&1
 
 python generate_synthetic_dataset.py > log_gene_syn_dat.txt 2>&1
-python run_syn_exprmt_grp1.py > log_run_syn_exp_grp1.txt 2>&1
+python run_syn_exprmt_grp1to10.py > log_run_syn_exp_grp1to10.txt 2>&1
 
