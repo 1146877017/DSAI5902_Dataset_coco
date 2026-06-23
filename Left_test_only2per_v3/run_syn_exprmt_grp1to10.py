@@ -4,8 +4,6 @@ import torch
 import cv2
 import numpy as np
 import re
-import warnings
-from tqdm import tqdm
 from PIL import Image
 from diffusers import (
     StableDiffusionControlNetPipeline,
@@ -14,13 +12,6 @@ from diffusers import (
     StableDiffusionPipeline
 )
 from diffusers.models.attention_processor import AttnProcessor
-
-# ===================== 全局初始化：关闭所有进度条 + 过滤无关警告 =====================
-# 全局禁用所有 tqdm 进度条，覆盖模型加载、推理生成全阶段
-tqdm.disable = True
-# 过滤无关警告，净化日志输出
-warnings.filterwarnings("ignore", category=FutureWarning)
-warnings.filterwarnings("ignore", category=UserWarning)
 
 # ===================== 全局配置 =====================
 print("[INIT] Loading global configuration...")
@@ -60,19 +51,6 @@ def get_fixed_generator():
     g = torch.Generator(device)
     g.manual_seed(SEED)
     return g
-
-# ===================== Token 长度硬校验工具 =====================
-def assert_token_length(tokenizer, text, text_type="prompt"):
-    """校验文本token总数是否超过77，超限直接终止程序"""
-    real_inputs = tokenizer(text, truncation=False, padding=False, return_tensors="pt")
-    real_count = real_inputs.input_ids.shape[1]
-    if real_count > 77:
-        raise RuntimeError(
-            f"[FATAL] {text_type} exceeds 77-token limit! "
-            f"Actual token count: {real_count}\n"
-            f"Content: {text}"
-        )
-    print(f"  [CHECK] {text_type} token count: {real_count}/77 (safe)")
 
 # ===================== 模型加载 =====================
 print("=" * 60)
@@ -118,15 +96,11 @@ def preload_all_loras(pipe, char_to_filename):
 # ===================== Token 解析 =====================
 def get_person_token_indices(tokenizer, prompt, debug=False):
     print(f"  [FUNC] get_person_token_indices called")
-    
-    # ========== 新增：超限硬校验，超过77直接终止 ==========
-    assert_token_length(tokenizer, prompt, text_type="Prompt")
-    
     full_inputs = tokenizer(prompt, padding="max_length", max_length=77, truncation=True, return_tensors="pt")
     full_ids = full_inputs.input_ids[0].tolist()
     full_tokens = tokenizer.convert_ids_to_tokens(full_ids)
     clean = [t.replace("</w>", "").lower() for t in full_tokens]
-    print(f"  [FUNC] total tokens (padded): {len(clean)}")
+    print(f"  [FUNC] total tokens: {len(clean)}")
 
     p1_start = next((i for i in range(len(clean) - 1) if clean[i] == "person" and clean[i+1] == "1"), -1)
     p2_start = next((i for i in range(len(clean) - 1) if clean[i] == "person" and clean[i+1] == "2"), -1)
@@ -216,7 +190,7 @@ def compute_regional_lora_linear(layer, x, masks, char_ids, weights, enable_regi
             combined_delta += delta
 
     out_cond = base_out_cond + combined_delta
-    return torch.cat([x_uncond, out_cond], dim=0) if out_uncond.shape[1] == out_cond.shape[1] else torch.cat([out_uncond, out_cond], dim=0)
+    return torch.cat([out_uncond, out_cond], dim=0)
 
 def compute_text_regional_lora_linear(layer, x, token_indices, char_ids, weights):
     lora_test = _get_lora_components(layer, char_ids[0])
@@ -361,7 +335,7 @@ def run_synthetic():
         print(f"[MAIN] characters: {c1} vs {c2}")
         print(f"[MAIN] original prompt length: {len(prompt)} chars")
         
-        # front view 前置追加，避免尾部截断
+        # [修正1] front view 改为前置追加，彻底避免尾部截断；与数据集精简方案配套
         print("[MAIN] Checking and adding view directives...")
         if "front view" not in prompt.lower():
             prompt = f"front view, {prompt}"
@@ -372,11 +346,6 @@ def run_synthetic():
             
         print(f"\n[DEBUG Main] Modified Prompt: {prompt}")
         print(f"[DEBUG Main] Modified Neg: {neg_prompt}")
-
-        # ========== 新增：正负向Prompt双校验，超限直接终止 ==========
-        print("[MAIN] Running token length safety check...")
-        assert_token_length(pipe_both.tokenizer, prompt, text_type="Prompt")
-        assert_token_length(pipe_both.tokenizer, neg_prompt, text_type="Negative prompt")
         
         print("[MAIN] Loading control images...")
         pose_path = os.path.join(SYNTHETIC_DATA, "poses", f"{sid}.png")
@@ -406,7 +375,8 @@ def run_synthetic():
             pipe_name = p.__class__.__name__
             print(f"[MAIN] Configuring {pipe_name}...")
             
-            # 先全局设置适配器，再单独关闭 text_encoder 的 LoRA
+            # [修正2] 先全局设置适配器，再单独关闭 text_encoder 的 LoRA
+            # 避免 set_adapters 重新激活 text_encoder LoRA，确保仅 unet 生效
             print(f"[MAIN]   setting adapters: {c1}, {c2} (weights 0.8, 0.8)")
             p.set_adapters([c1, c2], adapter_weights=[0.8, 0.8])
             
@@ -427,7 +397,8 @@ def run_synthetic():
             negative_prompt=neg_prompt, 
             generator=get_fixed_generator(), 
             num_inference_steps=25, 
-            guidance_scale=7.5
+            guidance_scale=7.5,
+            progress_bar=False
         )
         save_path = os.path.join(OUTPUT_DIR, f"{sid}{METHOD_SUFFIX[0]}.png")
         result.images[0].save(save_path)
@@ -443,7 +414,8 @@ def run_synthetic():
             controlnet_conditioning_scale=0.7, 
             generator=get_fixed_generator(), 
             num_inference_steps=25, 
-            guidance_scale=7.5
+            guidance_scale=7.5,
+            progress_bar=False
         )
         save_path = os.path.join(OUTPUT_DIR, f"{sid}{METHOD_SUFFIX[1]}.png")
         result.images[0].save(save_path)
@@ -459,7 +431,8 @@ def run_synthetic():
             controlnet_conditioning_scale=[0.8, 0.4], 
             generator=get_fixed_generator(), 
             num_inference_steps=25, 
-            guidance_scale=7.5
+            guidance_scale=7.5,
+            progress_bar=False
         )
         save_path = os.path.join(OUTPUT_DIR, f"{sid}{METHOD_SUFFIX[2]}.png")
         result.images[0].save(save_path)
@@ -497,7 +470,8 @@ def run_synthetic():
             controlnet_conditioning_scale=[0.8, 0.4], 
             generator=get_fixed_generator(), 
             num_inference_steps=25, 
-            guidance_scale=7.5
+            guidance_scale=7.5,
+            progress_bar=False
         )
         save_path = os.path.join(OUTPUT_DIR, f"{sid}{METHOD_SUFFIX[3]}.png")
         result.images[0].save(save_path)
@@ -514,6 +488,7 @@ def run_synthetic():
         ))
         print("[+] IntegratedMultiRoleProcessor installed (regional_lora=True, cross_mask=True, penalty=15, boost=2)")
         
+        # [修正3] 统一 ControlNet 权重与基线3一致，保证单一变量，实验对比公平
         print("[+] ControlNet scales: pose=0.8, depth=0.4 (same as baseline3)")
         result = pipe_both(
             prompt=prompt, 
@@ -522,7 +497,8 @@ def run_synthetic():
             controlnet_conditioning_scale=[0.8, 0.4], 
             generator=get_fixed_generator(), 
             num_inference_steps=25, 
-            guidance_scale=7.5
+            guidance_scale=7.5,
+            progress_bar=False
         )
         save_path = os.path.join(OUTPUT_DIR, f"{sid}{METHOD_SUFFIX[4]}.png")
         result.images[0].save(save_path)

@@ -33,11 +33,12 @@ print(f"[INIT] ELLIPSE_SIZES loaded: {list(ELLIPSE_SIZES.keys())}")
 
 # ===================== 4 个 LoRA 角色模型信息 =====================
 # 已精简：仅保留核心触发词 + 1~2 个高辨识度特征，去除重复触发项，压缩 token 数量
+
 CHARACTERS = [
     {
         "id": "Sera",
         "lora_name": "LoRA_Sera",
-        "triggers": "SeraDef, dark-skinned female, red dress, brown hair, long hair, bare shoulders, ankh"
+        "triggers": "SeraDef, red dress, brown hair, long hair, bare shoulders, ankh"
     },
     {
         "id": "TogaHimiko",
@@ -55,6 +56,7 @@ CHARACTERS = [
         "triggers": "Byakuyadef, dark hair, dark skirt" 
     }
 ]
+
 print(f"[INIT] CHARACTERS loaded: {[c['id'] for c in CHARACTERS]} (total {len(CHARACTERS)})")
 
 # ===================== 场景关键点映射器（含连续动作序列） =====================
