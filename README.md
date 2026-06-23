@@ -125,6 +125,7 @@ python run_syn_exprmt_grp1.py > log_run_syn_exp_grp1.log 2>&1
 在Left_test_only2per_v3中重做合成测试 – 验证角色身份保持与叙事一致性测试部分，必须确保2个人物的是不同的lora
 
 python 1_generate_test_conditions.py > log_1_gene_test_condi.log 2>&1
-python generate_synthetic_dataset.py > log_gene_syn_dat.log 2>&1
-python run_syn_exprmt_grp1.py > log_run_syn_exp_grp1.log 2>&1
+
+python generate_synthetic_dataset.py > log_gene_syn_dat.txt 2>&1
+python run_syn_exprmt_grp1.py > log_run_syn_exp_grp1.txt 2>&1
 
