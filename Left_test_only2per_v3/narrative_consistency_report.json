@@ -4,11 +4,14 @@
             "pose_fidelity_oks": 0.0767,
             "depth_ssim": 0.4848,
             "depth_rmse": 0.4305,
+            "identity_correctness_clip": 0.2333,
+            "feature_isolation_margin": -0.0002,
             "overall_layout_score": 0.377
         },
         "narrative_consistency": {
             "cross_frame_background_ssim": 0.4923,
-            "cross_frame_depth_ssim": 0.7133
+            "cross_frame_depth_ssim": 0.7133,
+            "cross_frame_identity_similarity": 0.8911
         },
         "total_evaluated_samples": 90,
         "total_sequence_pairs": 36
@@ -18,11 +21,14 @@
             "pose_fidelity_oks": 0.574,
             "depth_ssim": 0.6198,
             "depth_rmse": 0.2668,
+            "identity_correctness_clip": 0.2677,
+            "feature_isolation_margin": -0.0002,
             "overall_layout_score": 0.6423
         },
         "narrative_consistency": {
             "cross_frame_background_ssim": 0.6123,
-            "cross_frame_depth_ssim": 0.7392
+            "cross_frame_depth_ssim": 0.7392,
+            "cross_frame_identity_similarity": 0.9155
         },
         "total_evaluated_samples": 90,
         "total_sequence_pairs": 36
@@ -32,11 +38,14 @@
             "pose_fidelity_oks": 0.7266,
             "depth_ssim": 0.623,
             "depth_rmse": 0.2477,
+            "identity_correctness_clip": 0.2692,
+            "feature_isolation_margin": -0.0014,
             "overall_layout_score": 0.7006
         },
         "narrative_consistency": {
             "cross_frame_background_ssim": 0.6752,
-            "cross_frame_depth_ssim": 0.7096
+            "cross_frame_depth_ssim": 0.7096,
+            "cross_frame_identity_similarity": 0.9229
         },
         "total_evaluated_samples": 90,
         "total_sequence_pairs": 36
@@ -46,11 +55,14 @@
             "pose_fidelity_oks": 0.4899,
             "depth_ssim": 0.6292,
             "depth_rmse": 0.2319,
+            "identity_correctness_clip": 0.2602,
+            "feature_isolation_margin": 0.0012,
             "overall_layout_score": 0.6291
         },
         "narrative_consistency": {
             "cross_frame_background_ssim": 0.7166,
-            "cross_frame_depth_ssim": 0.7141
+            "cross_frame_depth_ssim": 0.7141,
+            "cross_frame_identity_similarity": 0.9168
         },
         "total_evaluated_samples": 90,
         "total_sequence_pairs": 36
@@ -60,11 +72,14 @@
             "pose_fidelity_oks": 0.5459,
             "depth_ssim": 0.6485,
             "depth_rmse": 0.2232,
+            "identity_correctness_clip": 0.2679,
+            "feature_isolation_margin": 0.0171,
             "overall_layout_score": 0.6571
         },
         "narrative_consistency": {
             "cross_frame_background_ssim": 0.7464,
-            "cross_frame_depth_ssim": 0.7605
+            "cross_frame_depth_ssim": 0.7605,
+            "cross_frame_identity_similarity": 0.9131
         },
         "total_evaluated_samples": 90,
         "total_sequence_pairs": 36

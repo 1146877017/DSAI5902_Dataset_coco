@@ -4,7 +4,9 @@ import os
 import json
 import cv2
 import torch
+import clip
 import numpy as np
+from PIL import Image
 from skimage.metrics import structural_similarity as ssim
 from ultralytics import YOLO
 from depth_anything_v2.dpt import DepthAnythingV2
@@ -18,6 +20,7 @@ SUFFIXES = ["_baseline1", "_baseline2", "_baseline3", "_baseline4", "_method"]
 IMAGE_SIZE = 512
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 SAVE_REPORT = "narrative_consistency_report.json"
+BG_GRAY = 128  # 中性灰背景，减少掩码边缘对CLIP特征的干扰
 
 # side_by_side 连续动作序列的三帧顺序
 SEQUENCE_FRAMES = [
@@ -26,15 +29,39 @@ SEQUENCE_FRAMES = [
     "side_by_side_point"
 ]
 
+# ========== 新增：角色文本描述（与数据集生成脚本triggers完全对齐，用于CLIP文本基准） ==========
+CHARACTER_TEXT_PROMPTS = {
+    "Sera": "SeraDef, red dress, brown hair, long hair, bare shoulders, ankh",
+    "TogaHimiko": "Himiko Toga, blonde hair, school uniform",
+    "MouriRan": "mouriranai, blue jacket, long sleeves, blue skirt, meitantei conan",
+    "Byakuya": "Byakuyadef, dark hair, dark skirt"
+}
+
 # ===================== 加载模型 =====================
 print("Loading pose estimation model (YOLOv8n-Pose)...")
 pose_model = YOLO("../yolov8n-pose.pt")
 print("Pose model loaded successfully")
+
 print("Loading depth model Depth Anything V2 (vitb)...")
 depth_model = DepthAnythingV2(encoder='vitb', features=128, out_channels=[96, 192, 384, 768])
 depth_model.load_state_dict(torch.load("../depth_anything_v2_vitb.pth", map_location=DEVICE, weights_only=True), strict=True)
 depth_model = depth_model.to(DEVICE).eval()
 print(f"Depth model loaded successfully, device: {DEVICE}")
+
+print("Loading CLIP model (ViT-B/32)...")
+clip_model, clip_preprocess = clip.load("ViT-B/32", device=DEVICE)
+print(f"CLIP model loaded successfully, device: {DEVICE}")
+
+# ========== 新增：预计算所有角色的CLIP文本基准特征 ==========
+print("Precomputing CLIP text features for all characters...")
+CHARACTER_TEXT_FEATURES = {}
+for char_id, text_prompt in CHARACTER_TEXT_PROMPTS.items():
+    text_tokens = clip.tokenize([text_prompt]).to(DEVICE)
+    with torch.no_grad():
+        text_feat = clip_model.encode_text(text_tokens)
+        text_feat = text_feat / text_feat.norm(dim=-1, keepdim=True)
+    CHARACTER_TEXT_FEATURES[char_id] = text_feat
+print(f"Precomputed text features for {len(CHARACTER_TEXT_FEATURES)} characters")
 
 # ===================== 关键点映射与GT对齐 =====================
 # COCO 17点 → 自定义11点 映射（与数据集生成脚本完全对齐）
@@ -49,7 +76,6 @@ COCO_TO_CUSTOM = {
     13: 9,  # left knee
     14: 10  # right knee
 }
-
 
 def get_gt_keypoints(scene_name, person_idx):
     """
@@ -129,7 +155,6 @@ def get_gt_keypoints(scene_name, person_idx):
         print(f"  [FUNC] GT keypoints shape: {result.shape}")
         return result
 
-
 def compute_oks(gt_kpts, pred_kpts, sigma=0.1):
     """计算11点关键点相似度OKS"""
     print(f"  [FUNC] compute_oks called, sigma={sigma}")
@@ -147,7 +172,6 @@ def compute_oks(gt_kpts, pred_kpts, sigma=0.1):
     result = float(np.mean(oks))
     print(f"  [FUNC] OKS result: {result:.4f}")
     return result
-
 
 def compute_pose_fidelity(img_path, scene_name):
     """姿态保真度评估：返回双人平均OKS"""
@@ -228,7 +252,6 @@ def compute_pose_fidelity(img_path, scene_name):
     print(f"  [EVAL] Final average pose fidelity OKS: {result:.4f}")
     return result
 
-
 # ===================== 深度与背景评估 =====================
 def get_background_mask(mask_path):
     print(f"  [FUNC] get_background_mask called: {mask_path}")
@@ -241,6 +264,31 @@ def get_background_mask(mask_path):
     print(f"  [FUNC] Background pixels: {np.sum(bg_mask)}")
     return bg_mask
 
+def extract_person_clip_feature(img, full_mask, person_pixel_val):
+    """
+    从图像中抠出指定人物区域，提取CLIP图像特征并归一化
+    :param img: BGR格式 numpy 数组 (H, W, 3)
+    :param full_mask: 单通道掩码图，0=背景，128=person1，255=person2
+    :param person_pixel_val: 目标人物的掩码像素值 (128 或 255)
+    :return: 归一化特征向量 tensor (1, 512)，人物区域为空时返回 None
+    """
+    person_mask = (full_mask == person_pixel_val).astype(np.uint8)
+    if np.sum(person_mask) == 0:
+        return None
+    
+    # 抠出人物并放置在中性灰背景上，避免纯黑背景干扰特征
+    masked_img = np.full_like(img, BG_GRAY)
+    masked_img[person_mask > 0] = img[person_mask > 0]
+    
+    # 转PIL并执行CLIP预处理
+    pil_img = Image.fromarray(cv2.cvtColor(masked_img, cv2.COLOR_BGR2RGB))
+    img_tensor = clip_preprocess(pil_img).unsqueeze(0).to(DEVICE)
+    
+    with torch.no_grad():
+        feat = clip_model.encode_image(img_tensor)
+        feat = feat / feat.norm(dim=-1, keepdim=True)
+    
+    return feat
 
 def compute_background_ssim(img1, img2, bg_mask1, bg_mask2):
     """仅在共同背景区域计算SSIM，衡量跨帧背景稳定性"""
@@ -261,7 +309,6 @@ def compute_background_ssim(img1, img2, bg_mask1, bg_mask2):
     print(f"  [FUNC] Masked background SSIM: {result:.4f}")
     return result
 
-
 def compute_cross_frame_depth_ssim(depth1, depth2):
     """计算两帧预测深度图之间的SSIM，衡量跨帧深度结构一致性"""
     print(f"  [FUNC] compute_cross_frame_depth_ssim called")
@@ -271,7 +318,6 @@ def compute_cross_frame_depth_ssim(depth1, depth2):
     score = float(ssim(d1_norm, d2_norm, data_range=1.0))
     print(f"  [FUNC] Cross-frame depth SSIM: {score:.4f}")
     return score
-
 
 def compute_depth_metrics(img, gt_depth_path):
     """深度评估：同时返回SSIM与RMSE，对齐提案要求"""
@@ -303,11 +349,10 @@ def compute_depth_metrics(img, gt_depth_path):
     
     return ssim_score, rmse
 
-
 # ===================== 主函数 =====================
 def main():
     print("\n=== Narrative Consistency & Layout Accuracy Evaluation ===")
-    print("Metrics: Pose Fidelity (OKS), Depth Fidelity (SSIM/RMSE), Cross-frame Background SSIM, Cross-frame Depth SSIM")
+    print("Metrics: Pose Fidelity (OKS), Depth Fidelity (SSIM/RMSE), Identity Correctness (Masked CLIP), Feature Isolation, Cross-frame Background/Depth/Identity Consistency")
     
     config_path = os.path.join(SYNTHETIC_DATA, "synthetic_configs.json")
     print(f"Loading config from: {config_path}")
@@ -337,11 +382,15 @@ def main():
         print(f"File suffix: {suffix}")
         print(f"{'='*60}")
         
+        # ========== 新增：身份正确性与特征隔离度统计列表 ==========
         pose_scores = []
         depth_ssim_scores = []
         depth_rmse_scores = []
+        identity_correct_scores = []    # 单帧Masked CLIP文本对齐相似度（身份正确性）
+        identity_isolation_scores = []  # 单帧特征隔离度（正确相似度 - 错误相似度）
         bg_consistency_scores = []
         depth_consistency_scores = []
+        identity_consistency_scores = []
         skipped_samples = 0
         
         # 1. 单帧布局精度评估（所有样本）
@@ -376,6 +425,47 @@ def main():
             depth_ssim_scores.append(d_ssim)
             depth_rmse_scores.append(d_rmse)
             print(f"    Depth metrics added: SSIM={d_ssim:.4f}, RMSE={d_rmse:.4f}")
+            
+            # ========== 新增：身份正确性与特征隔离度评估（Masked CLIP 文本对齐） ==========
+            print("    Computing identity correctness (masked CLIP text alignment)...")
+            mask_path = os.path.join(SYNTHETIC_DATA, "masks", f"{sample_id}.png")
+            full_mask = cv2.imread(mask_path, cv2.IMREAD_GRAYSCALE)
+            
+            if full_mask is not None:
+                full_mask = cv2.resize(full_mask, (IMAGE_SIZE, IMAGE_SIZE), interpolation=cv2.INTER_NEAREST)
+                p1_feat = extract_person_clip_feature(img, full_mask, 128)  # 左侧人物
+                p2_feat = extract_person_clip_feature(img, full_mask, 255)  # 右侧人物
+                
+                char1, char2 = cfg["characters"]
+                correct_sims = []
+                wrong_sims = []
+                
+                # Person1 与对应/非对应角色文本特征比对
+                if p1_feat is not None:
+                    sim_correct = torch.cosine_similarity(p1_feat, CHARACTER_TEXT_FEATURES[char1]).item()
+                    correct_sims.append(sim_correct)
+                    sim_wrong = torch.cosine_similarity(p1_feat, CHARACTER_TEXT_FEATURES[char2]).item()
+                    wrong_sims.append(sim_wrong)
+                
+                # Person2 与对应/非对应角色文本特征比对
+                if p2_feat is not None:
+                    sim_correct = torch.cosine_similarity(p2_feat, CHARACTER_TEXT_FEATURES[char2]).item()
+                    correct_sims.append(sim_correct)
+                    sim_wrong = torch.cosine_similarity(p2_feat, CHARACTER_TEXT_FEATURES[char1]).item()
+                    wrong_sims.append(sim_wrong)
+                
+                if correct_sims:
+                    avg_correct = float(np.mean(correct_sims))
+                    avg_wrong = float(np.mean(wrong_sims))
+                    identity_correct_scores.append(avg_correct)
+                    # 隔离度 = 正确相似度 - 错误相似度，值越大说明特征混淆越少
+                    isolation_score = float(avg_correct - avg_wrong)
+                    identity_isolation_scores.append(isolation_score)
+                    print(f"    Identity correct sim: {avg_correct:.4f}, isolation margin: {isolation_score:.4f}")
+                else:
+                    print("    [WARN] No valid person features for identity evaluation")
+            else:
+                print("    [WARN] Mask file not found, skipping identity evaluation")
         
         # 2. 叙事序列跨帧一致性评估（仅side_by_side三帧序列）
         print("\n  -- Phase 2: Cross-frame narrative consistency evaluation --")
@@ -386,6 +476,8 @@ def main():
             frame_imgs = []
             frame_bg_masks = []
             frame_pred_depths = []
+            frame_p1_feats = []
+            frame_p2_feats = []
             
             for frame_scene in SEQUENCE_FRAMES:
                 sample_id = f"{frame_scene}_{bg_name}_{chars[0]}_vs_{chars[1]}"
@@ -399,21 +491,35 @@ def main():
                 print(f"      Loading frame: {frame_scene}")
                 img = cv2.imread(img_path)
                 img = cv2.resize(img, (IMAGE_SIZE, IMAGE_SIZE))
-                bg_mask = get_background_mask(mask_path)
+                
+                # 读取完整掩码并生成背景掩码
+                full_mask = cv2.imread(mask_path, cv2.IMREAD_GRAYSCALE)
+                if full_mask is None:
+                    full_mask = np.zeros((IMAGE_SIZE, IMAGE_SIZE), dtype=np.uint8)
+                else:
+                    full_mask = cv2.resize(full_mask, (IMAGE_SIZE, IMAGE_SIZE), interpolation=cv2.INTER_NEAREST)
+                bg_mask = (full_mask == 0).astype(np.uint8)
                 
                 # 推理当前帧的预测深度图
                 img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
                 with torch.no_grad():
                     pred_depth = depth_model.infer_image(img_rgb, input_size=IMAGE_SIZE)
                 
+                # 提取两个人物的CLIP身份特征
+                p1_feat = extract_person_clip_feature(img, full_mask, 128)
+                p2_feat = extract_person_clip_feature(img, full_mask, 255)
+                
                 frame_imgs.append(img)
                 frame_bg_masks.append(bg_mask)
                 frame_pred_depths.append(pred_depth)
+                frame_p1_feats.append(p1_feat)
+                frame_p2_feats.append(p2_feat)
             
             print(f"    Valid frames in sequence: {len(frame_imgs)}")
             
-            # 相邻帧计算背景一致性
+            # 相邻帧计算一致性
             if len(frame_imgs) > 1:
+                # 背景一致性
                 print(f"    Computing adjacent frame background SSIM...")
                 for i in range(len(frame_imgs) - 1):
                     print(f"      Frame {i} → Frame {i+1}")
@@ -424,7 +530,7 @@ def main():
                     bg_consistency_scores.append(bg_ssim)
                     print(f"      Background SSIM: {bg_ssim:.4f}")
                 
-                # 相邻帧计算深度一致性
+                # 深度一致性
                 print(f"    Computing adjacent frame depth SSIM...")
                 for i in range(len(frame_pred_depths) - 1):
                     print(f"      Frame {i} → Frame {i+1}")
@@ -433,6 +539,29 @@ def main():
                     )
                     depth_consistency_scores.append(depth_ssim)
                     print(f"      Depth SSIM: {depth_ssim:.4f}")
+                
+                # 人物身份一致性（跨帧稳定性）
+                print(f"    Computing adjacent frame identity similarity...")
+                for i in range(len(frame_imgs) - 1):
+                    print(f"      Frame {i} → Frame {i+1}")
+                    pair_sims = []
+                    
+                    # Person1 跨帧身份相似度
+                    if frame_p1_feats[i] is not None and frame_p1_feats[i+1] is not None:
+                        p1_sim = torch.cosine_similarity(frame_p1_feats[i], frame_p1_feats[i+1]).item()
+                        pair_sims.append(p1_sim)
+                        print(f"        Person1 identity sim: {p1_sim:.4f}")
+                    
+                    # Person2 跨帧身份相似度
+                    if frame_p2_feats[i] is not None and frame_p2_feats[i+1] is not None:
+                        p2_sim = torch.cosine_similarity(frame_p2_feats[i], frame_p2_feats[i+1]).item()
+                        pair_sims.append(p2_sim)
+                        print(f"        Person2 identity sim: {p2_sim:.4f}")
+                    
+                    if pair_sims:
+                        avg_pair_sim = float(np.mean(pair_sims))
+                        identity_consistency_scores.append(avg_pair_sim)
+                        print(f"        Average identity sim: {avg_pair_sim:.4f}")
             else:
                 print("    Not enough frames for consistency calculation")
         
@@ -445,8 +574,14 @@ def main():
         avg_pose = round(np.mean(pose_scores), 4)
         avg_depth_ssim = round(np.mean(depth_ssim_scores), 4)
         avg_depth_rmse = round(np.mean(depth_rmse_scores), 4)
+        
+        # ========== 新增：身份相关指标汇总 ==========
+        avg_identity_correct = round(np.mean(identity_correct_scores), 4) if identity_correct_scores else 0.0
+        avg_identity_isolation = round(np.mean(identity_isolation_scores), 4) if identity_isolation_scores else 0.0
+        
         avg_bg_consistency = round(np.mean(bg_consistency_scores), 4) if bg_consistency_scores else 0.0
         avg_depth_consistency = round(np.mean(depth_consistency_scores), 4) if depth_consistency_scores else 0.0
+        avg_identity_consistency = round(np.mean(identity_consistency_scores), 4) if identity_consistency_scores else 0.0
         overall_layout = round((avg_pose + avg_depth_ssim + (1 - avg_depth_rmse)) / 3, 4)
         
         print(f"  Total evaluated samples: {len(pose_scores)}")
@@ -454,8 +589,11 @@ def main():
         print(f"  Pose Fidelity (OKS): {avg_pose:.4f}")
         print(f"  Depth SSIM: {avg_depth_ssim:.4f}")
         print(f"  Depth RMSE: {avg_depth_rmse:.4f}")
+        print(f"  Identity Correctness (Masked CLIP): {avg_identity_correct:.4f}")
+        print(f"  Feature Isolation Margin: {avg_identity_isolation:.4f}")
         print(f"  Cross-frame Background Consistency: {avg_bg_consistency:.4f}")
         print(f"  Cross-frame Depth Consistency: {avg_depth_consistency:.4f}")
+        print(f"  Cross-frame Identity Consistency: {avg_identity_consistency:.4f}")
         print(f"  Overall Layout Accuracy Score: {overall_layout:.4f}")
         
         report[method] = {
@@ -463,11 +601,14 @@ def main():
                 "pose_fidelity_oks": avg_pose,
                 "depth_ssim": avg_depth_ssim,
                 "depth_rmse": avg_depth_rmse,
+                "identity_correctness_clip": avg_identity_correct,   
+                "feature_isolation_margin": avg_identity_isolation, 
                 "overall_layout_score": overall_layout
             },
             "narrative_consistency": {
                 "cross_frame_background_ssim": avg_bg_consistency,
-                "cross_frame_depth_ssim": avg_depth_consistency
+                "cross_frame_depth_ssim": avg_depth_consistency,
+                "cross_frame_identity_similarity": avg_identity_consistency
             },
             "total_evaluated_samples": len(pose_scores),
             "total_sequence_pairs": len(bg_consistency_scores)
@@ -482,7 +623,6 @@ def main():
     
     print("Report saved successfully")
     print(f"\nEvaluation complete.")
-
 
 if __name__ == "__main__":
     print("[ENTRY] Script started")
