@@ -262,6 +262,17 @@ def compute_background_ssim(img1, img2, bg_mask1, bg_mask2):
     return result
 
 
+def compute_cross_frame_depth_ssim(depth1, depth2):
+    """计算两帧预测深度图之间的SSIM，衡量跨帧深度结构一致性"""
+    print(f"  [FUNC] compute_cross_frame_depth_ssim called")
+    # 各自归一化到[0,1]，消除相对深度绝对值偏移的影响，仅衡量结构一致性
+    d1_norm = (depth1 - depth1.min()) / (depth1.max() - depth1.min() + 1e-8)
+    d2_norm = (depth2 - depth2.min()) / (depth2.max() - depth2.min() + 1e-8)
+    score = float(ssim(d1_norm, d2_norm, data_range=1.0))
+    print(f"  [FUNC] Cross-frame depth SSIM: {score:.4f}")
+    return score
+
+
 def compute_depth_metrics(img, gt_depth_path):
     """深度评估：同时返回SSIM与RMSE，对齐提案要求"""
     print(f"\n  [EVAL] Computing depth metrics")
@@ -296,7 +307,7 @@ def compute_depth_metrics(img, gt_depth_path):
 # ===================== 主函数 =====================
 def main():
     print("\n=== Narrative Consistency & Layout Accuracy Evaluation ===")
-    print("Metrics: Pose Fidelity (OKS), Depth Fidelity (SSIM/RMSE), Cross-frame Background SSIM")
+    print("Metrics: Pose Fidelity (OKS), Depth Fidelity (SSIM/RMSE), Cross-frame Background SSIM, Cross-frame Depth SSIM")
     
     config_path = os.path.join(SYNTHETIC_DATA, "synthetic_configs.json")
     print(f"Loading config from: {config_path}")
@@ -330,6 +341,7 @@ def main():
         depth_ssim_scores = []
         depth_rmse_scores = []
         bg_consistency_scores = []
+        depth_consistency_scores = []
         skipped_samples = 0
         
         # 1. 单帧布局精度评估（所有样本）
@@ -373,6 +385,7 @@ def main():
             print(f"\n    Sequence group [{seq_idx}/{len(sequence_groups)}]: {chars[0]} vs {chars[1]} | {bg_name}")
             frame_imgs = []
             frame_bg_masks = []
+            frame_pred_depths = []
             
             for frame_scene in SEQUENCE_FRAMES:
                 sample_id = f"{frame_scene}_{bg_name}_{chars[0]}_vs_{chars[1]}"
@@ -388,8 +401,14 @@ def main():
                 img = cv2.resize(img, (IMAGE_SIZE, IMAGE_SIZE))
                 bg_mask = get_background_mask(mask_path)
                 
+                # 推理当前帧的预测深度图
+                img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+                with torch.no_grad():
+                    pred_depth = depth_model.infer_image(img_rgb, input_size=IMAGE_SIZE)
+                
                 frame_imgs.append(img)
                 frame_bg_masks.append(bg_mask)
+                frame_pred_depths.append(pred_depth)
             
             print(f"    Valid frames in sequence: {len(frame_imgs)}")
             
@@ -404,6 +423,16 @@ def main():
                     )
                     bg_consistency_scores.append(bg_ssim)
                     print(f"      Background SSIM: {bg_ssim:.4f}")
+                
+                # 相邻帧计算深度一致性
+                print(f"    Computing adjacent frame depth SSIM...")
+                for i in range(len(frame_pred_depths) - 1):
+                    print(f"      Frame {i} → Frame {i+1}")
+                    depth_ssim = compute_cross_frame_depth_ssim(
+                        frame_pred_depths[i], frame_pred_depths[i+1]
+                    )
+                    depth_consistency_scores.append(depth_ssim)
+                    print(f"      Depth SSIM: {depth_ssim:.4f}")
             else:
                 print("    Not enough frames for consistency calculation")
         
@@ -417,6 +446,7 @@ def main():
         avg_depth_ssim = round(np.mean(depth_ssim_scores), 4)
         avg_depth_rmse = round(np.mean(depth_rmse_scores), 4)
         avg_bg_consistency = round(np.mean(bg_consistency_scores), 4) if bg_consistency_scores else 0.0
+        avg_depth_consistency = round(np.mean(depth_consistency_scores), 4) if depth_consistency_scores else 0.0
         overall_layout = round((avg_pose + avg_depth_ssim + (1 - avg_depth_rmse)) / 3, 4)
         
         print(f"  Total evaluated samples: {len(pose_scores)}")
@@ -425,6 +455,7 @@ def main():
         print(f"  Depth SSIM: {avg_depth_ssim:.4f}")
         print(f"  Depth RMSE: {avg_depth_rmse:.4f}")
         print(f"  Cross-frame Background Consistency: {avg_bg_consistency:.4f}")
+        print(f"  Cross-frame Depth Consistency: {avg_depth_consistency:.4f}")
         print(f"  Overall Layout Accuracy Score: {overall_layout:.4f}")
         
         report[method] = {
@@ -435,7 +466,8 @@ def main():
                 "overall_layout_score": overall_layout
             },
             "narrative_consistency": {
-                "cross_frame_background_ssim": avg_bg_consistency
+                "cross_frame_background_ssim": avg_bg_consistency,
+                "cross_frame_depth_ssim": avg_depth_consistency
             },
             "total_evaluated_samples": len(pose_scores),
             "total_sequence_pairs": len(bg_consistency_scores)
