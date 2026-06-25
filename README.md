@@ -132,3 +132,4 @@ python run_syn_exprmt_grp11to15.py > log_run_syn_exprmt_grp11to15.txt 2>&1
 python run_syn_exprmt_grp16.py > log_run_syn_exprmt_grp16.txt 2>&1
 
 python eval_prop_masked_clip.py > log_eval_prop_masked_clip.txt 2>&1
+python eval_narra_consis.py > log_eval_narra_consis.txt 2>&1

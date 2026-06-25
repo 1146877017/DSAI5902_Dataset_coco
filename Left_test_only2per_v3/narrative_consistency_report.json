@@ -1,0 +1,72 @@
+{
+    "baseline1": {
+        "layout_accuracy": {
+            "pose_fidelity_oks": 0.0767,
+            "depth_ssim": 0.4848,
+            "depth_rmse": 0.4305,
+            "overall_layout_score": 0.377
+        },
+        "narrative_consistency": {
+            "cross_frame_background_ssim": 0.4923,
+            "cross_frame_depth_ssim": 0.7133
+        },
+        "total_evaluated_samples": 90,
+        "total_sequence_pairs": 36
+    },
+    "baseline2": {
+        "layout_accuracy": {
+            "pose_fidelity_oks": 0.574,
+            "depth_ssim": 0.6198,
+            "depth_rmse": 0.2668,
+            "overall_layout_score": 0.6423
+        },
+        "narrative_consistency": {
+            "cross_frame_background_ssim": 0.6123,
+            "cross_frame_depth_ssim": 0.7392
+        },
+        "total_evaluated_samples": 90,
+        "total_sequence_pairs": 36
+    },
+    "baseline3": {
+        "layout_accuracy": {
+            "pose_fidelity_oks": 0.7266,
+            "depth_ssim": 0.623,
+            "depth_rmse": 0.2477,
+            "overall_layout_score": 0.7006
+        },
+        "narrative_consistency": {
+            "cross_frame_background_ssim": 0.6752,
+            "cross_frame_depth_ssim": 0.7096
+        },
+        "total_evaluated_samples": 90,
+        "total_sequence_pairs": 36
+    },
+    "baseline4": {
+        "layout_accuracy": {
+            "pose_fidelity_oks": 0.4899,
+            "depth_ssim": 0.6292,
+            "depth_rmse": 0.2319,
+            "overall_layout_score": 0.6291
+        },
+        "narrative_consistency": {
+            "cross_frame_background_ssim": 0.7166,
+            "cross_frame_depth_ssim": 0.7141
+        },
+        "total_evaluated_samples": 90,
+        "total_sequence_pairs": 36
+    },
+    "method": {
+        "layout_accuracy": {
+            "pose_fidelity_oks": 0.5459,
+            "depth_ssim": 0.6485,
+            "depth_rmse": 0.2232,
+            "overall_layout_score": 0.6571
+        },
+        "narrative_consistency": {
+            "cross_frame_background_ssim": 0.7464,
+            "cross_frame_depth_ssim": 0.7605
+        },
+        "total_evaluated_samples": 90,
+        "total_sequence_pairs": 36
+    }
+}
