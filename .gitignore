@@ -4,33 +4,11 @@
 !.gitignore
 !README.md
 
-!select_val2017_2person*
-!get_OpenPose*
-!get_Depth*
-!get_Mask*
-!check_data_coco*
-!unify_size*
-!auto_copy_samples*
-
-!controlnet_COCO_test_autoprompt/
-!controlnet_COCO_test_autoprompt/*.py
-!controlnet_COCO_test_autoprompt/*.json
-!controlnet_COCO_test_autoprompt/*.log
-
 !CO_test_autopro_only2per/
 !CO_test_autopro_only2per/*.py
 !CO_test_autopro_only2per/*.json
 !CO_test_autopro_only2per/*.log
-
-!Left_test_only2per/
-!Left_test_only2per/*.py
-!Left_test_only2per/*.json
-!Left_test_only2per/*.log
-
-!Left_test_only2per_v2/
-!Left_test_only2per_v2/*.py
-!Left_test_only2per_v2/*.json
-!Left_test_only2per_v2/*.log
+!CO_test_autopro_only2per/
 
 !Left_test_only2per_v3/
 !Left_test_only2per_v3/*.py
