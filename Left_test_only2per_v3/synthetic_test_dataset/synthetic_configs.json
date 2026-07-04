@@ -1,0 +1,2162 @@
+[
+    {
+        "prompt": "person1: SeraDef, red dress, brown hair, long hair, bare shoulders, ankh. person2: Himiko Toga, blonde hair, school uniform. front view, side by side stand scene in a outdoor park",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side_stand",
+        "background": "outdoor_park",
+        "characters": [
+            "Sera",
+            "TogaHimiko"
+        ],
+        "sequence_group": "side_by_side",
+        "lora_details": [
+            {
+                "character_id": "Sera",
+                "lora_name": "LoRA_Sera",
+                "weight": 0.8
+            },
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_stand_outdoor_park_Sera_vs_TogaHimiko"
+    },
+    {
+        "prompt": "person1: SeraDef, red dress, brown hair, long hair, bare shoulders, ankh. person2: mouriranai, blue jacket, long sleeves, blue skirt, meitantei conan. front view, side by side stand scene in a outdoor park",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side_stand",
+        "background": "outdoor_park",
+        "characters": [
+            "Sera",
+            "MouriRan"
+        ],
+        "sequence_group": "side_by_side",
+        "lora_details": [
+            {
+                "character_id": "Sera",
+                "lora_name": "LoRA_Sera",
+                "weight": 0.8
+            },
+            {
+                "character_id": "MouriRan",
+                "lora_name": "Mouri",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_stand_outdoor_park_Sera_vs_MouriRan"
+    },
+    {
+        "prompt": "person1: SeraDef, red dress, brown hair, long hair, bare shoulders, ankh. person2: Byakuyadef, dark hair, dark skirt. front view, side by side stand scene in a outdoor park",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side_stand",
+        "background": "outdoor_park",
+        "characters": [
+            "Sera",
+            "Byakuya"
+        ],
+        "sequence_group": "side_by_side",
+        "lora_details": [
+            {
+                "character_id": "Sera",
+                "lora_name": "LoRA_Sera",
+                "weight": 0.8
+            },
+            {
+                "character_id": "Byakuya",
+                "lora_name": "Byakuya",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_stand_outdoor_park_Sera_vs_Byakuya"
+    },
+    {
+        "prompt": "person1: Himiko Toga, blonde hair, school uniform. person2: mouriranai, blue jacket, long sleeves, blue skirt, meitantei conan. front view, side by side stand scene in a outdoor park",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side_stand",
+        "background": "outdoor_park",
+        "characters": [
+            "TogaHimiko",
+            "MouriRan"
+        ],
+        "sequence_group": "side_by_side",
+        "lora_details": [
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            },
+            {
+                "character_id": "MouriRan",
+                "lora_name": "Mouri",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_stand_outdoor_park_TogaHimiko_vs_MouriRan"
+    },
+    {
+        "prompt": "person1: Himiko Toga, blonde hair, school uniform. person2: Byakuyadef, dark hair, dark skirt. front view, side by side stand scene in a outdoor park",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side_stand",
+        "background": "outdoor_park",
+        "characters": [
+            "TogaHimiko",
+            "Byakuya"
+        ],
+        "sequence_group": "side_by_side",
+        "lora_details": [
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            },
+            {
+                "character_id": "Byakuya",
+                "lora_name": "Byakuya",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_stand_outdoor_park_TogaHimiko_vs_Byakuya"
+    },
+    {
+        "prompt": "person1: mouriranai, blue jacket, long sleeves, blue skirt, meitantei conan. person2: Byakuyadef, dark hair, dark skirt. front view, side by side stand scene in a outdoor park",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side_stand",
+        "background": "outdoor_park",
+        "characters": [
+            "MouriRan",
+            "Byakuya"
+        ],
+        "sequence_group": "side_by_side",
+        "lora_details": [
+            {
+                "character_id": "MouriRan",
+                "lora_name": "Mouri",
+                "weight": 0.8
+            },
+            {
+                "character_id": "Byakuya",
+                "lora_name": "Byakuya",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_stand_outdoor_park_MouriRan_vs_Byakuya"
+    },
+    {
+        "prompt": "person1: SeraDef, red dress, brown hair, long hair, bare shoulders, ankh. person2: Himiko Toga, blonde hair, school uniform. front view, side by side stand scene in a indoor room",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side_stand",
+        "background": "indoor_room",
+        "characters": [
+            "Sera",
+            "TogaHimiko"
+        ],
+        "sequence_group": "side_by_side",
+        "lora_details": [
+            {
+                "character_id": "Sera",
+                "lora_name": "LoRA_Sera",
+                "weight": 0.8
+            },
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_stand_indoor_room_Sera_vs_TogaHimiko"
+    },
+    {
+        "prompt": "person1: SeraDef, red dress, brown hair, long hair, bare shoulders, ankh. person2: mouriranai, blue jacket, long sleeves, blue skirt, meitantei conan. front view, side by side stand scene in a indoor room",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side_stand",
+        "background": "indoor_room",
+        "characters": [
+            "Sera",
+            "MouriRan"
+        ],
+        "sequence_group": "side_by_side",
+        "lora_details": [
+            {
+                "character_id": "Sera",
+                "lora_name": "LoRA_Sera",
+                "weight": 0.8
+            },
+            {
+                "character_id": "MouriRan",
+                "lora_name": "Mouri",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_stand_indoor_room_Sera_vs_MouriRan"
+    },
+    {
+        "prompt": "person1: SeraDef, red dress, brown hair, long hair, bare shoulders, ankh. person2: Byakuyadef, dark hair, dark skirt. front view, side by side stand scene in a indoor room",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side_stand",
+        "background": "indoor_room",
+        "characters": [
+            "Sera",
+            "Byakuya"
+        ],
+        "sequence_group": "side_by_side",
+        "lora_details": [
+            {
+                "character_id": "Sera",
+                "lora_name": "LoRA_Sera",
+                "weight": 0.8
+            },
+            {
+                "character_id": "Byakuya",
+                "lora_name": "Byakuya",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_stand_indoor_room_Sera_vs_Byakuya"
+    },
+    {
+        "prompt": "person1: Himiko Toga, blonde hair, school uniform. person2: mouriranai, blue jacket, long sleeves, blue skirt, meitantei conan. front view, side by side stand scene in a indoor room",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side_stand",
+        "background": "indoor_room",
+        "characters": [
+            "TogaHimiko",
+            "MouriRan"
+        ],
+        "sequence_group": "side_by_side",
+        "lora_details": [
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            },
+            {
+                "character_id": "MouriRan",
+                "lora_name": "Mouri",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_stand_indoor_room_TogaHimiko_vs_MouriRan"
+    },
+    {
+        "prompt": "person1: Himiko Toga, blonde hair, school uniform. person2: Byakuyadef, dark hair, dark skirt. front view, side by side stand scene in a indoor room",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side_stand",
+        "background": "indoor_room",
+        "characters": [
+            "TogaHimiko",
+            "Byakuya"
+        ],
+        "sequence_group": "side_by_side",
+        "lora_details": [
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            },
+            {
+                "character_id": "Byakuya",
+                "lora_name": "Byakuya",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_stand_indoor_room_TogaHimiko_vs_Byakuya"
+    },
+    {
+        "prompt": "person1: mouriranai, blue jacket, long sleeves, blue skirt, meitantei conan. person2: Byakuyadef, dark hair, dark skirt. front view, side by side stand scene in a indoor room",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side_stand",
+        "background": "indoor_room",
+        "characters": [
+            "MouriRan",
+            "Byakuya"
+        ],
+        "sequence_group": "side_by_side",
+        "lora_details": [
+            {
+                "character_id": "MouriRan",
+                "lora_name": "Mouri",
+                "weight": 0.8
+            },
+            {
+                "character_id": "Byakuya",
+                "lora_name": "Byakuya",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_stand_indoor_room_MouriRan_vs_Byakuya"
+    },
+    {
+        "prompt": "person1: SeraDef, red dress, brown hair, long hair, bare shoulders, ankh. person2: Himiko Toga, blonde hair, school uniform. front view, side by side stand scene in a futuristic street",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side_stand",
+        "background": "futuristic_street",
+        "characters": [
+            "Sera",
+            "TogaHimiko"
+        ],
+        "sequence_group": "side_by_side",
+        "lora_details": [
+            {
+                "character_id": "Sera",
+                "lora_name": "LoRA_Sera",
+                "weight": 0.8
+            },
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_stand_futuristic_street_Sera_vs_TogaHimiko"
+    },
+    {
+        "prompt": "person1: SeraDef, red dress, brown hair, long hair, bare shoulders, ankh. person2: mouriranai, blue jacket, long sleeves, blue skirt, meitantei conan. front view, side by side stand scene in a futuristic street",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side_stand",
+        "background": "futuristic_street",
+        "characters": [
+            "Sera",
+            "MouriRan"
+        ],
+        "sequence_group": "side_by_side",
+        "lora_details": [
+            {
+                "character_id": "Sera",
+                "lora_name": "LoRA_Sera",
+                "weight": 0.8
+            },
+            {
+                "character_id": "MouriRan",
+                "lora_name": "Mouri",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_stand_futuristic_street_Sera_vs_MouriRan"
+    },
+    {
+        "prompt": "person1: SeraDef, red dress, brown hair, long hair, bare shoulders, ankh. person2: Byakuyadef, dark hair, dark skirt. front view, side by side stand scene in a futuristic street",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side_stand",
+        "background": "futuristic_street",
+        "characters": [
+            "Sera",
+            "Byakuya"
+        ],
+        "sequence_group": "side_by_side",
+        "lora_details": [
+            {
+                "character_id": "Sera",
+                "lora_name": "LoRA_Sera",
+                "weight": 0.8
+            },
+            {
+                "character_id": "Byakuya",
+                "lora_name": "Byakuya",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_stand_futuristic_street_Sera_vs_Byakuya"
+    },
+    {
+        "prompt": "person1: Himiko Toga, blonde hair, school uniform. person2: mouriranai, blue jacket, long sleeves, blue skirt, meitantei conan. front view, side by side stand scene in a futuristic street",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side_stand",
+        "background": "futuristic_street",
+        "characters": [
+            "TogaHimiko",
+            "MouriRan"
+        ],
+        "sequence_group": "side_by_side",
+        "lora_details": [
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            },
+            {
+                "character_id": "MouriRan",
+                "lora_name": "Mouri",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_stand_futuristic_street_TogaHimiko_vs_MouriRan"
+    },
+    {
+        "prompt": "person1: Himiko Toga, blonde hair, school uniform. person2: Byakuyadef, dark hair, dark skirt. front view, side by side stand scene in a futuristic street",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side_stand",
+        "background": "futuristic_street",
+        "characters": [
+            "TogaHimiko",
+            "Byakuya"
+        ],
+        "sequence_group": "side_by_side",
+        "lora_details": [
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            },
+            {
+                "character_id": "Byakuya",
+                "lora_name": "Byakuya",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_stand_futuristic_street_TogaHimiko_vs_Byakuya"
+    },
+    {
+        "prompt": "person1: mouriranai, blue jacket, long sleeves, blue skirt, meitantei conan. person2: Byakuyadef, dark hair, dark skirt. front view, side by side stand scene in a futuristic street",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side_stand",
+        "background": "futuristic_street",
+        "characters": [
+            "MouriRan",
+            "Byakuya"
+        ],
+        "sequence_group": "side_by_side",
+        "lora_details": [
+            {
+                "character_id": "MouriRan",
+                "lora_name": "Mouri",
+                "weight": 0.8
+            },
+            {
+                "character_id": "Byakuya",
+                "lora_name": "Byakuya",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_stand_futuristic_street_MouriRan_vs_Byakuya"
+    },
+    {
+        "prompt": "person1: SeraDef, red dress, brown hair, long hair, bare shoulders, ankh. person2: Himiko Toga, blonde hair, school uniform. front view, side by side raise hand scene in a outdoor park",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side_raise_hand",
+        "background": "outdoor_park",
+        "characters": [
+            "Sera",
+            "TogaHimiko"
+        ],
+        "sequence_group": "side_by_side",
+        "lora_details": [
+            {
+                "character_id": "Sera",
+                "lora_name": "LoRA_Sera",
+                "weight": 0.8
+            },
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_raise_hand_outdoor_park_Sera_vs_TogaHimiko"
+    },
+    {
+        "prompt": "person1: SeraDef, red dress, brown hair, long hair, bare shoulders, ankh. person2: mouriranai, blue jacket, long sleeves, blue skirt, meitantei conan. front view, side by side raise hand scene in a outdoor park",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side_raise_hand",
+        "background": "outdoor_park",
+        "characters": [
+            "Sera",
+            "MouriRan"
+        ],
+        "sequence_group": "side_by_side",
+        "lora_details": [
+            {
+                "character_id": "Sera",
+                "lora_name": "LoRA_Sera",
+                "weight": 0.8
+            },
+            {
+                "character_id": "MouriRan",
+                "lora_name": "Mouri",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_raise_hand_outdoor_park_Sera_vs_MouriRan"
+    },
+    {
+        "prompt": "person1: SeraDef, red dress, brown hair, long hair, bare shoulders, ankh. person2: Byakuyadef, dark hair, dark skirt. front view, side by side raise hand scene in a outdoor park",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side_raise_hand",
+        "background": "outdoor_park",
+        "characters": [
+            "Sera",
+            "Byakuya"
+        ],
+        "sequence_group": "side_by_side",
+        "lora_details": [
+            {
+                "character_id": "Sera",
+                "lora_name": "LoRA_Sera",
+                "weight": 0.8
+            },
+            {
+                "character_id": "Byakuya",
+                "lora_name": "Byakuya",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_raise_hand_outdoor_park_Sera_vs_Byakuya"
+    },
+    {
+        "prompt": "person1: Himiko Toga, blonde hair, school uniform. person2: mouriranai, blue jacket, long sleeves, blue skirt, meitantei conan. front view, side by side raise hand scene in a outdoor park",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side_raise_hand",
+        "background": "outdoor_park",
+        "characters": [
+            "TogaHimiko",
+            "MouriRan"
+        ],
+        "sequence_group": "side_by_side",
+        "lora_details": [
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            },
+            {
+                "character_id": "MouriRan",
+                "lora_name": "Mouri",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_raise_hand_outdoor_park_TogaHimiko_vs_MouriRan"
+    },
+    {
+        "prompt": "person1: Himiko Toga, blonde hair, school uniform. person2: Byakuyadef, dark hair, dark skirt. front view, side by side raise hand scene in a outdoor park",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side_raise_hand",
+        "background": "outdoor_park",
+        "characters": [
+            "TogaHimiko",
+            "Byakuya"
+        ],
+        "sequence_group": "side_by_side",
+        "lora_details": [
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            },
+            {
+                "character_id": "Byakuya",
+                "lora_name": "Byakuya",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_raise_hand_outdoor_park_TogaHimiko_vs_Byakuya"
+    },
+    {
+        "prompt": "person1: mouriranai, blue jacket, long sleeves, blue skirt, meitantei conan. person2: Byakuyadef, dark hair, dark skirt. front view, side by side raise hand scene in a outdoor park",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side_raise_hand",
+        "background": "outdoor_park",
+        "characters": [
+            "MouriRan",
+            "Byakuya"
+        ],
+        "sequence_group": "side_by_side",
+        "lora_details": [
+            {
+                "character_id": "MouriRan",
+                "lora_name": "Mouri",
+                "weight": 0.8
+            },
+            {
+                "character_id": "Byakuya",
+                "lora_name": "Byakuya",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_raise_hand_outdoor_park_MouriRan_vs_Byakuya"
+    },
+    {
+        "prompt": "person1: SeraDef, red dress, brown hair, long hair, bare shoulders, ankh. person2: Himiko Toga, blonde hair, school uniform. front view, side by side raise hand scene in a indoor room",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side_raise_hand",
+        "background": "indoor_room",
+        "characters": [
+            "Sera",
+            "TogaHimiko"
+        ],
+        "sequence_group": "side_by_side",
+        "lora_details": [
+            {
+                "character_id": "Sera",
+                "lora_name": "LoRA_Sera",
+                "weight": 0.8
+            },
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_raise_hand_indoor_room_Sera_vs_TogaHimiko"
+    },
+    {
+        "prompt": "person1: SeraDef, red dress, brown hair, long hair, bare shoulders, ankh. person2: mouriranai, blue jacket, long sleeves, blue skirt, meitantei conan. front view, side by side raise hand scene in a indoor room",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side_raise_hand",
+        "background": "indoor_room",
+        "characters": [
+            "Sera",
+            "MouriRan"
+        ],
+        "sequence_group": "side_by_side",
+        "lora_details": [
+            {
+                "character_id": "Sera",
+                "lora_name": "LoRA_Sera",
+                "weight": 0.8
+            },
+            {
+                "character_id": "MouriRan",
+                "lora_name": "Mouri",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_raise_hand_indoor_room_Sera_vs_MouriRan"
+    },
+    {
+        "prompt": "person1: SeraDef, red dress, brown hair, long hair, bare shoulders, ankh. person2: Byakuyadef, dark hair, dark skirt. front view, side by side raise hand scene in a indoor room",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side_raise_hand",
+        "background": "indoor_room",
+        "characters": [
+            "Sera",
+            "Byakuya"
+        ],
+        "sequence_group": "side_by_side",
+        "lora_details": [
+            {
+                "character_id": "Sera",
+                "lora_name": "LoRA_Sera",
+                "weight": 0.8
+            },
+            {
+                "character_id": "Byakuya",
+                "lora_name": "Byakuya",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_raise_hand_indoor_room_Sera_vs_Byakuya"
+    },
+    {
+        "prompt": "person1: Himiko Toga, blonde hair, school uniform. person2: mouriranai, blue jacket, long sleeves, blue skirt, meitantei conan. front view, side by side raise hand scene in a indoor room",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side_raise_hand",
+        "background": "indoor_room",
+        "characters": [
+            "TogaHimiko",
+            "MouriRan"
+        ],
+        "sequence_group": "side_by_side",
+        "lora_details": [
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            },
+            {
+                "character_id": "MouriRan",
+                "lora_name": "Mouri",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_raise_hand_indoor_room_TogaHimiko_vs_MouriRan"
+    },
+    {
+        "prompt": "person1: Himiko Toga, blonde hair, school uniform. person2: Byakuyadef, dark hair, dark skirt. front view, side by side raise hand scene in a indoor room",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side_raise_hand",
+        "background": "indoor_room",
+        "characters": [
+            "TogaHimiko",
+            "Byakuya"
+        ],
+        "sequence_group": "side_by_side",
+        "lora_details": [
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            },
+            {
+                "character_id": "Byakuya",
+                "lora_name": "Byakuya",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_raise_hand_indoor_room_TogaHimiko_vs_Byakuya"
+    },
+    {
+        "prompt": "person1: mouriranai, blue jacket, long sleeves, blue skirt, meitantei conan. person2: Byakuyadef, dark hair, dark skirt. front view, side by side raise hand scene in a indoor room",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side_raise_hand",
+        "background": "indoor_room",
+        "characters": [
+            "MouriRan",
+            "Byakuya"
+        ],
+        "sequence_group": "side_by_side",
+        "lora_details": [
+            {
+                "character_id": "MouriRan",
+                "lora_name": "Mouri",
+                "weight": 0.8
+            },
+            {
+                "character_id": "Byakuya",
+                "lora_name": "Byakuya",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_raise_hand_indoor_room_MouriRan_vs_Byakuya"
+    },
+    {
+        "prompt": "person1: SeraDef, red dress, brown hair, long hair, bare shoulders, ankh. person2: Himiko Toga, blonde hair, school uniform. front view, side by side raise hand scene in a futuristic street",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side_raise_hand",
+        "background": "futuristic_street",
+        "characters": [
+            "Sera",
+            "TogaHimiko"
+        ],
+        "sequence_group": "side_by_side",
+        "lora_details": [
+            {
+                "character_id": "Sera",
+                "lora_name": "LoRA_Sera",
+                "weight": 0.8
+            },
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_raise_hand_futuristic_street_Sera_vs_TogaHimiko"
+    },
+    {
+        "prompt": "person1: SeraDef, red dress, brown hair, long hair, bare shoulders, ankh. person2: mouriranai, blue jacket, long sleeves, blue skirt, meitantei conan. front view, side by side raise hand scene in a futuristic street",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side_raise_hand",
+        "background": "futuristic_street",
+        "characters": [
+            "Sera",
+            "MouriRan"
+        ],
+        "sequence_group": "side_by_side",
+        "lora_details": [
+            {
+                "character_id": "Sera",
+                "lora_name": "LoRA_Sera",
+                "weight": 0.8
+            },
+            {
+                "character_id": "MouriRan",
+                "lora_name": "Mouri",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_raise_hand_futuristic_street_Sera_vs_MouriRan"
+    },
+    {
+        "prompt": "person1: SeraDef, red dress, brown hair, long hair, bare shoulders, ankh. person2: Byakuyadef, dark hair, dark skirt. front view, side by side raise hand scene in a futuristic street",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side_raise_hand",
+        "background": "futuristic_street",
+        "characters": [
+            "Sera",
+            "Byakuya"
+        ],
+        "sequence_group": "side_by_side",
+        "lora_details": [
+            {
+                "character_id": "Sera",
+                "lora_name": "LoRA_Sera",
+                "weight": 0.8
+            },
+            {
+                "character_id": "Byakuya",
+                "lora_name": "Byakuya",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_raise_hand_futuristic_street_Sera_vs_Byakuya"
+    },
+    {
+        "prompt": "person1: Himiko Toga, blonde hair, school uniform. person2: mouriranai, blue jacket, long sleeves, blue skirt, meitantei conan. front view, side by side raise hand scene in a futuristic street",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side_raise_hand",
+        "background": "futuristic_street",
+        "characters": [
+            "TogaHimiko",
+            "MouriRan"
+        ],
+        "sequence_group": "side_by_side",
+        "lora_details": [
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            },
+            {
+                "character_id": "MouriRan",
+                "lora_name": "Mouri",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_raise_hand_futuristic_street_TogaHimiko_vs_MouriRan"
+    },
+    {
+        "prompt": "person1: Himiko Toga, blonde hair, school uniform. person2: Byakuyadef, dark hair, dark skirt. front view, side by side raise hand scene in a futuristic street",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side_raise_hand",
+        "background": "futuristic_street",
+        "characters": [
+            "TogaHimiko",
+            "Byakuya"
+        ],
+        "sequence_group": "side_by_side",
+        "lora_details": [
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            },
+            {
+                "character_id": "Byakuya",
+                "lora_name": "Byakuya",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_raise_hand_futuristic_street_TogaHimiko_vs_Byakuya"
+    },
+    {
+        "prompt": "person1: mouriranai, blue jacket, long sleeves, blue skirt, meitantei conan. person2: Byakuyadef, dark hair, dark skirt. front view, side by side raise hand scene in a futuristic street",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side_raise_hand",
+        "background": "futuristic_street",
+        "characters": [
+            "MouriRan",
+            "Byakuya"
+        ],
+        "sequence_group": "side_by_side",
+        "lora_details": [
+            {
+                "character_id": "MouriRan",
+                "lora_name": "Mouri",
+                "weight": 0.8
+            },
+            {
+                "character_id": "Byakuya",
+                "lora_name": "Byakuya",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_raise_hand_futuristic_street_MouriRan_vs_Byakuya"
+    },
+    {
+        "prompt": "person1: SeraDef, red dress, brown hair, long hair, bare shoulders, ankh. person2: Himiko Toga, blonde hair, school uniform. front view, side by side point scene in a outdoor park",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side_point",
+        "background": "outdoor_park",
+        "characters": [
+            "Sera",
+            "TogaHimiko"
+        ],
+        "sequence_group": "side_by_side",
+        "lora_details": [
+            {
+                "character_id": "Sera",
+                "lora_name": "LoRA_Sera",
+                "weight": 0.8
+            },
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_point_outdoor_park_Sera_vs_TogaHimiko"
+    },
+    {
+        "prompt": "person1: SeraDef, red dress, brown hair, long hair, bare shoulders, ankh. person2: mouriranai, blue jacket, long sleeves, blue skirt, meitantei conan. front view, side by side point scene in a outdoor park",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side_point",
+        "background": "outdoor_park",
+        "characters": [
+            "Sera",
+            "MouriRan"
+        ],
+        "sequence_group": "side_by_side",
+        "lora_details": [
+            {
+                "character_id": "Sera",
+                "lora_name": "LoRA_Sera",
+                "weight": 0.8
+            },
+            {
+                "character_id": "MouriRan",
+                "lora_name": "Mouri",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_point_outdoor_park_Sera_vs_MouriRan"
+    },
+    {
+        "prompt": "person1: SeraDef, red dress, brown hair, long hair, bare shoulders, ankh. person2: Byakuyadef, dark hair, dark skirt. front view, side by side point scene in a outdoor park",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side_point",
+        "background": "outdoor_park",
+        "characters": [
+            "Sera",
+            "Byakuya"
+        ],
+        "sequence_group": "side_by_side",
+        "lora_details": [
+            {
+                "character_id": "Sera",
+                "lora_name": "LoRA_Sera",
+                "weight": 0.8
+            },
+            {
+                "character_id": "Byakuya",
+                "lora_name": "Byakuya",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_point_outdoor_park_Sera_vs_Byakuya"
+    },
+    {
+        "prompt": "person1: Himiko Toga, blonde hair, school uniform. person2: mouriranai, blue jacket, long sleeves, blue skirt, meitantei conan. front view, side by side point scene in a outdoor park",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side_point",
+        "background": "outdoor_park",
+        "characters": [
+            "TogaHimiko",
+            "MouriRan"
+        ],
+        "sequence_group": "side_by_side",
+        "lora_details": [
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            },
+            {
+                "character_id": "MouriRan",
+                "lora_name": "Mouri",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_point_outdoor_park_TogaHimiko_vs_MouriRan"
+    },
+    {
+        "prompt": "person1: Himiko Toga, blonde hair, school uniform. person2: Byakuyadef, dark hair, dark skirt. front view, side by side point scene in a outdoor park",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side_point",
+        "background": "outdoor_park",
+        "characters": [
+            "TogaHimiko",
+            "Byakuya"
+        ],
+        "sequence_group": "side_by_side",
+        "lora_details": [
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            },
+            {
+                "character_id": "Byakuya",
+                "lora_name": "Byakuya",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_point_outdoor_park_TogaHimiko_vs_Byakuya"
+    },
+    {
+        "prompt": "person1: mouriranai, blue jacket, long sleeves, blue skirt, meitantei conan. person2: Byakuyadef, dark hair, dark skirt. front view, side by side point scene in a outdoor park",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side_point",
+        "background": "outdoor_park",
+        "characters": [
+            "MouriRan",
+            "Byakuya"
+        ],
+        "sequence_group": "side_by_side",
+        "lora_details": [
+            {
+                "character_id": "MouriRan",
+                "lora_name": "Mouri",
+                "weight": 0.8
+            },
+            {
+                "character_id": "Byakuya",
+                "lora_name": "Byakuya",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_point_outdoor_park_MouriRan_vs_Byakuya"
+    },
+    {
+        "prompt": "person1: SeraDef, red dress, brown hair, long hair, bare shoulders, ankh. person2: Himiko Toga, blonde hair, school uniform. front view, side by side point scene in a indoor room",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side_point",
+        "background": "indoor_room",
+        "characters": [
+            "Sera",
+            "TogaHimiko"
+        ],
+        "sequence_group": "side_by_side",
+        "lora_details": [
+            {
+                "character_id": "Sera",
+                "lora_name": "LoRA_Sera",
+                "weight": 0.8
+            },
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_point_indoor_room_Sera_vs_TogaHimiko"
+    },
+    {
+        "prompt": "person1: SeraDef, red dress, brown hair, long hair, bare shoulders, ankh. person2: mouriranai, blue jacket, long sleeves, blue skirt, meitantei conan. front view, side by side point scene in a indoor room",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side_point",
+        "background": "indoor_room",
+        "characters": [
+            "Sera",
+            "MouriRan"
+        ],
+        "sequence_group": "side_by_side",
+        "lora_details": [
+            {
+                "character_id": "Sera",
+                "lora_name": "LoRA_Sera",
+                "weight": 0.8
+            },
+            {
+                "character_id": "MouriRan",
+                "lora_name": "Mouri",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_point_indoor_room_Sera_vs_MouriRan"
+    },
+    {
+        "prompt": "person1: SeraDef, red dress, brown hair, long hair, bare shoulders, ankh. person2: Byakuyadef, dark hair, dark skirt. front view, side by side point scene in a indoor room",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side_point",
+        "background": "indoor_room",
+        "characters": [
+            "Sera",
+            "Byakuya"
+        ],
+        "sequence_group": "side_by_side",
+        "lora_details": [
+            {
+                "character_id": "Sera",
+                "lora_name": "LoRA_Sera",
+                "weight": 0.8
+            },
+            {
+                "character_id": "Byakuya",
+                "lora_name": "Byakuya",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_point_indoor_room_Sera_vs_Byakuya"
+    },
+    {
+        "prompt": "person1: Himiko Toga, blonde hair, school uniform. person2: mouriranai, blue jacket, long sleeves, blue skirt, meitantei conan. front view, side by side point scene in a indoor room",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side_point",
+        "background": "indoor_room",
+        "characters": [
+            "TogaHimiko",
+            "MouriRan"
+        ],
+        "sequence_group": "side_by_side",
+        "lora_details": [
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            },
+            {
+                "character_id": "MouriRan",
+                "lora_name": "Mouri",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_point_indoor_room_TogaHimiko_vs_MouriRan"
+    },
+    {
+        "prompt": "person1: Himiko Toga, blonde hair, school uniform. person2: Byakuyadef, dark hair, dark skirt. front view, side by side point scene in a indoor room",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side_point",
+        "background": "indoor_room",
+        "characters": [
+            "TogaHimiko",
+            "Byakuya"
+        ],
+        "sequence_group": "side_by_side",
+        "lora_details": [
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            },
+            {
+                "character_id": "Byakuya",
+                "lora_name": "Byakuya",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_point_indoor_room_TogaHimiko_vs_Byakuya"
+    },
+    {
+        "prompt": "person1: mouriranai, blue jacket, long sleeves, blue skirt, meitantei conan. person2: Byakuyadef, dark hair, dark skirt. front view, side by side point scene in a indoor room",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side_point",
+        "background": "indoor_room",
+        "characters": [
+            "MouriRan",
+            "Byakuya"
+        ],
+        "sequence_group": "side_by_side",
+        "lora_details": [
+            {
+                "character_id": "MouriRan",
+                "lora_name": "Mouri",
+                "weight": 0.8
+            },
+            {
+                "character_id": "Byakuya",
+                "lora_name": "Byakuya",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_point_indoor_room_MouriRan_vs_Byakuya"
+    },
+    {
+        "prompt": "person1: SeraDef, red dress, brown hair, long hair, bare shoulders, ankh. person2: Himiko Toga, blonde hair, school uniform. front view, side by side point scene in a futuristic street",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side_point",
+        "background": "futuristic_street",
+        "characters": [
+            "Sera",
+            "TogaHimiko"
+        ],
+        "sequence_group": "side_by_side",
+        "lora_details": [
+            {
+                "character_id": "Sera",
+                "lora_name": "LoRA_Sera",
+                "weight": 0.8
+            },
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_point_futuristic_street_Sera_vs_TogaHimiko"
+    },
+    {
+        "prompt": "person1: SeraDef, red dress, brown hair, long hair, bare shoulders, ankh. person2: mouriranai, blue jacket, long sleeves, blue skirt, meitantei conan. front view, side by side point scene in a futuristic street",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side_point",
+        "background": "futuristic_street",
+        "characters": [
+            "Sera",
+            "MouriRan"
+        ],
+        "sequence_group": "side_by_side",
+        "lora_details": [
+            {
+                "character_id": "Sera",
+                "lora_name": "LoRA_Sera",
+                "weight": 0.8
+            },
+            {
+                "character_id": "MouriRan",
+                "lora_name": "Mouri",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_point_futuristic_street_Sera_vs_MouriRan"
+    },
+    {
+        "prompt": "person1: SeraDef, red dress, brown hair, long hair, bare shoulders, ankh. person2: Byakuyadef, dark hair, dark skirt. front view, side by side point scene in a futuristic street",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side_point",
+        "background": "futuristic_street",
+        "characters": [
+            "Sera",
+            "Byakuya"
+        ],
+        "sequence_group": "side_by_side",
+        "lora_details": [
+            {
+                "character_id": "Sera",
+                "lora_name": "LoRA_Sera",
+                "weight": 0.8
+            },
+            {
+                "character_id": "Byakuya",
+                "lora_name": "Byakuya",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_point_futuristic_street_Sera_vs_Byakuya"
+    },
+    {
+        "prompt": "person1: Himiko Toga, blonde hair, school uniform. person2: mouriranai, blue jacket, long sleeves, blue skirt, meitantei conan. front view, side by side point scene in a futuristic street",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side_point",
+        "background": "futuristic_street",
+        "characters": [
+            "TogaHimiko",
+            "MouriRan"
+        ],
+        "sequence_group": "side_by_side",
+        "lora_details": [
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            },
+            {
+                "character_id": "MouriRan",
+                "lora_name": "Mouri",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_point_futuristic_street_TogaHimiko_vs_MouriRan"
+    },
+    {
+        "prompt": "person1: Himiko Toga, blonde hair, school uniform. person2: Byakuyadef, dark hair, dark skirt. front view, side by side point scene in a futuristic street",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side_point",
+        "background": "futuristic_street",
+        "characters": [
+            "TogaHimiko",
+            "Byakuya"
+        ],
+        "sequence_group": "side_by_side",
+        "lora_details": [
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            },
+            {
+                "character_id": "Byakuya",
+                "lora_name": "Byakuya",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_point_futuristic_street_TogaHimiko_vs_Byakuya"
+    },
+    {
+        "prompt": "person1: mouriranai, blue jacket, long sleeves, blue skirt, meitantei conan. person2: Byakuyadef, dark hair, dark skirt. front view, side by side point scene in a futuristic street",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "side_by_side_point",
+        "background": "futuristic_street",
+        "characters": [
+            "MouriRan",
+            "Byakuya"
+        ],
+        "sequence_group": "side_by_side",
+        "lora_details": [
+            {
+                "character_id": "MouriRan",
+                "lora_name": "Mouri",
+                "weight": 0.8
+            },
+            {
+                "character_id": "Byakuya",
+                "lora_name": "Byakuya",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "side_by_side_point_futuristic_street_MouriRan_vs_Byakuya"
+    },
+    {
+        "prompt": "person1: SeraDef, red dress, brown hair, long hair, bare shoulders, ankh. person2: Himiko Toga, blonde hair, school uniform. front view, handshake scene in a outdoor park",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "handshake",
+        "background": "outdoor_park",
+        "characters": [
+            "Sera",
+            "TogaHimiko"
+        ],
+        "sequence_group": "handshake",
+        "lora_details": [
+            {
+                "character_id": "Sera",
+                "lora_name": "LoRA_Sera",
+                "weight": 0.8
+            },
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "handshake_outdoor_park_Sera_vs_TogaHimiko"
+    },
+    {
+        "prompt": "person1: SeraDef, red dress, brown hair, long hair, bare shoulders, ankh. person2: mouriranai, blue jacket, long sleeves, blue skirt, meitantei conan. front view, handshake scene in a outdoor park",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "handshake",
+        "background": "outdoor_park",
+        "characters": [
+            "Sera",
+            "MouriRan"
+        ],
+        "sequence_group": "handshake",
+        "lora_details": [
+            {
+                "character_id": "Sera",
+                "lora_name": "LoRA_Sera",
+                "weight": 0.8
+            },
+            {
+                "character_id": "MouriRan",
+                "lora_name": "Mouri",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "handshake_outdoor_park_Sera_vs_MouriRan"
+    },
+    {
+        "prompt": "person1: SeraDef, red dress, brown hair, long hair, bare shoulders, ankh. person2: Byakuyadef, dark hair, dark skirt. front view, handshake scene in a outdoor park",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "handshake",
+        "background": "outdoor_park",
+        "characters": [
+            "Sera",
+            "Byakuya"
+        ],
+        "sequence_group": "handshake",
+        "lora_details": [
+            {
+                "character_id": "Sera",
+                "lora_name": "LoRA_Sera",
+                "weight": 0.8
+            },
+            {
+                "character_id": "Byakuya",
+                "lora_name": "Byakuya",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "handshake_outdoor_park_Sera_vs_Byakuya"
+    },
+    {
+        "prompt": "person1: Himiko Toga, blonde hair, school uniform. person2: mouriranai, blue jacket, long sleeves, blue skirt, meitantei conan. front view, handshake scene in a outdoor park",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "handshake",
+        "background": "outdoor_park",
+        "characters": [
+            "TogaHimiko",
+            "MouriRan"
+        ],
+        "sequence_group": "handshake",
+        "lora_details": [
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            },
+            {
+                "character_id": "MouriRan",
+                "lora_name": "Mouri",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "handshake_outdoor_park_TogaHimiko_vs_MouriRan"
+    },
+    {
+        "prompt": "person1: Himiko Toga, blonde hair, school uniform. person2: Byakuyadef, dark hair, dark skirt. front view, handshake scene in a outdoor park",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "handshake",
+        "background": "outdoor_park",
+        "characters": [
+            "TogaHimiko",
+            "Byakuya"
+        ],
+        "sequence_group": "handshake",
+        "lora_details": [
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            },
+            {
+                "character_id": "Byakuya",
+                "lora_name": "Byakuya",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "handshake_outdoor_park_TogaHimiko_vs_Byakuya"
+    },
+    {
+        "prompt": "person1: mouriranai, blue jacket, long sleeves, blue skirt, meitantei conan. person2: Byakuyadef, dark hair, dark skirt. front view, handshake scene in a outdoor park",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "handshake",
+        "background": "outdoor_park",
+        "characters": [
+            "MouriRan",
+            "Byakuya"
+        ],
+        "sequence_group": "handshake",
+        "lora_details": [
+            {
+                "character_id": "MouriRan",
+                "lora_name": "Mouri",
+                "weight": 0.8
+            },
+            {
+                "character_id": "Byakuya",
+                "lora_name": "Byakuya",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "handshake_outdoor_park_MouriRan_vs_Byakuya"
+    },
+    {
+        "prompt": "person1: SeraDef, red dress, brown hair, long hair, bare shoulders, ankh. person2: Himiko Toga, blonde hair, school uniform. front view, handshake scene in a indoor room",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "handshake",
+        "background": "indoor_room",
+        "characters": [
+            "Sera",
+            "TogaHimiko"
+        ],
+        "sequence_group": "handshake",
+        "lora_details": [
+            {
+                "character_id": "Sera",
+                "lora_name": "LoRA_Sera",
+                "weight": 0.8
+            },
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "handshake_indoor_room_Sera_vs_TogaHimiko"
+    },
+    {
+        "prompt": "person1: SeraDef, red dress, brown hair, long hair, bare shoulders, ankh. person2: mouriranai, blue jacket, long sleeves, blue skirt, meitantei conan. front view, handshake scene in a indoor room",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "handshake",
+        "background": "indoor_room",
+        "characters": [
+            "Sera",
+            "MouriRan"
+        ],
+        "sequence_group": "handshake",
+        "lora_details": [
+            {
+                "character_id": "Sera",
+                "lora_name": "LoRA_Sera",
+                "weight": 0.8
+            },
+            {
+                "character_id": "MouriRan",
+                "lora_name": "Mouri",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "handshake_indoor_room_Sera_vs_MouriRan"
+    },
+    {
+        "prompt": "person1: SeraDef, red dress, brown hair, long hair, bare shoulders, ankh. person2: Byakuyadef, dark hair, dark skirt. front view, handshake scene in a indoor room",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "handshake",
+        "background": "indoor_room",
+        "characters": [
+            "Sera",
+            "Byakuya"
+        ],
+        "sequence_group": "handshake",
+        "lora_details": [
+            {
+                "character_id": "Sera",
+                "lora_name": "LoRA_Sera",
+                "weight": 0.8
+            },
+            {
+                "character_id": "Byakuya",
+                "lora_name": "Byakuya",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "handshake_indoor_room_Sera_vs_Byakuya"
+    },
+    {
+        "prompt": "person1: Himiko Toga, blonde hair, school uniform. person2: mouriranai, blue jacket, long sleeves, blue skirt, meitantei conan. front view, handshake scene in a indoor room",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "handshake",
+        "background": "indoor_room",
+        "characters": [
+            "TogaHimiko",
+            "MouriRan"
+        ],
+        "sequence_group": "handshake",
+        "lora_details": [
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            },
+            {
+                "character_id": "MouriRan",
+                "lora_name": "Mouri",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "handshake_indoor_room_TogaHimiko_vs_MouriRan"
+    },
+    {
+        "prompt": "person1: Himiko Toga, blonde hair, school uniform. person2: Byakuyadef, dark hair, dark skirt. front view, handshake scene in a indoor room",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "handshake",
+        "background": "indoor_room",
+        "characters": [
+            "TogaHimiko",
+            "Byakuya"
+        ],
+        "sequence_group": "handshake",
+        "lora_details": [
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            },
+            {
+                "character_id": "Byakuya",
+                "lora_name": "Byakuya",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "handshake_indoor_room_TogaHimiko_vs_Byakuya"
+    },
+    {
+        "prompt": "person1: mouriranai, blue jacket, long sleeves, blue skirt, meitantei conan. person2: Byakuyadef, dark hair, dark skirt. front view, handshake scene in a indoor room",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "handshake",
+        "background": "indoor_room",
+        "characters": [
+            "MouriRan",
+            "Byakuya"
+        ],
+        "sequence_group": "handshake",
+        "lora_details": [
+            {
+                "character_id": "MouriRan",
+                "lora_name": "Mouri",
+                "weight": 0.8
+            },
+            {
+                "character_id": "Byakuya",
+                "lora_name": "Byakuya",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "handshake_indoor_room_MouriRan_vs_Byakuya"
+    },
+    {
+        "prompt": "person1: SeraDef, red dress, brown hair, long hair, bare shoulders, ankh. person2: Himiko Toga, blonde hair, school uniform. front view, handshake scene in a futuristic street",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "handshake",
+        "background": "futuristic_street",
+        "characters": [
+            "Sera",
+            "TogaHimiko"
+        ],
+        "sequence_group": "handshake",
+        "lora_details": [
+            {
+                "character_id": "Sera",
+                "lora_name": "LoRA_Sera",
+                "weight": 0.8
+            },
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "handshake_futuristic_street_Sera_vs_TogaHimiko"
+    },
+    {
+        "prompt": "person1: SeraDef, red dress, brown hair, long hair, bare shoulders, ankh. person2: mouriranai, blue jacket, long sleeves, blue skirt, meitantei conan. front view, handshake scene in a futuristic street",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "handshake",
+        "background": "futuristic_street",
+        "characters": [
+            "Sera",
+            "MouriRan"
+        ],
+        "sequence_group": "handshake",
+        "lora_details": [
+            {
+                "character_id": "Sera",
+                "lora_name": "LoRA_Sera",
+                "weight": 0.8
+            },
+            {
+                "character_id": "MouriRan",
+                "lora_name": "Mouri",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "handshake_futuristic_street_Sera_vs_MouriRan"
+    },
+    {
+        "prompt": "person1: SeraDef, red dress, brown hair, long hair, bare shoulders, ankh. person2: Byakuyadef, dark hair, dark skirt. front view, handshake scene in a futuristic street",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "handshake",
+        "background": "futuristic_street",
+        "characters": [
+            "Sera",
+            "Byakuya"
+        ],
+        "sequence_group": "handshake",
+        "lora_details": [
+            {
+                "character_id": "Sera",
+                "lora_name": "LoRA_Sera",
+                "weight": 0.8
+            },
+            {
+                "character_id": "Byakuya",
+                "lora_name": "Byakuya",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "handshake_futuristic_street_Sera_vs_Byakuya"
+    },
+    {
+        "prompt": "person1: Himiko Toga, blonde hair, school uniform. person2: mouriranai, blue jacket, long sleeves, blue skirt, meitantei conan. front view, handshake scene in a futuristic street",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "handshake",
+        "background": "futuristic_street",
+        "characters": [
+            "TogaHimiko",
+            "MouriRan"
+        ],
+        "sequence_group": "handshake",
+        "lora_details": [
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            },
+            {
+                "character_id": "MouriRan",
+                "lora_name": "Mouri",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "handshake_futuristic_street_TogaHimiko_vs_MouriRan"
+    },
+    {
+        "prompt": "person1: Himiko Toga, blonde hair, school uniform. person2: Byakuyadef, dark hair, dark skirt. front view, handshake scene in a futuristic street",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "handshake",
+        "background": "futuristic_street",
+        "characters": [
+            "TogaHimiko",
+            "Byakuya"
+        ],
+        "sequence_group": "handshake",
+        "lora_details": [
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            },
+            {
+                "character_id": "Byakuya",
+                "lora_name": "Byakuya",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "handshake_futuristic_street_TogaHimiko_vs_Byakuya"
+    },
+    {
+        "prompt": "person1: mouriranai, blue jacket, long sleeves, blue skirt, meitantei conan. person2: Byakuyadef, dark hair, dark skirt. front view, handshake scene in a futuristic street",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "handshake",
+        "background": "futuristic_street",
+        "characters": [
+            "MouriRan",
+            "Byakuya"
+        ],
+        "sequence_group": "handshake",
+        "lora_details": [
+            {
+                "character_id": "MouriRan",
+                "lora_name": "Mouri",
+                "weight": 0.8
+            },
+            {
+                "character_id": "Byakuya",
+                "lora_name": "Byakuya",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "handshake_futuristic_street_MouriRan_vs_Byakuya"
+    },
+    {
+        "prompt": "person1: SeraDef, red dress, brown hair, long hair, bare shoulders, ankh. person2: Himiko Toga, blonde hair, school uniform. front view, front back scene in a outdoor park",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "front_back",
+        "background": "outdoor_park",
+        "characters": [
+            "Sera",
+            "TogaHimiko"
+        ],
+        "sequence_group": "front_back",
+        "lora_details": [
+            {
+                "character_id": "Sera",
+                "lora_name": "LoRA_Sera",
+                "weight": 0.8
+            },
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "front_back_outdoor_park_Sera_vs_TogaHimiko"
+    },
+    {
+        "prompt": "person1: SeraDef, red dress, brown hair, long hair, bare shoulders, ankh. person2: mouriranai, blue jacket, long sleeves, blue skirt, meitantei conan. front view, front back scene in a outdoor park",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "front_back",
+        "background": "outdoor_park",
+        "characters": [
+            "Sera",
+            "MouriRan"
+        ],
+        "sequence_group": "front_back",
+        "lora_details": [
+            {
+                "character_id": "Sera",
+                "lora_name": "LoRA_Sera",
+                "weight": 0.8
+            },
+            {
+                "character_id": "MouriRan",
+                "lora_name": "Mouri",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "front_back_outdoor_park_Sera_vs_MouriRan"
+    },
+    {
+        "prompt": "person1: SeraDef, red dress, brown hair, long hair, bare shoulders, ankh. person2: Byakuyadef, dark hair, dark skirt. front view, front back scene in a outdoor park",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "front_back",
+        "background": "outdoor_park",
+        "characters": [
+            "Sera",
+            "Byakuya"
+        ],
+        "sequence_group": "front_back",
+        "lora_details": [
+            {
+                "character_id": "Sera",
+                "lora_name": "LoRA_Sera",
+                "weight": 0.8
+            },
+            {
+                "character_id": "Byakuya",
+                "lora_name": "Byakuya",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "front_back_outdoor_park_Sera_vs_Byakuya"
+    },
+    {
+        "prompt": "person1: Himiko Toga, blonde hair, school uniform. person2: mouriranai, blue jacket, long sleeves, blue skirt, meitantei conan. front view, front back scene in a outdoor park",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "front_back",
+        "background": "outdoor_park",
+        "characters": [
+            "TogaHimiko",
+            "MouriRan"
+        ],
+        "sequence_group": "front_back",
+        "lora_details": [
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            },
+            {
+                "character_id": "MouriRan",
+                "lora_name": "Mouri",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "front_back_outdoor_park_TogaHimiko_vs_MouriRan"
+    },
+    {
+        "prompt": "person1: Himiko Toga, blonde hair, school uniform. person2: Byakuyadef, dark hair, dark skirt. front view, front back scene in a outdoor park",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "front_back",
+        "background": "outdoor_park",
+        "characters": [
+            "TogaHimiko",
+            "Byakuya"
+        ],
+        "sequence_group": "front_back",
+        "lora_details": [
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            },
+            {
+                "character_id": "Byakuya",
+                "lora_name": "Byakuya",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "front_back_outdoor_park_TogaHimiko_vs_Byakuya"
+    },
+    {
+        "prompt": "person1: mouriranai, blue jacket, long sleeves, blue skirt, meitantei conan. person2: Byakuyadef, dark hair, dark skirt. front view, front back scene in a outdoor park",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "front_back",
+        "background": "outdoor_park",
+        "characters": [
+            "MouriRan",
+            "Byakuya"
+        ],
+        "sequence_group": "front_back",
+        "lora_details": [
+            {
+                "character_id": "MouriRan",
+                "lora_name": "Mouri",
+                "weight": 0.8
+            },
+            {
+                "character_id": "Byakuya",
+                "lora_name": "Byakuya",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "front_back_outdoor_park_MouriRan_vs_Byakuya"
+    },
+    {
+        "prompt": "person1: SeraDef, red dress, brown hair, long hair, bare shoulders, ankh. person2: Himiko Toga, blonde hair, school uniform. front view, front back scene in a indoor room",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "front_back",
+        "background": "indoor_room",
+        "characters": [
+            "Sera",
+            "TogaHimiko"
+        ],
+        "sequence_group": "front_back",
+        "lora_details": [
+            {
+                "character_id": "Sera",
+                "lora_name": "LoRA_Sera",
+                "weight": 0.8
+            },
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "front_back_indoor_room_Sera_vs_TogaHimiko"
+    },
+    {
+        "prompt": "person1: SeraDef, red dress, brown hair, long hair, bare shoulders, ankh. person2: mouriranai, blue jacket, long sleeves, blue skirt, meitantei conan. front view, front back scene in a indoor room",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "front_back",
+        "background": "indoor_room",
+        "characters": [
+            "Sera",
+            "MouriRan"
+        ],
+        "sequence_group": "front_back",
+        "lora_details": [
+            {
+                "character_id": "Sera",
+                "lora_name": "LoRA_Sera",
+                "weight": 0.8
+            },
+            {
+                "character_id": "MouriRan",
+                "lora_name": "Mouri",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "front_back_indoor_room_Sera_vs_MouriRan"
+    },
+    {
+        "prompt": "person1: SeraDef, red dress, brown hair, long hair, bare shoulders, ankh. person2: Byakuyadef, dark hair, dark skirt. front view, front back scene in a indoor room",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "front_back",
+        "background": "indoor_room",
+        "characters": [
+            "Sera",
+            "Byakuya"
+        ],
+        "sequence_group": "front_back",
+        "lora_details": [
+            {
+                "character_id": "Sera",
+                "lora_name": "LoRA_Sera",
+                "weight": 0.8
+            },
+            {
+                "character_id": "Byakuya",
+                "lora_name": "Byakuya",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "front_back_indoor_room_Sera_vs_Byakuya"
+    },
+    {
+        "prompt": "person1: Himiko Toga, blonde hair, school uniform. person2: mouriranai, blue jacket, long sleeves, blue skirt, meitantei conan. front view, front back scene in a indoor room",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "front_back",
+        "background": "indoor_room",
+        "characters": [
+            "TogaHimiko",
+            "MouriRan"
+        ],
+        "sequence_group": "front_back",
+        "lora_details": [
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            },
+            {
+                "character_id": "MouriRan",
+                "lora_name": "Mouri",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "front_back_indoor_room_TogaHimiko_vs_MouriRan"
+    },
+    {
+        "prompt": "person1: Himiko Toga, blonde hair, school uniform. person2: Byakuyadef, dark hair, dark skirt. front view, front back scene in a indoor room",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "front_back",
+        "background": "indoor_room",
+        "characters": [
+            "TogaHimiko",
+            "Byakuya"
+        ],
+        "sequence_group": "front_back",
+        "lora_details": [
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            },
+            {
+                "character_id": "Byakuya",
+                "lora_name": "Byakuya",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "front_back_indoor_room_TogaHimiko_vs_Byakuya"
+    },
+    {
+        "prompt": "person1: mouriranai, blue jacket, long sleeves, blue skirt, meitantei conan. person2: Byakuyadef, dark hair, dark skirt. front view, front back scene in a indoor room",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "front_back",
+        "background": "indoor_room",
+        "characters": [
+            "MouriRan",
+            "Byakuya"
+        ],
+        "sequence_group": "front_back",
+        "lora_details": [
+            {
+                "character_id": "MouriRan",
+                "lora_name": "Mouri",
+                "weight": 0.8
+            },
+            {
+                "character_id": "Byakuya",
+                "lora_name": "Byakuya",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "front_back_indoor_room_MouriRan_vs_Byakuya"
+    },
+    {
+        "prompt": "person1: SeraDef, red dress, brown hair, long hair, bare shoulders, ankh. person2: Himiko Toga, blonde hair, school uniform. front view, front back scene in a futuristic street",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "front_back",
+        "background": "futuristic_street",
+        "characters": [
+            "Sera",
+            "TogaHimiko"
+        ],
+        "sequence_group": "front_back",
+        "lora_details": [
+            {
+                "character_id": "Sera",
+                "lora_name": "LoRA_Sera",
+                "weight": 0.8
+            },
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "front_back_futuristic_street_Sera_vs_TogaHimiko"
+    },
+    {
+        "prompt": "person1: SeraDef, red dress, brown hair, long hair, bare shoulders, ankh. person2: mouriranai, blue jacket, long sleeves, blue skirt, meitantei conan. front view, front back scene in a futuristic street",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "front_back",
+        "background": "futuristic_street",
+        "characters": [
+            "Sera",
+            "MouriRan"
+        ],
+        "sequence_group": "front_back",
+        "lora_details": [
+            {
+                "character_id": "Sera",
+                "lora_name": "LoRA_Sera",
+                "weight": 0.8
+            },
+            {
+                "character_id": "MouriRan",
+                "lora_name": "Mouri",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "front_back_futuristic_street_Sera_vs_MouriRan"
+    },
+    {
+        "prompt": "person1: SeraDef, red dress, brown hair, long hair, bare shoulders, ankh. person2: Byakuyadef, dark hair, dark skirt. front view, front back scene in a futuristic street",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "front_back",
+        "background": "futuristic_street",
+        "characters": [
+            "Sera",
+            "Byakuya"
+        ],
+        "sequence_group": "front_back",
+        "lora_details": [
+            {
+                "character_id": "Sera",
+                "lora_name": "LoRA_Sera",
+                "weight": 0.8
+            },
+            {
+                "character_id": "Byakuya",
+                "lora_name": "Byakuya",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "front_back_futuristic_street_Sera_vs_Byakuya"
+    },
+    {
+        "prompt": "person1: Himiko Toga, blonde hair, school uniform. person2: mouriranai, blue jacket, long sleeves, blue skirt, meitantei conan. front view, front back scene in a futuristic street",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "front_back",
+        "background": "futuristic_street",
+        "characters": [
+            "TogaHimiko",
+            "MouriRan"
+        ],
+        "sequence_group": "front_back",
+        "lora_details": [
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            },
+            {
+                "character_id": "MouriRan",
+                "lora_name": "Mouri",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "front_back_futuristic_street_TogaHimiko_vs_MouriRan"
+    },
+    {
+        "prompt": "person1: Himiko Toga, blonde hair, school uniform. person2: Byakuyadef, dark hair, dark skirt. front view, front back scene in a futuristic street",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "front_back",
+        "background": "futuristic_street",
+        "characters": [
+            "TogaHimiko",
+            "Byakuya"
+        ],
+        "sequence_group": "front_back",
+        "lora_details": [
+            {
+                "character_id": "TogaHimiko",
+                "lora_name": "TogaHimiko-01",
+                "weight": 0.8
+            },
+            {
+                "character_id": "Byakuya",
+                "lora_name": "Byakuya",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "front_back_futuristic_street_TogaHimiko_vs_Byakuya"
+    },
+    {
+        "prompt": "person1: mouriranai, blue jacket, long sleeves, blue skirt, meitantei conan. person2: Byakuyadef, dark hair, dark skirt. front view, front back scene in a futuristic street",
+        "negative_prompt": "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome",
+        "scene": "front_back",
+        "background": "futuristic_street",
+        "characters": [
+            "MouriRan",
+            "Byakuya"
+        ],
+        "sequence_group": "front_back",
+        "lora_details": [
+            {
+                "character_id": "MouriRan",
+                "lora_name": "Mouri",
+                "weight": 0.8
+            },
+            {
+                "character_id": "Byakuya",
+                "lora_name": "Byakuya",
+                "weight": 0.8
+            }
+        ],
+        "sample_id": "front_back_futuristic_street_MouriRan_vs_Byakuya"
+    }
+]
