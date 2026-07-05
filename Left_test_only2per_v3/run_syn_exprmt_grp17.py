@@ -335,7 +335,7 @@ def run_synthetic():
         print(f"[MAIN] characters: {c1} vs {c2}")
         print(f"[MAIN] original prompt length: {len(prompt)} chars")
         
-        # [修正1] front view 改为前置追加，彻底避免尾部截断；与数据集精简方案配套
+          
         print("[MAIN] Checking and adding view directives...")
         if "front view" not in prompt.lower():
             prompt = f"front view, {prompt}"
@@ -375,7 +375,7 @@ def run_synthetic():
             pipe_name = p.__class__.__name__
             print(f"[MAIN] Configuring {pipe_name}...")
             
-            # [修正2] 先全局设置适配器，再单独关闭 text_encoder 的 LoRA
+            #     先全局设置适配器，再单独关闭 text_encoder 的 LoRA
             # 避免 set_adapters 重新激活 text_encoder LoRA，确保仅 unet 生效
             print(f"[MAIN]   setting adapters: {c1}, {c2} (weights 0.8, 0.8)")
             p.set_adapters([c1, c2], adapter_weights=[0.8, 0.8])
@@ -488,7 +488,7 @@ def run_synthetic():
         ))
         print("[+] IntegratedMultiRoleProcessor installed (regional_lora=True, cross_mask=True, penalty=15, boost=2)")
         
-        # [修正3] 统一 ControlNet 权重与基线3一致，保证单一变量，实验对比公平
+        #     统一 ControlNet 权重与基线3一致，保证单一变量，实验对比公平
         print("[+] ControlNet scales: pose=0.8, depth=0.4 (same as baseline3)")
         result = pipe_both(
             prompt=prompt, 

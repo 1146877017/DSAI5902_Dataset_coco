@@ -32,7 +32,7 @@ ELLIPSE_SIZES = {
 print(f"[INIT] ELLIPSE_SIZES loaded: {list(ELLIPSE_SIZES.keys())}")
 
 # ===================== 4 个 LoRA 角色模型信息 =====================
-# 已精简：仅保留核心触发词 + 1~2 个高辨识度特征，去除重复触发项，压缩 token 数量
+# 仅保留核心触发词 + 1~2 个高辨识度特征，去除重复触发项，压缩 token 数量
 
 CHARACTERS = [
     {
@@ -379,7 +379,7 @@ def generate_prompt_config(scene, bg, char1, char2):
     p1_tags = char1["triggers"]
     p2_tags = char2["triggers"]
     
-    # 已优化：移除 a photo of 前缀；front view 前置避免尾部截断；无冗余画质词
+    # 移除 a photo of 前缀；front view 前置避免尾部截断；无冗余画质词
     scene_display = scene.replace('_', ' ')
     prompt = f"person1: {p1_tags}. person2: {p2_tags}. front view, {scene_display} scene in a {bg.replace('_', ' ')}"
     neg_prompt = "back view, blurry, low quality, distorted, missing people, extra limbs, monochrome"

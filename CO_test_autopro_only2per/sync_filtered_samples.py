@@ -37,4 +37,4 @@ for prefix in tqdm(kept_prefixes, desc="同步多模态特征"):
         else:
             print(f"\n[Warning] 找不到对应的特征图: {src_file}")
 
-print(f"\n全部模态同步完成！'complete_samples_512_filter' 现在是一个完美的、经过人工精选的双人数据集。")
+print(f"\n全部模态同步完成！")

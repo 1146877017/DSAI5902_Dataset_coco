@@ -64,7 +64,7 @@ def compute_pckh(gt_kps, gen_kps, threshold=0.5):
     if gt_kps is None or gen_kps is None or len(gt_kps) < 2 or len(gen_kps) < 2:
         return 0.0
     
-    # 鲁棒性切片：如果意外检测到 2 人以上，只取前 2 人
+    # 如果意外检测到 2 人以上，只取前 2 人
     gt_kps = gt_kps[:2]
     gen_kps = gen_kps[:2]
     
@@ -199,10 +199,10 @@ def main():
                                 
             gen_img = cv2.imread(gen_path)
             if gen_img is None: 
-                print(f"[-] 警报: 缺失图像 {gen_path}，已跳过该样本。")
+                print(f"[-] warn: 缺失图像 {gen_path}，已跳过该样本。")
                 continue
             
-            # 1. Pose 评估（带缓存优化）
+            # 1. Pose 评估
             if sample_name not in gt_kps_cache:
                 gt_kps_cache[sample_name] = extract_pose_keypoints(gt_raw_path)
             gt_kps = gt_kps_cache[sample_name]

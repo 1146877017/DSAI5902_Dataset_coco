@@ -210,9 +210,9 @@ def load_all_models():
     
     return base, pipe_b2, pipe_b3
 
-# ====================== 核心控制实验单步运行 ======================
+# ======================  运行实验 ======================
 def run_single_sample(prompt_item, base, pipe_b2, pipe_b3, generator, mode, is_first_mode, global_idx):
-    """完整跑完单个COCO样本实验"""
+    """ """
     file_name = prompt_item["file_name"]
     sample_name = extract_sample_name(file_name)
     prompt = prompt_item["prompt"]
@@ -262,14 +262,14 @@ def run_single_sample(prompt_item, base, pipe_b2, pipe_b3, generator, mode, is_f
         if os.path.exists(src_b1):
             shutil.copy(src_b1, b1_path)
         else:
-            print(f"  未找到历史 Baseline1 缓存，正在现场重新启动渲染...")
+            print(f"  未找到历史 Baseline1 缓存 ")
             try:
                 generator.manual_seed(SEED)  
                 img1 = base(prompt=prompt, negative_prompt=neg_prompt, generator=generator, num_inference_steps=parent_steps, guidance_scale=cfg).images[0]
                 img1.save(b1_path)
                 del img1
                 clear_gpu_memory()
-            except Exception as e: print(f"   现场补算 Baseline1 失败: {e}")
+            except Exception as e: print(f"     Baseline1 失败: {e}")
 
     # --- 2. Baseline2：仅 OpenPose ---
     b2_path = f"{output_dir}/{sample_name}_baseline2.png"
@@ -287,18 +287,18 @@ def run_single_sample(prompt_item, base, pipe_b2, pipe_b3, generator, mode, is_f
         if os.path.exists(src_b2):
             shutil.copy(src_b2, b2_path)
         else:
-            print(f"  未找到历史 Baseline2 缓存，正在现场重新启动航向引导...")
+            print(f"  未找到历史 Baseline2 缓存  ")
             try:
                 generator.manual_seed(SEED)  
                 img2 = pipe_b2(prompt=prompt, negative_prompt=neg_prompt, image=pose, controlnet_conditioning_scale=pose_scale, generator=generator, num_inference_steps=parent_steps, guidance_scale=cfg).images[0]
                 img2.save(b2_path)
                 del img2
                 clear_gpu_memory()
-            except Exception as e: print(f"   现场补算 Baseline2 失败: {e}")
+            except Exception as e: print(f"     Baseline2 失败: {e}")
 
     # --- 3. Baseline3：双 ControlNet ---
     try:
-        print(f"  [3/4] 正在运行 Baseline3：双 ControlNet 强组合 ({mode})...")
+        print(f"  [3/4] 正在运行 Baseline3：双 ControlNet 组合 ({mode})...")
         generator.manual_seed(SEED)  
         img3 = pipe_b3(prompt=prompt, negative_prompt=neg_prompt, image=[pose, depth], controlnet_conditioning_scale=[pose_scale, depth_scale], generator=generator, num_inference_steps=parent_steps, guidance_scale=cfg).images[0]
         img3.save(f"{output_dir}/{sample_name}_baseline3.png")
@@ -310,7 +310,7 @@ def run_single_sample(prompt_item, base, pipe_b2, pipe_b3, generator, mode, is_f
     # 完整备份当前的加速注意力处理器字典
     orig_processors = pipe_b3.unet.attn_processors
     try:
-        print(f"  [4/4] 正在运行创新方法：跨注意力掩码 + 双 ControlNet 联合干预 ({mode})...")
+        print(f"  [4/4]  跨注意力掩码 + 双 ControlNet 联合干预 ({mode})...")
         masks = process_mask(mask_path)
         apply_attention_mask(pipe_b3, token_indices, masks)
         
@@ -358,7 +358,7 @@ if __name__ == "__main__":
                 if record:
                     eval_manifest.append(record)
 
-        # 动态将清单持久化到对应的区间文件中
+        # 将清单持久化到对应的区间文件中
         with open(MANIFEST_NAME, "w", encoding="utf-8") as f:
             json.dump(eval_manifest, f, indent=4, ensure_ascii=False)
         print(f"\n  已成功自动更新本轮实验评估清单: `{MANIFEST_NAME}`")

@@ -29,7 +29,7 @@ SEQUENCE_FRAMES = [
     "side_by_side_point"
 ]
 
-# ========== 新增：角色文本描述（与数据集生成脚本triggers完全对齐，用于CLIP文本基准） ==========
+# ========== 角色文本描述 ==========
 CHARACTER_TEXT_PROMPTS = {
     "Sera": "SeraDef, red dress, brown hair, long hair, bare shoulders, ankh",
     "TogaHimiko": "Himiko Toga, blonde hair, school uniform",
@@ -52,7 +52,7 @@ print("Loading CLIP model (ViT-B/32)...")
 clip_model, clip_preprocess = clip.load("ViT-B/32", device=DEVICE)
 print(f"CLIP model loaded successfully, device: {DEVICE}")
 
-# ========== 新增：预计算所有角色的CLIP文本基准特征 ==========
+# ========== 预计算所有角色的CLIP文本基准特征 ==========
 print("Precomputing CLIP text features for all characters...")
 CHARACTER_TEXT_FEATURES = {}
 for char_id, text_prompt in CHARACTER_TEXT_PROMPTS.items():
@@ -64,7 +64,6 @@ for char_id, text_prompt in CHARACTER_TEXT_PROMPTS.items():
 print(f"Precomputed text features for {len(CHARACTER_TEXT_FEATURES)} characters")
 
 # ===================== 关键点映射与GT对齐 =====================
-# COCO 17点 → 自定义11点 映射（与数据集生成脚本完全对齐）
 COCO_TO_CUSTOM = {
     0: 0,   # nose
     5: 1,   # left shoulder
@@ -247,7 +246,6 @@ def compute_pose_fidelity(img_path, scene_name):
     total_oks = sum([-cost[r, c] for r, c in zip(row_ind, col_ind)])
     print(f"  [EVAL] Sum of matched OKS: {total_oks:.4f}")
     
-    # 除以2（总人数），少检测到人物会被惩罚
     result = float(total_oks / n_gt)
     print(f"  [EVAL] Final average pose fidelity OKS: {result:.4f}")
     return result
@@ -320,7 +318,7 @@ def compute_cross_frame_depth_ssim(depth1, depth2):
     return score
 
 def compute_depth_metrics(img, gt_depth_path):
-    """深度评估：同时返回SSIM与RMSE，对齐提案要求"""
+    """深度评估：同时返回SSIM与RMSE"""
     print(f"\n  [EVAL] Computing depth metrics")
     print(f"  [EVAL] GT depth path: {gt_depth_path}")
     
@@ -382,7 +380,7 @@ def main():
         print(f"File suffix: {suffix}")
         print(f"{'='*60}")
         
-        # ========== 新增：身份正确性与特征隔离度统计列表 ==========
+        # ==========  身份正确性与特征隔离度统计列表 ==========
         pose_scores = []
         depth_ssim_scores = []
         depth_rmse_scores = []
@@ -426,7 +424,7 @@ def main():
             depth_rmse_scores.append(d_rmse)
             print(f"    Depth metrics added: SSIM={d_ssim:.4f}, RMSE={d_rmse:.4f}")
             
-            # ========== 新增：身份正确性与特征隔离度评估（Masked CLIP 文本对齐） ==========
+            # ==========  身份正确性与特征隔离度评估（Masked CLIP 文本对齐） ==========
             print("    Computing identity correctness (masked CLIP text alignment)...")
             mask_path = os.path.join(SYNTHETIC_DATA, "masks", f"{sample_id}.png")
             full_mask = cv2.imread(mask_path, cv2.IMREAD_GRAYSCALE)
@@ -575,7 +573,7 @@ def main():
         avg_depth_ssim = round(np.mean(depth_ssim_scores), 4)
         avg_depth_rmse = round(np.mean(depth_rmse_scores), 4)
         
-        # ========== 新增：身份相关指标汇总 ==========
+        # ==========  身份相关指标汇总 ==========
         avg_identity_correct = round(np.mean(identity_correct_scores), 4) if identity_correct_scores else 0.0
         avg_identity_isolation = round(np.mean(identity_isolation_scores), 4) if identity_isolation_scores else 0.0
         

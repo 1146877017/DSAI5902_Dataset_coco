@@ -40,15 +40,15 @@ depth_original_image_prefix = get_file_prefixes(DEPTH_original_image_DIR)
 depth_pure_background_prefix = get_file_prefixes(DEPTH_pure_background_DIR)
 mask_prefix = get_file_prefixes(MASK_DIR)
 
-# 取交集：同时存在 原图+OpenPose+Depth(双版本)+Mask 的完美对齐样本
+# 取交集：同时存在 原图+OpenPose+Depth+Mask 的完美对齐样本
 complete_prefixes = raw_prefix & op_prefix & depth_original_image_prefix & depth_pure_background_prefix & mask_prefix
 
-print(f"  筛查对齐完成：在 5 个模态中共同存在的【完美对齐样本】共：{len(complete_prefixes)} 个")
+print(f"  筛查对齐完成：在 5 类中共同存在的【完美对齐样本】共：{len(complete_prefixes)} 个")
 
 # 2：复制文件 
 def copy_files(src_folder, dst_folder, prefixes, src_suffix):
     """复制文件，根据前缀匹配复制，并保持元数据"""
-    # 使用 os.path.basename 跨平台精准提取最后一级文件夹名
+    # 
     folder_name = os.path.basename(dst_folder) 
     for prefix in tqdm(prefixes, desc=f"正在同步  {folder_name}"):
         src_file = os.path.join(src_folder, f"{prefix}{src_suffix}")

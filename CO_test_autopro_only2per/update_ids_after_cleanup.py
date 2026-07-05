@@ -23,7 +23,7 @@ for filename in remaining_files:
         img_id = int(os.path.splitext(filename)[0])
         updated_image_ids.append(img_id)
     except ValueError:
-        print(f" 警告：文件 [{filename}] 无法解析为标准 COCO ID，已自动跳过。")
+        print(f" 警告：文件 [{filename}] 无法解析为标准 COCO ID，跳过。")
 
 # 对 ID 进行排序，保持 JSON 数据的有序
 updated_image_ids.sort()

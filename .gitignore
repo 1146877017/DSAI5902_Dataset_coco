@@ -8,7 +8,15 @@
 !CO_test_autopro_only2per/*.py
 !CO_test_autopro_only2per/*.json
 !CO_test_autopro_only2per/*.log
-!CO_test_autopro_only2per/
+
+!CO_test_autopro_only2per/results_all_original_image/
+!CO_test_autopro_only2per/results_all_original_image/**
+
+!CO_test_autopro_only2per/results_all_pure_background/
+!CO_test_autopro_only2per/results_all_pure_background/**
+
+!CO_test_autopro_only2per/co_dat_only2per/
+!CO_test_autopro_only2per/co_dat_only2per/**
 
 !Left_test_only2per_v3/
 !Left_test_only2per_v3/*.py
@@ -16,9 +24,11 @@
 !Left_test_only2per_v3/*.log
 !Left_test_only2per_v3/*.txt
 
-Left_test_only2per_v2/tmp_test/
-Left_test_only2per_v3/tmp_test/
-coco_multi_person/
+!Left_test_only2per_v3/synthetic_test_dataset/
+!Left_test_only2per_v3/synthetic_test_dataset/**
+
+!Left_test_only2per_v3/synthetic_results/
+!Left_test_only2per_v3/synthetic_results/**
 
 # 模型权重文件
 *.pt

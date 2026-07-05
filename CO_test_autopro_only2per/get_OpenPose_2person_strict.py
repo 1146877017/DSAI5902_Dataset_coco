@@ -24,4 +24,4 @@ for img_name in tqdm(img_files, desc="生成标准OpenPose"):
     pose_img.save(save_path)
     # pose_img.save(os.path.join(pose_output_dir, img_name))
 
-print(" 标准OpenPose生成完成！ControlNet可完美识别！")
+print(" 标准OpenPose图生成完成！")
