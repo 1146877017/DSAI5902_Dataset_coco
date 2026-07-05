@@ -23,10 +23,10 @@ for m in MODALITIES:
 # 支持 .jpg 或 .png，取决于原始 raw 的格式
 kept_prefixes = [os.path.splitext(f)[0] for f in os.listdir(FILTER_RAW) if f.lower().endswith(('.jpg', '.jpeg', '.png'))]
 
-print(f"检测到筛选后保留的样本数量: {len(kept_prefixes)}")
+print(f"Detected the number of samples retained after filtering: {len(kept_prefixes)}")
 
 # 3. 执行同步复制
-for prefix in tqdm(kept_prefixes, desc="同步多模态特征"):
+for prefix in tqdm(kept_prefixes, desc="Synchronizing multi-modal features"):
     for m in MODALITIES:
         # 在源目录中寻找对应的 png 文件
         src_file = os.path.join(SOURCE_BASE, m, f"{prefix}.png")
@@ -35,6 +35,6 @@ for prefix in tqdm(kept_prefixes, desc="同步多模态特征"):
         if os.path.exists(src_file):
             shutil.copy2(src_file, dst_file)
         else:
-            print(f"\n[Warning] 找不到对应的特征图: {src_file}")
+            print(f"\n[Warning] Cannot find the corresponding feature map: {src_file}")
 
-print(f"\n全部模态同步完成！")
+print(f"\nAll modalities synchronized successfully!")

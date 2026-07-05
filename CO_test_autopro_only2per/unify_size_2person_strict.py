@@ -34,7 +34,7 @@ def smart_crop_and_resize(img, size=512, interpolation=cv2.INTER_LINEAR):
 
 # 处理
 sample_names = [f for f in os.listdir(os.path.join(input_dir, "raw")) if f.endswith(('.jpg', '.png'))]
-for sample_name in tqdm(sample_names, desc="统一尺寸并智能裁剪"):
+for sample_name in tqdm(sample_names, desc="Uniform size and intelligent cropping"):
     sample_prefix = os.path.splitext(sample_name)[0]
     
     # 1. 处理原图 
@@ -72,4 +72,4 @@ for sample_name in tqdm(sample_names, desc="统一尺寸并智能裁剪"):
         mask_img_512 = smart_crop_and_resize(mask_img, size=512, interpolation=cv2.INTER_NEAREST)
         cv2.imwrite(os.path.join(output_dir, "mask", sample_prefix + ".png"), mask_img_512)
 
-print(f" 尺寸统一完成，保存到 {output_dir}，尺寸：512×512")
+print(f" Uniform size completion finished, saved to {output_dir}, size: 512×512")

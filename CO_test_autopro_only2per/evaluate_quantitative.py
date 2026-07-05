@@ -26,13 +26,13 @@ IMAGE_SIZE = 512
 if USE_CONSOLIDATED:
     MANIFEST_PATH = "eval_manifest_all.json"
     SAVE_PATH = "quant_eval_res_all.json"
-    print(f" 启动定量评估流程，当前目标：[全局全量数据汇总评估]")
+    print(f" Initiate the quantitative assessment process")
 else:
     MANIFEST_PATH = f"eval_manifest_{START_IDX}_{END_IDX}.json" 
     SAVE_PATH = f"quantitative_evaluation_report_{START_IDX}_{END_IDX}.json"
-    print(f" 启动定量评估流程，当前目标区间: {START_IDX} 至 {END_IDX}")
+    print(f" Initiate the quantitative assessment process, current target interval: {START_IDX} to {END_IDX}")
 
-print(f" 正在检索实验清单: {MANIFEST_PATH}")
+print(f" Retrieving experiment manifest: {MANIFEST_PATH}")
 
 # ===================== 模型初始化 =====================
 device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -152,7 +152,7 @@ def compute_split_person_clip(gen_img, mask_path, text_p1, text_p2):
 # ===================== 主运行程序 =====================
 def main():
     if not os.path.exists(MANIFEST_PATH):
-        print(f"[-] 找不到清单文件: {MANIFEST_PATH}，请确认数据是否生成或汇聚成功。")
+        print(f"[-] Cannot find the list file: {MANIFEST_PATH}. Please confirm whether the data has been generated or aggregated successfully.")
         return
         
     with open(MANIFEST_PATH, "r", encoding="utf-8") as f:
@@ -180,7 +180,7 @@ def main():
             }
         }
         
-        print(f"\n[+] 开始评测方法: {method} ...")
+        print(f"\n[+] Initiating evaluation for method: {method} ...")
         
         for item in manifest_data:
             sample_name = item["sample_name"]
@@ -199,7 +199,7 @@ def main():
                                 
             gen_img = cv2.imread(gen_path)
             if gen_img is None: 
-                print(f"[-] warn: 缺失图像 {gen_path}，已跳过该样本。")
+                print(f"[-] warn: Missing image {gen_path}, skipped this sample.")
                 continue
             
             # 1. Pose 评估
@@ -243,11 +243,11 @@ def main():
                 "Masked Text-Image CLIP Similarity": round(np.mean(m_data["clip_text_sim"]), 4),
                 "Layout Accuracy": round(m_data["layout_correct"] / total, 4)
             }
-            print(f"  -> 模式 [{m}] 评测完毕。布局准确率: {final_report[method][m]['Layout Accuracy']:.2%}")
+            print(f"  -> Mode [{m}] evaluation completed. Layout accuracy: {final_report[method][m]['Layout Accuracy']:.2%}")
         
     with open(SAVE_PATH, 'w', encoding='utf-8') as f:
         json.dump(final_report, f, indent=4, ensure_ascii=False)
-    print(f"\n[+] 定量评估全面完成！最终解耦结果报告已保存至 `{SAVE_PATH}`")
+    print(f"\n[+] Quantitative assessment completed! The final decoupled result report has been saved to `{SAVE_PATH}`")
 
 if __name__ == "__main__":
     main()

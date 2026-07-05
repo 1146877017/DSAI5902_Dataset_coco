@@ -28,7 +28,7 @@ model = DepthAnythingV2(**model_configs[encoder])
 
 weight_path = r"../depth_anything_v2_vitb.pth"
 if not os.path.exists(weight_path):
-    print(f" 错误：未找到权重文件：{weight_path}")
+    print(f" Error: Unable to locate the weight file:{weight_path}")
     exit(1)
 
 checkpoint = torch.load(weight_path, map_location='cpu', weights_only=True)
@@ -39,12 +39,12 @@ model.eval()
 
 # ===================== 批量处理 =====================
 img_files = [f for f in os.listdir(raw_img_dir) if f.lower().endswith(('.jpg', '.jpeg', '.png'))]
-print(f" 当前运行模式：【{MODE}】| 目标文件数：{len(img_files)}")
+print(f" Current mode: {MODE}| Target files: {len(img_files)}")
 
 processed_count = 0
 failed_count = 0
 
-for img_name in tqdm(img_files, desc=f"生成深度图({MODE})"):
+for img_name in tqdm(img_files, desc=f"Generating depth maps({MODE})"):
     img_path = os.path.join(raw_img_dir, img_name)
     mask_path = os.path.join(mask_dir, os.path.splitext(img_name)[0] + ".png")
     
@@ -58,7 +58,7 @@ for img_name in tqdm(img_files, desc=f"生成深度图({MODE})"):
         if MODE == 'pure_background':
             mask = cv2.imread(mask_path, cv2.IMREAD_GRAYSCALE)
             if mask is None:
-                print(f" 模式为纯背景，但未找到对应的 Mask → {img_name}")
+                print(f" Mode is 'pure_background', but corresponding mask not found → {img_name}")
                 failed_count += 1
                 continue
                 
@@ -93,8 +93,8 @@ for img_name in tqdm(img_files, desc=f"生成深度图({MODE})"):
         processed_count += 1
         
     except Exception as e:
-        print(f" 处理 {img_name} 失败，原因：{str(e)}")
+        print(f" Processing {img_name} failed. Reason: {str(e)}")
         failed_count += 1
 
-print(f"\n 模式【{MODE}】处理完成！成功：{processed_count} | 失败：{failed_count}")
-print(f" 保存路径：{depth_output_dir}")
+print(f"\n Mode {MODE} processing completed! Successful: {processed_count} | Failed: {failed_count}")
+print(f" Save path: {depth_output_dir}")

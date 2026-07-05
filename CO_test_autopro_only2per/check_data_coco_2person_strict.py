@@ -24,10 +24,10 @@ for f in raw_files:
     if f in openpose_files and f in depth_pure_background_files and f in depth_original_image_files and f in mask_files:
         match_count += 1
     else:
-        print(f"Err 缺失控制图: {f}")
+        print(f"Err Missing control chart:{f}")
 
-print(f"\n 完整匹配的样本数: {match_count}/{len(raw_files)}")
-print(f" OpenPose 样本数: {len(openpose_files)}")
-print(f" Depth_pure_background 样本数: {len(depth_pure_background_files)}")
-print(f" Depth_original_image 样本数: {len(depth_original_image_files)}")
-print(f" Mask 样本数: {len(mask_files)}")
+print(f"\n Number of fully matched samples: {match_count}/{len(raw_files)}")
+print(f" OpenPose sample count: {len(openpose_files)}")
+print(f" Depth_pure_background sample count: {len(depth_pure_background_files)}")
+print(f" Depth_original_image sample count: {len(depth_original_image_files)}")
+print(f" Mask sample count: {len(mask_files)}")

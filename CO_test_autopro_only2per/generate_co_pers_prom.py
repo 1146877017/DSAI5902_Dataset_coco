@@ -20,7 +20,7 @@ ACTIONS = ["standing", "walking", "sitting", "running", "talking"]
 ACCESSORIES = ["hat", "glasses", "backpack", "watch", "scarf"]
 
 # ===================== 数据加载 =====================
-print("正在加载 COCO 标注文件...")
+print("Loading the COCO annotation file......")
 with open(CAPTIONS_PATH, "r", encoding="utf-8") as f:
     coco_captions = json.load(f)
 annotations = coco_captions["annotations"]
@@ -32,7 +32,7 @@ for ann in annotations:
     id2captions.setdefault(img_id, []).append(cap)
 
 if not os.path.exists(IMAGE_DIR):
-    raise FileNotFoundError(f"未找到原始图像目录，请检查路径: {IMAGE_DIR}")
+    raise FileNotFoundError(f"The original image directory was not found. Please check the path: {IMAGE_DIR}")
     
 # 显式进行排序，保证在任何操作系统和文件系统下的生成顺序和属性绑定完全绝对一致
 valid_files = sorted([f for f in os.listdir(IMAGE_DIR) if f.endswith((".jpg", ".png"))])
@@ -44,7 +44,7 @@ for f in valid_files:
     if digits:
         file2id[f] = int(digits[-1])
     else:
-        print(f" 警告: 无法从文件名 '{f}' 中解析出有效的 image_id，该样本将被跳过。")
+        print(f" Warning: Cannot parse valid image_id from filename '{f}', this sample will be skipped.")
 
 def clean_caption(raw_caption):
     cleaned = re.sub(r"[^a-zA-Z\s']", " ", raw_caption)
@@ -89,4 +89,4 @@ for fname in tqdm(valid_files, desc="生成空间规范化 Prompt"):
 with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
     json.dump(final_prompts, f, indent=2, ensure_ascii=False)
 
-print(f" 成功！已生成 {len(final_prompts)} 个Prompt。结果保存在: {OUTPUT_PATH}")
+print(f" Success! {len(final_prompts)} prompts generated. Results saved to: {OUTPUT_PATH}")

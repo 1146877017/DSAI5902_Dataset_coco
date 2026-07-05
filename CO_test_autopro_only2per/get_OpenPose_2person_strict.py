@@ -13,7 +13,7 @@ pose_detector = OpenposeDetector.from_pretrained("lllyasviel/ControlNet")
 
 # 批量生成标准姿态图
 img_files = [f for f in os.listdir(raw_img_dir) if f.endswith(('.jpg','.png'))]
-for img_name in tqdm(img_files, desc="生成标准OpenPose"):
+for img_name in tqdm(img_files, desc="Generating standard OpenPose"):
     img_path = os.path.join(raw_img_dir, img_name)
     img = cv2.imread(img_path)
     if img is None: continue
@@ -24,4 +24,4 @@ for img_name in tqdm(img_files, desc="生成标准OpenPose"):
     pose_img.save(save_path)
     # pose_img.save(os.path.join(pose_output_dir, img_name))
 
-print(" 标准OpenPose图生成完成！")
+print(" Standard OpenPose images generated!")

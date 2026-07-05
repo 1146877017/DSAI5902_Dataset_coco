@@ -43,7 +43,7 @@ mask_prefix = get_file_prefixes(MASK_DIR)
 # 取交集：同时存在 原图+OpenPose+Depth+Mask 的完美对齐样本
 complete_prefixes = raw_prefix & op_prefix & depth_original_image_prefix & depth_pure_background_prefix & mask_prefix
 
-print(f"  筛查对齐完成：在 5 类中共同存在的【完美对齐样本】共：{len(complete_prefixes)} 个")
+print(f"  Screening alignment completed: The total number of perfectly aligned samples common to all 5 categories is:{len(complete_prefixes)} ")
 
 # 2：复制文件 
 def copy_files(src_folder, dst_folder, prefixes, src_suffix):
@@ -63,4 +63,4 @@ copy_files(DEPTH_original_image_DIR, TARGET_DEPTH_original_image, complete_prefi
 copy_files(DEPTH_pure_background_DIR, TARGET_DEPTH_pure_background, complete_prefixes, src_suffix=".png")
 copy_files(MASK_DIR, TARGET_MASK, complete_prefixes, src_suffix=".png")
 
-print(f"\n  全部多模态特征对齐同步完成！保存至：{TARGET_BASE}")
+print(f"\n  All multimodal features have been aligned and synchronized successfully. Saved as: {TARGET_BASE}")

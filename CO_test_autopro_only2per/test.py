@@ -35,8 +35,8 @@ TOTAL_AVAILABLE = len(FULL_PROMPT_LIST)
 actual_start = max(1, START_IDX)
 actual_end = min(TOTAL_AVAILABLE, END_IDX) if END_IDX is not None else TOTAL_AVAILABLE
 
-print(f"  全量数据集共包含 {TOTAL_AVAILABLE} 个样本。")
-print(f"  已启用区间测试模式：正在提取第 {actual_start} 至第 {actual_end} 个样本（本轮共 {actual_end - actual_start + 1} 个）。")
+print(f"  The complete dataset consists of {TOTAL_AVAILABLE} samples.")
+print(f"  Interval test mode enabled: Extracting samples {actual_start} to {actual_end} (Total: {actual_end - actual_start + 1}).")
 
 # 转换为 Python 的 0-based 索引切片
 PROMPT_LIST = FULL_PROMPT_LIST[actual_start - 1 : actual_end]
@@ -62,29 +62,31 @@ def extract_sample_name(file_name):
 
 # ====================== 功能模块 ======================
 def get_person_token_indices(tokenizer, prompt: str):
-    """
-    从右至左反向查找 Token
-    """
     inputs = tokenizer(
         prompt, padding="max_length", max_length=77, truncation=True, return_tensors="pt"
     )
     tokens = tokenizer.convert_ids_to_tokens(inputs.input_ids[0])
+    # 清理 Token，这里保留了原始 Token 结构，只去掉结束符
     clean_tokens = [t.replace("</w>", "").lower() if t else "" for t in tokens]
     
     person1_start = person2_start = None
 
-    # 反向扫描，精确捕捉句尾固定控制标识符
+    # 反向扫描
     for i in range(len(clean_tokens) - 2, -1, -1):
         if clean_tokens[i] == "person":
-            if clean_tokens[i+1] == "1" and person1_start is None:
+            # 使用 .strip() 去掉首尾空格，并去掉常见的标点符号
+            next_token = clean_tokens[i+1].strip(" :.,") 
+            
+            if next_token == "1" and person1_start is None:
                 person1_start = i
-            elif clean_tokens[i+1] == "2" and person2_start is None:
+            elif next_token == "2" and person2_start is None:
                 person2_start = i
+        
         if person1_start is not None and person2_start is not None:
             break
 
     if person1_start is None or person2_start is None:
-        raise ValueError(f" 未在 Prompt 中检测到标准的 person 1 / person 2 结构: {prompt}")
+        raise ValueError(f" The standard person 1 / person 2 structure was not detected in the prompt. {prompt}")
 
     person1_end = person2_start - 1
     while person1_end > person1_start and clean_tokens[person1_end] in [",", ":", "."]:
@@ -165,7 +167,7 @@ def apply_attention_mask(pipeline, token_indices, masks):
 
 def process_mask(mask_path, img_size=(512,512)):
     if not os.path.exists(mask_path):
-        raise FileNotFoundError(f"掩码不存在: {mask_path}")
+        raise FileNotFoundError(f"Mask file does not exist: {mask_path}")
     
     mask = cv2.imread(mask_path, cv2.IMREAD_GRAYSCALE)
     mask = cv2.resize(mask, img_size, interpolation=cv2.INTER_NEAREST)
@@ -183,14 +185,14 @@ def process_mask(mask_path, img_size=(512,512)):
             valid_persons.append(p)
 
     if len(valid_persons) < 2:
-        raise ValueError(f" 错误: 样本 {mask_path} 包含的有效实例少于 2 人。")
+        raise ValueError(f" Error: Sample {mask_path} contains fewer than 2 valid instances.")
 
     sorted_persons = [p for _, p in sorted(zip(centroids_x, valid_persons))][:2]
     return [torch.from_numpy((mask == p).astype(np.float32)) for p in sorted_persons]
 
 # ====================== 模型单次全量加载 ======================
 def load_all_models():
-    print("  正在统一加载并初始化所有基础与控制模型...")
+    print("  The process of uniformly loading and initializing all basic and control models is underway....")
     base = StableDiffusionPipeline.from_pretrained(
         "Lykon/AbsoluteReality", 
         torch_dtype=torch.float16, 
@@ -227,7 +229,7 @@ def run_single_sample(prompt_item, base, pipe_b2, pipe_b3, generator, mode, is_f
     output_dir = f"results_{START_IDX}to{END_IDX}_{mode}"
     os.makedirs(output_dir, exist_ok=True)
 
-    print(f"\n{'='*60}\n  [{mode.upper()}] 正在处理核心样本 [全局第 {global_idx} 个]: {sample_name}\n{'='*60}")
+    print(f"\n{'='*60}\n  [{mode.upper()}] Processing core sample [Global # {global_idx}]: {sample_name}\n{'='*60}")
     
     pose_path = f"{BASE_DIR}/openpose/{sample_name}.png"
     depth_path = f"{BASE_DIR}/depth_{mode}/{sample_name}.png"  
@@ -235,7 +237,7 @@ def run_single_sample(prompt_item, base, pipe_b2, pipe_b3, generator, mode, is_f
 
     for path in [pose_path, depth_path, mask_path]:
         if not os.path.exists(path):
-            print(f"  必要控制图缺失，跳过该样本: {path}")
+            print(f"  Required control image is missing, skipping this sample: {path}")
             return None
 
     try:
@@ -243,74 +245,74 @@ def run_single_sample(prompt_item, base, pipe_b2, pipe_b3, generator, mode, is_f
         depth = Image.open(depth_path).convert("RGB")
         token_indices = get_person_token_indices(base.tokenizer, prompt)
     except Exception as e:
-        print(f"  前置数据分析失败: {str(e)}")
+        print(f"  Preprocessing failed: {str(e)}")
         return None
 
     # --- 1. Baseline1：纯文本生成 ---
     b1_path = f"{output_dir}/{sample_name}_baseline1.png"
     if is_first_mode:
         try:
-            print("  [1/4] 正在运行 Baseline1：纯文本生成...")
+            print("  [1/4] Baseline1 is currently running: Text Generation...")
             generator.manual_seed(SEED)  
             img1 = base(prompt=prompt, negative_prompt=neg_prompt, generator=generator, num_inference_steps=parent_steps, guidance_scale=cfg).images[0]
             img1.save(b1_path)
             del img1
             clear_gpu_memory()
-        except Exception as e: print(f"   Baseline1 失败: {e}")
+        except Exception as e: print(f"   Baseline1 failed: {e}")
     else:                
         src_b1 = f"results_{START_IDX}to{END_IDX}_{MODES[0]}/{sample_name}_baseline1.png"
         if os.path.exists(src_b1):
             shutil.copy(src_b1, b1_path)
         else:
-            print(f"  未找到历史 Baseline1 缓存 ")
+            print(f"  No historical Baseline1 cache was found. ")
             try:
                 generator.manual_seed(SEED)  
                 img1 = base(prompt=prompt, negative_prompt=neg_prompt, generator=generator, num_inference_steps=parent_steps, guidance_scale=cfg).images[0]
                 img1.save(b1_path)
                 del img1
                 clear_gpu_memory()
-            except Exception as e: print(f"     Baseline1 失败: {e}")
+            except Exception as e: print(f"     Baseline1 failed: {e}")
 
     # --- 2. Baseline2：仅 OpenPose ---
     b2_path = f"{output_dir}/{sample_name}_baseline2.png"
     if is_first_mode:
         try:
-            print("  [2/4] 正在运行 Baseline2：单 OpenPose 引导...")
+            print("  [2/4] Baseline2 is currently running: Single OpenPose Guidance...")
             generator.manual_seed(SEED)  
             img2 = pipe_b2(prompt=prompt, negative_prompt=neg_prompt, image=pose, controlnet_conditioning_scale=pose_scale, generator=generator, num_inference_steps=parent_steps, guidance_scale=cfg).images[0]
             img2.save(b2_path)
             del img2
             clear_gpu_memory()
-        except Exception as e: print(f"   Baseline2 失败: {e}")
+        except Exception as e: print(f"   Baseline2 failed: {e}")
     else:        
         src_b2 = f"results_{START_IDX}to{END_IDX}_{MODES[0]}/{sample_name}_baseline2.png"
         if os.path.exists(src_b2):
             shutil.copy(src_b2, b2_path)
         else:
-            print(f"  未找到历史 Baseline2 缓存  ")
+            print(f"  No historical Baseline2 cache was found. ")
             try:
                 generator.manual_seed(SEED)  
                 img2 = pipe_b2(prompt=prompt, negative_prompt=neg_prompt, image=pose, controlnet_conditioning_scale=pose_scale, generator=generator, num_inference_steps=parent_steps, guidance_scale=cfg).images[0]
                 img2.save(b2_path)
                 del img2
                 clear_gpu_memory()
-            except Exception as e: print(f"     Baseline2 失败: {e}")
+            except Exception as e: print(f"     Baseline2 failed: {e}")
 
     # --- 3. Baseline3：双 ControlNet ---
     try:
-        print(f"  [3/4] 正在运行 Baseline3：双 ControlNet 组合 ({mode})...")
+        print(f"  [3/4] Baseline3 is currently running: Dual ControlNet Combination ({mode})...")
         generator.manual_seed(SEED)  
         img3 = pipe_b3(prompt=prompt, negative_prompt=neg_prompt, image=[pose, depth], controlnet_conditioning_scale=[pose_scale, depth_scale], generator=generator, num_inference_steps=parent_steps, guidance_scale=cfg).images[0]
         img3.save(f"{output_dir}/{sample_name}_baseline3.png")
         del img3
         clear_gpu_memory()
-    except Exception as e: print(f"   Baseline3 失败: {e}")
+    except Exception as e: print(f"   Baseline3 failed: {e}")
     
     # --- 4. Method：空间解耦跨注意力掩码 + 双 ControlNet ---
     # 完整备份当前的加速注意力处理器字典
     orig_processors = pipe_b3.unet.attn_processors
     try:
-        print(f"  [4/4]  跨注意力掩码 + 双 ControlNet 联合干预 ({mode})...")
+        print(f"  [4/4]  Cross attention mask + dual ControlNet joint intervention ({mode})...")
         masks = process_mask(mask_path)
         apply_attention_mask(pipe_b3, token_indices, masks)
         
@@ -320,7 +322,7 @@ def run_single_sample(prompt_item, base, pipe_b2, pipe_b3, generator, mode, is_f
         del img4
         clear_gpu_memory()
     except Exception as e: 
-        print(f"   Method 方法运行失败: {str(e)}")
+        print(f"   Method failed to run: {str(e)}")
     finally:
         # 原样恢复原有的加速状态
         pipe_b3.unet.set_attn_processor(orig_processors)
@@ -341,18 +343,18 @@ if __name__ == "__main__":
         base, pipe_b2, pipe_b3 = load_all_models()
         
         round_samples = len(PROMPT_LIST)
-        print(f"\n  数据集切片就绪，全面启动批处理，本轮测试样本数: {round_samples}")
+        print(f"\n  The dataset slice is ready. The batch processing has been fully initiated. The number of test samples in this round: {round_samples}")
         
         eval_manifest = []
         
         for mode_idx, mode in enumerate(MODES):
-            print(f"\n{'*'*40}\n  开始执行模式实验: results_{mode} \n{'*'*40}")
+            print(f"\n{'*'*40}\n  Starting mode experiment: results_{mode} \n{'*'*40}")
             is_first_mode = (mode_idx == 0)
             
             for idx, prompt_item in enumerate(PROMPT_LIST):
                 # 计算全局数据集中的真实序号（1-based）
                 global_idx = actual_start + idx
-                print(f" 当前模式 [{mode}] 进度: [ {idx+1} / {round_samples} ] (数据集总第 {global_idx} 个)")
+                print(f" Current mode [{mode}] progress: [ {idx+1} / {round_samples} ] (Total dataset item {global_idx})")
                 
                 record = run_single_sample(prompt_item, base, pipe_b2, pipe_b3, generator, mode, is_first_mode, global_idx)
                 if record:
@@ -361,10 +363,10 @@ if __name__ == "__main__":
         # 将清单持久化到对应的区间文件中
         with open(MANIFEST_NAME, "w", encoding="utf-8") as f:
             json.dump(eval_manifest, f, indent=4, ensure_ascii=False)
-        print(f"\n  已成功自动更新本轮实验评估清单: `{MANIFEST_NAME}`")
+        print(f"\n  The evaluation manifest for this round has been successfully updated: `{MANIFEST_NAME}`")
         
 
     except Exception as e:
-        print(f"\n 顶层中断错误: {str(e)}")
+        print(f"\n  Top-level interrupt error: {str(e)}")
         clear_gpu_memory()
         raise

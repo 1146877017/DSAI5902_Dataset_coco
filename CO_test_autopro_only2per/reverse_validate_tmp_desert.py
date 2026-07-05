@@ -152,15 +152,15 @@ def main():
             "total_samples": total_samples
         }
         
-        print(f"\n[{method.upper()}] 评估完成:")
-        print(f"  -> 联合一致性成功率 (Joint Acc): {acc_joint:.2%}")
-        print(f"  -> 人体彻底擦除率 (BG Erasure): {report[method]['bg_erasure_success_rate']:.2%}")
-        print(f"  -> 姿态精准保留率 (Pose Fidelity): {report[method]['pose_fidelity_success_rate']:.2%}")
+        print(f"\n[{method.upper()}] Evaluation completed:")
+        print(f"  -> Joint Consistency Accuracy (Joint Acc): {acc_joint:.2%}")
+        print(f"  -> Pure Background Erasure Rate (BG Erasure): {report[method]['bg_erasure_success_rate']:.2%}")
+        print(f"  -> Pose Fidelity Rate (Pose Fidelity): {report[method]['pose_fidelity_success_rate']:.2%}")
         
     # 保存
     with open(SAVE_REPORT, 'w', encoding='utf-8') as f:
         json.dump(report, f, indent=4, ensure_ascii=False)
-    print(f"\n[+] 反向验证完成！报告已保存至 {SAVE_REPORT}")
+    print(f"\n[+] Reverse validation completed! Report saved to {SAVE_REPORT}")
 
 if __name__ == "__main__":
     main()

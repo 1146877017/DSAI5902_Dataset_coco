@@ -19,9 +19,9 @@ cat_id = coco.getCatIds(catNms=['person'])[0]  # 只取person类别
 with open(r"co_dat_only2per/multi_person_ids.json", "r", encoding="utf-8") as f:
     multi_person_ids = json.load(f)["image_ids"]
 
-print(f"开始从COCO官方标注生成掩码，共 {len(multi_person_ids)} 个样本")
+print(f"Start generating masks based on the official annotations from COCO, in total {len(multi_person_ids)} ")
 
-for img_id in tqdm(multi_person_ids, desc="生成COCO官方掩码"):
+for img_id in tqdm(multi_person_ids, desc="Generate the official COCO mask"):
     # 获取图片信息
     img_info = coco.loadImgs(img_id)[0]
     img_name = img_info["file_name"]
@@ -44,6 +44,6 @@ for img_id in tqdm(multi_person_ids, desc="生成COCO官方掩码"):
         save_path = os.path.join(mask_output_dir, os.path.splitext(img_name)[0] + ".png")
         cv2.imwrite(save_path, instance_mask)
     else:
-        print(f" 警告：图片 {img_id} 没有找到 person 标注，请检查数据一致性。")
+        print(f" Warning: Image {img_id} does not have person annotations. Please check data consistency.")
 
-print("\n COCO官方实例掩码生成完成！")
+print("\n COCO official instance masks generated!")

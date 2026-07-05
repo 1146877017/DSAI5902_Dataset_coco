@@ -22,17 +22,17 @@ for ann in coco_data["annotations"]:
 
 # 2. 筛选包含 2 个人的图片ID
 multi_person_ids = [img_id for img_id, cnt in person_count.items() if cnt == 2][:max_samples]
-print(f" 筛选出包含 2 个 person 的样本数：{len(multi_person_ids)}")
+print(f" Select the number of samples that contain exactly 2 individuals: {len(multi_person_ids)}")
 
 # 3. 保存筛选后的ID列表
 os.makedirs(os.path.dirname(id_list_save_path), exist_ok=True)
 with open(id_list_save_path, "w", encoding="utf-8") as f:
     json.dump({
-        "筛选规则": "COCO 2017 Val集，person数量=2，最多5000个样本",
+        "Filtering rules": "COCO 2017 Val set, with 2 persons, up to 5000 samples",
         "image_ids": multi_person_ids,
-        "样本数量": len(multi_person_ids)
+        "Sample count": len(multi_person_ids)
     }, f, indent=4)  
-print(f" 图像ID列表已保存至：{id_list_save_path}")
+print(f" Image ID list saved to: {id_list_save_path}")
 
 # 4. 复制图片到目标文件夹
 os.makedirs(output_dir, exist_ok=True)
@@ -47,6 +47,6 @@ for img_id in multi_person_ids:
         copy_count += 1
 
 # 打印结果
-print(f" 图片复制完成！")
-print(f" 实际复制有效样本数：{copy_count} / 筛选总数：{len(multi_person_ids)}")
-print(f" 所有多人物图像保存至：{output_dir}")
+print(f" Image copying completed!")
+print(f" Actual copied valid samples: {copy_count} / Filtered total: {len(multi_person_ids)}")
+print(f" All multi-person images saved to: {output_dir}")
