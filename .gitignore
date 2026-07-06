@@ -3,7 +3,7 @@
 
 !.gitignore
 !README.md
-!receipt_DSAI5902_Dissertation 25051121g.pdf
+!receipt_DSAI5902_Dissertation_25051121g.pdf
 !CO_test_autopro_only2per/
 !CO_test_autopro_only2per/*.py
 !CO_test_autopro_only2per/*.json
