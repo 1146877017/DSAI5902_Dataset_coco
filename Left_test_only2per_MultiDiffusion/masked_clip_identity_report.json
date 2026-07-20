@@ -1,0 +1,386 @@
+{
+    "baseline1": {
+        "per_scene_averages": {
+            "side_by_side_stand": {
+                "self_similarity": 0.2403,
+                "cross_similarity": 0.2403,
+                "net_isolation": -0.0,
+                "identity_accuracy": 0.1111,
+                "sample_count": 18
+            },
+            "side_by_side_raise_hand": {
+                "self_similarity": 0.2316,
+                "cross_similarity": 0.234,
+                "net_isolation": -0.0024,
+                "identity_accuracy": 0.0,
+                "sample_count": 18
+            },
+            "side_by_side_point": {
+                "self_similarity": 0.234,
+                "cross_similarity": 0.2383,
+                "net_isolation": -0.0043,
+                "identity_accuracy": 0.1111,
+                "sample_count": 18
+            },
+            "handshake": {
+                "self_similarity": 0.2342,
+                "cross_similarity": 0.2317,
+                "net_isolation": 0.0026,
+                "identity_accuracy": 0.1111,
+                "sample_count": 18
+            },
+            "front_back": {
+                "self_similarity": 0.2263,
+                "cross_similarity": 0.223,
+                "net_isolation": 0.0033,
+                "identity_accuracy": 0.2778,
+                "sample_count": 18
+            }
+        },
+        "per_sequence_averages": {
+            "side_by_side": {
+                "self_similarity": 0.2353,
+                "identity_accuracy": 0.0741,
+                "sample_count": 54
+            },
+            "handshake": {
+                "self_similarity": 0.2342,
+                "identity_accuracy": 0.1111,
+                "sample_count": 18
+            },
+            "front_back": {
+                "self_similarity": 0.2263,
+                "identity_accuracy": 0.2778,
+                "sample_count": 18
+            }
+        },
+        "global_averages": {
+            "self_similarity": 0.2333,
+            "cross_similarity": 0.2334,
+            "net_isolation": -0.0002,
+            "identity_accuracy": 0.1222,
+            "global_text_image_sim": 0.34,
+            "total_samples": 90
+        }
+    },
+    "baseline2": {
+        "per_scene_averages": {
+            "side_by_side_stand": {
+                "self_similarity": 0.2744,
+                "cross_similarity": 0.2736,
+                "net_isolation": 0.0009,
+                "identity_accuracy": 0.0556,
+                "sample_count": 18
+            },
+            "side_by_side_raise_hand": {
+                "self_similarity": 0.2703,
+                "cross_similarity": 0.2699,
+                "net_isolation": 0.0003,
+                "identity_accuracy": 0.0556,
+                "sample_count": 18
+            },
+            "side_by_side_point": {
+                "self_similarity": 0.2726,
+                "cross_similarity": 0.2705,
+                "net_isolation": 0.0021,
+                "identity_accuracy": 0.0,
+                "sample_count": 18
+            },
+            "handshake": {
+                "self_similarity": 0.2737,
+                "cross_similarity": 0.2785,
+                "net_isolation": -0.0048,
+                "identity_accuracy": 0.0556,
+                "sample_count": 18
+            },
+            "front_back": {
+                "self_similarity": 0.2468,
+                "cross_similarity": 0.2465,
+                "net_isolation": 0.0003,
+                "identity_accuracy": 0.1667,
+                "sample_count": 18
+            }
+        },
+        "per_sequence_averages": {
+            "side_by_side": {
+                "self_similarity": 0.2725,
+                "identity_accuracy": 0.037,
+                "sample_count": 54
+            },
+            "handshake": {
+                "self_similarity": 0.2737,
+                "identity_accuracy": 0.0556,
+                "sample_count": 18
+            },
+            "front_back": {
+                "self_similarity": 0.2468,
+                "identity_accuracy": 0.1667,
+                "sample_count": 18
+            }
+        },
+        "global_averages": {
+            "self_similarity": 0.2676,
+            "cross_similarity": 0.2678,
+            "net_isolation": -0.0002,
+            "identity_accuracy": 0.0667,
+            "global_text_image_sim": 0.364,
+            "total_samples": 90
+        }
+    },
+    "baseline3": {
+        "per_scene_averages": {
+            "side_by_side_stand": {
+                "self_similarity": 0.2717,
+                "cross_similarity": 0.2754,
+                "net_isolation": -0.0037,
+                "identity_accuracy": 0.0,
+                "sample_count": 18
+            },
+            "side_by_side_raise_hand": {
+                "self_similarity": 0.2756,
+                "cross_similarity": 0.2779,
+                "net_isolation": -0.0023,
+                "identity_accuracy": 0.0556,
+                "sample_count": 18
+            },
+            "side_by_side_point": {
+                "self_similarity": 0.2728,
+                "cross_similarity": 0.269,
+                "net_isolation": 0.0038,
+                "identity_accuracy": 0.1111,
+                "sample_count": 18
+            },
+            "handshake": {
+                "self_similarity": 0.2735,
+                "cross_similarity": 0.2728,
+                "net_isolation": 0.0006,
+                "identity_accuracy": 0.1111,
+                "sample_count": 18
+            },
+            "front_back": {
+                "self_similarity": 0.2521,
+                "cross_similarity": 0.2578,
+                "net_isolation": -0.0057,
+                "identity_accuracy": 0.1667,
+                "sample_count": 18
+            }
+        },
+        "per_sequence_averages": {
+            "side_by_side": {
+                "self_similarity": 0.2734,
+                "identity_accuracy": 0.0556,
+                "sample_count": 54
+            },
+            "handshake": {
+                "self_similarity": 0.2735,
+                "identity_accuracy": 0.1111,
+                "sample_count": 18
+            },
+            "front_back": {
+                "self_similarity": 0.2521,
+                "identity_accuracy": 0.1667,
+                "sample_count": 18
+            }
+        },
+        "global_averages": {
+            "self_similarity": 0.2691,
+            "cross_similarity": 0.2706,
+            "net_isolation": -0.0015,
+            "identity_accuracy": 0.0889,
+            "global_text_image_sim": 0.3503,
+            "total_samples": 90
+        }
+    },
+    "baseline4": {
+        "per_scene_averages": {
+            "side_by_side_stand": {
+                "self_similarity": 0.2641,
+                "cross_similarity": 0.2623,
+                "net_isolation": 0.0018,
+                "identity_accuracy": 0.1667,
+                "sample_count": 18
+            },
+            "side_by_side_raise_hand": {
+                "self_similarity": 0.2695,
+                "cross_similarity": 0.2671,
+                "net_isolation": 0.0024,
+                "identity_accuracy": 0.0,
+                "sample_count": 18
+            },
+            "side_by_side_point": {
+                "self_similarity": 0.2652,
+                "cross_similarity": 0.2644,
+                "net_isolation": 0.0008,
+                "identity_accuracy": 0.0556,
+                "sample_count": 18
+            },
+            "handshake": {
+                "self_similarity": 0.2612,
+                "cross_similarity": 0.2586,
+                "net_isolation": 0.0027,
+                "identity_accuracy": 0.1667,
+                "sample_count": 18
+            },
+            "front_back": {
+                "self_similarity": 0.2405,
+                "cross_similarity": 0.2422,
+                "net_isolation": -0.0017,
+                "identity_accuracy": 0.0,
+                "sample_count": 18
+            }
+        },
+        "per_sequence_averages": {
+            "side_by_side": {
+                "self_similarity": 0.2663,
+                "identity_accuracy": 0.0741,
+                "sample_count": 54
+            },
+            "handshake": {
+                "self_similarity": 0.2612,
+                "identity_accuracy": 0.1667,
+                "sample_count": 18
+            },
+            "front_back": {
+                "self_similarity": 0.2405,
+                "identity_accuracy": 0.0,
+                "sample_count": 18
+            }
+        },
+        "global_averages": {
+            "self_similarity": 0.2601,
+            "cross_similarity": 0.2589,
+            "net_isolation": 0.0012,
+            "identity_accuracy": 0.0778,
+            "global_text_image_sim": 0.3416,
+            "total_samples": 90
+        }
+    },
+    "method": {
+        "per_scene_averages": {
+            "side_by_side_stand": {
+                "self_similarity": 0.2708,
+                "cross_similarity": 0.2583,
+                "net_isolation": 0.0125,
+                "identity_accuracy": 0.3333,
+                "sample_count": 18
+            },
+            "side_by_side_raise_hand": {
+                "self_similarity": 0.2775,
+                "cross_similarity": 0.2601,
+                "net_isolation": 0.0174,
+                "identity_accuracy": 0.2222,
+                "sample_count": 18
+            },
+            "side_by_side_point": {
+                "self_similarity": 0.2763,
+                "cross_similarity": 0.2589,
+                "net_isolation": 0.0174,
+                "identity_accuracy": 0.2778,
+                "sample_count": 18
+            },
+            "handshake": {
+                "self_similarity": 0.2701,
+                "cross_similarity": 0.2521,
+                "net_isolation": 0.018,
+                "identity_accuracy": 0.2778,
+                "sample_count": 18
+            },
+            "front_back": {
+                "self_similarity": 0.2445,
+                "cross_similarity": 0.2243,
+                "net_isolation": 0.0202,
+                "identity_accuracy": 0.2778,
+                "sample_count": 18
+            }
+        },
+        "per_sequence_averages": {
+            "side_by_side": {
+                "self_similarity": 0.2749,
+                "identity_accuracy": 0.2778,
+                "sample_count": 54
+            },
+            "handshake": {
+                "self_similarity": 0.2701,
+                "identity_accuracy": 0.2778,
+                "sample_count": 18
+            },
+            "front_back": {
+                "self_similarity": 0.2445,
+                "identity_accuracy": 0.2778,
+                "sample_count": 18
+            }
+        },
+        "global_averages": {
+            "self_similarity": 0.2678,
+            "cross_similarity": 0.2507,
+            "net_isolation": 0.0171,
+            "identity_accuracy": 0.2778,
+            "global_text_image_sim": 0.3526,
+            "total_samples": 90
+        }
+    },
+    "multidiffusion": {
+        "per_scene_averages": {
+            "side_by_side_stand": {
+                "self_similarity": 0.2772,
+                "cross_similarity": 0.2132,
+                "net_isolation": 0.064,
+                "identity_accuracy": 0.8333,
+                "sample_count": 18
+            },
+            "side_by_side_raise_hand": {
+                "self_similarity": 0.2869,
+                "cross_similarity": 0.2101,
+                "net_isolation": 0.0768,
+                "identity_accuracy": 1.0,
+                "sample_count": 18
+            },
+            "side_by_side_point": {
+                "self_similarity": 0.2878,
+                "cross_similarity": 0.2172,
+                "net_isolation": 0.0707,
+                "identity_accuracy": 1.0,
+                "sample_count": 18
+            },
+            "handshake": {
+                "self_similarity": 0.2896,
+                "cross_similarity": 0.2212,
+                "net_isolation": 0.0684,
+                "identity_accuracy": 1.0,
+                "sample_count": 18
+            },
+            "front_back": {
+                "self_similarity": 0.2849,
+                "cross_similarity": 0.2113,
+                "net_isolation": 0.0736,
+                "identity_accuracy": 1.0,
+                "sample_count": 18
+            }
+        },
+        "per_sequence_averages": {
+            "side_by_side": {
+                "self_similarity": 0.284,
+                "identity_accuracy": 0.9444,
+                "sample_count": 54
+            },
+            "handshake": {
+                "self_similarity": 0.2896,
+                "identity_accuracy": 1.0,
+                "sample_count": 18
+            },
+            "front_back": {
+                "self_similarity": 0.2849,
+                "identity_accuracy": 1.0,
+                "sample_count": 18
+            }
+        },
+        "global_averages": {
+            "self_similarity": 0.2853,
+            "cross_similarity": 0.2146,
+            "net_isolation": 0.0707,
+            "identity_accuracy": 0.9667,
+            "global_text_image_sim": 0.3517,
+            "total_samples": 90
+        }
+    }
+}

@@ -1,5 +1,5 @@
 import sys
-# sys.path.insert(0, r"./Depth-Anything-V2")
+sys.path.insert(0, r"./Depth-Anything-V2")
 import os
 import json
 import cv2
@@ -15,8 +15,8 @@ from scipy.optimize import linear_sum_assignment
 # ===================== 全局配置 =====================
 SYNTHETIC_DATA = "synthetic_test_dataset"
 GEN_RESULTS = "synthetic_results"
-METHODS = ["baseline1", "baseline2", "baseline3", "baseline4", "method"]
-SUFFIXES = ["_baseline1", "_baseline2", "_baseline3", "_baseline4", "_method"]
+METHODS = ["baseline1", "baseline2", "baseline3", "baseline4", "method", "multidiffusion"]
+SUFFIXES = ["_baseline1", "_baseline2", "_baseline3", "_baseline4", "_method", "_multidiffusion"]
 IMAGE_SIZE = 512
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 SAVE_REPORT = "narrative_consistency_report.json"
@@ -29,7 +29,7 @@ SEQUENCE_FRAMES = [
     "side_by_side_point"
 ]
 
-# ========== 角色文本描述 ==========
+# ==========  角色文本描述 ==========
 CHARACTER_TEXT_PROMPTS = {
     "Sera": "SeraDef, red dress, brown hair, long hair, bare shoulders, ankh",
     "TogaHimiko": "Himiko Toga, blonde hair, school uniform",
@@ -52,7 +52,7 @@ print("Loading CLIP model (ViT-B/32)...")
 clip_model, clip_preprocess = clip.load("ViT-B/32", device=DEVICE)
 print(f"CLIP model loaded successfully, device: {DEVICE}")
 
-# ========== 预计算所有角色的CLIP文本基准特征 ==========
+# ==========  预计算所有角色的CLIP文本基准特征 ==========
 print("Precomputing CLIP text features for all characters...")
 CHARACTER_TEXT_FEATURES = {}
 for char_id, text_prompt in CHARACTER_TEXT_PROMPTS.items():
@@ -64,6 +64,7 @@ for char_id, text_prompt in CHARACTER_TEXT_PROMPTS.items():
 print(f"Precomputed text features for {len(CHARACTER_TEXT_FEATURES)} characters")
 
 # ===================== 关键点映射与GT对齐 =====================
+# COCO 17点 → 自定义11点 映射
 COCO_TO_CUSTOM = {
     0: 0,   # nose
     5: 1,   # left shoulder
@@ -246,6 +247,7 @@ def compute_pose_fidelity(img_path, scene_name):
     total_oks = sum([-cost[r, c] for r, c in zip(row_ind, col_ind)])
     print(f"  [EVAL] Sum of matched OKS: {total_oks:.4f}")
     
+    # 少检测到人物会被惩罚
     result = float(total_oks / n_gt)
     print(f"  [EVAL] Final average pose fidelity OKS: {result:.4f}")
     return result
@@ -318,7 +320,7 @@ def compute_cross_frame_depth_ssim(depth1, depth2):
     return score
 
 def compute_depth_metrics(img, gt_depth_path):
-    """深度评估：同时返回SSIM与RMSE"""
+    """深度评估：同时返回SSIM与RMSE，对齐提案要求"""
     print(f"\n  [EVAL] Computing depth metrics")
     print(f"  [EVAL] GT depth path: {gt_depth_path}")
     
@@ -352,6 +354,18 @@ def main():
     print("\n=== Narrative Consistency & Layout Accuracy Evaluation ===")
     print("Metrics: Pose Fidelity (OKS), Depth Fidelity (SSIM/RMSE), Identity Correctness (Masked CLIP), Feature Isolation, Cross-frame Background/Depth/Identity Consistency")
     
+    # 读取已有的测试结果，保留之前的 Baseline 结果
+    if os.path.exists(SAVE_REPORT):
+        try:
+            with open(SAVE_REPORT, "r", encoding="utf-8") as f:
+                report = json.load(f)
+            print(f"Loaded existing report from: {SAVE_REPORT} (Found keys: {list(report.keys())})")
+        except Exception as e:
+            print(f"Warning: Failed to load existing report ({e}), creating a new report dictionary.")
+            report = {}
+    else:
+        report = {}
+        
     config_path = os.path.join(SYNTHETIC_DATA, "synthetic_configs.json")
     print(f"Loading config from: {config_path}")
     
@@ -371,8 +385,6 @@ def main():
             sequence_groups.add(key)
     sequence_groups = list(sequence_groups)
     print(f"Found {len(sequence_groups)} side_by_side sequence groups")
-    
-    report = {}
     
     for method_idx, (method, suffix) in enumerate(zip(METHODS, SUFFIXES), 1):
         print(f"\n{'='*60}")
@@ -566,7 +578,7 @@ def main():
         # 汇总统计
         print(f"\n  -- Aggregating results for {method.upper()} --")
         if not pose_scores:
-            print(f"  No valid images found for {method}, skipping")
+            print(f"  No valid images found for {method}, keeping existing score (if any) and skipping update")
             continue
         
         avg_pose = round(np.mean(pose_scores), 4)
@@ -613,8 +625,8 @@ def main():
         }
     
     print(f"\n{'='*60}")
-    print("All methods evaluated")
-    print(f"Saving report to: {SAVE_REPORT}")
+    print("All methods evaluated / processed")
+    print(f"Saving combined report to: {SAVE_REPORT}")
     
     with open(SAVE_REPORT, "w", encoding="utf-8") as f:
         json.dump(report, f, indent=4, ensure_ascii=False)

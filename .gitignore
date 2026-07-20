@@ -30,6 +30,18 @@
 !Left_test_only2per_v3/synthetic_results/
 !Left_test_only2per_v3/synthetic_results/**
 
+!Left_test_only2per_MultiDiffusion/
+!Left_test_only2per_MultiDiffusion/*.py
+!Left_test_only2per_MultiDiffusion/*.json
+!Left_test_only2per_MultiDiffusion/*.log
+!Left_test_only2per_MultiDiffusion/*.txt
+
+!Left_test_only2per_MultiDiffusion/synthetic_results/
+!Left_test_only2per_MultiDiffusion/synthetic_results/**
+
+!Left_test_only2per_MultiDiffusion/MultiDiffusion-master/
+!Left_test_only2per_MultiDiffusion/MultiDiffusion-master/**
+
 # 模型权重文件
 *.pt
 *.pth

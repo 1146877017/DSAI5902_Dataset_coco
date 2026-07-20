@@ -1,3 +1,11 @@
+Left_test_only2per_MultiDiffusion\MultiDiffusion-master代码 (MultiDiffusion) 的链接 : 
+https://github.com/omerbt/MultiDiffusion
+
+--MultiDiffusion test
+python run_syn_multidiffusion.py > run_syn_multidiffusion_log.txt 2>&1
+python eval_prop_masked_clip_multidiffusion.py > eval_masked_clip_multidiffusion_log.txt 2>&1
+python eval_narra_consis_multidiffusion.py > eval_narra_consis_multidiffusion_log.txt 2>&1
+
 --COCO test
 --Location: CO_test_autopro_only2per/
 --Pre-processing data execution order (strictly ensure that only 2 people are shown on screen) :
